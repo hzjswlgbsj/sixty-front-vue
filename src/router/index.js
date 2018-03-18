@@ -1,0 +1,61 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import Index from '../../src/page/layout/Index'
+import Blog from '../../src/page/Blog'
+import Tucao from '../../src/page/Tucao'
+import Friend from '../../src/page/Friend'
+import Resources from '../../src/page/Resources'
+import About from '../../src/page/About'
+import ArticleDetail from '../../src/page/ArticleDetail'
+
+Vue.use(Router)
+
+const router = new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'Index',
+      component: Index,
+      children: [
+        {
+          path: '/blog',
+          name: 'Blog',
+          component: Blog,
+          children: [
+            {
+              path: 'articleDetail/:id',
+              name: 'ArticleDetail',
+              component: ArticleDetail
+            }
+          ]
+        },
+        {
+          path: '/tucao',
+          name: 'Tucao',
+          component: Tucao
+        },
+        {
+          path: '/friend',
+          name: 'Friend',
+          component: Friend
+        },
+        {
+          path: '/resources',
+          name: 'Resources',
+          component: Resources
+        },
+        {
+          path: '/about',
+          name: 'About',
+          component: About
+        }
+      ]
+    }
+  ]
+})
+
+export function redirectLogin () {
+  router.push('/login')
+}
+
+export default router
