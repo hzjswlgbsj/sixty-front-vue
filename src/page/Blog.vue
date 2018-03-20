@@ -17,14 +17,15 @@ import FootBar from './layout/FootBar'
 import ArticleItem from '../components/ArticleItem'
 import routerMixin from '../mixins/router'
 import dataStore from '../../src/data/index'
-import articleApi from '../api/article'
+import articleMixin from '../mixins/article'
 
 export default {
   name: 'blog',
   data () {
     return {
       isDetail: false,
-      articleData: []
+      articleData: [],
+      tags: []
     }
   },
   mixins: [routerMixin],
@@ -34,7 +35,7 @@ export default {
     'article-item': ArticleItem
   },
   created () {
-    this.initData()
+    this.init()
   },
   watch: {
     '$route' (to, from) {
@@ -44,19 +45,11 @@ export default {
     }
   },
   methods: {
-    async initData () {
+    async init () {
       dataStore.store('curRouter', this.$route)
       let curRouterObj = dataStore.store('curRouter')
       this.isDetail = curRouterObj.name === 'ArticleDetail'
-      // get article data
-      try {
-        let articles = await articleApi.all()
-        if (articles && articles.length > 0) {
-          this.articleData = articles
-        }
-      } catch (e) {
-        console.log(e)
-      }
+      this.articleData = await articleMixin.getArticles() // get all article data
     },
     goDetail (id) {
       this.jump(`blog/articleDetail/${id}`)

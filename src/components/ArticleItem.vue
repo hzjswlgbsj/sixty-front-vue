@@ -28,10 +28,11 @@
       <img v-if="articleData.image" class="article-info-cover-img" :src="articleData.image" >
     </div>
     <div class="article-info-content" @click="goDetail(articleData.id)">{{articleData.introduction}}</div>
-    <div class="article-info-tags">
-      <tag color="blue" backgroundColor="#46C47C">美食</tag>
+    <div class="article-info-tags" v-if="articleData.tags && articleData.tags.length > 0">
+      <tag v-for="tags in articleData.tags" :key="tags.id" :backgroundColor="tags.color">{{tags.name}}</tag>
+      <!--<tag color="blue" backgroundColor="#46C47C">美食</tag>
       <tag color="blue">美女</tag>
-      <tag color="blue" backgroundColor="#FF9800">最美成都</tag>
+      <tag color="blue" backgroundColor="#FF9800">最美成都</tag>-->
     </div>
   </div>
 </template>
