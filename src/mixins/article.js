@@ -2,11 +2,19 @@ import dataStore from '../data/index'
 import arrayTool from '../util/array'
 
 function getArticles () {
-  return dataStore.store('articles')
+  if (dataStore.store('articles').length > 0) {
+    return dataStore.store('articles')
+  } else {
+    return dataStore.storage('articles')
+  }
 }
 
 function getTags () {
-  return dataStore.store('article_tags')
+  if (dataStore.store('article_tags').length > 0) {
+    return dataStore.store('article_tags')
+  } else {
+    return dataStore.storage('article_tags')
+  }
 }
 
 function getTagsByIds (ids) {
@@ -25,8 +33,13 @@ function getTagsByIds (ids) {
   return tags
 }
 
+function getArticleById (id) {
+  return arrayTool.filterItem('id', id, getArticles())
+}
+
 export default {
   getArticles,
   getTags,
-  getTagsByIds
+  getTagsByIds,
+  getArticleById
 }
