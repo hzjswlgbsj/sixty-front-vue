@@ -7,6 +7,7 @@ import Friend from '../../src/page/Friend'
 import Resources from '../../src/page/Resources'
 import About from '../../src/page/About'
 import ArticleDetail from '../../src/page/ArticleDetail'
+import Login from '../../src/page/Login'
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ const router = new Router({
           path: '/about',
           name: 'About',
           component: About
+        },
+        {
+          path: '/login',
+          name: 'Login',
+          component: Login
         }
       ]
     }
