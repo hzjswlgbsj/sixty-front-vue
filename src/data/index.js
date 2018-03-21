@@ -44,7 +44,28 @@ function _storage (key, val) {
   }
 }
 
+function _setCookie (cname, cvalue, exdays) {
+  let date = new Date()
+  date.setTime(date.getTime() + (exdays * 24 * 60 * 60 * 1000))
+  let expires = 'expires=' + date.toGMTString()
+  document.cookie = cname + '=' + cvalue + ';' + expires
+}
+
+function _getCookie (cname) {
+  let name = cname + '='
+  let cookieArray = document.cookie.split(';')
+  for (let i = 0; i < cookieArray.length; i++) {
+    let c = cookieArray[i].trim()
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length)
+    }
+  }
+  return ''
+}
+
 export default {
   store: _store,
-  storage: _storage
+  storage: _storage,
+  setCookie: _setCookie,
+  getCookie: _getCookie
 }
