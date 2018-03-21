@@ -1,33 +1,27 @@
 <template>
   <div class="article-detail-container">
-    <div class="article-detail-title-info">
-      <div class="article-detail-title">假如生活欺骗了你</div>
+    <div class="article-detail-title-info" v-if="article.id">
+      <div class="article-detail-title">{{article.title}}</div>
       <div class="article-detail-info">
         <div>
           <icon name="user" scale="1.3"></icon>
-          <span class="article-info-author">Sixty</span>
+          <span class="article-info-author">{{article.author}}</span>
         </div>
         <div>
           <icon name="comments" scale="1.3"></icon>
-          <span class="article-info-comment">6 Comments</span>
+          <span class="article-info-comment">34 Comments</span>
         </div>
         <div>
           <icon name="eye" scale="1.3"></icon>
-          <span class="article-info-view">215 Views</span>
+          <span class="article-info-view">{{article.views}} Views</span>
         </div>
         <div>
           <icon name="calendar" scale="1"></icon>
-          <span  class="article-info-date">2018-01-30</span>
+          <span  class="article-info-date">{{article.creat_date}}</span>
         </div>
       </div>
       <div class="article-detail-content">
-        <p>你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我</p>
-        <p>你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我</p>
-        <p>你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我</p>
-        <p>你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我</p>
-        <p>你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我</p>
-        <p>你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我</p>
-        <p>你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我你不要好帅哥哥地方无功无过认为跟无关地方反问我</p>
+        {{article.content}}
       </div>
       <div class="article-detail-reference">这里是参考信息</div>
       <!--<div class="article-detail-qrcode">这里是二维码</div>-->
@@ -101,7 +95,7 @@
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
 import LogoutPulish from '../components/LogoutPulish'
-import articleApi from '../api/article'
+import articleMixin from '../mixins/article'
 
 export default {
   name: 'article-detail',
@@ -112,21 +106,22 @@ export default {
   },
   data () {
     return {
+      article: {}
     }
   },
   created () {
     this.initData()
   },
+  mounted () {
+    this.$nextTick(function () {
+      document.body.scrollTop = 1
+      document.documentElement.scrollTop = 1
+    })
+  },
   methods: {
-    async initData () {
-      try {
-        let articles = await articleApi.all()
-        console.log(1111111111)
-        console.log(articles)
-        console.log(1111111111)
-      } catch (e) {
-        console.log(e)
-      }
+    initData () {
+      let articleId = this.$route.params.id
+      this.article = articleMixin.getArticleById(articleId)
     },
     publishComment () {
       alert('你想发布吗')

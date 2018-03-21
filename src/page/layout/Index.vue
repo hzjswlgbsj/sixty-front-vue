@@ -10,9 +10,11 @@
     <div v-if="!isIndex" class="main-layout-structure-footbar">
       <foot-bar></foot-bar>
     </div>
-    <div v-if="showReturnTop" @click="returnTop" class="main-layout-structure-return-top">
-      <icon name="github-square" scale="4"></icon>
-    </div>
+    <transition name="slide-fade">
+      <div v-if="showReturnTop" @click="returnTop(1,80)" class="main-layout-structure-return-top">
+        <icon name="chevron-up" scale="1.5" class="main-layout-structure-return-top-icon"></icon>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -71,15 +73,23 @@ export default {
     changePage (router) {
       this.jump(router)
     },
-    returnTop () {
-      document.body.scrollTop = 0
-      document.documentElement.scrollTop = 0
+    returnTop (acceleration, time) {
+      let xScroll = document.documentElement.scrollLeft || document.body.scrollLeft || window.scrollLeft || 0 // 获取水平滚动坐标
+      let yScroll = document.documentElement.scrollTop || document.body.scrollTop || window.scrollTop || 0 // 获取垂直滚动坐标
+      let speed = 1 + acceleration // 滚动速度
+      window.scrollTo(Math.floor(xScroll / speed), Math.floor(yScroll / speed)) // 屏幕滚动到某个坐标，因为speed大于1，所以x、y轴的坐标越来越小
+      if (xScroll > 0 || yScroll > 0) { // 如果没有滚动到顶部就设置延迟time后继续滚动
+        setTimeout(() => {
+          this.returnTop(acceleration, time)
+        }, time)
+      }
     }
   }
 }
 </script>
 
 <style lang="scss"  scoped>
+  @import "../../style/base/base";
   .main-layout-structure-container {
     margin-top: 20px;
     .main-layout-structure-introduction {
@@ -87,15 +97,33 @@ export default {
       height: 100%;
     }
     .main-layout-structure-return-top {
-      width: 70px;
-      height: 70px;
+      width: 45px;
+      height: 45px;
+      background-color: #548FDD;
       border-radius: 50%;
       position: fixed;
       bottom: 20px;
       right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .main-layout-structure-return-top-icon {
+        padding-bottom: 5px;
+        color: #ffffff;
+      }
       &:hover {
         cursor: pointer;
+        background-color: #29B5E5;
       }
+    }
+    .slide-fade-enter-active {
+      transition: all 0.5s ease;
+    }
+    .slide-fade-leave-active {
+      transition: all 0.5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to {
+      opacity: 0;
     }
   }
 </style>
