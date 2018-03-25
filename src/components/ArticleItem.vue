@@ -1,10 +1,13 @@
 <template>
   <div class="article-container">
     <div class="article-author-avatar">
-      <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="70px" rotate></avatar>
+      <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="65px" rotate></avatar>
     </div>
     <div class="article-title">
-      <span class="article-title-text" @click="goDetail(articleData.id)">{{articleData.title}}</span>
+      <span class="article-title-text" @click="goDetail(articleData.id)">
+        {{articleData.title}}
+        <span class="article-title-tag">原</span>
+      </span>
     </div>
     <div class="article-info-container">
       <div>
@@ -29,7 +32,14 @@
     </div>
     <div class="article-info-content" @click="goDetail(articleData.id)">{{articleData.introduction}}</div>
     <div class="article-info-tags" v-if="articleData.tags && articleData.tags.length > 0">
-      <tag v-for="tags in articleData.tags" :key="tags.id" :backgroundColor="tags.color">{{tags.name}}</tag>
+      <tag class="article-info-tag"
+           v-for="tags in articleData.tags"
+           :key="tags.id"
+           :backgroundColor="tags.color"
+           icon="pricetag"
+           @tag-click="tagClick(tags.id)">
+        {{tags.name}}
+      </tag>
       <!--<tag color="blue" backgroundColor="#46C47C">美食</tag>
       <tag color="blue">美女</tag>
       <tag color="blue" backgroundColor="#FF9800">最美成都</tag>-->
@@ -58,6 +68,9 @@ export default {
   methods: {
     goDetail (id) {
       this.$emit('go-detail', id)
+    },
+    tagClick (id) {
+      alert('你点击了tag' + id)
     }
   }
 }
@@ -79,6 +92,21 @@ export default {
       .article-title-text:hover {
         cursor: pointer;
         color: $base-color;
+      }
+      .article-title-text {
+        position: relative;
+        .article-title-tag {
+          background-color: #5292DD;
+          font-size: 12px;
+          padding: 0 3px;
+          border-radius: 2px;
+          position: absolute;
+          top: 5px;
+          right: -25px;
+          &:hover {
+            color: #ffffff;
+          }
+        }
       }
     }
     .article-info-container {
