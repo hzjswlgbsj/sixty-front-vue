@@ -1,5 +1,5 @@
 <template>
-  <span class="tag-text-container" :style="initStyle">
+  <span class="tag-text-container" :style="initStyle" @click="tagClick">
     <Icon :type="this.icon"></Icon>
     <slot></slot>
   </span>
@@ -40,7 +40,7 @@ export default {
     },
     icon: {
       type: String,
-      default: 'pricetag'
+      default: ''
     }
   },
   computed: {
@@ -56,8 +56,8 @@ export default {
     }
   },
   methods: {
-    clickImg () {
-      this.jump(this.router)
+    tagClick () {
+      this.$emit('tag-click')
     }
   }
 }
@@ -68,5 +68,10 @@ export default {
     text-align: center;
     padding: 8px 10px;
     margin-right: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #ffffff !important;
+      color: #9DA5B4 !important;
+    }
   }
 </style>
