@@ -52,40 +52,7 @@
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
       <div class="article-detail-comment">
-        <div class="article-detail-comment-total">154&nbsp;&nbsp;评论</div>
-        <!--推送提醒-->
-        <!--<div class="article-detail-comment-notice">
-          <Alert show-icon closable>
-            <Icon type="ios-lightbulb-outline" slot="icon"></Icon>
-            <template slot="desc">
-              Content of prompt. Content of prompt. Content of prompt.
-            </template>
-          </Alert>
-        </div>-->
-        <div class="article-detail-comment-head">
-          <div class="article-detail-comment-all">
-            全部评论
-            <icon class="article-detail-comment-all-selected" name="caret-up" scale="1"></icon>
-          </div>
-          <div class="article-detail-comment-page">
-            <div class="article-detail-comment-page-total">共55页</div>
-            <div class="article-detail-comment-page-list">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>...</span>
-              <span>55</span>
-            </div>
-            <div class="article-detail-comment-page-next">下一页</div>
-          </div>
-        </div>
-        <div class="article-detail-comment-login">
-          <logout-publish @publish-comment="publishComment" @handle-login="handleLogin"></logout-publish>
-        </div>
-        <div class="article-detail-comment-content">
-          <comment></comment>
-        </div>
+        <comment></comment>
       </div>
     </div>
   </div>
@@ -106,7 +73,47 @@ export default {
   },
   data () {
     return {
-      article: {}
+      article: {},
+      comment: [
+        {
+          id : 1,
+          article_id: 1, // 文章id
+          content: '这里是sixtyDen',
+          create_time: '2018-03-26 15:26',
+          user_id: 1,
+          type: 1,  //1表示文章评论，2表示留言
+          reply: [
+            {  // 二级评论
+              id : 4,
+              reply_id: 3, //表示回复的是哪一条评论
+              parent_id: 1,  //表示当前评论哪条评论下面
+              content : '欢迎一起交流，一起学习',
+              create_time : '2018-03-26 15:29',
+              user_id : 2,
+              page : {
+                cur_page : 1,
+                all_page : 1
+              }
+            },
+            {  // 二级评论
+              id : 5,
+              reply_id: 3, //表示回复的是哪一条评论
+              parent_id: 1,  //表示当前评论哪条评论下面
+              content : '欢迎一起交流，一起学习',
+              create_time : '2018-03-26 15:29',
+              user_id : 2,
+              page : {
+                cur_page : 1,
+                all_page : 1
+              }
+            }
+          ],
+          page : { //分页
+            cur_page : 1,
+            all_page : 1
+          }
+        }
+      ]
     }
   },
   created () {
@@ -122,6 +129,9 @@ export default {
     initData () {
       let articleId = this.$route.params.id
       this.article = articleMixin.getArticleById(articleId)
+    },
+    initCommentData () {
+
     },
     publishComment () {
       alert('你想发布吗')
@@ -192,50 +202,6 @@ export default {
         width: 100%;
         text-align: left;
         margin-top: 10px;
-        .article-detail-comment-total {
-          margin-bottom: 10px;
-          font-size: 18px;
-          color: #81A1B4;
-        }
-        .article-detail-comment-head {
-          border-bottom: 1px solid #E5E9EF;
-          font-size: 14px;
-          @include flex-define(row, space-between, center);
-          .article-detail-comment-all {
-            position: relative;
-            color: $theme-color;
-            height: 40px;
-            padding-top: 8px;
-            border-bottom: 1px solid $theme-color;
-            margin-bottom: -1px;
-            .article-detail-comment-all-selected {
-              bottom: -5px;
-              position: absolute;
-              left: 24px;
-              color: $theme-color;
-              /*height: 5px;
-              width: 5px;
-              background-color: $theme-color;*/
-              /*-webkit-transform: rotate(45deg);        for Chrome || Safari */
-              /*-moz-transform: rotate(45deg);           for Firefox */
-              /*-ms-transform: rotate(45deg);            for IE */
-              /*-o-transform: rotate(45deg);         for Opera */
-            }
-          }
-          .article-detail-comment-page {
-            height: 40px;
-            @include flex-define(row, space-between, center);
-            .article-detail-comment-page-list {
-              margin: 0 10px;
-            }
-          }
-        }
-        .article-detail-comment-login{
-          margin: 25px 0;
-        }
-        .article-detail-comment-content {
-          margin: 10px 0;
-        }
       }
     }
   }

@@ -37,6 +37,10 @@ function getArticleById (id) {
   return arrayTool.filterItem('id', id, getArticles())
 }
 
+function getCurrentComment() {
+  
+}
+
 export default {
   getArticles,
   getTags,
