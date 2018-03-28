@@ -83,10 +83,13 @@
 
 <script>
 import Avatar from './Avatar'
+import LogoutPulish from '../components/LogoutPulish'
+
 export default {
   name: 'comment',
   components: {
-    'avatar': Avatar
+    'avatar': Avatar,
+    'logout-publish': LogoutPulish
   },
   data () {
     return {
@@ -135,8 +138,11 @@ export default {
     }
   },
   methods: {
-    clickImg () {
-      this.jump(this.router)
+    publishComment () {
+      alert('你想发布吗')
+    },
+    handleLogin () {
+      alert('你想登陆吗')
     }
   }
 }

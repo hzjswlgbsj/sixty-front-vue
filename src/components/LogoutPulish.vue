@@ -6,7 +6,7 @@
     <div class="logout-avatar-logout" v-else></div>
     <div class="logout-desc">
       <div class="logout-desc-login" v-if="login">
-        <textarea class="logout-desc-login-text" cols="110" rows="4" placeholder="吐槽写得要优美，代码才会更丝滑~"></textarea>
+        <textarea class="logout-desc-login-text" cols="100" rows="4" placeholder="吐槽写得要优美，代码才会更丝滑~"></textarea>
       </div>
       <div class="logout-desc-logout" v-else>
         <div>
@@ -97,6 +97,7 @@ export default {
         font-size: 14px;
         color: #333333;
         background-color: #cccccc;
+        border-radius: 5px;
         .logout-desc-logout-btn {
           padding: 2px 5px;
           border-radius: 4px;

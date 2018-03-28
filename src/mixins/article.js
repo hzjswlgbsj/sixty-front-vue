@@ -37,13 +37,14 @@ function getArticleById (id) {
   return arrayTool.filterItem('id', id, getArticles())
 }
 
-function getCurrentComment() {
-  
+function getCurrentComment () {
+  console.log('获取当前文章的评论')
 }
 
 export default {
   getArticles,
   getTags,
   getTagsByIds,
-  getArticleById
+  getArticleById,
+  getCurrentComment
 }

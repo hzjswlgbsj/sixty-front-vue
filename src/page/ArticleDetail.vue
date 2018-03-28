@@ -61,56 +61,54 @@
 <script>
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
-import LogoutPulish from '../components/LogoutPulish'
 import articleMixin from '../mixins/article'
 
 export default {
   name: 'article-detail',
   components: {
     'block-text': BlockText,
-    'comment': Comment,
-    'logout-publish': LogoutPulish
+    'comment': Comment
   },
   data () {
     return {
       article: {},
       comment: [
         {
-          id : 1,
+          id: 1,
           article_id: 1, // 文章id
           content: '这里是sixtyDen',
           create_time: '2018-03-26 15:26',
           user_id: 1,
-          type: 1,  //1表示文章评论，2表示留言
+          type: 1, // 1表示文章评论，2表示留言
           reply: [
-            {  // 二级评论
-              id : 4,
-              reply_id: 3, //表示回复的是哪一条评论
-              parent_id: 1,  //表示当前评论哪条评论下面
-              content : '欢迎一起交流，一起学习',
-              create_time : '2018-03-26 15:29',
-              user_id : 2,
-              page : {
-                cur_page : 1,
-                all_page : 1
+            { // 二级评论
+              id: 4,
+              reply_id: 3, // 表示回复的是哪一条评论
+              parent_id: 1, // 表示当前评论哪条评论下面
+              content: '欢迎一起交流，一起学习',
+              create_time: '2018-03-26 15:29',
+              user_id: 2,
+              page: {
+                cur_page: 1,
+                all_page: 1
               }
             },
-            {  // 二级评论
-              id : 5,
-              reply_id: 3, //表示回复的是哪一条评论
-              parent_id: 1,  //表示当前评论哪条评论下面
-              content : '欢迎一起交流，一起学习',
-              create_time : '2018-03-26 15:29',
-              user_id : 2,
-              page : {
-                cur_page : 1,
-                all_page : 1
+            { // 二级评论
+              id: 5,
+              reply_id: 3, // 表示回复的是哪一条评论
+              parent_id: 1, // 表示当前评论哪条评论下面
+              content: '欢迎一起交流，一起学习',
+              create_time: '2018-03-26 15:29',
+              user_id: 2,
+              page: {
+                cur_page: 1,
+                all_page: 1
               }
             }
           ],
-          page : { //分页
-            cur_page : 1,
-            all_page : 1
+          page: { // 分页
+            cur_page: 1,
+            all_page: 1
           }
         }
       ]
@@ -129,15 +127,6 @@ export default {
     initData () {
       let articleId = this.$route.params.id
       this.article = articleMixin.getArticleById(articleId)
-    },
-    initCommentData () {
-
-    },
-    publishComment () {
-      alert('你想发布吗')
-    },
-    handleLogin () {
-      alert('你想登陆吗')
     }
   }
 }
