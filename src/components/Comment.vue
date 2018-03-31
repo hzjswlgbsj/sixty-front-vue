@@ -36,12 +36,12 @@
         <div class="comment-parent-avatar">
           <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="50px"></avatar>
         </div>
-        <div class="comment-parent-container">
-          <div class="comment-parent-info">
-            <span class="comment-parent-author">Sixty</span>
-            <div class="comment-parent-content-text">我觉得这样布局是没有问题的，挺方便的。</div>
+        <div class="comment-parent-container" v-if="comments && comments.length > 0">
+          <div class="comment-parent-info" v-for="comment in comments" :key="comment.id">
+            <span class="comment-parent-author">{{comment.user_id}}</span>
+            <div class="comment-parent-content-text">{{comment.content}}</div>
             <div class="comment-parent-content-info">
-              <div class="comment-parent-content-date">2018-03-10 19:34</div>
+              <div class="comment-parent-content-date">{{comment.create_time}}</div>
               <div class="comment-parent-content-agree">
                 <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
                 <span class="comment-parent-content-agree-number">132</span>
@@ -52,25 +52,27 @@
               </div>
               <div class="comment-parent-content-replay">回复</div>
             </div>
-            <div class="comment-children-container">
-              <!--这里是子评论，这里的三段式和主评论可以抽个组件出来，但是我认为评论组件都是一块一起用我就不抽出来了-->
-              <div class="comment-children-avatar">
-                <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="25px"></avatar>
-              </div>
-              <div class="comment-children-info">
-                <div class="comment-children-author-content">
-                  <span class="comment-children-author">Sixty&nbsp;</span>
-                  <span class="comment-children-reply">&nbsp;回复&nbsp;</span>
-                  <span class="comment-children-reply-author">@alex:</span>
-                  <span class="comment-children-reply-content">惊为天人啊，兄弟</span>
+            <div class="comment-reply-container" v-if="comment.reply && comment.reply.length > 0">
+              <div class="comment-children-container" v-for="reply in comment.reply" :key="reply.id">
+                <!--这里是子评论，这里的三段式和主评论可以抽个组件出来，但是我认为评论组件都是一块一起用我就不抽出来了-->
+                <div class="comment-children-avatar">
+                  <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="25px"></avatar>
                 </div>
-                <div class="comment-children-content-info">
-                  <span class="comment-children-content-date">2018-03-10 19:34</span>
-                  <span class="comment-children-content-agree">
+                <div class="comment-children-info">
+                  <div class="comment-children-author-content">
+                    <span class="comment-children-author">{{reply.user_id}}&nbsp;</span>
+                    <span class="comment-children-reply">&nbsp;回复&nbsp;</span>
+                    <span class="comment-children-reply-author">@{{reply.reply_user_id}}:</span>
+                    <span class="comment-children-reply-content">{{reply.content}}</span>
+                  </div>
+                  <div class="comment-children-content-info">
+                    <span class="comment-children-content-date">{{reply.create_time}}</span>
+                    <span class="comment-children-content-agree">
                 <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
                 <span class="comment-children-content-agree-number">132</span>
               </span>
-                  <span class="comment-children-content-replay">回复</span>
+                    <span class="comment-children-content-replay">回复</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -96,6 +98,12 @@ export default {
     }
   },
   props: {
+    commentData: {
+      type: Array,
+      default: function () {
+        return []
+      }
+    },
     backgroundColor: {
       type: String,
       default: '#5292DD'
@@ -135,6 +143,10 @@ export default {
         'font-color': this.color,
         'font-size': this.fontSize
       }
+    },
+    comments () {
+      console.log('this.commentDate', this.commentData)
+      return this.commentData
     }
   },
   methods: {

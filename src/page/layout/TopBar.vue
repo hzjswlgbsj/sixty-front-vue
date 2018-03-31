@@ -158,6 +158,8 @@ export default {
   .topbar-container {
     width: 100%;
     margin-top: 20px;
+    z-index: $index-level-first;
+    opacity: 0.95;
     @include flex-define (row, space-between, center);
     position: fixed;
     top: -20px;

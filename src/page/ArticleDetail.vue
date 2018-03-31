@@ -52,7 +52,7 @@
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
       <div class="article-detail-comment">
-        <comment></comment>
+        <comment :commentData="commentData"></comment>
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@ export default {
   data () {
     return {
       article: {},
-      comment: [
+      commentData: [
         {
           id: 1,
           article_id: 1, // 文章id
@@ -84,6 +84,7 @@ export default {
             { // 二级评论
               id: 4,
               reply_id: 3, // 表示回复的是哪一条评论
+              reply_user_id: 4, //表示被回复那条评论的用户
               parent_id: 1, // 表示当前评论哪条评论下面
               content: '欢迎一起交流，一起学习',
               create_time: '2018-03-26 15:29',
@@ -96,8 +97,9 @@ export default {
             { // 二级评论
               id: 5,
               reply_id: 3, // 表示回复的是哪一条评论
+              reply_user_id: 4, //表示被回复那条评论的用户
               parent_id: 1, // 表示当前评论哪条评论下面
-              content: '欢迎一起交流，一起学习',
+              content: '我觉得这评论不错的',
               create_time: '2018-03-26 15:29',
               user_id: 2,
               page: {

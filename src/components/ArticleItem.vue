@@ -12,7 +12,7 @@
     <div class="article-info-container">
       <div>
         <icon name="user" scale="1.3"></icon>
-        <span class="article-info-author">{{articleData.author}}</span>
+        <span class="article-info-author">Sixty{{articleData.author}}</span>
       </div>
       <div>
         <icon name="comments" scale="1.3"></icon>
@@ -24,7 +24,7 @@
       </div>
       <div>
         <icon name="calendar" scale="1"></icon>
-        <span  class="article-info-date">{{articleData.creat_date}}</span>
+        <span  class="article-info-date">{{articleData.create_time}}</span>
       </div>
     </div>
     <div class="article-info-cover">
@@ -103,8 +103,17 @@ export default {
           position: absolute;
           top: 5px;
           right: -25px;
+          transition: All 0.6s ease-in-out;
+          -webkit-transition: All 0.8s ease-in-out;
+          -moz-transition: All 0.8s ease-in-out;
+          -o-transition: All 0.8s ease-in-out;
           &:hover {
             color: #ffffff;
+            transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
           }
         }
       }
