@@ -59,7 +59,6 @@ export default {
         let articles = await articleApi.all()
         if (articles && articles.length > 0) {
           dataStore.store('articles', articles) // 初始化store里面的文章数据
-          dataStore.storage('articles', articles) // 初始化localstorage里面的文章数据
           let allArticles = dataStore.store('articles') // 此处可以深拷贝出来再修改，然后再存到store，可以用lodash，本项目小博客我就不引用那么多东西了
           for (let article of allArticles) {
             let tagIds = article.tag_ids && article.tag_ids.split(',')
@@ -76,7 +75,6 @@ export default {
         let tags = await tagsApi.all()
         if (tags && tags.length > 0) {
           dataStore.store('article_tags', tags) // 初始化store里面的标签数据
-          dataStore.storage('article_tags', tags) // 初始化localstorage里面的标签数据
           this.tags = dataStore.store('article_tags')
         }
       } catch (e) {

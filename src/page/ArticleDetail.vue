@@ -5,7 +5,7 @@
       <div class="article-detail-info">
         <div>
           <icon name="user" scale="1.3"></icon>
-          <span class="article-info-author">{{article.author}}</span>
+          <span class="article-info-author">{{article.nickname}}</span>
         </div>
         <div>
           <icon name="comments" scale="1.3"></icon>
@@ -17,13 +17,21 @@
         </div>
         <div>
           <icon name="calendar" scale="1"></icon>
-          <span  class="article-info-date">{{article.creat_date}}</span>
+          <span  class="article-info-date">{{article.create_time}}</span>
         </div>
       </div>
       <div class="article-detail-content">
         {{article.content}}
       </div>
-      <div class="article-detail-reference">这里是参考信息</div>
+      <div class="article-detail-reference">
+        <h3>参考信息</h3>
+        <div class="article-detail-reference-content" v-if="reference && reference.length > 0">
+          <div class="article-detail-reference-link" v-for="(item, index) in reference" :key="index">
+            <a :href="item.link">[{{index + 1}}] {{item.description}}</a>
+          </div>
+        </div>
+        <div class="article-detail-reference-content" v-else>哈哈，看来这是一篇纯原创^_^</div>
+      </div>
       <!--<div class="article-detail-qrcode">这里是二维码</div>-->
       <div class="article-detail-rights">
         <block-text backgroundColor="#1B1D23" width="100%">
@@ -72,6 +80,20 @@ export default {
   data () {
     return {
       article: {},
+      reference: [
+        {
+          description: 'mysql中两条sql语句一起执行，第一条出错，第二条能执行吗？',
+          link: 'http://www.hiliulin.com'
+        },
+        {
+          description: 'macos环境下搭建php7开发环境',
+          link: 'http://www.baidu.com'
+        },
+        {
+          description: 'react源码阅读分享，系列文章之组件间通讯',
+          link: 'https://doc.react-china.org/'
+        }
+      ],
       commentData: [
         {
           id: 1,
@@ -129,6 +151,7 @@ export default {
     initData () {
       let articleId = this.$route.params.id
       this.article = articleMixin.getArticleById(articleId)
+      console.log('article', this.article)
     }
   }
 }
@@ -176,7 +199,12 @@ export default {
         }
       }
       .article-detail-reference {
+        width: 100%;
         margin: 30px 0;
+        .article-detail-reference-content {
+          margin: 10px 0 0 20px;
+          line-height: 1.6em;
+        }
       }
       .article-detail-previous-next {
         @include flex-define(row, space-between, center);

@@ -7,9 +7,10 @@ import filter from './filter.js'
 import dataStore from '../data/index'
 import { redirectLogin } from '../router/index'
 
+const env = process.env
 function getDomain () {
-  let domain = 'http://www.sixty.com'
-  return domain
+  // let domain = 'http://www.sixty.com'
+  return env.API_DOMAIN
 }
 
 function apiToUrl (api) {

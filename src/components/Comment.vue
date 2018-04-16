@@ -145,16 +145,28 @@ export default {
       }
     },
     comments () {
-      console.log('this.commentDate', this.commentData)
       return this.commentData
     }
   },
   methods: {
     publishComment () {
-      alert('你想发布吗')
+      console.log('你想发布吗')
     },
     handleLogin () {
-      alert('你想登陆吗')
+      WB2.anyWhere(function (W) {
+        W.parseCMD('/users/show.json', function (sResult, bStatus) {
+          try {
+            console.log('sResult', sResult)
+            console.log('bStatus', bStatus)
+          } catch (e) {
+            console.log(e)
+          }
+        }, {
+          uid: '123456789'
+        }, {
+          method: 'get'
+        })
+      })
     }
   }
 }
