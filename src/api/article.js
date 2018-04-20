@@ -1,16 +1,16 @@
 import http from '../util/http'
-import data from '../data/index'
+import dataStore from '../data/index'
 
 const module = {
   async all (refresh) {
     if (refresh) {
-      data.store('articles', await http.xget('article.all'))
+      dataStore.store('articles', await http.xget('article.all'))
     } else {
-      if (data.store('articles').length < 1) {
-        data.store('articles', await http.xget('article.all'))
+      if (dataStore.store('articles').length < 1) {
+        dataStore.store('articles', await http.xget('article.all'))
       }
     }
-    return data.store('articles')
+    return dataStore.store('articles')
   }
 }
 
