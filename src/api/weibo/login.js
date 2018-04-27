@@ -12,10 +12,20 @@ const module = {
    * 请求用户授权
    * @return {Promise<*>}
    */
-  async authorized (client_id = env.WEIBO_APPKEY, redirect_uri = env.WEIBO_REDIRECT) {
+  async authorized () {
     let ret = await http.xpost('weibo.oauth2.authorize', {
-      client_id,
-      redirect_uri
+      client_id: env.WEIBO_APPKEY,
+      redirect_uri: env.WEIBO_REDIRECT
+    })
+    return ret
+  },
+  async getToken (code) {
+    let ret = await http.xpost('weibo.oauth2.access_token', {
+      client_id: env.WEIBO_APPKEY,
+      client_secret: env.WEIBO_APPSECRET,
+      grant_type: 'authorization_code',
+      code: code,
+      redirect_uri: env.WEIBO_REDIRECT
     })
     return ret
   }

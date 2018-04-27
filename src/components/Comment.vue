@@ -86,9 +86,6 @@
 <script>
 import Avatar from './Avatar'
 import LogoutPulish from '../components/LogoutPulish'
-// import weiboLoginApi from '../api/weibo/login'
-
-const env = process.env
 
 export default {
   name: 'comment',
@@ -161,8 +158,7 @@ export default {
       console.log('你想发布吗')
     },
     async handleLogin () {
-      // let ret = await weiboLoginApi.authorized()
-      window.open(`https://api.weibo.com/oauth2/authorize?client_id=${env.WEIBO_APPKEY}&response_type=code&redirect_uri=${env.WEIBO_REDIRECT}/#/blog/articleDetail/${this.id}`)
+      this.$router.push('/login')
     }
   }
 }
