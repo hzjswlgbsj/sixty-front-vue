@@ -27,6 +27,12 @@ import routerMixin from '../../mixins/router'
 
 export default {
   name: 'index',
+  components: {
+    'top-bar': TopBar,
+    'foot-bar': FootBar,
+    'introduction': Introduction
+  },
+  mixins: [routerMixin],
   data () {
     return {
       isIndex: true,
@@ -35,15 +41,7 @@ export default {
     }
   },
   created () {
-    dataStore.store('curRouter', this.$route)
-    let curRouterObj = dataStore.store('curRouter')
-    this.isIndex = curRouterObj.name === 'Index'
-  },
-  mixins: [routerMixin],
-  components: {
-    'top-bar': TopBar,
-    'foot-bar': FootBar,
-    'introduction': Introduction
+    this.handleStoreData()
   },
   watch: {
     '$route' (to, from) {
@@ -51,14 +49,6 @@ export default {
       let curRouterObj = dataStore.store('curRouter')
       this.isIndex = curRouterObj.name === 'Index'
     }
-  },
-  mounted: function () {
-    this.$nextTick(() => {
-      this.clientHeight = document.body.clientHeight
-      window.addEventListener('scroll', (e) => {
-        this.showReturnTop = window.scrollY > 300
-      })
-    })
   },
   computed: {
     mainLayout () {
@@ -69,9 +59,23 @@ export default {
       }
     }
   },
+  mounted: function () {
+    this.$nextTick(() => {
+      this.clientHeight = document.body.clientHeight
+      window.addEventListener('scroll', (e) => {
+        this.showReturnTop = window.scrollY > 300
+      })
+    })
+  },
   methods: {
     changePage (router) {
       this.jump(router)
+    },
+    handleStoreData () {
+      dataStore.store('curRouter', this.$route)
+      let curRouterObj = dataStore.store('curRouter')
+      this.isIndex = curRouterObj.name === 'Index'
+
     },
     returnTop (acceleration, time) {
       let xScroll = document.documentElement.scrollLeft || document.body.scrollLeft || window.scrollLeft || 0 // 获取水平滚动坐标
