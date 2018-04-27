@@ -75,7 +75,6 @@ export default {
       dataStore.store('curRouter', this.$route)
       let curRouterObj = dataStore.store('curRouter')
       this.isIndex = curRouterObj.name === 'Index'
-
     },
     returnTop (acceleration, time) {
       let xScroll = document.documentElement.scrollLeft || document.body.scrollLeft || window.scrollLeft || 0 // 获取水平滚动坐标
