@@ -86,6 +86,9 @@
 <script>
 import Avatar from './Avatar'
 import LogoutPulish from '../components/LogoutPulish'
+// import weiboLoginApi from '../api/weibo/login'
+
+const env = process.env
 
 export default {
   name: 'comment',
@@ -95,6 +98,7 @@ export default {
   },
   data () {
     return {
+      id: this.articleId
     }
   },
   props: {
@@ -103,6 +107,10 @@ export default {
       default: function () {
         return []
       }
+    },
+    articleId: {
+      type: String,
+      default: ''
     },
     backgroundColor: {
       type: String,
@@ -152,21 +160,9 @@ export default {
     publishComment () {
       console.log('你想发布吗')
     },
-    handleLogin () {
-      WB2.anyWhere(function (W) {
-        W.parseCMD('/users/show.json', function (sResult, bStatus) {
-          try {
-            console.log('sResult', sResult)
-            console.log('bStatus', bStatus)
-          } catch (e) {
-            console.log(e)
-          }
-        }, {
-          uid: '123456789'
-        }, {
-          method: 'get'
-        })
-      })
+    async handleLogin () {
+      // let ret = await weiboLoginApi.authorized()
+      window.open(`https://api.weibo.com/oauth2/authorize?client_id=${env.WEIBO_APPKEY}&response_type=code&redirect_uri=${env.WEIBO_REDIRECT}/#/blog/articleDetail/${this.id}`)
     }
   }
 }

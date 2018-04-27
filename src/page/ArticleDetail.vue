@@ -60,7 +60,7 @@
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
       <div class="article-detail-comment">
-        <comment :commentData="commentData"></comment>
+        <comment :commentData="commentData" :articleId="currentArticleId"></comment>
       </div>
     </div>
   </div>
@@ -135,7 +135,8 @@ export default {
             all_page: 1
           }
         }
-      ]
+      ],
+      currentArticleId: ''
     }
   },
   created () {
@@ -149,8 +150,8 @@ export default {
   },
   methods: {
     initData () {
-      let articleId = this.$route.params.id
-      this.article = articleMixin.getArticleById(articleId)
+      this.currentArticleId = this.$route.params.id
+      this.article = articleMixin.getArticleById(this.currentArticleId)
       console.log('article', this.article)
     }
   }

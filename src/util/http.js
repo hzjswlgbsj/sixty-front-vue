@@ -8,15 +8,19 @@ import dataStore from '../data/index'
 import { redirectLogin } from '../router/index'
 
 const env = process.env
-function getDomain () {
-  // let domain = 'http://www.sixty.com'
-  return env.API_DOMAIN
+function getDomain (apiSource) {
+  let domain = ''
+  if (apiSource === 'weibo') {
+    domain = env.WEIBO_DOMAIN
+  } else {
+    domain = env.API_DOMAIN
+  }
+  return domain
 }
 
 function apiToUrl (api) {
-  let domain = getDomain()
-  let url = domain
   let apiArr = api.split('.')
+  let url = getDomain(apiArr[0])
   if (apiArr.length < 2) {
     console.log('错误的api' + api)
     return
@@ -25,8 +29,12 @@ function apiToUrl (api) {
     url = `${url}/${apiArr[0]}/${apiArr[1]}`
   }
 
-  if (apiArr.length > 3) {
-    url = `${url}/${apiArr[0]}/${apiArr[1]}/${apiArr[2]}`
+  if (apiArr.length > 2) {
+    if (apiArr[0] === 'weibo') {
+      url = `${url}/${apiArr[1]}/${apiArr[2]}`
+    } else {
+      url = `${url}/${apiArr[0]}/${apiArr[1]}/${apiArr[2]}`
+    }
   }
   return url
 }

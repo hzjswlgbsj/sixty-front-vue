@@ -11,8 +11,7 @@
       <div class="logout-desc-logout" v-else>
         <div>
           微博
-          <!--<wb:login-button type="3,2" onlogin="login" onlogout="logout"></wb:login-button>-->
-          <span class="logout-desc-logout-btn" id="wb_connect_btn" @click="handleLogin">登录</span>
+          <span class="logout-desc-logout-btn" @click="handleLogin">登录</span>
           后发表评论 (・ω・)
         </div>
       </div>
