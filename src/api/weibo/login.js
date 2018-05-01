@@ -28,6 +28,13 @@ const module = {
       redirect_uri: env.WEIBO_REDIRECT
     })
     return ret
+  },
+  async getUserInfo (access_token, uid) {
+    let ret = await http.xpost('weibo.oauth2.access_token', {
+      access_token,
+      uid
+    })
+    return ret
   }
 }
 
