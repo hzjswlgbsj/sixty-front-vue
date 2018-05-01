@@ -8,6 +8,7 @@
 import dataStore from '../data/index'
 import urlTool from '../util/url'
 import weiboLoginApi from '../api/weibo/login'
+import usrApi from '../api/user'
 
 const env = process.env
 
@@ -28,14 +29,32 @@ export default {
   methods: {
     async weiboLogin () {
       let params = urlTool.getRequest()
-      console.log('params', params)
       if (params.code) {
         dataStore.store('weiboCode', params.code)
-        let ret = await weiboLoginApi.getToken(params.code)
-        console.log(1111111111)
-        console.log(ret)
-        console.log(1111111111)
+        try {
+          /* 通过code获取到access_token */
+          let tokenInfo = await weiboLoginApi.getToken(params.code)
+          console.log('tokenInfo', tokenInfo)
+          if (tokenInfo && tokenInfo.access_token && tokenInfo.uid) {
+            dataStore.setCookie('weibo_token', tokenInfo.access_token)
+            dataStore.setCookie('weibo_uid', tokenInfo.uid)
+            /* 通过access_token和uid获取微博用户的详细信息 */
+            let userInfo = await weiboLoginApi.getUserInfo(tokenInfo.access_token, tokenInfo.uid)
+            console.log('userInfo', userInfo)
+            if (userInfo && userInfo.id === String(tokenInfo.uid)) {
+              /* 将获取到的微博用户信息注册到本应用的用户系统中去 */
+              let registerResult = await usrApi.register(userInfo.screen_name, userInfo.profile_image_url, 1, userInfo.idstr)
+              if (registerResult) {
+                this.$Message.success('授权成功')
+              }
+            }
+          }
+        } catch (e) {
+          console.log(e)
+        }
+
       } else {
+        /* 通过用户授权得到下一步获取access_token接口所需要的code */
         window.location.href = `https://api.weibo.com/oauth2/authorize?client_id=${env.WEIBO_APPKEY}&response_type=code&redirect_uri=${env.WEIBO_REDIRECT}`
       }
     }
@@ -44,5 +63,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .test-login {
+    color: #ffffff;
+  }
 </style>
