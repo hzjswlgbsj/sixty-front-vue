@@ -1,26 +1,20 @@
 /**
  * Created by WebStorm.
  * User: liulin
- * Date: 2018/4/26
- * Time: 下午11:28
+ * Date: 2018/5/2
+ * Time: 下午11:21
  */
 import http from '../../util/http'
 
 const env = process.env
 const module = {
   /**
-   * 请求用户授权
+   * 获取token
    * @return {Promise<*>}
    */
-  async authorized () {
-    let ret = await http.xpost('weibo.oauth2.authorize', {
-      client_id: env.WEIBO_APPKEY,
-      redirect_uri: env.WEIBO_REDIRECT
-    })
-    return ret
-  },
   async getToken (code) {
-    let ret = await http.xpost('weibo.oauth2.access_token', {
+    let ret = await http.xpost('token.get', {
+      url: env.WEIBO_GET_TOKEN_URL,
       client_id: env.WEIBO_APPKEY,
       client_secret: env.WEIBO_APPSECRET,
       grant_type: 'authorization_code',
@@ -29,10 +23,15 @@ const module = {
     })
     return ret
   },
-  async getUserInfo (accessToken, uid) {
-    let ret = await http.xpost('weibo.oauth2.access_token', {
+  /**
+   * 获取微博用户详情信息
+   * @return {Promise<*>}
+   */
+  async getUser (accessToken, uid) {
+    let ret = await http.xpost('token.user', {
+      url: env.WEIBO_GET_USER_URL,
       access_token: accessToken,
-      uid
+      uid: uid
     })
     return ret
   }
