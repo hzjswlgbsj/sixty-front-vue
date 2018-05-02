@@ -5,7 +5,6 @@
  * Time: 上午10:31
  */
 import http from '../util/http'
-import dataStore from '../data/index'
 
 const module = {
   async all (id, limit, page) {
@@ -16,12 +15,12 @@ const module = {
     })
     return ret
   },
-  async register (nickname, avatar, status, weibo_uid) {
+  async register (nickname, avatar, status, weiboUid) {
     let ret = await http.xpost('users.all', {
       nickname,
       avatar,
       status,
-      weibo_uid
+      weibo_uid: weiboUid
     })
     return ret
   }

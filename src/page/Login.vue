@@ -52,7 +52,6 @@ export default {
         } catch (e) {
           console.log(e)
         }
-
       } else {
         /* 通过用户授权得到下一步获取access_token接口所需要的code */
         window.location.href = `https://api.weibo.com/oauth2/authorize?client_id=${env.WEIBO_APPKEY}&response_type=code&redirect_uri=${env.WEIBO_REDIRECT}`
