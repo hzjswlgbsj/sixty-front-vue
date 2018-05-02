@@ -7,8 +7,8 @@
 <script>
 import dataStore from '../data/index'
 import urlTool from '../util/url'
-import weiboLoginApi from '../api/weibo/login'
-import usrApi from '../api/user'
+import weiboTokenApi from '../api/weibo/token'
+import usersApi from '../api/users'
 
 const env = process.env
 
@@ -33,17 +33,17 @@ export default {
         dataStore.store('weiboCode', params.code)
         try {
           /* 通过code获取到access_token */
-          let tokenInfo = await weiboLoginApi.getToken(params.code)
+          let tokenInfo = await weiboTokenApi.getToken(params.code)
           console.log('tokenInfo', tokenInfo)
           if (tokenInfo && tokenInfo.access_token && tokenInfo.uid) {
             dataStore.setCookie('weibo_token', tokenInfo.access_token)
             dataStore.setCookie('weibo_uid', tokenInfo.uid)
             /* 通过access_token和uid获取微博用户的详细信息 */
-            let userInfo = await weiboLoginApi.getUserInfo(tokenInfo.access_token, tokenInfo.uid)
+            let userInfo = await weiboTokenApi.getUser(tokenInfo.access_token, parseInt(tokenInfo.uid))
             console.log('userInfo', userInfo)
             if (userInfo && userInfo.id === String(tokenInfo.uid)) {
               /* 将获取到的微博用户信息注册到本应用的用户系统中去 */
-              let registerResult = await usrApi.register(userInfo.screen_name, userInfo.profile_image_url, 1, userInfo.idstr)
+              let registerResult = await usersApi.register(userInfo.screen_name, userInfo.profile_image_url, 1, userInfo.idstr)
               if (registerResult) {
                 this.$Message.success('授权成功')
               }
