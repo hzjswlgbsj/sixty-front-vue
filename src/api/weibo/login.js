@@ -29,9 +29,9 @@ const module = {
     })
     return ret
   },
-  async getUserInfo (access_token, uid) {
+  async getUserInfo (accessToken, uid) {
     let ret = await http.xpost('weibo.oauth2.access_token', {
-      access_token,
+      access_token: accessToken,
       uid
     })
     return ret
