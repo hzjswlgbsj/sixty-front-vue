@@ -4,6 +4,8 @@
  * Date: 2018/5/2
  * Time: 下午11:21
  */
+
+/* 由于直接调用微博的接口会产生跨域，我又不想使用微博那个不好看的标签和按钮，所以不使用js sdk，选择在后端中转一次 */
 import http from '../../util/http'
 
 const env = process.env

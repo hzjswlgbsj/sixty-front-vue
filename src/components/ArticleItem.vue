@@ -4,45 +4,42 @@
       <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="65px" rotate></avatar>
     </div>
     <div class="article-title">
-      <span class="article-title-text" @click="goDetail(articleData.id)">
-        {{articleData.title}}
+      <span class="article-title-text" @click="goDetail(article.id)">
+        {{article.title}}
         <span class="article-title-tag">原</span>
       </span>
     </div>
     <div class="article-info-container">
       <div>
         <icon name="user" scale="1.3"></icon>
-        <span class="article-info-author">Sixty{{articleData.author}}</span>
+        <span class="article-info-author">Sixty{{article.author}}</span>
       </div>
       <div>
         <icon name="comments" scale="1.3"></icon>
-        <span class="article-info-comment">{{articleData.comment}} Comments</span>
+        <span class="article-info-comment">{{article.comment}} Comments</span>
       </div>
       <div>
         <icon name="eye" scale="1.3"></icon>
-        <span class="article-info-view">{{articleData.views}} Views</span>
+        <span class="article-info-view">{{article.views}} Views</span>
       </div>
       <div>
         <icon name="calendar" scale="1"></icon>
-        <span  class="article-info-date">{{articleData.create_time}}</span>
+        <span  class="article-info-date">{{article.create_time}}</span>
       </div>
     </div>
     <div class="article-info-cover">
-      <img v-if="articleData.image" class="article-info-cover-img" :src="articleData.image" >
+      <img v-if="article.image" class="article-info-cover-img" :src="article.image" >
     </div>
-    <div class="article-info-content" @click="goDetail(articleData.id)">{{articleData.introduction}}</div>
-    <div class="article-info-tags" v-if="articleData.tags && articleData.tags.length > 0">
+    <div class="article-info-content" @click="goDetail(article.id)">{{article.introduction}}</div>
+    <div class="article-info-tags" v-if="article.tags && article.tags.length > 0">
       <tag class="article-info-tag"
-           v-for="tags in articleData.tags"
+           v-for="tags in article.tags"
            :key="tags.id"
            :backgroundColor="tags.color"
            icon="pricetag"
            @tag-click="tagClick(tags.id)">
         {{tags.name}}
       </tag>
-      <!--<tag color="blue" backgroundColor="#46C47C">美食</tag>
-      <tag color="blue">美女</tag>
-      <tag color="blue" backgroundColor="#FF9800">最美成都</tag>-->
     </div>
   </div>
 </template>
@@ -59,6 +56,11 @@ export default {
       default: function () {
         return {}
       }
+    }
+  },
+  computed: {
+    article () {
+      return this.articleData
     }
   },
   components: {
