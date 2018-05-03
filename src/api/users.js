@@ -8,7 +8,7 @@ import http from '../util/http'
 
 const module = {
   async all (id, limit, page) {
-    let ret = await http.xpost('users.all', {
+    let ret = await http.xpost('user.all', {
       id,
       limit,
       page
@@ -16,7 +16,7 @@ const module = {
     return ret
   },
   async register (nickname, avatar, status, weiboUid) {
-    let ret = await http.xpost('users.all', {
+    let ret = await http.xpost('user.register', {
       nickname,
       avatar,
       status,
