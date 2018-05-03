@@ -1,7 +1,7 @@
 <template>
   <div class="blog-container">
     <div class="blog-article-container" v-if="!isDetail">
-      <div class="blog-article-item" v-for="(article, index) in articleData" :key="index">
+      <div class="blog-article-item" v-for="article in articleData" :key="article.id">
         <article-item :articleData="article" @go-detail="goDetail"></article-item>
       </div>
     </div>
@@ -17,16 +17,13 @@ import FootBar from './layout/FootBar'
 import ArticleItem from '../components/ArticleItem'
 import routerMixin from '../mixins/router'
 import dataStore from '../../src/data/index'
-import articleApi from '../api/article'
-import tagsApi from '../api/tags'
-import articleMixin from '../mixins/article'
+import { getArticles } from '../service/article'
 
 export default {
   name: 'blog',
   data () {
     return {
       isDetail: false,
-      articleData: [],
       tags: []
     }
   },
@@ -38,6 +35,11 @@ export default {
   },
   created () {
     this.init()
+  },
+  computed: {
+    articleData () {
+      return dataStore.store('articles')
+    }
   },
   watch: {
     '$route' (to, from) {
@@ -51,32 +53,11 @@ export default {
       dataStore.store('curRouter', this.$route)
       let curRouterObj = dataStore.store('curRouter')
       this.isDetail = curRouterObj.name === 'ArticleDetail'
-      this.getArticle() // Initialize article data and set store
-      this.getArticleTagsById() // Initialize articleTags data and set store
+      this.initArticleData() // Initialize article data and set store
     },
-    async getArticle () {
+    async initArticleData () {
       try {
-        let articles = await articleApi.all()
-        if (articles && articles.length > 0) {
-          dataStore.store('articles', articles) // 初始化store里面的文章数据
-          let allArticles = dataStore.store('articles') // 此处可以深拷贝出来再修改，然后再存到store，可以用lodash，本项目小博客我就不引用那么多东西了
-          for (let article of allArticles) {
-            let tagIds = article.tag_ids && article.tag_ids.split(',')
-            article.tags = articleMixin.getTagsByIds(tagIds)
-          }
-          this.articleData = articles
-        }
-      } catch (e) {
-        console.log(e)
-      }
-    },
-    async getArticleTagsById () {
-      try {
-        let tags = await tagsApi.all()
-        if (tags && tags.length > 0) {
-          dataStore.store('article_tags', tags) // 初始化store里面的标签数据
-          this.tags = dataStore.store('article_tags')
-        }
+        await getArticles()
       } catch (e) {
         console.log(e)
       }

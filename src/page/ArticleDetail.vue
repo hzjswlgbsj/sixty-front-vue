@@ -69,7 +69,7 @@
 <script>
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
-import articleMixin from '../mixins/article'
+import { getArticleById } from '../service/article'
 
 export default {
   name: 'article-detail',
@@ -149,10 +149,9 @@ export default {
     })
   },
   methods: {
-    initData () {
+    async initData () {
       this.currentArticleId = this.$route.params.id
-      this.article = articleMixin.getArticleById(this.currentArticleId)
-      console.log('article', this.article)
+      this.article = await getArticleById(this.currentArticleId)
     }
   }
 }
@@ -189,6 +188,7 @@ export default {
       }
       .article-detail-content {
         /*text-indent: 2em;*/
+        width: 100%;
       }
       .article-detail-rights {
         width: 100%;
