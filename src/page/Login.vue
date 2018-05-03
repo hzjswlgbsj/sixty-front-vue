@@ -43,12 +43,12 @@ export default {
             console.log('userInfo', userInfo)
             if (userInfo && userInfo.id === parseInt(tokenInfo.uid)) {
               /* 将获取到的微博用户信息注册到本应用的用户系统中去 */
-              let userResult = await usersApi.all(userInfo.id)
+              let userResult = await usersApi.all(userInfo.idstr)
               if (userResult && userResult.id) {
                 dataStore.setCookie('userInformation', userResult)
               } else {
                 /* 将获取到的微博用户信息注册到本应用的用户系统中去 */
-                let registerResult = await usersApi.register(userInfo.screen_name, userInfo.profile_image_url, 1, userInfo.id)
+                let registerResult = await usersApi.register(userInfo.screen_name, userInfo.profile_image_url, 1, userInfo.idstr)
                 if (registerResult) {
                   this.$Message.success('授权成功')
                 }

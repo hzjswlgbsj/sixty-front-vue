@@ -7,9 +7,13 @@
 import http from '../util/http'
 
 const module = {
-  async all (id, limit, page) {
+  async all (mixinId, limit, page) {
+    let id = undefined
+    let weiboUid = ''
+    typeof mixinId === 'string' ? weiboUid = mixinId : id = mixinId
     let ret = await http.xpost('user.all', {
       id,
+      weibo_uid: weiboUid,
       limit,
       page
     })
