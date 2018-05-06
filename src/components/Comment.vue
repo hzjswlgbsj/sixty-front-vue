@@ -163,7 +163,8 @@ export default {
       console.log('你想发布吗')
     },
     async handleLogin () {
-      redirectLogin()
+      let router = this.$route.path
+      redirectLogin(router)
     }
   }
 }

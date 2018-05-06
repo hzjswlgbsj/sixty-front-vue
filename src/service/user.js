@@ -89,14 +89,8 @@ export function logout () {
  */
 export function checkLogin () {
   let userInformation = dataStore.getCookie('userInformation')
-  console.log(11111111111)
-  console.log(userInformation)
-  console.log(11111111111)
   try {
     let userInfo = JSON.parse(userInformation)
-    console.log(11111111111)
-    console.log(userInfo)
-    console.log(11111111111)
     if (userInfo && userInfo.id) {
       return true
     }
