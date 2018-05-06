@@ -9,7 +9,7 @@ import dataStore from '../data/index'
 import urlTool from '../util/url'
 import weiboTokenApi from '../api/weibo/token'
 import { getUsers, register, login } from '../service/user'
-import { redirectBack } from '../router/index'
+import { redirectBack, redirectLogin } from '../router/index'
 
 const env = process.env
 
@@ -51,8 +51,18 @@ export default {
                 let registerResult = await register(weiboUserInfo.screen_name, weiboUserInfo.profile_image_url, 1, weiboUserInfo.idstr)
                 if (registerResult) {
                   this.$Message.success('授权成功')
+                  let res = await login(weiboUserInfo.idstr)
+                  if (res) {
+                    this.$Message.success('登陆成功')
+                    redirectBack()
+                  }
+                } else {
+                  this.$Message.success('授权失败')
+                  redirectLogin()
                 }
               } catch (e) {
+                this.$Message.success('未知错误')
+                redirectLogin()
                 console.log(e)
               }
             }
@@ -96,7 +106,7 @@ export default {
     async checkRegister (weiboUid) {
       try {
         let user = await getUsers(true, weiboUid)
-        if (user && user.id) {
+        if (user[0] && user[0].id) {
           return true
         }
         return false
