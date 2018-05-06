@@ -62,8 +62,8 @@ export async function register (nickname, avatar, status, weiboUid) {
 export async function login (weiboUid) {
   try {
     let user = await getUsers(true, weiboUid)
-    if (user && user.id) {
-      dataStore.setCookie('userInformation', JSON.stringify(user))
+    if (user[0] && user[0].id) {
+      dataStore.setCookie('userInformation', JSON.stringify(user[0]))
     }
     let userCookieInformation = dataStore.getCookie('userInformation')
     if (userCookieInformation) {
@@ -89,8 +89,14 @@ export function logout () {
  */
 export function checkLogin () {
   let userInformation = dataStore.getCookie('userInformation')
+  console.log(11111111111)
+  console.log(userInformation)
+  console.log(11111111111)
   try {
     let userInfo = JSON.parse(userInformation)
+    console.log(11111111111)
+    console.log(userInfo)
+    console.log(11111111111)
     if (userInfo && userInfo.id) {
       return true
     }
