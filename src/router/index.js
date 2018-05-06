@@ -62,7 +62,8 @@ const router = new Router({
   ]
 })
 
-export function redirectLogin () {
+export function redirectLogin (loginBackRouter = '/') {
+  dataStore.store('loginBackRouter', loginBackRouter)
   router.push('/login')
 }
 
