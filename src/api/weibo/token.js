@@ -12,7 +12,8 @@ const env = process.env
 const module = {
   /**
    * 获取token
-   * @return {Promise<*>}
+   * @param code
+   * @return {Object}
    */
   async getToken (code) {
     let ret = await http.xpost('token.get', {
@@ -27,7 +28,9 @@ const module = {
   },
   /**
    * 获取微博用户详情信息
-   * @return {Promise<*>}
+   * @param accessToken
+   * @param uid
+   * @return {Object}
    */
   async getUser (accessToken, uid) {
     let ret = await http.xpost('token.user', {

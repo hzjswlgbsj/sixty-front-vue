@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="article-comment-login">
-        <logout-publish @publish-comment="publishComment" @handle-login="handleLogin"></logout-publish>
+        <logout-publish @publish-comment="publishComment" @handle-login="handleLogin" :login="login"></logout-publish>
       </div>
       <div class="article-comment-content">
         <div class="comment-parent-avatar">
@@ -68,9 +68,9 @@
                   <div class="comment-children-content-info">
                     <span class="comment-children-content-date">{{reply.create_time}}</span>
                     <span class="comment-children-content-agree">
-                <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
-                <span class="comment-children-content-agree-number">132</span>
-              </span>
+                      <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
+                      <span class="comment-children-content-agree-number">132</span>
+                    </span>
                     <span class="comment-children-content-replay">回复</span>
                   </div>
                 </div>
@@ -86,17 +86,14 @@
 <script>
 import Avatar from './Avatar'
 import LogoutPulish from '../components/LogoutPulish'
+import { redirectLogin } from '../router/index'
+import { checkLogin } from '../service/user'
 
 export default {
   name: 'comment',
   components: {
     'avatar': Avatar,
     'logout-publish': LogoutPulish
-  },
-  data () {
-    return {
-      id: this.articleId
-    }
   },
   props: {
     commentData: {
@@ -138,6 +135,11 @@ export default {
       default: 'pricetag'
     }
   },
+  data () {
+    return {
+      id: this.articleId
+    }
+  },
   computed: {
     initStyle () {
       return {
@@ -151,6 +153,9 @@ export default {
     },
     comments () {
       return this.commentData
+    },
+    login () {
+      return checkLogin()
     }
   },
   methods: {
@@ -158,7 +163,7 @@ export default {
       console.log('你想发布吗')
     },
     async handleLogin () {
-      this.$router.push('/login')
+      redirectLogin()
     }
   }
 }

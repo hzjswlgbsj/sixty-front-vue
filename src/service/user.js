@@ -9,7 +9,6 @@ import dataStore from '../data/index'
 import arrayTool from '../util/array'
 import userApi from '../api/users'
 
-
 /**
  * 获取所用或者部分用户
  * @param refresh 强制从远端获取数据
@@ -53,4 +52,50 @@ export async function getUserByFilterColumns (columns, columnsValue) {
 export async function register (nickname, avatar, status, weiboUid) {
   let res = await userApi.register(nickname, avatar, status, weiboUid)
   return res
+}
+
+/**
+ * 用户登录
+ * @param weiboUid(string)
+ * @return {Boolean}
+ */
+export async function login (weiboUid) {
+  try {
+    let user = await getUsers(true, weiboUid)
+    if (user && user.id) {
+      dataStore.setCookie('userInformation', JSON.stringify(user))
+    }
+    let userCookieInformation = dataStore.getCookie('userInformation')
+    if (userCookieInformation) {
+      return true
+    } else {
+      return false
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+/**
+ * 注销账户
+ */
+export function logout () {
+  dataStore.setCookie('userInformation', '')
+}
+
+/**
+ * 检查是否登录
+ * @return {boolean}
+ */
+export function checkLogin () {
+  let userInformation = dataStore.getCookie('userInformation')
+  try {
+    let userInfo = JSON.parse(userInformation)
+    if (userInfo && userInfo.id) {
+      return true
+    }
+    return false
+  } catch (e) {
+    console.log(e)
+  }
 }
