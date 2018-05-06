@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import dataStore from '../data/index'
 import Index from '../../src/page/layout/Index'
 import Blog from '../../src/page/Blog'
 import Tucao from '../../src/page/Tucao'
@@ -63,6 +64,10 @@ const router = new Router({
 
 export function redirectLogin () {
   router.push('/login')
+}
+
+export function redirectBack () {
+  router.push(dataStore.store('loginBackRouter'))
 }
 
 export default router

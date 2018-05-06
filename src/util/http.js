@@ -5,7 +5,6 @@ import axios from 'axios'
 import qs from 'qs'
 import filter from './filter.js'
 import dataStore from '../data/index'
-import { redirectLogin } from '../router/index'
 
 const env = process.env
 function getDomain (apiSource) {
@@ -55,8 +54,6 @@ function getParams (params) {
 }
 
 var module = {
-  getDomain,
-  apiToUrl,
   get: function (api, succ, err) {
     let url = apiToUrl(api)
     let params = getParams()
@@ -109,11 +106,6 @@ var module = {
           succ(data.data)
         }
       } else {
-        if (data.msg & data.msg === 'not login' | data.code === -7) {
-          redirectLogin()
-          return
-        }
-
         if (err && typeof err === 'function') {
           err(data)
         } else {
@@ -153,46 +145,6 @@ var module = {
         reject(data)
       })
     })
-  },
-  _post: function (api, _params, succ, err) {
-    let url = apiToUrl(api)
-    let params = getParams(_params)
-    axios.post(url, qs.stringify(filter.filterEmpty(params)), {
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded'
-      },
-      timeout: 10000
-    }).then((response) => {
-      let data = response.data
-      if (data.ret === 1) {
-        if (succ && typeof succ === 'function') {
-          succ(data) // 取消返回data.data
-        }
-      } else {
-        if (data.msg & data.msg === 'not login' || data.code === -7) {
-          redirectLogin()
-          return
-        }
-
-        if (err && typeof err === 'function') {
-          err(data)
-        } else {
-          let msgs = []
-          if (data && data.msg) {
-            msgs = data.msg.split('|')
-          }
-          if (msgs.length > 1) {
-            alert(msgs[0], msgs[1])
-          } else {
-            alert(data.msg)
-          }
-        }
-      }
-    }).catch(function (e) {
-      console.log(e)
-      // alert('网络错误')
-    })
   }
-
 }
 export default module
