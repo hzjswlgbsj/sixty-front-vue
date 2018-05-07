@@ -41,6 +41,23 @@ export async function getUserByFilterColumns (columns, columnsValue) {
 }
 
 /**
+ * 检查是否已经注册过了
+ * @param weiboUid
+ * @return {Boolean}
+ */
+export async function checkRegister (weiboUid) {
+  try {
+    let user = await getUsers(true, weiboUid)
+    if (user && user.id) {
+      return true
+    }
+    return false
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+/**
  * 用户注册
  * @param nickname
  * @param avatar
@@ -49,6 +66,11 @@ export async function getUserByFilterColumns (columns, columnsValue) {
  * @return {Boolean}
  */
 export async function register (nickname, avatar, status, weiboUid) {
+  const checkRegister = await checkRegister(weiboUid)
+  if (checkRegister) {
+    console.log('已经注册过了哦')
+    return false
+  }
   let res = await userApi.register(nickname, avatar, status, weiboUid)
   return res
 }
