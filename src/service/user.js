@@ -22,9 +22,8 @@ export async function getUsers (refresh, mixinId, page, limit) {
     let users = await userApi.all(mixinId, page, limit)
     if (!mixinId) {
       dataStore.store('users', users)
-      return dataStore.store('users')
     } else {
-      return users
+      return users[0]
     }
   }
   return dataStore.store('users')
@@ -62,8 +61,8 @@ export async function register (nickname, avatar, status, weiboUid) {
 export async function login (weiboUid) {
   try {
     let user = await getUsers(true, weiboUid)
-    if (user[0] && user[0].id) {
-      dataStore.setCookie('userInformation', JSON.stringify(user[0]))
+    if (user && user.id) {
+      dataStore.setCookie('userInformation', JSON.stringify(user))
     }
     let userCookieInformation = dataStore.getCookie('userInformation')
     if (userCookieInformation) {
