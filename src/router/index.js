@@ -63,14 +63,13 @@ const router = new Router({
 })
 
 export function redirectLogin (loginBackRouter = '/') {
-  dataStore.store('loginBackRouter', loginBackRouter)
-  console.log('跳转至登录前loginBackRouter', loginBackRouter)
+  dataStore.storage('loginBackRouter', loginBackRouter)
   router.push('/login')
 }
 
 export function redirectBack () {
-  console.log('跳回loginBackRouter', dataStore.store('loginBackRouter'))
-  router.push(dataStore.store('loginBackRouter'))
+  console.log('跳回loginBackRouter', dataStore.storage('loginBackRouter'))
+  router.push(dataStore.storage('loginBackRouter'))
 }
 
 export default router
