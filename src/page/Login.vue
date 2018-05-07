@@ -8,8 +8,8 @@
 import dataStore from '../data/index'
 import urlTool from '../util/url'
 import weiboTokenApi from '../api/weibo/token'
-import { getUsers, register, login } from '../service/user'
-import { redirectBack, redirectLogin } from '../router/index'
+import { register, login, checkRegister } from '../service/user'
+import { redirectBack } from '../router/index'
 
 const env = process.env
 
@@ -37,8 +37,8 @@ export default {
         if (weiboAccessToken && weiboUid) {
           let weiboUserInfo = await await this.getWeiboUser(weiboAccessToken, parseInt(weiboUid))
           if (weiboUserInfo && weiboUserInfo.id === parseInt(weiboUid)) {
-            let checkRegister = await this.checkRegister(weiboUserInfo.idstr)
-            if (checkRegister) {
+            let checkRegisterRes = await checkRegister(weiboUserInfo.idstr)
+            if (checkRegisterRes) {
               /* 如果已经注册的直接登录 */
               let res = await login(weiboUid)
               if (res) {
@@ -58,11 +58,11 @@ export default {
                   }
                 } else {
                   this.$Message.success('授权失败')
-                  redirectLogin()
+                  redirectBack()
                 }
               } catch (e) {
                 this.$Message.success('未知错误')
-                redirectLogin()
+                redirectBack()
                 console.log(e)
               }
             }
@@ -97,19 +97,6 @@ export default {
           dataStore.setCookie('weiboUserInfo', JSON.stringify(weiboUserInfo))
           return weiboUserInfo
         }
-      } catch (e) {
-        console.log(e)
-      }
-    },
-
-    /* 用获取到的uid去数据库查看是否已经注册 */
-    async checkRegister (weiboUid) {
-      try {
-        let user = await getUsers(true, weiboUid)
-        if (user[0] && user[0].id) {
-          return true
-        }
-        return false
       } catch (e) {
         console.log(e)
       }

@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="article-comment-login">
-        <logout-publish @publish-comment="publishComment" @handle-login="handleLogin" :login="login"></logout-publish>
+        <logout-publish @publish-comment="publishComment" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
       </div>
       <div class="article-comment-content">
         <div class="comment-parent-avatar">
@@ -88,6 +88,7 @@ import Avatar from './Avatar'
 import LogoutPulish from '../components/LogoutPulish'
 import { redirectLogin } from '../router/index'
 import { checkLogin } from '../service/user'
+import dataStore from '../data/index'
 
 export default {
   name: 'comment',
@@ -137,8 +138,12 @@ export default {
   },
   data () {
     return {
-      id: this.articleId
+      currentArticleId: this.articleId,
+      user: {}
     }
+  },
+  created () {
+    this.initUserData()
   },
   computed: {
     initStyle () {
@@ -159,6 +164,17 @@ export default {
     }
   },
   methods: {
+    initUserData () {
+      const user = dataStore.getCookie('userInformation')
+      try {
+        let userInfo = JSON.parse(user)
+        if (userInfo && userInfo.id) {
+          this.user = userInfo
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    },
     publishComment () {
       console.log('你想发布吗')
     },

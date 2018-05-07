@@ -1,7 +1,7 @@
 <template>
   <div class="logout">
     <div class="logout-avatar" v-if="login">
-      <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="50px"></avatar>
+      <avatar :src="user.avatar" size="50px"></avatar>
     </div>
     <div class="logout-avatar-logout" v-else></div>
     <div class="logout-desc">
@@ -36,6 +36,10 @@ export default {
     login: {
       type: Boolean,
       default: false
+    },
+    user: {
+      type: Object,
+      default: () => {}
     }
   },
   computed: {
