@@ -69,7 +69,7 @@
 <script>
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
-import { getArticleById } from '../service/article'
+import { getArticleById, getComment } from '../service/article'
 
 export default {
   name: 'article-detail',
@@ -94,48 +94,7 @@ export default {
           link: 'https://doc.react-china.org/'
         }
       ],
-      commentData: [
-        {
-          id: 1,
-          article_id: 1, // 文章id
-          content: '这里是sixtyDen',
-          create_time: '2018-03-26 15:26',
-          user_id: 1,
-          type: 1, // 1表示文章评论，2表示留言
-          reply: [
-            { // 二级评论
-              id: 4,
-              reply_id: 3, // 表示回复的是哪一条评论
-              reply_user_id: 4, // 表示被回复那条评论的用户
-              parent_id: 1, // 表示当前评论哪条评论下面
-              content: '欢迎一起交流，一起学习',
-              create_time: '2018-03-26 15:29',
-              user_id: 2,
-              page: {
-                cur_page: 1,
-                all_page: 1
-              }
-            },
-            { // 二级评论
-              id: 5,
-              reply_id: 3, // 表示回复的是哪一条评论
-              reply_user_id: 4, // 表示被回复那条评论的用户
-              parent_id: 1, // 表示当前评论哪条评论下面
-              content: '我觉得这评论不错的',
-              create_time: '2018-03-26 15:29',
-              user_id: 2,
-              page: {
-                cur_page: 1,
-                all_page: 1
-              }
-            }
-          ],
-          page: { // 分页
-            cur_page: 1,
-            all_page: 1
-          }
-        }
-      ],
+      commentData: [],
       currentArticleId: ''
     }
   },
@@ -151,7 +110,22 @@ export default {
   methods: {
     async initData () {
       this.currentArticleId = this.$route.params.id
-      this.article = await getArticleById(this.currentArticleId)
+      this.initArticleData()
+      this.initCommentData()
+    },
+    async initArticleData () {
+      try {
+        this.article = await getArticleById(this.currentArticleId)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async initCommentData () {
+      try {
+        this.commentData = await getComment(false, this.currentArticleId)
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

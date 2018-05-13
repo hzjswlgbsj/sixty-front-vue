@@ -9,6 +9,7 @@ import dataStore from '../data/index'
 import arrayTool from '../util/array'
 import articleApi from '../api/article'
 import tagApi from '../api/tags'
+import Const from '../const/index'
 
 /**
  * 获取所有文章(必须分页，不分页默认返回1000条数据)
@@ -17,9 +18,9 @@ import tagApi from '../api/tags'
  * @param limit
  * @return {Array}
  */
-export async function getArticles (refresh, page, limit) {
+export async function getArticles (refresh, id, page = 1, limit = Const.ARTICLE_PAGINATION) {
   if (refresh || dataStore.store('articles').length === 0) {
-    let articles = await articleApi.all(page, limit)
+    let articles = await articleApi.all(id, page, limit)
     for (let article of articles) {
       let tagIds = article.tag_ids && article.tag_ids.split(',')
       article.tags = await getTagsByIds(tagIds)
@@ -72,9 +73,38 @@ export async function getTagsByIds (ids) {
  */
 export async function getArticleById (id) {
   const articles = await getArticles()
-  return arrayTool.filterItem('id', id, articles)
+  let article = arrayTool.filterItem('id', id, articles)
+  if (!article || !article.id) {
+    article = await getArticles(true, id)
+  }
+  return article
 }
 
-export async function getCurrentComment () {
-  console.log('获取当前文章的评论')
+/**
+ * 通过文章id获取该文章对应的所有评论
+ * @param refresh
+ * @param article_id
+ * @param page
+ * @param limit
+ * @return {Array}
+ */
+export async function getComment (refresh, articleId, page = 1, limit = Const.ARTICLE_COMMENT_PAGINATION, childrenPage = 1, childrenLimit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
+  if (refresh || dataStore.store('currentComment').length === 0) {
+    let articleComment = await articleApi.getComment(articleId, page, limit, childrenPage, childrenLimit)
+    dataStore.store('currentComment', articleComment)
+  }
+  return dataStore.store('currentComment')
+}
+
+/**
+ * 通过某评论id获取该评论下对应的所有子评论
+ * @param refresh
+ * @param parent_id
+ * @param page
+ * @param limit
+ * @return {Array}
+ */
+export async function getChildrenComment (refresh, parentId, page = 1, limit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
+  let articleComment = await articleApi.getChildrenComment(parentId, page, limit)
+  return articleComment
 }

@@ -1,9 +1,8 @@
 <template>
   <div class="logout">
-    <div class="logout-avatar" v-if="login">
-      <avatar :src="user.avatar" size="50px"></avatar>
+    <div class="logout-avatar">
+      <avatar :src="login ? user.avatar : 'http://ovrjw2my5.bkt.clouddn.com/default_avatar.jpg' " size="50px"></avatar>
     </div>
-    <div class="logout-avatar-logout" v-else></div>
     <div class="logout-desc">
       <div class="logout-desc-login" v-if="login">
         <textarea class="logout-desc-login-text" cols="100" rows="4" placeholder="吐槽写得要优美，代码才会更丝滑~"></textarea>
@@ -67,18 +66,13 @@ export default {
     height: 65px;
     @include flex-define (row, space-between, center);
     .logout-avatar {
-    }
-    .logout-avatar-logout {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #cccccc;
+      flex-basis: 50px;
     }
     .logout-desc {
       background-color: #F4F5F7;
       width: 82%;
       height: 65px;
-      margin-left: 15px;
+      margin: 0 15px;
       border-radius: 5px;
       .logout-desc-login {
         .logout-desc-login-text {
@@ -121,6 +115,7 @@ export default {
       color: #E6E9EF;
       width: 65px;
       height: 65px;
+      flex-basis: 65px;
       border-radius: 5px;
       text-align: center;
       padding: 10px 12px;
