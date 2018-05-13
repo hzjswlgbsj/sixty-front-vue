@@ -147,9 +147,7 @@ export default {
       text-indent: 2em;
       line-height: 1.8;
       color: $font-color;
-      &:hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
     }
     .article-info-tags {
       margin-top: 20px;

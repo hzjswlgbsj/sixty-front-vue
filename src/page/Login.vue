@@ -34,38 +34,42 @@ export default {
         await this.getWeiboToken(params.code)
         const weiboAccessToken = dataStore.getCookie('weibo_token')
         const weiboUid = dataStore.getCookie('weibo_uid')
-        if (weiboAccessToken && weiboUid) {
-          let weiboUserInfo = await await this.getWeiboUser(weiboAccessToken, parseInt(weiboUid))
-          if (weiboUserInfo && weiboUserInfo.id === parseInt(weiboUid)) {
-            let checkRegisterRes = await checkRegister(weiboUserInfo.idstr)
-            if (checkRegisterRes) {
-              /* 如果已经注册的直接登录 */
-              let res = await login(weiboUid)
+        if (!weiboAccessToken || !weiboUid) {
+          this.$Message.error('微博用户状态异常')
+          redirectBack()
+        }
+        let weiboUserInfo = await await this.getWeiboUser(weiboAccessToken, parseInt(weiboUid))
+        if (!weiboUserInfo || weiboUserInfo.id !== parseInt(weiboUid)) {
+          this.$Message.error('拉取微博用户信息失败')
+          redirectBack()
+        }
+        let checkRegisterRes = await checkRegister(weiboUserInfo.idstr)
+        if (checkRegisterRes) {
+          /* 如果已经注册的直接登录 */
+          let res = await login(weiboUid)
+          if (res) {
+            this.$Message.success('登陆成功')
+            redirectBack()
+          }
+        } else {
+          /* 将获取到的微博用户信息注册到本应用的用户系统中去 */
+          try {
+            let registerResult = await register(weiboUserInfo.screen_name, weiboUserInfo.profile_image_url, 1, weiboUserInfo.idstr)
+            if (registerResult) {
+              this.$Message.success('授权成功')
+              let res = await login(weiboUserInfo.idstr)
               if (res) {
                 this.$Message.success('登陆成功')
                 redirectBack()
               }
             } else {
-              /* 将获取到的微博用户信息注册到本应用的用户系统中去 */
-              try {
-                let registerResult = await register(weiboUserInfo.screen_name, weiboUserInfo.profile_image_url, 1, weiboUserInfo.idstr)
-                if (registerResult) {
-                  this.$Message.success('授权成功')
-                  let res = await login(weiboUserInfo.idstr)
-                  if (res) {
-                    this.$Message.success('登陆成功')
-                    redirectBack()
-                  }
-                } else {
-                  this.$Message.success('授权失败')
-                  redirectBack()
-                }
-              } catch (e) {
-                this.$Message.success('未知错误')
-                redirectBack()
-                console.log(e)
-              }
+              this.$Message.success('授权失败')
+              redirectBack()
             }
+          } catch (e) {
+            this.$Message.success('未知错误')
+            redirectBack()
+            console.log(e)
           }
         }
       } else {

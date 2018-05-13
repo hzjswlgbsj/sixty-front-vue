@@ -32,49 +32,54 @@
       <div class="article-comment-login">
         <logout-publish @publish-comment="publishComment" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
       </div>
-      <div class="article-comment-content">
-        <div class="comment-parent-avatar">
-          <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="50px"></avatar>
-        </div>
-        <div class="comment-parent-container" v-if="comments && comments.length > 0">
-          <div class="comment-parent-info" v-for="comment in comments" :key="comment.id">
-            <span class="comment-parent-author">{{comment.user_id}}</span>
-            <div class="comment-parent-content-text">{{comment.content}}</div>
-            <div class="comment-parent-content-info">
-              <div class="comment-parent-content-date">{{comment.create_time}}</div>
-              <div class="comment-parent-content-agree">
-                <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
-                <span class="comment-parent-content-agree-number">132</span>
-              </div>
-              <div class="comment-parent-content-disagree">
-                <icon name="thumbs-o-down" scale="0.8" style="vertical-align: middle"></icon>
-                <span class="comment-parent-content-disagree-number">2</span>
-              </div>
-              <div class="comment-parent-content-replay">回复</div>
-            </div>
-            <div class="comment-reply-container" v-if="comment.reply && comment.reply.length > 0">
-              <div class="comment-children-container" v-for="reply in comment.reply" :key="reply.id">
-                <!--这里是子评论，这里的三段式和主评论可以抽个组件出来，但是我认为评论组件都是一块一起用我就不抽出来了-->
-                <div class="comment-children-avatar">
-                  <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="25px"></avatar>
+      <div v-if="comments && comments.length > 0">
+        <div class="article-comment-content" v-for="comment in comments" :key="comment.id">
+          <div class="comment-parent-avatar">
+            <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="50px"></avatar>
+          </div>
+          <div class="comment-parent-container">
+            <div class="comment-parent-info">
+              <span class="comment-parent-author">{{comment.user_id}}</span>
+              <div class="comment-parent-content-text">{{comment.content}}</div>
+              <div class="comment-parent-content-info">
+                <div class="comment-parent-content-date">{{comment.create_time}}</div>
+                <div class="comment-parent-content-agree">
+                  <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
+                  <span class="comment-parent-content-agree-number">132</span>
                 </div>
-                <div class="comment-children-info">
-                  <div class="comment-children-author-content">
-                    <span class="comment-children-author">{{reply.user_id}}&nbsp;</span>
-                    <span class="comment-children-reply">&nbsp;回复&nbsp;</span>
-                    <span class="comment-children-reply-author">@{{reply.reply_user_id}}:</span>
-                    <span class="comment-children-reply-content">{{reply.content}}</span>
+                <div class="comment-parent-content-disagree">
+                  <icon name="thumbs-o-down" scale="0.8" style="vertical-align: middle"></icon>
+                  <span class="comment-parent-content-disagree-number">2</span>
+                </div>
+                <div class="comment-parent-content-replay" @click="handleReply">回复</div>
+              </div>
+              <!--二级评论开始-->
+              <div class="comment-reply-container" v-if="comment.children && comment.children.length > 0">
+                <div class="comment-children-container" v-for="reply in comment.children" :key="reply.id">
+                  <!--这里是子评论，这里的三段式和主评论可以抽个组件出来，但是我认为评论组件都是一块一起用我就不抽出来了-->
+                  <div class="comment-children-avatar">
+                    <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="25px"></avatar>
                   </div>
-                  <div class="comment-children-content-info">
-                    <span class="comment-children-content-date">{{reply.create_time}}</span>
-                    <span class="comment-children-content-agree">
+                  <div class="comment-children-info">
+                    <div class="comment-children-author-content">
+                      <span class="comment-children-author">{{reply.user_id}}&nbsp;</span>
+                      <span class="comment-children-reply">&nbsp;回复&nbsp;</span>
+                      <span class="comment-children-reply-author">@{{reply.reply_user_id}}:</span>
+                      <span class="comment-children-reply-content">{{reply.content}}</span>
+                    </div>
+                    <div class="comment-children-content-info">
+                      <span class="comment-children-content-date">{{reply.create_time}}</span>
+                      <span class="comment-children-content-agree">
                       <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
                       <span class="comment-children-content-agree-number">132</span>
                     </span>
-                    <span class="comment-children-content-replay">回复</span>
+                      <span class="comment-children-content-replay" @click="handleReply">回复</span>
+                    </div>
                   </div>
                 </div>
+                <logout-publish v-if="childrenCommentComponent" @publish-comment="publishComment" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
               </div>
+              <!--二级评论结束-->
             </div>
           </div>
         </div>
@@ -139,7 +144,8 @@ export default {
   data () {
     return {
       currentArticleId: this.articleId,
-      user: {}
+      user: {},
+      childrenCommentComponent: false
     }
   },
   created () {
@@ -176,9 +182,19 @@ export default {
       }
     },
     publishComment () {
+      if (!this.login) {
+        return
+      }
       console.log('你想发布吗')
     },
-    async handleLogin () {
+    handleReply () {
+      if (!this.login) {
+        this.$Message.error('要先登录才能吐槽哦，^_^')
+        return
+      }
+      this.childrenCommentComponent = !this.childrenCommentComponent
+    },
+    handleLogin () {
       let router = this.$route.path
       redirectLogin(router)
     }
@@ -245,7 +261,9 @@ export default {
           width: 100%;
           color: #cccccc;
           font-weight: 600;
-          margin-left: 30px;
+          margin: 0 0 10px 30px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #666;
           .comment-parent-info {
             width: 100%;
             font-size: 14px;

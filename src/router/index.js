@@ -68,7 +68,6 @@ export function redirectLogin (loginBackRouter = '/') {
 }
 
 export function redirectBack () {
-  console.log('跳回loginBackRouter', dataStore.storage('loginBackRouter'))
   router.push(dataStore.storage('loginBackRouter'))
 }
 
