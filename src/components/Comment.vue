@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="article-comment-login">
-        <logout-publish :reset-comment="resetComment" @publish-comment="publishComment" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
+        <logout-publish :reset-comment="resetComment" @publish-comment="publishComment($evevt, commentType.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
       </div>
       <div v-if="comments && comments.length > 0">
         <div class="article-comment-content-container" v-for="comment in comments" :key="comment.id">
@@ -105,6 +105,7 @@ import LogoutPulish from '../components/LogoutPulish'
 import { redirectLogin } from '../router/index'
 import { checkLogin, getCurrentUser } from '../service/user'
 import { addComment } from '../service/article'
+import Const from '../const/index'
 
 export default {
   name: 'comment',
@@ -162,6 +163,7 @@ export default {
         replyId: 0,
         parentUserId: 0
       },
+      commentType: Const.ARTICLE_COMMENT_TYPE,
       resetComment: false,
       currentCommentId: 0
     }
@@ -194,7 +196,10 @@ export default {
     refreshCommentData () {
       this.$emit('refresh-comment-data')
     },
-    async publishComment (content) {
+    async publishComment (content, type) {
+      if (type === this.commentType.comment) {
+        this.resetForm(type)
+      }
       if (!this.login) {
         return
       }
@@ -209,7 +214,6 @@ export default {
       try {
         const ret = await addComment(parseInt(this.currentArticleId), parseInt(this.user.id), content, this.commentForm.parentId, this.commentForm.replyId, this.commentForm.parentUserId)
         if (ret) {
-          console.log(6)
           this.$Message.success('评论成功')
           this.refreshCommentData()
           this.resetComment = true
@@ -232,11 +236,13 @@ export default {
       }
       this.currentCommentId = parentId
     },
-    resetForm () {
+    resetForm (type) {
+      if (type !== this.commentType.comment) {
+        this.childrenCommentComponent = false
+      }
       this.commentForm.parentId = 0
       this.commentForm.replyId = 0
       this.commentForm.replyUserId = 0
-      this.childrenCommentComponent = !this.childrenCommentComponent
     },
     handleLogin () {
       let router = this.$route.path
