@@ -41,6 +41,21 @@ export async function getUserByFilterColumns (columns, columnsValue) {
 }
 
 /**
+ * 获取当前用户数据
+ * @return {Object}
+ */
+export function getCurrentUser () {
+  const userString = dataStore.getCookie('userInformation')
+  if (userString) {
+    try {
+      return JSON.parse(userString)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
+/**
  * 检查是否已经注册过了
  * @param weiboUid
  * @return {Boolean}

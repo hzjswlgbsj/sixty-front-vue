@@ -108,3 +108,8 @@ export async function getChildrenComment (refresh, parentId, page = 1, limit = C
   let articleComment = await articleApi.getChildrenComment(parentId, page, limit)
   return articleComment
 }
+
+export async function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0) {
+  let articleComment = await articleApi.addComment(articleId, userId, content, parentId, replyId, parentUserId)
+  return articleComment
+}
