@@ -60,13 +60,14 @@
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
       <div class="article-detail-comment">
-        <comment :commentData="commentData" :articleId="currentArticleId"></comment>
+        <comment :commentData="commentData" :articleId="currentArticleId" @refresh-comment-data="initCommentData(true)"></comment>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import dataStore from '../data/index'
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
 import { getArticleById, getComment } from '../service/article'
@@ -94,12 +95,16 @@ export default {
           link: 'https://doc.react-china.org/'
         }
       ],
-      commentData: [],
       currentArticleId: ''
     }
   },
   created () {
     this.initData()
+  },
+  computed: {
+    commentData () {
+      return dataStore.store('currentComment')
+    }
   },
   mounted () {
     this.$nextTick(function () {
@@ -120,9 +125,9 @@ export default {
         console.log(e)
       }
     },
-    async initCommentData () {
+    async initCommentData (refresh = false) {
       try {
-        this.commentData = await getComment(false, this.currentArticleId)
+        await getComment(refresh, this.currentArticleId)
       } catch (e) {
         console.log(e)
       }

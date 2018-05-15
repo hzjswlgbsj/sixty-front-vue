@@ -26,6 +26,17 @@ const module = {
       limit
     })
     return res
+  },
+  async addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0) {
+    let res = await http.xpost('comment.add', {
+      article_id: articleId,
+      user_id: userId,
+      content: content,
+      parent_user_id: parentUserId,
+      parent_id: parentId,
+      reply_id: replyId
+    })
+    return res
   }
 }
 

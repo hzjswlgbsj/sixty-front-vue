@@ -5,7 +5,7 @@
     </div>
     <div class="logout-desc">
       <div class="logout-desc-login" v-if="login">
-        <textarea class="logout-desc-login-text" cols="100" rows="4" placeholder="吐槽写得要优美，代码才会更丝滑~"></textarea>
+        <textarea v-model="commentContent" class="logout-desc-login-text" cols="80" rows="4" placeholder="吐槽写得要优美，代码才会更丝滑~"></textarea>
       </div>
       <div class="logout-desc-logout" v-else>
         <div>
@@ -29,6 +29,7 @@ export default {
   },
   data () {
     return {
+      commentContent: ''
     }
   },
   props: {
@@ -39,6 +40,10 @@ export default {
     user: {
       type: Object,
       default: () => {}
+    },
+    resetComment: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -47,9 +52,16 @@ export default {
       }
     }
   },
+  watch: {
+    resetComment (val) {
+      if (val) {
+        this.commentContent = ''
+      }
+    }
+  },
   methods: {
     publishComment () {
-      this.$emit('publish-comment')
+      this.$emit('publish-comment', this.commentContent)
     },
     handleLogin () {
       this.$emit('handle-login')
