@@ -116,7 +116,7 @@ export default {
     async initData () {
       this.currentArticleId = this.$route.params.id
       this.initArticleData()
-      this.initCommentData()
+      this.initCommentData(true)
     },
     async initArticleData () {
       try {
