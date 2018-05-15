@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="article-comment-login">
-        <logout-publish :reset-comment="resetComment" @publish-comment="publishComment($evevt, commentType.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
+        <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentType.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
       </div>
       <div v-if="comments && comments.length > 0">
         <div class="article-comment-content-container" v-for="comment in comments" :key="comment.id">
@@ -196,9 +196,13 @@ export default {
     refreshCommentData () {
       this.$emit('refresh-comment-data')
     },
-    async publishComment (content, type) {
+    async publishComment (params, type) {
+      let content = ''
       if (type === this.commentType.comment) {
         this.resetForm(type)
+        content = params[0]
+      } else {
+        content = params
       }
       if (!this.login) {
         return

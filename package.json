@@ -1,8 +1,8 @@
 {
   "name": "blog",
   "version": "1.2.1",
-  "description": "A Vue.js project",
-  "author": "liulin <liulin@corp-ci.com>",
+  "description": "sixty'den",
+  "author": "liulin <hiliulin@aliyun.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
