@@ -20,9 +20,7 @@
           <span  class="article-info-date">{{article.create_time}}</span>
         </div>
       </div>
-      <div class="article-detail-content">
-        {{article.content}}
-      </div>
+      <div class="article-detail-content" v-html="article.content"></div>
       <div class="article-detail-reference">
         <h3>参考信息</h3>
         <div class="article-detail-reference-content" v-if="reference && reference.length > 0">
