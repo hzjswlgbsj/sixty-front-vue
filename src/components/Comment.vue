@@ -234,7 +234,7 @@ export default {
       }
       this.commentForm.parentId = parseInt(parentId)
       this.commentForm.replyId = parseInt(replyId)
-      this.commentForm.replyUserId = parseInt(replyUserId)
+      this.commentForm.parentUserId = parseInt(replyUserId)
       if (this.currentCommentId === parentId) {
         this.childrenCommentComponent = !this.childrenCommentComponent
       }
