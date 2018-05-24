@@ -37,6 +37,21 @@ const module = {
       reply_id: replyId
     })
     return res
+  },
+  async like (userId, commentId, like) {
+    let res = await http.xpost('comment.like', {
+      user_id: userId,
+      comment_id: commentId,
+      like
+    })
+    return res
+  },
+  async getLike (userId, commentId) {
+    let res = await http.xpost('comment.getlike', {
+      user_id: userId,
+      comment_id: commentId
+    })
+    return res
   }
 }
 
