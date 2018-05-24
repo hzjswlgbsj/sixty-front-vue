@@ -45,12 +45,13 @@
                 <div class="comment-parent-content-info">
                   <div class="comment-parent-content-date">{{comment.create_time}}</div>
                   <div class="comment-parent-content-agree">
-                    <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
-                    <span class="comment-parent-content-agree-number">132</span>
+                    <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle" @click.native="handleAgree(comment.id, comment.like, comment)"></icon>
+                    <span class="comment-parent-content-agree-number">{{comment.like}}</span>
                   </div>
-                  <div class="comment-parent-content-disagree">
+                  <!--隐藏掉了点反赞，因为我希望和谐一点，有问题可以讨论-->
+                  <div class="comment-parent-content-disagree" @click="handleDisagree">
                     <icon name="thumbs-o-down" scale="0.8" style="vertical-align: middle"></icon>
-                    <span class="comment-parent-content-disagree-number">2</span>
+                    <span class="comment-parent-content-disagree-number">0</span>
                   </div>
                   <div class="comment-parent-content-replay" @click="handleReply(comment.id, comment.id, 0)">参与回复</div>
                 </div>
@@ -71,8 +72,8 @@
                       <div class="comment-children-content-info">
                         <span class="comment-children-content-date">{{reply.create_time}}</span>
                         <span class="comment-children-content-agree">
-                      <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle"></icon>
-                      <span class="comment-children-content-agree-number">132</span>
+                      <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle" @click.native="handleAgree(reply.id, reply.like, reply)"></icon>
+                      <span class="comment-children-content-agree-number">{{reply.like}}</span>
                     </span>
                         <span class="comment-children-content-replay" @click="handleReply(comment.id, reply.id, reply.user_id)">回复</span>
                       </div>
@@ -104,7 +105,7 @@ import Avatar from './Avatar'
 import LogoutPulish from '../components/LogoutPulish'
 import { redirectLogin } from '../router/index'
 import { checkLogin, getCurrentUser } from '../service/user'
-import { addComment } from '../service/article'
+import { addComment, like, getLike } from '../service/article'
 import Const from '../const/index'
 
 export default {
@@ -226,6 +227,33 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    async handleAgree (commentId, currentLikeCount, comment) {
+      commentId = parseInt(commentId)
+      currentLikeCount = parseInt(currentLikeCount)
+      if (!this.login) {
+        this.$Message.error('要先登录才能点赞哦，^_^')
+        return
+      }
+      try {
+        const likeData = await getLike(this.user.id, commentId)
+        let likeCount = likeData && likeData.like ? parseInt(likeData.like) : 0
+        const ret = await like(this.user.id, commentId)
+        if (ret) {
+          if (likeCount === 0) {
+            this.$set(comment, 'like', currentLikeCount + 1)
+          } else {
+            this.$set(comment, 'like', currentLikeCount - 1)
+          }
+        } else {
+          this.$Message.error('诶?手抖没成功')
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    handleDisagree () {
+      alert('哈哈，就不让你点反赞^_^')
     },
     handleReply (parentId, replyId, replyUserId) {
       if (!this.login) {

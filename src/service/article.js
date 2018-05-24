@@ -105,11 +105,44 @@ export async function getComment (refresh, articleId, page = 1, limit = Const.AR
  * @return {Array}
  */
 export async function getChildrenComment (refresh, parentId, page = 1, limit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
-  let articleComment = await articleApi.getChildrenComment(parentId, page, limit)
-  return articleComment
+  let childrenComment = await articleApi.getChildrenComment(parentId, page, limit)
+  return childrenComment
 }
 
+/**
+ * 添加一条评论
+ * @param articleId
+ * @param userId
+ * @param content
+ * @param parentId
+ * @param replyId
+ * @param parentUserId
+ * @return {Boolean}
+ */
 export async function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0) {
-  let articleComment = await articleApi.addComment(articleId, userId, content, parentId, replyId, parentUserId)
-  return articleComment
+  let result = await articleApi.addComment(articleId, userId, content, parentId, replyId, parentUserId)
+  return result
+}
+
+/**
+ * 点赞
+ * @param userId
+ * @param commentId
+ * @param like
+ * @return {Boolean}
+ */
+export async function like (userId, commentId, like) {
+  let result = await articleApi.like(userId, commentId, like)
+  return result
+}
+
+/**
+ * 通过评论id和用户id获取该用户的点赞情况
+ * @param userId
+ * @param commentId
+ * @return {Object}
+ */
+export async function getLike (userId, commentId) {
+  let result = await articleApi.getLike(userId, commentId)
+  return result
 }
