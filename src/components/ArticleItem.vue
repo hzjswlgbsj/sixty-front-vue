@@ -1,7 +1,7 @@
 <template>
   <div class="article-container">
     <div class="article-author-avatar">
-      <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="65px" rotate></avatar>
+      <avatar src="http://ovrjw2my5.bkt.clouddn.com/80.jpg" size="65px" rotate></avatar>
     </div>
     <div class="article-title">
       <span class="article-title-text" @click="goDetail(article.id)">

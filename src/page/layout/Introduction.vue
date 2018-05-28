@@ -1,6 +1,6 @@
 <template>
   <div class="main-layout-index-container">
-    <avatar class="main-layout-avatar" src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="80px" rotate></avatar>
+    <avatar class="main-layout-avatar" src="http://ovrjw2my5.bkt.clouddn.com/80.jpg" size="80px" rotate></avatar>
     <div class="main-layout-desc">Sixty's Den</div>
     <div class="main-layout-motto">活到老，学到老</div>
     <common-line width="250px" class="main-layout-line"></common-line>

@@ -1,6 +1,13 @@
+@import "../base/base";
 @mixin flex-define($direction, $justify, $alignItems) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $alignItems;
+}
+@mixin cursor-hover() {
+  cursor: pointer;
+  &:hover {
+    color: $theme-color;
+  }
 }

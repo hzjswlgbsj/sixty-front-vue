@@ -1,20 +1,21 @@
 <template>
   <div class="topbar-container" :style="topBarStyle">
     <div class="topbar-avatar-container">
-      <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" size="60px"></avatar>
+      <avatar src="http://ovrjw2my5.bkt.clouddn.com/80.jpg" size="60px"></avatar>
     </div>
-    <!--此处的topbar类别应该是给数据，然后循环出来，我这边就不做了-->
-    <div class="topbar-category-container">
-      <span :class="curRouter === 'Blog' ? 'selected-item' : '' " class="topbar-category-text" @click="changePage('blog')">Home</span>
-      <span :class="curRouter === 'Tucao' ? 'selected-item' : '' " class="topbar-category-text" @click="changePage('tucao')">Tocao</span>
-      <span :class="curRouter === 'Friend' ? 'selected-item' : '' " class="topbar-category-text" @click="changePage('friend')">Friends</span>
-      <span :class="curRouter === 'Resources' ? 'selected-item' : '' " class="topbar-category-text" @click="changePage('resources')">Front-end</span>
-      <span :class="curRouter === 'About' ? 'selected-item' : '' " class="topbar-category-text" @click="changePage('about')">About</span>
+    <div class="topbar-category-container" v-if="menuList && menuList.length > 0">
+      <span v-for="(menu, index) in menuList"
+        :key="index"
+        :class="currentIdx === index ? 'selected-item' : '' "
+        class="topbar-category-text"
+        @click="changePage(menu.key, index)">
+        {{menu.label}}
+      </span>
     </div>
     <div v-if="showCollections" class="topbar-icon-collection-container" :style="iconCollectionStyle">
       <icon-collection>
         <div class="topbar-icon-collection" slot="sixty">
-          <avatar src="http://ovrjw2my5.bkt.clouddn.com/Bird.jpg" type='square' size="17px" desc="Sixty"></avatar>
+          <avatar src="http://ovrjw2my5.bkt.clouddn.com/80.jpg" type='square' size="17px" desc="Sixty"></avatar>
         </div>
         <div slot="music">
           <avatar src="http://ovrjw2my5.bkt.clouddn.com/WYMusic.jpeg" type='square' size="17px" desc="music"></avatar>
@@ -59,15 +60,19 @@ export default {
     return {
       iconCoolOpacity: 1,
       showCollections: true,
-      curRouter: ''
+      currentIdx: -1,
+      menuList: [
+        {key: 'blog', label: 'Home'},
+        {key: 'tucao', label: 'Tocao'},
+        {key: 'friend', label: 'Friends'},
+        {key: 'resources', label: 'Resources'},
+        {key: 'about', label: 'About'}
+      ]
     }
   },
   components: {
     'avatar': Avatar,
     'icon-collection': IconCollection
-  },
-  created () {
-    this.curRouter = this.$route.name
   },
   computed: {
     topBarStyle () {
@@ -95,9 +100,10 @@ export default {
     goDetail (id) {
       this.jump(`blog/articleDetail/${id}`)
     },
-    changePage (router) {
+    changePage (router, index) {
       dataStore.store('curRouter', this.$route)
       this.$emit('jump-page', router)
+      this.currentIdx = index
     },
     setExpression (min, max) {
       return window.scrollY > min && window.scrollY <= max
