@@ -58,7 +58,7 @@
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
       <div class="article-detail-comment">
-        <comment :commentData="commentData" :articleId="currentArticleId" @refresh-comment-data="initCommentData(true)"></comment>
+        <comment :comment-total="parseInt(commentData.total)" :commentData="commentData.data" :articleId="currentArticleId" @refresh-comment-data="initCommentData(true)"></comment>
       </div>
     </div>
   </div>

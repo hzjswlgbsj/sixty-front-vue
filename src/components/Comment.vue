@@ -1,7 +1,7 @@
 <template>
   <div class="comment-container">
     <div class="article-comment">
-      <div class="article-comment-total">154&nbsp;&nbsp;评论</div>
+      <div class="article-comment-total">{{total}}&nbsp;&nbsp;评论</div>
       <!--推送提醒-->
       <!--<div class="article-comment-notice">
         <Alert show-icon closable>
@@ -16,18 +16,7 @@
           全部评论
           <icon class="article-comment-all-selected" name="caret-up" scale="1"></icon>
         </div>
-        <div class="article-comment-page">
-          <div class="article-comment-page-total">共55页</div>
-          <div class="article-comment-page-list">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>...</span>
-            <span>55</span>
-          </div>
-          <div class="article-comment-page-next">下一页</div>
-        </div>
+        <pagination :total="total" :current="currentCommentPage" :page-size="commentPageSize" @on-change="changePagination"></pagination>
       </div>
       <div class="article-comment-login">
         <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentType.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
@@ -102,17 +91,19 @@
 
 <script>
 import Avatar from './Avatar'
-import LogoutPulish from '../components/LogoutPulish'
+import LogoutPublish from './LogoutPublish'
+import Pagination from './Pagination'
 import { redirectLogin } from '../router/index'
 import { checkLogin, getCurrentUser } from '../service/user'
-import { addComment, like, getLike } from '../service/article'
+import { addComment, like, getLike, getComment } from '../service/article'
 import Const from '../const/index'
 
 export default {
   name: 'comment',
   components: {
     'avatar': Avatar,
-    'logout-publish': LogoutPulish
+    'logout-publish': LogoutPublish,
+    'pagination': Pagination
   },
   props: {
     commentData: {
@@ -120,6 +111,10 @@ export default {
       default: function () {
         return []
       }
+    },
+    commentTotal: {
+      type: Number,
+      default: 0
     },
     articleId: {
       type: String,
@@ -166,7 +161,10 @@ export default {
       },
       commentType: Const.ARTICLE_COMMENT_TYPE,
       resetComment: false,
-      currentCommentId: 0
+      currentCommentId: 0,
+      currentCommentPage: 1,
+      commentPageSize: Const.ARTICLE_COMMENT_PAGINATION,
+      commentChildrenPageSize: Const.ARTICLE_CHILDREN_COMMENT_PAGINATION
     }
   },
   created () {
@@ -186,6 +184,9 @@ export default {
     comments () {
       return this.commentData
     },
+    total () {
+      return this.commentTotal
+    },
     login () {
       return checkLogin()
     }
@@ -196,6 +197,13 @@ export default {
     },
     refreshCommentData () {
       this.$emit('refresh-comment-data')
+    },
+    async changePagination (page) {
+      this.currentCommentPage = page
+      console.log(11111111)
+      console.log(this.currentCommentPage)
+      console.log(11111111)
+      await getComment(true, this.currentArticleId, page, this.commentPageSize)
     },
     async publishComment (params, type) {
       let content = ''
@@ -321,13 +329,6 @@ export default {
             /*-moz-transform: rotate(45deg);           for Firefox */
             /*-ms-transform: rotate(45deg);            for IE */
             /*-o-transform: rotate(45deg);         for Opera */
-          }
-        }
-        .article-comment-page {
-          height: 40px;
-          @include flex-define(row, space-between, center);
-          .article-comment-page-list {
-            margin: 0 10px;
           }
         }
       }
