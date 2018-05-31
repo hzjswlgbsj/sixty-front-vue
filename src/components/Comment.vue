@@ -16,7 +16,12 @@
           全部评论
           <icon class="article-comment-all-selected" name="caret-up" scale="1"></icon>
         </div>
-        <pagination :total="total" :current="currentCommentPage" :page-size="commentPageSize" @on-change="changePagination"></pagination>
+        <pagination
+          :total="parseInt(total)"
+          :current="currentCommentPage"
+          :page-size="commentPageSize"
+          @on-change="changePagination">
+        </pagination>
       </div>
       <div class="article-comment-login">
         <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentType.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
@@ -46,7 +51,7 @@
                 </div>
                 <!--二级评论开始-->
                 <div class="comment-reply-container" v-if="comment.children && comment.children.length > 0">
-                  <div class="comment-children-container" v-for="reply in comment.children" :key="reply.id">
+                  <div class="comment-children-container" v-if="index < 3 || showMore" v-for="(reply, index) in comment.children" :key="reply.id">
                     <!--这里是子评论，这里的三段式和主评论可以抽个组件出来，但是我认为评论组件都是一块一起用我就不抽出来了-->
                     <div class="comment-children-avatar">
                       <avatar :src="reply.user_avatar" size="25px"></avatar>
@@ -68,6 +73,17 @@
                       </div>
                     </div>
                   </div>
+                  <div class="comment-children-hide" v-if="!showMore && comment.childrenTotal > 3">
+                    共<span class="comment-children-hide-total">{{comment.childrenTotal}}</span>条回复,
+                    <span class="comment-children-hide-btn" @click="showMoreChildrenComment">点击查看</span>
+                  </div>
+                  <pagination
+                    v-if="showMore && comment.childrenTotal > commentChildrenPageSize"
+                    :total="parseInt(comment.childrenTotal)"
+                    :current="currentChildrenCommentPage"
+                    :page-size="commentChildrenPageSize"
+                    @on-change="changeChildrenPagination(arguments, comment.id)">
+                  </pagination>
                 </div>
                 <!--二级评论结束-->
               </div>
@@ -84,6 +100,13 @@
           </logout-publish>
           <div class="article-comment-common-line"></div>
         </div>
+        <!--最下面也加上分页和评论框-->
+        <!--<div class="article-comment-pagination-bottom">
+          <pagination :total="total" :current="currentCommentPage" :page-size="commentPageSize" @on-change="changePagination"></pagination>
+        </div>
+        <div class="article-comment-login">
+          <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentType.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
+        </div>-->
       </div>
     </div>
   </div>
@@ -95,7 +118,7 @@ import LogoutPublish from './LogoutPublish'
 import Pagination from './Pagination'
 import { redirectLogin } from '../router/index'
 import { checkLogin, getCurrentUser } from '../service/user'
-import { addComment, like, getLike, getComment } from '../service/article'
+import { addComment, like, getLike, getComment, getChildrenComment } from '../service/article'
 import Const from '../const/index'
 
 export default {
@@ -159,10 +182,12 @@ export default {
         replyId: 0,
         parentUserId: 0
       },
+      showMore: false,
       commentType: Const.ARTICLE_COMMENT_TYPE,
       resetComment: false,
       currentCommentId: 0,
       currentCommentPage: 1,
+      currentChildrenCommentPage: 1,
       commentPageSize: Const.ARTICLE_COMMENT_PAGINATION,
       commentChildrenPageSize: Const.ARTICLE_CHILDREN_COMMENT_PAGINATION
     }
@@ -200,10 +225,11 @@ export default {
     },
     async changePagination (page) {
       this.currentCommentPage = page
-      console.log(11111111)
-      console.log(this.currentCommentPage)
-      console.log(11111111)
       await getComment(true, this.currentArticleId, page, this.commentPageSize)
+    },
+    async changeChildrenPagination (params, parentId) {
+      this.currentChildrenCommentPage = params[0]
+      await getChildrenComment(true, parentId, params[0], this.commentChildrenPageSize)
     },
     async publishComment (params, type) {
       let content = ''
@@ -287,6 +313,9 @@ export default {
     handleLogin () {
       let router = this.$route.path
       redirectLogin(router)
+    },
+    showMoreChildrenComment () {
+      this.showMore = true
     }
   }
 }
@@ -353,11 +382,7 @@ export default {
               font-size: 14px;
               line-height: 1.8em;
               .comment-parent-author {
-                cursor: pointer;
-                &:hover {
-                  color: $theme-color;
-                  font-size: 14px;
-                }
+                @include cursor-hover-color;
               }
               .comment-parent-content-text {
                 font-size: 16px;
@@ -374,16 +399,11 @@ export default {
                 .comment-parent-content-disagree,
                 .comment-parent-content-replay {
                   margin-right: 10px;
-                  cursor: pointer;
                   padding: 0 5px;
-                  &:hover {
-                    color: $theme-color;
-                    font-size: 14px;
-                  }
+                  @include cursor-hover-color;
                 }
                 .comment-parent-content-replay:hover {
-                  border-radius: 3px;
-                  background-color: #E5E9EF;
+                  @include cursor-hover-background;
                 }
               }
               .comment-children-container {
@@ -392,6 +412,9 @@ export default {
                 .comment-children-info {
                   margin: -6px 0 0 10px;
                   .comment-children-author-content {
+                    .comment-children-reply-author {
+                      color: $theme-color;
+                    }
                     .comment-children-reply-content {
                       font-size: 16px;
                       color: $font-color;
@@ -404,18 +427,26 @@ export default {
                     .comment-children-content-agree,
                     .comment-children-content-replay {
                       margin-right: 10px;
-                      cursor: pointer;
                       padding: 2px 5px;
-                      &:hover {
-                        color: $theme-color;
-                        font-size: 14px;
-                      }
+                      @include cursor-hover-color;
                     }
                     .comment-children-content-replay:hover {
-                      border-radius: 3px;
-                      background-color: #E5E9EF;
+                      @include cursor-hover-background;
                     }
                   }
+                }
+              }
+              .comment-children-hide {
+                font-weight: 400;
+                .comment-children-hide-total {
+                  font-weight: 600;
+                }
+                .comment-children-hide-btn {
+                  color: $theme-color;
+                  padding: 2px 5px;
+                }
+                .comment-children-hide-btn:hover {
+                  @include cursor-hover-background;
                 }
               }
             }
@@ -431,6 +462,9 @@ export default {
           margin-left: 80px;
           border-bottom: 1px solid #666;
         }
+      }
+      .article-comment-pagination-bottom {
+        display: flex;
       }
     }
   }

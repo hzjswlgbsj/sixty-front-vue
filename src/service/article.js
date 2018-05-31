@@ -14,6 +14,7 @@ import Const from '../const/index'
 /**
  * 获取所有文章(必须分页，不分页默认返回1000条数据)
  * @param refresh 强制从远端获取数据
+ * @param id
  * @param page
  * @param limit
  * @return {Array}
@@ -83,9 +84,11 @@ export async function getArticleById (id) {
 /**
  * 通过文章id获取该文章对应的所有评论
  * @param refresh
- * @param article_id
+ * @param articleId
  * @param page
  * @param limit
+ * @param childrenPage
+ * @param childrenLimit
  * @return {Array}
  */
 export async function getComment (refresh, articleId, page = 1, limit = Const.ARTICLE_COMMENT_PAGINATION, childrenPage = 1, childrenLimit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
@@ -97,15 +100,29 @@ export async function getComment (refresh, articleId, page = 1, limit = Const.AR
 }
 
 /**
- * 通过某评论id获取该评论下对应的所有子评论
+ * 根据评论id获取一级评论，默认读出缓存,此方法输出本地数据的引用，谨慎使用
+ * @param id
  * @param refresh
- * @param parent_id
+ * @return {*}
+ */
+export async function getCommentById (id, refresh = false) {
+  let cacheComment = await getComment(refresh)
+  return arrayTool.filterItem('id', id, cacheComment.data)
+}
+
+/**
+ * 通过某评论id获取该评论下对应的子评论
+ * 通过修改一级评论children的引用实现数据更新
+ * @param refresh
+ * @param parentId
  * @param page
  * @param limit
  * @return {Array}
  */
 export async function getChildrenComment (refresh, parentId, page = 1, limit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
   let childrenComment = await articleApi.getChildrenComment(parentId, page, limit)
+  let currentComment = await getCommentById(parentId)
+  currentComment.children = childrenComment
   return childrenComment
 }
 
