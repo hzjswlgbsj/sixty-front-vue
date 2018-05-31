@@ -19,7 +19,7 @@ const module = {
     })
     return res
   },
-  async getChildrenComment (parentId, limit, page) {
+  async getChildrenComment (parentId, page, limit) {
     let res = await http.xpost('comment.children', {
       parent_id: parentId,
       page,

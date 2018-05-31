@@ -5,9 +5,15 @@
   justify-content: $justify;
   align-items: $alignItems;
 }
-@mixin cursor-hover() {
+@mixin cursor-hover-color() {
   cursor: pointer;
   &:hover {
     color: $theme-color;
+    font-size: 14px;
   }
+}
+@mixin cursor-hover-background() {
+  border-radius: 3px;
+  background-color: #E5E9EF;
+  cursor: pointer;
 }

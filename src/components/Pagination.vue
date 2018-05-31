@@ -110,18 +110,18 @@ export default {
   @import "../style/base/base";
   .article-comment-page {
     height: 40px;
-    @include flex-define(row, space-between, center);
+    @include flex-define(row, start, center);
     .article-comment-page-total {
       margin-right: 10px;
     }
     .article-comment-page-prev, .article-comment-page-next {
-      @include cursor-hover;
+      @include cursor-hover-color;
     }
     .article-comment-page-list {
       margin: 0 10px;
       .article-comment-page-list-number {
         margin-right: 5px;
-        @include cursor-hover;
+        @include cursor-hover-color;
       }
       .article-comment-page-list-current {
         color: $theme-color;
