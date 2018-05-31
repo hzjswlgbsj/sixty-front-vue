@@ -112,7 +112,7 @@ export async function getCommentById (id, refresh = false) {
 
 /**
  * 通过某评论id获取该评论下对应的子评论
- * 通过修改一级评论children的引用实现数据更新
+ * 通过修改一级评论的children的引用实现数据更新
  * @param refresh
  * @param parentId
  * @param page
