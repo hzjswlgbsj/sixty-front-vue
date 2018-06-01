@@ -93,6 +93,7 @@
             class="article-comment-publish"
             v-if="childrenCommentComponent && currentCommentId === comment.id"
             :reset-comment="resetComment"
+            :placeholder="placeholder"
             @publish-comment="publishComment"
             @handle-login="handleLogin"
             :login="login"
@@ -117,7 +118,7 @@ import Avatar from './Avatar'
 import LogoutPublish from './LogoutPublish'
 import Pagination from './Pagination'
 import { redirectLogin } from '../router/index'
-import { checkLogin, getCurrentUser } from '../service/user'
+import { checkLogin, getCurrentUser, getUsers } from '../service/user'
 import { addComment, like, getLike, getComment, getChildrenComment } from '../service/article'
 import Const from '../const/index'
 
@@ -185,6 +186,7 @@ export default {
       showMore: false,
       commentLevel: Const.ARTICLE_COMMENT_LEVEL,
       resetComment: false,
+      placeholder: '',
       currentCommentId: 0,
       currentCommentPage: 1,
       currentChildrenCommentPage: 1,
@@ -298,7 +300,7 @@ export default {
     handleDisagree () {
       alert('哈哈，就不让你点反赞^_^')
     },
-    handleReply (parentId, replyId, replyUserId) {
+    async handleReply (parentId, replyId, replyUserId) {
       if (!this.login) {
         this.$Message.error('要先登录才能吐槽哦，^_^')
         return
@@ -310,6 +312,12 @@ export default {
         this.childrenCommentComponent = !this.childrenCommentComponent
       }
       this.currentCommentId = parentId
+      if (replyUserId !== 0) {
+        let userData = await getUsers(true, parseInt(replyUserId))
+        this.placeholder = userData ? `回复 @${userData.nickname}：` : '吐槽写得要优美，代码才会更丝滑~'
+      } else {
+        this.placeholder = '吐槽写得要优美，代码才会更丝滑~'
+      }
     },
     resetForm (type) {
       if (type !== this.commentLevel.comment) {

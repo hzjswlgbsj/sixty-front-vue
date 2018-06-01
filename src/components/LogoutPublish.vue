@@ -5,7 +5,7 @@
     </div>
     <div class="logout-desc">
       <div class="logout-desc-login" v-if="login">
-        <textarea v-model="commentContent" class="logout-desc-login-text" cols="80" rows="4" placeholder="吐槽写得要优美，代码才会更丝滑~"></textarea>
+        <textarea v-model="commentContent" class="logout-desc-login-text" cols="80" rows="4" :placeholder="placeholder"></textarea>
       </div>
       <div class="logout-desc-logout" v-else>
         <div>
@@ -44,6 +44,10 @@ export default {
     resetComment: {
       type: Boolean,
       default: false
+    },
+    placeholder: {
+      type: String,
+      default: '吐槽写得要优美，代码才会更丝滑~'
     }
   },
   computed: {
