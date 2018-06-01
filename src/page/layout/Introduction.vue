@@ -69,11 +69,9 @@ export default {
 </script>
 
 <style lang="scss"  scoped>
+  @import "../../style/mixin/baseMixin";
   .main-layout-index-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flex-define(column, center, center);
     width: 100%;
     height: 100%;
     margin-top: 20px;

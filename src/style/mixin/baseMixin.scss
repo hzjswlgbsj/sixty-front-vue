@@ -17,3 +17,8 @@
   background-color: #E5E9EF;
   cursor: pointer;
 }
+@mixin keywords($color) {
+  color: $color;
+  font-size: 1em;
+  font-weight: 600;
+}

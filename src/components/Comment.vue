@@ -24,7 +24,7 @@
         </pagination>
       </div>
       <div class="article-comment-login">
-        <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentType.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
+        <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentLevel.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
       </div>
       <div v-if="comments && comments.length > 0">
         <div class="article-comment-content-container" v-for="comment in comments" :key="comment.id">
@@ -105,7 +105,7 @@
           <pagination :total="total" :current="currentCommentPage" :page-size="commentPageSize" @on-change="changePagination"></pagination>
         </div>
         <div class="article-comment-login">
-          <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentType.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
+          <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentLevel.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
         </div>-->
       </div>
     </div>
@@ -183,13 +183,14 @@ export default {
         parentUserId: 0
       },
       showMore: false,
-      commentType: Const.ARTICLE_COMMENT_TYPE,
+      commentLevel: Const.ARTICLE_COMMENT_LEVEL,
       resetComment: false,
       currentCommentId: 0,
       currentCommentPage: 1,
       currentChildrenCommentPage: 1,
       commentPageSize: Const.ARTICLE_COMMENT_PAGINATION,
-      commentChildrenPageSize: Const.ARTICLE_CHILDREN_COMMENT_PAGINATION
+      commentChildrenPageSize: Const.ARTICLE_CHILDREN_COMMENT_PAGINATION,
+      commentType: Const.ARTICLE_COMMENT_TYPE
     }
   },
   created () {
@@ -225,7 +226,11 @@ export default {
     },
     async changePagination (page) {
       this.currentCommentPage = page
-      await getComment(true, this.currentArticleId, page, this.commentPageSize)
+      if (this.currentArticleId === '0') {
+        await getComment(true, this.currentArticleId, page, this.commentPageSize, 1, this.commentChildrenPageSize, 'message')
+      } else {
+        await getComment(true, this.currentArticleId, page, this.commentPageSize)
+      }
     },
     async changeChildrenPagination (params, parentId) {
       this.currentChildrenCommentPage = params[0]
@@ -233,7 +238,7 @@ export default {
     },
     async publishComment (params, type) {
       let content = ''
-      if (type === this.commentType.comment) {
+      if (type === this.commentLevel.comment) {
         this.resetForm(type)
         content = params[0]
       } else {
@@ -251,9 +256,13 @@ export default {
         return
       }
       try {
-        const ret = await addComment(parseInt(this.currentArticleId), parseInt(this.user.id), content, this.commentForm.parentId, this.commentForm.replyId, this.commentForm.parentUserId)
+        let ret
+        if (this.currentArticleId === '0') {
+          this.commentType = Const.MESSAGE_COMMENT_TYPE
+        }
+        ret = await addComment(parseInt(this.currentArticleId), parseInt(this.user.id), content, this.commentForm.parentId, this.commentForm.replyId, this.commentForm.parentUserId, this.commentType)
         if (ret) {
-          this.$Message.success('评论成功')
+          this.$Message.success('你说的俺都听到了哦')
           this.refreshCommentData()
           this.resetComment = true
           this.resetForm()
@@ -303,7 +312,7 @@ export default {
       this.currentCommentId = parentId
     },
     resetForm (type) {
-      if (type !== this.commentType.comment) {
+      if (type !== this.commentLevel.comment) {
         this.childrenCommentComponent = false
       }
       this.commentForm.parentId = 0

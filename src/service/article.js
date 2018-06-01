@@ -91,9 +91,9 @@ export async function getArticleById (id) {
  * @param childrenLimit
  * @return {Array}
  */
-export async function getComment (refresh, articleId, page = 1, limit = Const.ARTICLE_COMMENT_PAGINATION, childrenPage = 1, childrenLimit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
+export async function getComment (refresh, articleId, page = 1, limit = Const.ARTICLE_COMMENT_PAGINATION, childrenPage = 1, childrenLimit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, type) {
   if (refresh || dataStore.store('currentComment').length === 0) {
-    let articleComment = await articleApi.getComment(articleId, page, limit, childrenPage, childrenLimit)
+    let articleComment = await articleApi.getComment(articleId, page, limit, childrenPage, childrenLimit, type)
     dataStore.store('currentComment', articleComment)
   }
   return dataStore.store('currentComment')
@@ -136,8 +136,8 @@ export async function getChildrenComment (refresh, parentId, page = 1, limit = C
  * @param parentUserId
  * @return {Boolean}
  */
-export async function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0) {
-  let result = await articleApi.addComment(articleId, userId, content, parentId, replyId, parentUserId)
+export async function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type) {
+  let result = await articleApi.addComment(articleId, userId, content, parentId, replyId, parentUserId, type)
   return result
 }
 

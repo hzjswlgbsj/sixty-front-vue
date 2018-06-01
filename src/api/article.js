@@ -9,13 +9,14 @@ const module = {
     })
     return res
   },
-  async getComment (articleId, page, limit, childrenPage, childrenLimit) {
+  async getComment (articleId, page, limit, childrenPage, childrenLimit, type = 'article') {
     let res = await http.xpost('comment.all', {
       article_id: articleId,
       limit,
       page,
       children_limit: childrenLimit,
-      children_page: childrenPage
+      children_page: childrenPage,
+      type
     })
     return res
   },
@@ -27,14 +28,15 @@ const module = {
     })
     return res
   },
-  async addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0) {
+  async addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type) {
     let res = await http.xpost('comment.add', {
       article_id: articleId,
       user_id: userId,
       content: content,
       parent_user_id: parentUserId,
       parent_id: parentId,
-      reply_id: replyId
+      reply_id: replyId,
+      type
     })
     return res
   },
