@@ -89,6 +89,7 @@ export async function getArticleById (id) {
  * @param limit
  * @param childrenPage
  * @param childrenLimit
+ * @param type
  * @return {Array}
  */
 export async function getComment (refresh, articleId, page = 1, limit = Const.ARTICLE_COMMENT_PAGINATION, childrenPage = 1, childrenLimit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, type) {
@@ -112,7 +113,11 @@ export async function getCommentById (id, refresh = false) {
 
 /**
  * 通过某评论id获取该评论下对应的子评论
+<<<<<<< HEAD
  * 通过修改一级评论的children的引用实现数据更新
+=======
+ * 通过修改一级评论children的引用实现数据更新
+>>>>>>> 1cb0209bf0aa82a42eb6f1b5701dfdaf9f7ec6ee
  * @param refresh
  * @param parentId
  * @param page
@@ -134,6 +139,7 @@ export async function getChildrenComment (refresh, parentId, page = 1, limit = C
  * @param parentId
  * @param replyId
  * @param parentUserId
+ * @param type
  * @return {Boolean}
  */
 export async function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type) {

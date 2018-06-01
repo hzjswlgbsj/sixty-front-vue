@@ -57,6 +57,7 @@ import Comment from '../components/Comment'
 import dataStore from '../data/index'
 import { getComment } from '../service/article'
 import Const from '../const/index'
+
 export default {
   name: 'blog',
   data () {
