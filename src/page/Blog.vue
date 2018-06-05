@@ -81,8 +81,8 @@ export default {
         border-bottom: 2px solid #666666;
         padding-bottom: 20px;
         margin-bottom: 30px;
-        min-width: 880px;
         width: 62%;
+        max-width: 880px;
         &:hover {
           border-bottom: 2px solid #cccccc;
         }

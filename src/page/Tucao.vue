@@ -46,7 +46,13 @@
         <p>既然来了，不妨留下你的足迹，对在下指点一二。</p>
       </div>
       <div class="message-comment">
-        <comment :comment-total="parseInt(commentData.total)" :commentData="commentData.data" :articleId="'0'" @refresh-comment-data="initCommentData(true)"></comment>
+        <comment
+          :comment-total="parseInt(commentData.total)"
+          :discussType=commentType
+          :commentData="commentData.data"
+          :articleId="'0'"
+          @refresh-comment-data="initCommentData(true)">
+        </comment>
       </div>
     </div>
   </div>
@@ -62,6 +68,7 @@ export default {
   name: 'blog',
   data () {
     return {
+      commentType: Const.MESSAGE_COMMENT_TYPE
     }
   },
   created () {
@@ -81,7 +88,7 @@ export default {
     },
     async initCommentData (refresh = false) {
       try {
-        await getComment(refresh, 0, 1, Const.ARTICLE_COMMENT_PAGINATION, 1, Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, 'message')
+        await getComment(refresh, 0, 1, Const.ARTICLE_COMMENT_PAGINATION, 1, Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, this.commentType)
       } catch (e) {
         console.log(e)
       }
@@ -97,9 +104,10 @@ export default {
     display: flex;
     justify-content: center;
     margin-top: 150px;
-    min-width: 880px;
+    width: 100%;
     .message-container {
       width: 62%;
+      max-width: 880px;
       .message-content {
         font-size: $font-size;
         color: $font-color;

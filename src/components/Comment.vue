@@ -171,6 +171,10 @@ export default {
     icon: {
       type: String,
       default: 'pricetag'
+    },
+    discussType: {
+      type: String,
+      default: Const.ARTICLE_COMMENT_TYPE
     }
   },
   data () {
@@ -192,7 +196,7 @@ export default {
       currentChildrenCommentPage: 1,
       commentPageSize: Const.ARTICLE_COMMENT_PAGINATION,
       commentChildrenPageSize: Const.ARTICLE_CHILDREN_COMMENT_PAGINATION,
-      commentType: Const.ARTICLE_COMMENT_TYPE
+      commentType: this.discussType
     }
   },
   created () {
@@ -238,10 +242,10 @@ export default {
       this.currentChildrenCommentPage = params[0]
       await getChildrenComment(true, parentId, params[0], this.commentChildrenPageSize)
     },
-    async publishComment (params, type) {
+    async publishComment (params, level) {
       let content = ''
-      if (type === this.commentLevel.comment) {
-        this.resetForm(type)
+      if (level === this.commentLevel.comment) {
+        this.resetForm(level)
         content = params[0]
       } else {
         content = params
@@ -258,11 +262,7 @@ export default {
         return
       }
       try {
-        let ret
-        if (this.currentArticleId === '0') {
-          this.commentType = Const.MESSAGE_COMMENT_TYPE
-        }
-        ret = await addComment(parseInt(this.currentArticleId), parseInt(this.user.id), content, this.commentForm.parentId, this.commentForm.replyId, this.commentForm.parentUserId, this.commentType)
+        let ret = await addComment(parseInt(this.currentArticleId), parseInt(this.user.id), content, this.commentForm.parentId, this.commentForm.replyId, this.commentForm.parentUserId, this.commentType)
         if (ret) {
           this.$Message.success('你说的俺都听到了哦')
           this.refreshCommentData()
@@ -319,8 +319,8 @@ export default {
         this.placeholder = '吐槽写得要优美，代码才会更丝滑~'
       }
     },
-    resetForm (type) {
-      if (type !== this.commentLevel.comment) {
+    resetForm (level) {
+      if (level !== this.commentLevel.comment) {
         this.childrenCommentComponent = false
       }
       this.commentForm.parentId = 0

@@ -145,6 +145,7 @@ export default {
       color: $font-color;
       font-size: $font-size;
       width: 62%;
+      max-width: 880px;
       .article-detail-title {
         font-size: $font-size-title;
       }
