@@ -4,8 +4,8 @@
       <div class="friends-alert-operation">
         下面是我们木叶村的一些优秀忍者，想拜他们为师吗？来翻个牌子吧。
       </div>
-      <div class="friends-card-container" v-if="friendsData && friendsData.length > 0">
-        <friend-card class="friends-card-item" v-for="(item, index) in friendsData" :friend-data="item" :key="index"></friend-card>
+      <div class="friends-card-container" v-if="linkData && linkData.length > 0">
+        <friend-card class="friends-card-item" v-for="item in linkData" :link-data="item" :key="item.id"></friend-card>
       </div>
       <div class="friends-comments">
         <comment
@@ -24,11 +24,12 @@
 import Comment from '../components/Comment'
 import dataStore from '../data/index'
 import { getComment } from '../service/article'
+import { getLinks } from '../service/link'
 import FriendCard from '../components/FriendCard'
 import Const from '../const/index'
 
 export default {
-  name: 'blog',
+  name: 'friend',
   created () {
     this.initData()
   },
@@ -38,53 +39,32 @@ export default {
   },
   data () {
     return {
-      commentType: Const.LINK_COMMENT_TYPE,
-      friendsData: [
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        }
-      ]
+      commentType: Const.LINK_COMMENT_TYPE
     }
   },
   computed: {
     commentData () {
       return dataStore.store('currentComment')
+    },
+    linkData () {
+      return dataStore.store('links')
     }
   },
   methods: {
     async initData () {
       this.initCommentData(true)
+      this.initLinkData(true)
     },
     async initCommentData (refresh = false) {
       try {
         await getComment(refresh, 0, 1, Const.ARTICLE_COMMENT_PAGINATION, 1, Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, this.commentType)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async initLinkData (refresh = false) {
+      try {
+        await getLinks(refresh, Const.LINK_LINK_TYPE, null, 1, Const.LINK_PAGINATION)
       } catch (e) {
         console.log(e)
       }

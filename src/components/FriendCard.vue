@@ -1,9 +1,9 @@
 <template>
-  <div class="friend-card">
+  <div class="friend-card" @click="handleJump">
     <sixty-card :background-image="backgroundImage" @on-click="clickCard">
       <div class="friend-card-content">
         <div class="friend-card-content-avatar-name">
-          <avatar size="40px" :src="itemData.avatar" rotate></avatar>
+          <avatar size="40px" :src="itemData.logo_url" rotate></avatar>
           <div class="friend-card-content-name">{{itemData.nickname}}</div>
         </div>
         <div class="friend-card-content-description">{{itemData.description}}</div>
@@ -22,7 +22,7 @@ export default {
     'avatar': Avatar
   },
   props: {
-    friendData: {
+    linkData: {
       type: Object,
       default: () => {}
     }
@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     itemData () {
-      return this.friendData
+      return this.linkData
     }
   },
   methods: {
@@ -42,6 +42,11 @@ export default {
       setTimeout(() => {
         this.backgroundImage = ''
       }, 1000)
+    },
+    handleJump () {
+      if (!this.backgroundImage) {
+        window.open(this.itemData.link)
+      }
     }
   }
 }
