@@ -1,12 +1,12 @@
 <template>
-  <div class="friend-card" @click="handleJump">
-    <sixty-card rotate :background-image="backgroundImage" @on-click="clickCard">
-      <div class="friend-card-content">
-        <div class="friend-card-content-avatar-name">
+  <div class="resource-card" @click="handleJump">
+    <sixty-card card-width="175px" card-height="100px" background-color="#ffffff">
+      <div class="resource-card-content" v-if="itemData">
+        <div class="resource-card-content-avatar-name">
           <avatar size="40px" :src="itemData.logo_url" rotate></avatar>
-          <div class="friend-card-content-name">{{itemData.nickname}}</div>
+          <div class="resource-card-content-name">{{itemData.nickname}}</div>
         </div>
-        <div class="friend-card-content-description">{{itemData.description}}</div>
+        <div class="resource-card-content-description">{{itemData.description}}</div>
       </div>
     </sixty-card>
   </div>
@@ -16,7 +16,7 @@
 import SixtyCard from './SixtyCard'
 import Avatar from './Avatar'
 export default {
-  name: 'friend-card',
+  name: 'resource-card',
   components: {
     'sixty-card': SixtyCard,
     'avatar': Avatar
@@ -29,7 +29,6 @@ export default {
   },
   data () {
     return {
-      backgroundImage: 'http://ovrjw2my5.bkt.clouddn.com/hy2.jpeg'
     }
   },
   computed: {
@@ -38,15 +37,8 @@ export default {
     }
   },
   methods: {
-    clickCard () {
-      setTimeout(() => {
-        this.backgroundImage = ''
-      }, 1000)
-    },
     handleJump () {
-      if (!this.backgroundImage) {
-        window.open(this.itemData.link)
-      }
+      window.open(this.itemData.link)
     }
   }
 }
@@ -55,22 +47,22 @@ export default {
 <style lang="scss" scoped>
   @import "../style/mixin/baseMixin.scss";
   @import "../style/base/base";
-  .friend-card {
+  .resource-card {
     font-size: $font-size;
     color: $font-color;
-    .friend-card-content {
+    .resource-card-content {
       @include flex-define(column, space-around, center);
       height: 100%;
-      .friend-card-content-avatar-name {
+      .resource-card-content-avatar-name {
         height: 40px;
         width: 100%;
         @include flex-define(row, start, center);
-        .friend-card-content-name {
+        .resource-card-content-name {
           font-size: 18px;
           margin-left: 20px;
         }
       }
-      .friend-card-content-description {
+      .resource-card-content-description {
         text-align: left;
         width: 100%;
       }

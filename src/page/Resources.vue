@@ -2,19 +2,10 @@
   <div class="friends-root">
     <div class="friends-container">
       <div class="friends-alert-operation">
-        下面是我们木叶村的一些优秀忍者，想拜他们为师吗？来翻个牌子吧。
+        下面是药师兜收集的情报，请尽情享用。
       </div>
-      <div class="friends-card-container" v-if="friendsData && friendsData.length > 0">
-        <friend-card class="friends-card-item" v-for="(item, index) in friendsData" :friend-data="item" :key="index"></friend-card>
-      </div>
-      <div class="friends-comments">
-        <comment
-          :comment-total="parseInt(commentData.total)"
-          :discussType="commentType"
-          :commentData="commentData.data"
-          :articleId="'0'"
-          @refresh-comment-data="initCommentData(true)">
-        </comment>
+      <div class="friends-card-container" v-if="linkData && linkData.length > 0">
+        <resource-card class="friends-card-item" v-for="(item, index) in linkData" :link-data="item" :key="index"></resource-card>
       </div>
     </div>
   </div>
@@ -24,7 +15,8 @@
 import Comment from '../components/Comment'
 import dataStore from '../data/index'
 import { getComment } from '../service/article'
-import FriendCard from '../components/FriendCard'
+import { getLinks } from '../service/link'
+import ResourceCard from '../components/ResourceCard'
 import Const from '../const/index'
 
 export default {
@@ -34,57 +26,36 @@ export default {
   },
   components: {
     'comment': Comment,
-    'friend-card': FriendCard
+    'resource-card': ResourceCard
   },
   data () {
     return {
-      commentType: Const.LINK_RESOURCE_TYPE,
-      friendsData: [
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        },
-        {
-          avatar: 'http://ovrjw2my5.bkt.clouddn.com/80.jpg',
-          nickname: 'Sixty',
-          description: '生活不止眼前的代码，还有弹不响的吉他弦'
-        }
-      ]
+      commentType: Const.RESOURCE_COMMENT_TYPE
     }
   },
   computed: {
     commentData () {
       return dataStore.store('currentComment')
+    },
+    linkData () {
+      return dataStore.store('links')
     }
   },
   methods: {
     async initData () {
       this.initCommentData(true)
+      this.initLinkData(true)
     },
     async initCommentData (refresh = false) {
       try {
         await getComment(refresh, 0, 1, Const.ARTICLE_COMMENT_PAGINATION, 1, Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, this.commentType)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async initLinkData (refresh = false) {
+      try {
+        await getLinks(refresh, Const.LINK_RESOURCE_TYPE, null, 1, Const.LINK_PAGINATION)
       } catch (e) {
         console.log(e)
       }
@@ -114,9 +85,6 @@ export default {
         .friends-card-item {
           padding: 8px;
         }
-      }
-      .friends-comments {
-        color: $font-color;
       }
     }
   }

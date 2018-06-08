@@ -23,6 +23,10 @@ export default {
     cardHeight: {
       type: String,
       default: '125px'
+    },
+    rotate: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -45,7 +49,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.rotateClass = 'sixty-card-rotate'
+      if (this.rotate) {
+        this.rotateClass = 'sixty-card-rotate'
+      }
       this.$emit('on-click')
     }
   }
