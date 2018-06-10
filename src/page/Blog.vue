@@ -4,6 +4,11 @@
       <div class="blog-article-item" v-for="article in articleData" :key="article.id">
         <article-item :articleData="article" @go-detail="goDetail"></article-item>
       </div>
+      <div class="blog-article-item-more" @click="handleLoadMore">
+          <span class="blog-article-item-more-title">
+            加载更多
+          </span>
+      </div>
     </div>
     <div v-else class="blog-article-detail-container">
       <router-view></router-view>
@@ -64,6 +69,9 @@ export default {
     },
     goDetail (id) {
       this.jump(`blog/articleDetail/${id}`)
+    },
+    handleLoadMore () {
+      console.log('加载更多')
     }
   }
 }
@@ -85,6 +93,20 @@ export default {
         max-width: 880px;
         &:hover {
           border-bottom: 2px solid #cccccc;
+        }
+      }
+      .blog-article-item-more {
+        border: 1px dashed #666;
+        padding: 10px 60px;
+        border-radius: 20px;
+        cursor: pointer;
+        &:hover {
+          background-color: $theme-color;
+          padding: 10px 80px;
+          color: #ffffff;
+        }
+        .blog-article-item-more-title {
+          font-size: $font-size;
         }
       }
     }
