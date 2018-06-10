@@ -1,11 +1,11 @@
 <template>
-  <div class="friends-root">
-    <div class="friends-container">
-      <div class="friends-alert-operation">
-        下面是药师兜收集的情报，请尽情享用。
+  <div class="resource-root" :style="containerHeight">
+    <div class="resource-container">
+      <div class="resource-alert-operation">
+        蛇叔掌握尖端科技，下面是药师兜收集的情报，请尽情享用。
       </div>
-      <div class="friends-card-container" v-if="linkData && linkData.length > 0">
-        <resource-card class="friends-card-item" v-for="(item, index) in linkData" :link-data="item" :key="index"></resource-card>
+      <div class="resource-card-container" v-if="linkData && linkData.length > 0">
+        <resource-card class="resource-card-item" v-for="(item, index) in linkData" :link-data="item" :key="index"></resource-card>
       </div>
     </div>
   </div>
@@ -39,6 +39,12 @@ export default {
     },
     linkData () {
       return dataStore.store('links')
+    },
+    containerHeight () {
+      let height = document.body.clientHeight
+      return {
+        height: `${height}px`
+      }
     }
   },
   methods: {
@@ -67,22 +73,22 @@ export default {
 <style lang="scss" scoped>
   @import "../style/mixin/baseMixin.scss";
   @import "../style/base/base";
-  .friends-root {
+  .resource-root {
     display: flex;
     justify-content: center;
     margin-top: 150px;
     width: 100%;
-    .friends-container {
+    .resource-container {
       width: 62%;
       max-width: 880px;
-      .friends-alert-operation {
+      .resource-alert-operation {
         font-size: 16px;
         color: $font-color;
       }
-      .friends-card-container {
+      .resource-card-container {
         @include flex-define(row, start, center);
         flex-wrap: wrap;
-        .friends-card-item {
+        .resource-card-item {
           padding: 8px;
         }
       }

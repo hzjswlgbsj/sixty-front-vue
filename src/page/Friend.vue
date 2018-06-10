@@ -1,5 +1,5 @@
 <template>
-  <div class="friends-root">
+  <div class="friends-root" :style="containerHeight">
     <div class="friends-container">
       <div class="friends-alert-operation">
         下面是我们木叶村的一些优秀忍者，想拜他们为师吗？来翻个牌子吧。
@@ -48,6 +48,12 @@ export default {
     },
     linkData () {
       return dataStore.store('links')
+    },
+    containerHeight () {
+      let height = document.body.clientHeight
+      return {
+        height: `${height}px`
+      }
     }
   },
   methods: {
@@ -81,6 +87,7 @@ export default {
     justify-content: center;
     margin-top: 150px;
     width: 100%;
+    height:100%;
     .friends-container {
       width: 62%;
       max-width: 880px;

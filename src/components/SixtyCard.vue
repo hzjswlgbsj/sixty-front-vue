@@ -14,7 +14,7 @@ export default {
     },
     backgroundColor: {
       type: String,
-      default: '#666'
+      default: '#336773'
     },
     cardWidth: {
       type: String,

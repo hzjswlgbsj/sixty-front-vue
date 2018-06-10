@@ -1,5 +1,5 @@
 <template>
-  <div class="message-root">
+  <div class="message-root" :style="containerHeight">
     <div class="message-container">
       <div class="message-content">
         <span class="message-content-hello-text">各位大佬好：</span>
@@ -80,6 +80,12 @@ export default {
   computed: {
     commentData () {
       return dataStore.store('currentComment')
+    },
+    containerHeight () {
+      let height = document.body.clientHeight - 60
+      return {
+        height: `${height}px`
+      }
     }
   },
   methods: {
