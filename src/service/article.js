@@ -21,12 +21,18 @@ import Const from '../const/index'
  */
 export async function getArticles (refresh, id, page = 1, limit = Const.ARTICLE_PAGINATION) {
   if (refresh || dataStore.store('articles').length === 0) {
+    let currentArticleData = dataStore.store('articles')
     let articles = await articleApi.all(id, page, limit)
     for (let article of articles) {
       let tagIds = article.tag_ids && article.tag_ids.split(',')
       article.tags = await getTagsByIds(tagIds)
     }
-    dataStore.store('articles', articles)
+    if (page > 1) {
+      let newArticleDate = currentArticleData.concat(articles)
+      dataStore.store('articles', newArticleDate)
+    } else {
+      dataStore.store('articles', articles)
+    }
   }
   return dataStore.store('articles')
 }

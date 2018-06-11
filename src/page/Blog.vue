@@ -6,7 +6,7 @@
       </div>
       <div class="blog-article-item-more" @click="handleLoadMore">
           <span class="blog-article-item-more-title">
-            加载更多
+            --加载更多--
           </span>
       </div>
     </div>
@@ -29,7 +29,8 @@ export default {
   data () {
     return {
       isDetail: false,
-      tags: []
+      tags: [],
+      currentArticlePage: 1
     }
   },
   mixins: [routerMixin],
@@ -67,11 +68,20 @@ export default {
         console.log(e)
       }
     },
+    async articleLoadMore () {
+      this.currentArticlePage++
+      alert(this.currentArticlePage)
+      try {
+        await getArticles(true, null, this.currentArticlePage)
+      } catch (e) {
+        console.log(e)
+      }
+    },
     goDetail (id) {
       this.jump(`blog/articleDetail/${id}`)
     },
-    handleLoadMore () {
-      console.log('加载更多')
+    async handleLoadMore () {
+      await this.articleLoadMore()
     }
   }
 }
@@ -100,7 +110,11 @@ export default {
         padding: 10px 60px;
         border-radius: 20px;
         cursor: pointer;
+        -webkit-transition:.8s ease-in-out;
+        -moz-transition:.8s ease-in-out;
         &:hover {
+          -webkit-transition:.8s ease-in-out;
+          -moz-transition:.8s ease-in-out;
           background-color: $theme-color;
           padding: 10px 80px;
           color: #ffffff;
