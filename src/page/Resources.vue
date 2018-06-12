@@ -43,7 +43,7 @@ export default {
     containerHeight () {
       let height = document.body.clientHeight
       return {
-        height: `${height}px`
+        'min-height': `${height}px`
       }
     }
   },
@@ -78,6 +78,7 @@ export default {
     justify-content: center;
     margin-top: 150px;
     width: 100%;
+    height: 100%;
     .resource-container {
       width: 62%;
       max-width: 880px;

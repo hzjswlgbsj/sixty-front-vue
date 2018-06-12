@@ -52,7 +52,7 @@ export default {
     containerHeight () {
       let height = document.body.clientHeight
       return {
-        height: `${height}px`
+        'min-height': `${height}px`
       }
     }
   },

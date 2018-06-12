@@ -1,18 +1,22 @@
 <template>
-  <div class="blog-container">
+  <div class="blog-container" :style="containerHeight">
     <div class="blog-article-container" v-if="!isDetail">
       <div class="blog-article-item" v-for="article in articleData" :key="article.id">
         <article-item :articleData="article" @go-detail="goDetail"></article-item>
       </div>
-      <div class="blog-article-item-more" @click="handleLoadMore">
-          <span class="blog-article-item-more-title">
-            --加载更多--
-          </span>
+      <div class="blog-article-item-more" @click="handleLoadMore" v-if="articleData && articleData.length > 0">
+        <span class="blog-article-item-more-title">
+          --加载更多--
+        </span>
       </div>
     </div>
     <div v-else class="blog-article-detail-container">
       <router-view></router-view>
     </div>
+    <Spin v-if="!articleData || articleData.length === 0">
+      <Icon type="load-c" size=18 class="blog-article-item-load"></Icon>
+      <div>Loading</div>
+    </Spin>
   </div>
 </template>
 
@@ -45,6 +49,12 @@ export default {
   computed: {
     articleData () {
       return dataStore.store('articles')
+    },
+    containerHeight () {
+      let height = document.body.clientHeight
+      return {
+        'min-height': `${height}px`
+      }
     }
   },
   watch: {
@@ -70,7 +80,6 @@ export default {
     },
     async articleLoadMore () {
       this.currentArticlePage++
-      alert(this.currentArticlePage)
       try {
         await getArticles(true, null, this.currentArticlePage)
       } catch (e) {
@@ -103,6 +112,23 @@ export default {
         max-width: 880px;
         &:hover {
           border-bottom: 2px solid #cccccc;
+        }
+        @include keyframes(articleSpin) {
+          0% {
+            transform: rotate(0deg);
+          }
+          50% {
+            transform: rotate(180deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        .blog-article-item-load {
+          animation: articleSpin 1s linear infinite;
+          -moz-animation: articleSpin 7s linear infinite;
+          -webkit-animation: articleSpin 7s linear infinite;
+          -o-animation: articleSpin 7s linear infinite;
         }
       }
       .blog-article-item-more {

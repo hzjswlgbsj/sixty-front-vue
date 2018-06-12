@@ -82,9 +82,9 @@ export default {
       return dataStore.store('currentComment')
     },
     containerHeight () {
-      let height = document.body.clientHeight - 60
+      let height = document.body.clientHeight
       return {
-        height: `${height}px`
+        'min-height': `${height}px`
       }
     }
   },
@@ -111,6 +111,7 @@ export default {
     justify-content: center;
     margin-top: 150px;
     width: 100%;
+    height: 100%;
     .message-container {
       width: 62%;
       max-width: 880px;

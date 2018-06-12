@@ -62,7 +62,7 @@ export default {
       showCollections: true,
       currentIdx: -1,
       menuList: [
-        {key: 'blog', label: 'Home'},
+        {key: 'blog', label: 'Blog'},
         {key: 'tucao', label: 'Tocao'},
         {key: 'friend', label: 'Friends'},
         {key: 'resources', label: 'Resources'},
@@ -73,6 +73,13 @@ export default {
   components: {
     'avatar': Avatar,
     'icon-collection': IconCollection
+  },
+  created () {
+    let lastRouterIdx = dataStore.storage('curRouterIdx')
+    let currentRouter = this.$route.path.split('/')[1]
+    if (lastRouterIdx !== undefined) {
+      this.changePage(currentRouter, lastRouterIdx)
+    }
   },
   computed: {
     topBarStyle () {
@@ -102,6 +109,7 @@ export default {
     },
     changePage (router, index) {
       dataStore.store('curRouter', this.$route)
+      dataStore.storage('curRouterIdx', index)
       this.$emit('jump-page', router)
       this.currentIdx = index
     },
