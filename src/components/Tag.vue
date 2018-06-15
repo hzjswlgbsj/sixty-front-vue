@@ -64,6 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../style/base/base';
   .tag-text-container {
     text-align: center;
     padding: 8px 10px;
@@ -71,7 +72,7 @@ export default {
     cursor: pointer;
     &:hover {
       background-color: #ffffff !important;
-      color: #9DA5B4 !important;
+      color: $common-line-color !important;
     }
   }
 </style>

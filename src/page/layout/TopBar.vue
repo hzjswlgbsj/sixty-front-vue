@@ -40,7 +40,7 @@ export default {
     },
     bgColor: {
       type: String,
-      default: '#495B64'
+      default: '#22354A'
     },
     fontSize: {
       type: String,
@@ -177,19 +177,19 @@ export default {
     @include flex-define (row, space-between, center);
     position: fixed;
     top: -20px;
-    box-shadow: 0 1px 5px #495B64;
+    /*box-shadow: 0 1px 5px #495B64;*/
     .topbar-avatar-container {
       margin-left: 180px;
     }
     .topbar-category-container {
       margin-right: 60px;
       .selected-item {
-        color: $base-color;
+        color: $theme-color;
       }
       .topbar-category-text {
         margin-right: 60px;
         &:hover {
-          color: $base-color;
+          color: $theme-color;
           cursor: pointer
         }
       }

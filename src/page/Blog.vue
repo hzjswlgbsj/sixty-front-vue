@@ -105,13 +105,15 @@ export default {
       @include flex-define (column, center, center);
       .blog-article-item {
         color: #f9f9f9;
-        border-bottom: 2px solid #666666;
-        padding-bottom: 20px;
+        border-bottom: 1px solid $common-line-color;
         margin-bottom: 30px;
         width: 62%;
         max-width: 880px;
+        padding: 10px 10px 20px 10px;
         &:hover {
-          border-bottom: 2px solid #cccccc;
+          background-color: #22354A;
+          padding: 10px 10px 20px 10px;
+          border-radius: 5px;
         }
         @include keyframes(articleSpin) {
           0% {

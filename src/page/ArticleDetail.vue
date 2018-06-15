@@ -175,6 +175,9 @@ export default {
         }
         .article-detail-rights-link {
           /*color: lime;*/
+          &:hover {
+            color: #DD021C;
+          }
         }
       }
       .article-detail-reference {

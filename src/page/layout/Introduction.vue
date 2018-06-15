@@ -80,7 +80,7 @@ export default {
     background-image: url("http://ovrjw2my5.bkt.clouddn.com/Sky.jpg");
     text-align: center;
     color: #ffffff;
-    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    font-family: $font-family;
     .main-layout-avatar {
       /*padding-top: 50px;*/
     }

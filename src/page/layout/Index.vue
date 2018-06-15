@@ -1,7 +1,7 @@
 <template>
   <div class="main-layout-structure-container" :style="mainLayout">
     <div v-if="!isIndex" class="main-layout-structure-topbar">
-      <top-bar bgColor="#20292B" @jump-page="changePage"></top-bar>
+      <top-bar @jump-page="changePage"></top-bar>
     </div>
     <div class="main-layout-structure-introduction">
       <introduction v-if="isIndex"></introduction>
