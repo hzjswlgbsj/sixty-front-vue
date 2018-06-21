@@ -175,7 +175,7 @@ export default {
     @media screen and (max-width: 480px) {
       font-size: 12px;
       .main-layout-index-content-container {
-        padding: 0 20px;
+        padding: 0 30px;
       }
     }
     @media screen and (max-width: 320px) {

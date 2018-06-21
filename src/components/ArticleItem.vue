@@ -11,20 +11,14 @@
     </div>
     <div class="article-info-container">
       <div>
-        <icon name="user" scale="1.3"></icon>
-        <span class="article-info-author">Sixty{{article.author}}</span>
+        <span class="article-info-author">{{article.nickname}}</span>
       </div>
       <div>
-        <icon name="comments" scale="1.3"></icon>
-        <span class="article-info-comment">{{article.comment}} Comments</span>
+        <span  class="article-info-date">&nbsp;&nbsp;•&nbsp;&nbsp;{{article.create_time}}</span>
       </div>
       <div>
-        <icon name="eye" scale="1.3"></icon>
-        <span class="article-info-view">{{article.views}} Views</span>
-      </div>
-      <div>
-        <icon name="calendar" scale="1"></icon>
-        <span  class="article-info-date">{{article.create_time}}</span>
+        <icon class="article-info-address-icon" name="location-arrow" scale="1"></icon>
+        <span class="article-info-address">南京&nbsp;•&nbsp;谷阳世纪大厦</span>
       </div>
     </div>
     <div class="article-info-cover">
@@ -89,22 +83,22 @@ export default {
       margin-right: 20px
     }
     .article-title {
-      font-size: 28px;
       color: #ffffff;
       .article-title-text:hover {
         cursor: pointer;
         color: $base-color;
       }
       .article-title-text {
+        font-size: 1.3em;
         position: relative;
         .article-title-tag {
           background-color: #5292DD;
-          font-size: 12px;
-          padding: 0 3px;
+          font-size: 0.5em;
+          padding: 0 2px;
           border-radius: 2px;
           position: absolute;
-          top: 5px;
-          right: -25px;
+          top: 2px;
+          right: -20px;
           transition: All 0.6s ease-in-out;
           -webkit-transition: All 0.8s ease-in-out;
           -moz-transition: All 0.8s ease-in-out;
@@ -122,16 +116,24 @@ export default {
     }
     .article-info-container {
       @include flex-define(row, start, center);
-      margin: 10px 0 20px 0;
+      margin-top: 5px;
       div {
         @include flex-define(row, space-between, center);
-        margin-right: 15px;
         &:hover {
           cursor: pointer;
         }
-        .article-info-author, .article-info-comment, .article-info-view, .article-info-date {
+        .article-info-author {
+          font-weight: 500;
+          font-size: 1em;
+        }
+        .article-info-date, .article-info-address-icon, .article-info-address {
+          color: $font-other-color;
+        }
+        .article-info-address-icon {
+          margin-left: 20px;
+        }
+        .article-info-address {
           margin-left: 5px;
-          color: #ffffff;
         }
       }
     }

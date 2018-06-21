@@ -174,7 +174,7 @@ export default {
     },
     discussType: {
       type: String,
-      default: Const.ARTICLE_COMMENT_TYPE
+      default: ''
     }
   },
   data () {
@@ -233,7 +233,7 @@ export default {
     async changePagination (page) {
       this.currentCommentPage = page
       if (this.currentArticleId === '0') {
-        await getComment(true, this.currentArticleId, page, this.commentPageSize, 1, this.commentChildrenPageSize, 'message')
+        await getComment(true, this.currentArticleId, page, this.commentPageSize, 1, this.commentChildrenPageSize, this.commentType)
       } else {
         await getComment(true, this.currentArticleId, page, this.commentPageSize)
       }

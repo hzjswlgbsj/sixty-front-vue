@@ -76,9 +76,9 @@ export default {
   },
   created () {
     let lastRouterIdx = dataStore.storage('curRouterIdx')
-    let currentRouter = this.$route.path.split('/')[1]
-    if (lastRouterIdx !== undefined) {
-      this.changePage(currentRouter, lastRouterIdx)
+    let currentRouter = this.$route.path.split('/')
+    if (lastRouterIdx !== undefined && currentRouter.length <= 2) {
+      this.changePage(currentRouter[1], lastRouterIdx)
     }
   },
   computed: {
