@@ -2,7 +2,7 @@
   <div class="main-layout-index-container">
     <div class="main-layout-index-content-container">
       <div class="main-layout-index-content">
-        <avatar class="main-layout-avatar" src="http://ovrjw2my5.bkt.clouddn.com/80.jpg" size="80px" rotate></avatar>
+        <avatar class="main-layout-avatar" :src="sixtyLogo" size="80px" rotate></avatar>
         <span class="main-layout-desc">Sixty's Den</span>
         <p class="main-layout-motto">活到老，学到老</p>
         <common-line width="50%" class="main-layout-line"></common-line>
@@ -50,10 +50,12 @@
 import Avatar from '../../../src/components/Avatar'
 import CommonLine from '../../components/CommonLine'
 import routerMixin from '../../mixins/router'
+import { SIXTY_LOGO } from '../../const/index'
 export default {
   name: 'introduction',
   data () {
     return {
+      sixtyLogo: SIXTY_LOGO
     }
   },
   mixins: [routerMixin],

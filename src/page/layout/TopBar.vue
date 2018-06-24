@@ -1,7 +1,7 @@
 <template>
   <div class="topbar-container" :style="topBarStyle">
     <div class="topbar-avatar-container">
-      <avatar src="http://ovrjw2my5.bkt.clouddn.com/80.jpg" size="60px"></avatar>
+      <avatar :src="sixtyLogo" size="60px"></avatar>
     </div>
     <div class="topbar-category-container" v-if="menuList && menuList.length > 0">
       <span v-for="(menu, index) in menuList"
@@ -15,7 +15,7 @@
     <div v-if="showCollections" class="topbar-icon-collection-container" :style="iconCollectionStyle">
       <icon-collection>
         <div class="topbar-icon-collection" slot="sixty">
-          <avatar src="http://ovrjw2my5.bkt.clouddn.com/80.jpg" type='square' size="17px" desc="Sixty"></avatar>
+          <avatar :src="sixtyLogo" type='square' size="17px" desc="Sixty"></avatar>
         </div>
         <div slot="music">
           <avatar src="http://ovrjw2my5.bkt.clouddn.com/WYMusic.jpeg" type='square' size="17px" desc="music"></avatar>
@@ -30,6 +30,7 @@ import Avatar from '../../components/Avatar'
 import IconCollection from '../../components/IconCollection'
 import dataStore from '../../data/index'
 import routerMixin from '../../mixins/router'
+import { SIXTY_LOGO } from '../../const'
 
 export default {
   name: 'top-bar',
@@ -67,7 +68,8 @@ export default {
         {key: 'friend', label: 'Friends'},
         {key: 'resources', label: 'Resources'},
         {key: 'about', label: 'About'}
-      ]
+      ],
+      sixtyLogo: SIXTY_LOGO
     }
   },
   components: {
