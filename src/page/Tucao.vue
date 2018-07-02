@@ -27,7 +27,7 @@
           <span class="message-content-keywords2">代码</span>，
           初入江湖
         </p>
-        <p>常驻B站，Sixty'den的评论组件跟它的如出一撤，bilibili，干杯 ^_^</p>
+        <p>常驻B站，Sixty'den的评论组件跟它的如出一撤，(゜-゜)つロ干杯~-bilibilin</p>
         <p>
           火影迷，我是要当上
           <span class="message-content-keywords">火影</span>
