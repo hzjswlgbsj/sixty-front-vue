@@ -16,7 +16,7 @@ const module = {
       limit,
       page
     })
-    return ret
+    return ret.data
   },
   async register (nickname, avatar, status, weiboUid) {
     let ret = await http.xpost('user.register', {
@@ -25,7 +25,7 @@ const module = {
       status,
       weibo_uid: weiboUid
     })
-    return ret
+    return ret.data
   }
 }
 

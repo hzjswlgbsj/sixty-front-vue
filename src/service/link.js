@@ -11,7 +11,7 @@ import linkApi from '../api/link'
 export async function getLinks (refresh, type, id, page, limit) {
   if (refresh || dataStore.store('links').length === 0) {
     let links = await linkApi.all(type, id, page, limit)
-    dataStore.store('links', links.data)
+    dataStore.store('links', links)
   }
   return dataStore.store('links')
 }

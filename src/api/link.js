@@ -14,7 +14,7 @@ const module = {
       page,
       limit
     })
-    return res
+    return res.data
   }
 }
 

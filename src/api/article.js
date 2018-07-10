@@ -7,7 +7,7 @@ const module = {
       page,
       limit
     })
-    return res
+    return res.data
   },
   async getComment (articleId, page, limit, childrenPage, childrenLimit, type = 'article') {
     let res = await http.xpost('comment.all', {
@@ -38,7 +38,7 @@ const module = {
       reply_id: replyId,
       type
     })
-    return res
+    return res.data
   },
   async like (userId, commentId, like) {
     let res = await http.xpost('comment.like', {
@@ -46,14 +46,14 @@ const module = {
       comment_id: commentId,
       like
     })
-    return res
+    return res.data
   },
   async getLike (userId, commentId) {
     let res = await http.xpost('comment.getlike', {
       user_id: userId,
       comment_id: commentId
     })
-    return res
+    return res.data
   }
 }
 

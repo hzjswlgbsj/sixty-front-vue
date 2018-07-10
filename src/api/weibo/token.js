@@ -24,7 +24,7 @@ const module = {
       code: code,
       redirect_uri: env.WEIBO_REDIRECT
     })
-    return ret
+    return ret.data
   },
   /**
    * 获取微博用户详情信息
@@ -38,7 +38,7 @@ const module = {
       access_token: accessToken,
       uid: uid
     })
-    return ret
+    return ret.data
   }
 }
 
