@@ -96,15 +96,19 @@ export async function register (nickname, avatar, status, weiboUid) {
  * @return {Boolean}
  */
 export async function login (weiboUid) {
+  console.log('进入登录函数', weiboUid)
   try {
     let user = await getUsers(true, weiboUid)
     if (user && user.id) {
       dataStore.setCookie('userInformation', JSON.stringify(user))
     }
     let userCookieInformation = dataStore.getCookie('userInformation')
+    console.log('写入cookie', userCookieInformation)
     if (userCookieInformation) {
+      console.log('写入cookie成功')
       return true
     } else {
+      console.log('写入cookie失败')
       return false
     }
   } catch (e) {
