@@ -130,13 +130,16 @@ export function logout () {
  */
 export function checkLogin () {
   let userInformation = dataStore.getCookie('userInformation')
-  try {
-    let userInfo = JSON.parse(userInformation)
-    if (userInfo && userInfo.id) {
-      return true
+  if (userInformation) {
+    try {
+      let userInfo = JSON.parse(userInformation)
+      if (userInfo && userInfo.id) {
+        return true
+      }
+      return false
+    } catch (e) {
+      console.log(e)
     }
-    return false
-  } catch (e) {
-    console.log(e)
   }
+  return false
 }

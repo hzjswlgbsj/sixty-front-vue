@@ -53,7 +53,7 @@ const router = new Router({
           component: About
         },
         {
-          path: '/login',
+          path: '/login/:code',
           name: 'Login',
           component: Login
         }
@@ -64,7 +64,7 @@ const router = new Router({
 
 export function redirectLogin (loginBackRouter = '/') {
   dataStore.storage('loginBackRouter', loginBackRouter)
-  router.push('/login')
+  router.push('/login/code')
 }
 
 export function redirectBack () {
