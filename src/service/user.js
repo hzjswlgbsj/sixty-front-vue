@@ -99,6 +99,7 @@ export async function login (weiboUid) {
   console.log('进入登录函数', weiboUid)
   try {
     let user = await getUsers(true, weiboUid)
+    console.log('获取sixty用户数据', user)
     if (user && user.id) {
       dataStore.setCookie('userInformation', JSON.stringify(user))
     }
