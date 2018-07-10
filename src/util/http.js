@@ -103,7 +103,7 @@ var module = {
       let data = response.data
       if (data.ret === 1) {
         if (succ && typeof succ === 'function') {
-          succ(data.data)
+          succ(data)
         }
       } else {
         if (err && typeof err === 'function') {

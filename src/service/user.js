@@ -21,9 +21,9 @@ export async function getUsers (refresh, mixinId, page, limit) {
   if (refresh || dataStore.store('users').length === 0) {
     let users = await userApi.all(mixinId, page, limit)
     if (!mixinId) {
-      dataStore.store('users', users)
+      dataStore.store('users', users.data)
     } else {
-      return users[0]
+      return users.data[0]
     }
   }
   return dataStore.store('users')
@@ -87,7 +87,7 @@ export async function register (nickname, avatar, status, weiboUid) {
     return false
   }
   let res = await userApi.register(nickname, avatar, status, weiboUid)
-  return res
+  return res.data
 }
 
 /**

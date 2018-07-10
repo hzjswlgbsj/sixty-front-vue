@@ -23,15 +23,15 @@ export async function getArticles (refresh, id, page = 1, limit = Const.ARTICLE_
   if (refresh || dataStore.store('articles').length === 0) {
     let currentArticleData = dataStore.store('articles')
     let articles = await articleApi.all(id, page, limit)
-    for (let article of articles) {
+    for (let article of articles.data) {
       let tagIds = article.tag_ids && article.tag_ids.split(',')
       article.tags = await getTagsByIds(tagIds)
     }
     if (page > 1) {
-      let newArticleDate = currentArticleData.concat(articles)
+      let newArticleDate = currentArticleData.concat(articles.data)
       dataStore.store('articles', newArticleDate)
     } else {
-      dataStore.store('articles', articles)
+      dataStore.store('articles', articles.data)
     }
   }
   return dataStore.store('articles')
@@ -146,7 +146,7 @@ export async function getChildrenComment (refresh, parentId, page = 1, limit = C
  */
 export async function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type) {
   let result = await articleApi.addComment(articleId, userId, content, parentId, replyId, parentUserId, type)
-  return result
+  return result.data
 }
 
 /**
@@ -158,7 +158,7 @@ export async function addComment (articleId, userId, content, parentId = 0, repl
  */
 export async function like (userId, commentId, like) {
   let result = await articleApi.like(userId, commentId, like)
-  return result
+  return result.data
 }
 
 /**
@@ -169,5 +169,5 @@ export async function like (userId, commentId, like) {
  */
 export async function getLike (userId, commentId) {
   let result = await articleApi.getLike(userId, commentId)
-  return result
+  return result.data
 }
