@@ -129,7 +129,7 @@ export async function getCommentById (id, refresh = false) {
 export async function getChildrenComment (refresh, parentId, page = 1, limit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
   let childrenComment = await articleApi.getChildrenComment(parentId, page, limit)
   let currentComment = await getCommentById(parentId)
-  currentComment.children = childrenComment
+  currentComment.children = childrenComment.data
   return childrenComment
 }
 
