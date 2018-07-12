@@ -3,7 +3,6 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -50,7 +49,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'), resolve('node_modules/vue-awesome')],
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -77,25 +76,14 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: ['css-loader?minimize', 'postcss-loader '],
-          fallback: 'style-loader'
-        })
-      },
-      {
-        test: /\.sass/,
-        use: ExtractTextPlugin.extract({
-          use: ['postcss-loader ', 'sass-loader'],
-          fallback: 'style-loader'
-        })
-      },
-      {
-        test: /\.scss/,
-        use: ExtractTextPlugin.extract({
-          use: ['postcss-loader ', 'sass-loader'],
-          fallback: 'style-loader'
-        })
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // 将 JS 字符串生成为 style 节点
+        }, {
+          loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+        }, {
+          loader: "sass-loader" // 将 Sass 编译成 CSS
+        }]
       }
     ]
   },
