@@ -4,12 +4,15 @@ import router from './router'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import 'vue-awesome/icons'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 import Icon from 'vue-awesome/components/Icon'
 import Vuex from 'vuex'
 import store from './data/store'
 
 Vue.component('icon', Icon)
 Vue.use(iView)
+Vue.use(mavonEditor)
 Vue.use(Vuex)
 
 Vue.config.productionTip = false

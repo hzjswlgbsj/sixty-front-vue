@@ -20,7 +20,16 @@
           <span  class="article-info-date">{{article.create_time}}</span>
         </div>
       </div>
-      <div class="article-detail-content" v-html="article.content"></div>
+      <div class="article-detail-content">
+        <mavon-editor
+          class="article-detail-content-markdown"
+          :toolbars-flag="false"
+          :subfield="false"
+          default-open="preview"
+          code-style="androidstudio"
+          :box-shadow="false"
+          v-model="article.content"/>
+      </div>
       <div class="article-detail-reference">
         <h3>参考信息</h3>
         <div class="article-detail-reference-content" v-if="reference && reference.length > 0">
@@ -73,8 +82,8 @@ import { getArticleById, getComment } from '../service/article'
 export default {
   name: 'article-detail',
   components: {
-    'block-text': BlockText,
-    'comment': Comment
+    BlockText,
+    Comment
   },
   data () {
     return {
@@ -142,7 +151,7 @@ export default {
     margin-top: 60px;
     .article-detail-title-info {
       @include flex-define(column, center, center);
-      color: $font-color;
+      color: #DAE1E8;
       font-size: $font-size;
       width: 62%;
       max-width: 880px;
@@ -160,13 +169,17 @@ export default {
           }
           .article-info-author, .article-info-comment, .article-info-view, .article-info-date {
             margin-left: 5px;
-            color: #ffffff;
+            color: #DAE1E8;
           }
         }
       }
       .article-detail-content {
         /*text-indent: 2em;*/
         width: 100%;
+        .article-detail-content-markdown {
+          width: 100%;
+          z-index: auto;
+        }
       }
       .article-detail-rights {
         width: 100%;
@@ -176,7 +189,7 @@ export default {
         .article-detail-rights-link {
           /*color: lime;*/
           &:hover {
-            color: #DD021C;
+            color: #DD021C !important;
           }
         }
       }
