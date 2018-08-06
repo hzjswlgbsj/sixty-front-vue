@@ -22,10 +22,11 @@
       </div>
     </div>
     <div class="article-info-cover" v-if="articleCoverImg && articleCoverImg.length > 0">
-      <img class="article-info-cover-img"
+      <img class="article-info-cover-img" :src="articleCoverImg[0].url" >
+      <!-- <img class="article-info-cover-img"
            v-for="(image, index) in articleCoverImg"
            :key="index"
-           :src="image.url" >
+           :src="image.url" > -->
     </div>
     <div class="article-info-content" @click="goDetail(article.id)">
       {{article.introduction}}
@@ -166,8 +167,8 @@ export default {
       .article-info-cover-img {
         width: auto;
         height: auto;
-        max-width: 48%;
-        max-height: 49%;
+        max-width: 100%;
+        max-height: 60%;
         border-radius: 5px;
         margin-right: 10px;
       }
