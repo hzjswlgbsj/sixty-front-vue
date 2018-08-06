@@ -21,10 +21,15 @@
         <span class="article-info-address">南京&nbsp;•&nbsp;谷阳世纪大厦</span>
       </div>
     </div>
-    <div class="article-info-cover">
-      <img v-if="article.image" class="article-info-cover-img" :src="article.image" >
+    <div class="article-info-cover" v-if="articleCoverImg && articleCoverImg.length > 0">
+      <img class="article-info-cover-img"
+           v-for="(image, index) in articleCoverImg"
+           :key="index"
+           :src="image.url" >
     </div>
-    <div class="article-info-content" @click="goDetail(article.id)">{{article.introduction}}</div>
+    <div class="article-info-content" @click="goDetail(article.id)">
+      {{article.introduction}}
+    </div>
     <div class="article-info-tags" v-if="article.tags && article.tags.length > 0">
       <tag class="article-info-tag"
            v-for="tags in article.tags"
@@ -61,6 +66,17 @@ export default {
   computed: {
     article () {
       return this.articleData
+    },
+    articleCoverImg () {
+      try {
+        if (this.articleData['cover_picture']) {
+          console.log(11111111, JSON.parse(this.articleData['cover_picture']))
+          return JSON.parse(this.articleData['cover_picture'])
+        }
+        return []
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
   components: {
@@ -144,11 +160,16 @@ export default {
       }
     }
     .article-info-cover{
+      margin-top: 20px;
       width: 100%;
       height: 100%;
       .article-info-cover-img {
-        width: 100%;
-        height: 400px;
+        width: auto;
+        height: auto;
+        max-width: 48%;
+        max-height: 49%;
+        border-radius: 5px;
+        margin-right: 10px;
       }
     }
     .article-info-content {

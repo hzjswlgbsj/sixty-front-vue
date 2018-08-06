@@ -46,7 +46,7 @@ export async function getArticles (refresh, id, page = 1, limit = Const.ARTICLE_
 export async function getTags (refresh) {
   if (refresh || dataStore.store('tags').length === 0) {
     const tags = await tagApi.all()
-    dataStore.store('tags', tags)
+    dataStore.store('tags', tags.items)
   }
   return dataStore.store('tags')
 }
