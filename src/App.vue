@@ -27,7 +27,7 @@ export default {
   }
   a {
     text-decoration: none;
-    color: #ffffff !important;
+    // color: #ffffff !important;
   }
   /* 对markdown插件的border样式覆盖 */
   .highlight pre,

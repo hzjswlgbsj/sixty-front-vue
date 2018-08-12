@@ -184,7 +184,7 @@ export default {
       .article-detail-rights {
         width: 100%;
         .article-detail-rights-text {
-          color: $base-color;
+          color: $font-color;
         }
         .article-detail-rights-link {
           /*color: lime;*/
@@ -199,6 +199,12 @@ export default {
         .article-detail-reference-content {
           margin: 10px 0 0 20px;
           line-height: 1.6em;
+          .article-detail-reference-link a {
+            color: #DAE1E8;
+            &:hover {
+              color: $base-color;
+            }
+          }
         }
       }
       .article-detail-previous-next {

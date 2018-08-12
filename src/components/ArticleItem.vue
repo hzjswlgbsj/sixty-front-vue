@@ -1,8 +1,8 @@
 <template>
   <div class="article-container">
-    <div class="article-author-avatar">
+    <!-- <div class="article-author-avatar">
       <avatar :src="sixtyLogo" size="65px" rotate></avatar>
-    </div>
+    </div> -->
     <div class="article-title">
       <span class="article-title-text" @click="goDetail(article.id)">
         {{article.title}}
@@ -10,11 +10,12 @@
       </span>
     </div>
     <div class="article-info-container">
-      <div>
+      <!-- <div>
         <span class="article-info-author">{{article.nickname}}</span>
-      </div>
+      </div> -->
       <div>
-        <span  class="article-info-date">&nbsp;&nbsp;•&nbsp;&nbsp;{{article.create_time}}</span>
+        <icon name="calendar"></icon>
+        <span class="article-info-date"> {{article.create_time}}</span>
       </div>
       <div>
         <icon class="article-info-address-icon" name="location-arrow" scale="1"></icon>
@@ -22,7 +23,7 @@
       </div>
     </div>
     <div class="article-info-cover" v-if="articleCoverImg && articleCoverImg.length > 0">
-      <img class="article-info-cover-img" :src="articleCoverImg[0].url" >
+      <!-- <img class="article-info-cover-img" :src="articleCoverImg[0].url" > -->
       <!-- <img class="article-info-cover-img"
            v-for="(image, index) in articleCoverImg"
            :key="index"
@@ -32,14 +33,21 @@
       {{article.introduction}}
     </div>
     <div class="article-info-tags" v-if="article.tags && article.tags.length > 0">
-      <tag class="article-info-tag"
+      <span
+      v-for="tags in article.tags"
+      :key="tags.id"
+      :backgroundColor="tags.color"
+      @tag-click="tagClick(tags.id)">
+      # {{tags.name}} &nbsp;&nbsp;
+      </span>
+      <!-- <tag class="article-info-tag"
            v-for="tags in article.tags"
            :key="tags.id"
            :backgroundColor="tags.color"
            icon="pricetag"
            @tag-click="tagClick(tags.id)">
         {{tags.name}}
-      </tag>
+      </tag> -->
     </div>
   </div>
 </template>
@@ -99,7 +107,7 @@ export default {
   @import "../style/mixin/baseMixin";
   @import "../style/base/base";
   .article-container {
-    font-weight: 400;
+    text-align: center;
     font-size: $font-size;
     .article-author-avatar {
       float: left;
@@ -107,6 +115,7 @@ export default {
     }
     .article-title {
       color: #ffffff;
+      font-size: 1.4em;
       .article-title-text:hover {
         cursor: pointer;
         color: $base-color;
@@ -138,7 +147,7 @@ export default {
       }
     }
     .article-info-container {
-      @include flex-define(row, start, center);
+      @include flex-define(row, center, center);
       margin-top: 5px;
       div {
         @include flex-define(row, space-between, center);
@@ -155,7 +164,7 @@ export default {
         .article-info-address-icon {
           margin-left: 20px;
         }
-        .article-info-address {
+        .article-info-address, .article-info-date {
           margin-left: 5px;
         }
       }
@@ -175,13 +184,16 @@ export default {
     }
     .article-info-content {
       text-indent: 2em;
-      line-height: 1.8;
+      line-height: 2em;
       color: $font-color;
       cursor: pointer;
+      font-size: 1.1em;
     }
     .article-info-tags {
+      text-align: left;
       margin-top: 20px;
       margin-bottom: 20px;
+      color: $font-other-color;
     }
   }
 </style>

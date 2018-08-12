@@ -133,6 +133,9 @@ export default {
         }
         .main-layout-contact {
           margin: 0 auto;
+          a {
+            color: #ffffff;
+          }
           .contact-icon{
             margin-right: 20px;
             &:hover {
