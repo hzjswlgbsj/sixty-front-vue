@@ -6,24 +6,24 @@
     <div class="article-title">
       <span class="article-title-text" @click="goDetail(article.id)">
         {{article.title}}
-        <span class="article-title-tag">原</span>
+        <!-- <span class="article-title-tag">原</span> -->
       </span>
     </div>
     <div class="article-info-container">
-      <!-- <div>
-        <span class="article-info-author">{{article.nickname}}</span>
-      </div> -->
       <div>
-        <icon name="calendar"></icon>
-        <span class="article-info-date"> {{article.create_time}}</span>
+        <span class="article-info-author">@ {{article.nickname}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
       </div>
       <div>
-        <icon class="article-info-address-icon" name="location-arrow" scale="1"></icon>
+        <icon name="terminal" scale="0.8"></icon>
+        <span class="article-info-date"> 发表于<timeago :datetime="article.create_time" :auto-update="60" />&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </div>
+      <div>
+        <icon class="article-info-address-icon" name="location-arrow" scale="0.8"></icon>
         <span class="article-info-address">南京&nbsp;•&nbsp;谷阳世纪大厦</span>
       </div>
     </div>
     <div class="article-info-cover" v-if="articleCoverImg && articleCoverImg.length > 0">
-      <!-- <img class="article-info-cover-img" :src="articleCoverImg[0].url" > -->
+      <a class="article-info-cover-img" :style="coverImage" />
       <!-- <img class="article-info-cover-img"
            v-for="(image, index) in articleCoverImg"
            :key="index"
@@ -33,21 +33,21 @@
       {{article.introduction}}
     </div>
     <div class="article-info-tags" v-if="article.tags && article.tags.length > 0">
-      <span
+      <!-- <span
       v-for="tags in article.tags"
       :key="tags.id"
       :backgroundColor="tags.color"
       @tag-click="tagClick(tags.id)">
       # {{tags.name}} &nbsp;&nbsp;
-      </span>
-      <!-- <tag class="article-info-tag"
+      </span> -->
+      <tag class="article-info-tag"
            v-for="tags in article.tags"
            :key="tags.id"
            :backgroundColor="tags.color"
            icon="pricetag"
            @tag-click="tagClick(tags.id)">
         {{tags.name}}
-      </tag> -->
+      </tag>
     </div>
   </div>
 </template>
@@ -79,12 +79,16 @@ export default {
     articleCoverImg () {
       try {
         if (this.articleData['cover_picture']) {
-          console.log(11111111, JSON.parse(this.articleData['cover_picture']))
           return JSON.parse(this.articleData['cover_picture'])
         }
         return []
       } catch (e) {
         console.log(e)
+      }
+    },
+    coverImage () {
+      return {
+        backgroundImage: `url(${this.articleCoverImg[0].url})`
       }
     }
   },
@@ -114,14 +118,13 @@ export default {
       margin-right: 20px
     }
     .article-title {
-      color: #ffffff;
-      font-size: 1.4em;
+      color: $font-title-color;
+      font-size: $font-size-title;
       .article-title-text:hover {
         cursor: pointer;
         color: $base-color;
       }
       .article-title-text {
-        font-size: 1.3em;
         position: relative;
         .article-title-tag {
           background-color: #5292DD;
@@ -136,7 +139,7 @@ export default {
           -moz-transition: All 0.8s ease-in-out;
           -o-transition: All 0.8s ease-in-out;
           &:hover {
-            color: #ffffff;
+            color: $font-color;
             transform: rotate(360deg);
             -webkit-transform: rotate(360deg);
             -moz-transform: rotate(360deg);
@@ -148,21 +151,13 @@ export default {
     }
     .article-info-container {
       @include flex-define(row, center, center);
-      margin-top: 5px;
+      margin: 25px 0;
+      font-size: 0.9em;
       div {
         @include flex-define(row, space-between, center);
-        &:hover {
-          cursor: pointer;
-        }
-        .article-info-author {
-          font-weight: 500;
-          font-size: 1em;
-        }
-        .article-info-date, .article-info-address-icon, .article-info-address {
-          color: $font-other-color;
-        }
-        .article-info-address-icon {
-          margin-left: 20px;
+        cursor: pointer;
+        .article-info-author, .article-info-date, .article-info-address-icon, .article-info-address {
+          color: $font-title-color;
         }
         .article-info-address, .article-info-date {
           margin-left: 5px;
@@ -174,12 +169,14 @@ export default {
       width: 100%;
       height: 100%;
       .article-info-cover-img {
-        width: auto;
-        height: auto;
-        max-width: 100%;
-        max-height: 60%;
+        height: 400px;
         border-radius: 5px;
-        margin-right: 10px;
+        margin-bottom: 30px;
+        display: block;
+        background-color: rgba(0,0,0,0.02);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
       }
     }
     .article-info-content {
@@ -187,13 +184,13 @@ export default {
       line-height: 2em;
       color: $font-color;
       cursor: pointer;
-      font-size: 1.1em;
+      text-align: left;
     }
     .article-info-tags {
       text-align: left;
       margin-top: 20px;
       margin-bottom: 20px;
-      color: $font-other-color;
+      // color: $font-other-color;
     }
   }
 </style>

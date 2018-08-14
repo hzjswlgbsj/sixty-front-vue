@@ -111,7 +111,7 @@ export default {
         max-width: 880px;
         padding: 10px 10px 20px 10px;
         &:hover {
-          background-color: #22354A;
+          // background-color: #22354A;
           padding: 10px 10px 20px 10px;
           border-radius: 5px;
         }
