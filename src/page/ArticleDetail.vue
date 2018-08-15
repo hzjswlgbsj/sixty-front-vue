@@ -2,31 +2,16 @@
   <div class="article-detail-container">
     <div class="article-detail-title-info" v-if="article.id">
       <div class="article-detail-title">{{article.title}}</div>
-      <div class="article-detail-info">
-        <div>
-          <icon name="user" scale="1.3"></icon>
-          <span class="article-info-author">{{article.nickname}}</span>
-        </div>
-        <div>
-          <icon name="comments" scale="1.3"></icon>
-          <span class="article-info-comment">34 Comments</span>
-        </div>
-        <div>
-          <icon name="eye" scale="1.3"></icon>
-          <span class="article-info-view">{{article.views}} Views</span>
-        </div>
-        <div>
-          <icon name="calendar" scale="1"></icon>
-          <span  class="article-info-date">{{article.create_time}}</span>
-        </div>
-      </div>
+
+      <article-info :article-data="article"/>
+
       <div class="article-detail-content">
         <mavon-editor
           class="article-detail-content-markdown"
           :toolbars-flag="false"
           :subfield="false"
           default-open="preview"
-          code-style="androidstudio"
+          code-style="atom-one-dark"
           :box-shadow="false"
           v-model="article.content"/>
       </div>
@@ -78,12 +63,14 @@ import dataStore from '../data/index'
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
 import { getArticleById, getComment } from '../service/article'
+import ArticleInfo from '../components/ArticleInfo'
 
 export default {
   name: 'article-detail',
   components: {
     BlockText,
-    Comment
+    Comment,
+    ArticleInfo
   },
   data () {
     return {

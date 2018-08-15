@@ -9,19 +9,9 @@
         <!-- <span class="article-title-tag">原</span> -->
       </span>
     </div>
-    <div class="article-info-container">
-      <div>
-        <span class="article-info-author">@ {{article.nickname}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      </div>
-      <div>
-        <icon name="terminal" scale="0.8"></icon>
-        <span class="article-info-date"> 发表于<timeago :datetime="article.create_time" :auto-update="60" />&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      </div>
-      <div>
-        <icon class="article-info-address-icon" name="location-arrow" scale="0.8"></icon>
-        <span class="article-info-address">南京&nbsp;•&nbsp;谷阳世纪大厦</span>
-      </div>
-    </div>
+
+    <article-info :article-data="article"/>
+
     <div class="article-info-cover" v-if="articleCoverImg && articleCoverImg.length > 0">
       <a class="article-info-cover-img" :style="coverImage" />
       <!-- <img class="article-info-cover-img"
@@ -56,6 +46,7 @@
 import Avatar from '../components/Avatar'
 import Tag from '../components/Tag'
 import { SIXTY_LOGO } from '../const'
+import ArticleInfo from './ArticleInfo'
 
 export default {
   name: 'article-item',
@@ -94,7 +85,8 @@ export default {
   },
   components: {
     'tag': Tag,
-    'avatar': Avatar
+    'avatar': Avatar,
+    ArticleInfo
   },
   methods: {
     goDetail (id) {
@@ -146,21 +138,6 @@ export default {
             -o-transform: rotate(360deg);
             -ms-transform: rotate(360deg);
           }
-        }
-      }
-    }
-    .article-info-container {
-      @include flex-define(row, center, center);
-      margin: 25px 0;
-      font-size: 0.9em;
-      div {
-        @include flex-define(row, space-between, center);
-        cursor: pointer;
-        .article-info-author, .article-info-date, .article-info-address-icon, .article-info-address {
-          color: $font-title-color;
-        }
-        .article-info-address, .article-info-date {
-          margin-left: 5px;
         }
       }
     }
