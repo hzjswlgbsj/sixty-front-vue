@@ -1,14 +1,15 @@
 <template>
   <div class="article-info-container">
     <div>
-      <span class="article-info-author">@ {{article.nickname}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <icon name="at" scale="0.8"></icon>
+      <span class="article-info-author">{{article.nickname}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
     <div>
       <icon name="terminal" scale="0.8"></icon>
       <span class="article-info-date"> 发表于 <Time :time="article.create_time" :interval="60" />&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
     <div>
-      <icon class="article-info-address-icon" name="location-arrow" scale="0.8"></icon>
+      <icon name="location-arrow" scale="0.8"></icon>
       <span class="article-info-address">南京&nbsp;•&nbsp;谷阳世纪大厦</span>
     </div>
   </div>
@@ -43,11 +44,12 @@ export default {
     div {
       @include flex-define(row, space-between, center);
       cursor: pointer;
-      .article-info-author, .article-info-date, .article-info-address-icon, .article-info-address {
+      .article-info-author, .article-info-date, .article-info-address {
         color: $font-title-color;
-      }
-      .article-info-address, .article-info-date {
         margin-left: 5px;
+        &:hover {
+            color: #2BBC8A;
+        }
       }
     }
   }

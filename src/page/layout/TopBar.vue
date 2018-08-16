@@ -63,11 +63,11 @@ export default {
       showCollections: true,
       currentIdx: -1,
       menuList: [
-        {key: 'blog', label: 'Blog'},
-        {key: 'tucao', label: 'Tocao'},
-        {key: 'friend', label: 'Friends'},
-        {key: 'resources', label: 'Resources'},
-        {key: 'about', label: 'About'}
+        {key: 'blog', label: '木叶の秘术'},
+        {key: 'tucao', label: '木叶の黑板'},
+        {key: 'friend', label: '木叶の精英'},
+        {key: 'resources', label: '大蛇丸の情报'},
+        {key: 'about', label: '本人'}
       ],
       sixtyLogo: SIXTY_LOGO
     }

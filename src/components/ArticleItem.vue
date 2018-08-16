@@ -23,21 +23,27 @@
       {{article.introduction}}
     </div>
     <div class="article-info-tags" v-if="article.tags && article.tags.length > 0">
-      <!-- <span
-      v-for="tags in article.tags"
-      :key="tags.id"
-      :backgroundColor="tags.color"
-      @tag-click="tagClick(tags.id)">
-      # {{tags.name}} &nbsp;&nbsp;
-      </span> -->
-      <tag class="article-info-tag"
+      <img class="article-info-tags-icon" src="../style/iconfont/tag.svg">
+      <div class="article-info-tags-container" style="margin-left: 30px;">
+        <a
+        :style="currentId === tag.id ? tagHover : '' "
+        v-for="tag in article.tags"
+        :key="tag.id"
+        @mouseover="curTagColor = tag.color;currentId = tag.id"
+        @mouseout="curTagColor = '#a1a1a1'"
+        @tag-click="tagClick(tag.id)">
+          #{{tag.name}}
+        </a>
+      </div>
+
+      <!-- <tag class="article-info-tag"
            v-for="tags in article.tags"
            :key="tags.id"
            :backgroundColor="tags.color"
            icon="pricetag"
            @tag-click="tagClick(tags.id)">
         {{tags.name}}
-      </tag>
+      </tag> -->
     </div>
   </div>
 </template>
@@ -52,7 +58,9 @@ export default {
   name: 'article-item',
   data () {
     return {
-      sixtyLogo: SIXTY_LOGO
+      sixtyLogo: SIXTY_LOGO,
+      curTagColor: '',
+      currentId: -1
     }
   },
   props: {
@@ -80,6 +88,11 @@ export default {
     coverImage () {
       return {
         backgroundImage: `url(${this.articleCoverImg[0].url})`
+      }
+    },
+    tagHover () {
+      return {
+        color: this.curTagColor
       }
     }
   },
@@ -114,7 +127,7 @@ export default {
       font-size: $font-size-title;
       .article-title-text:hover {
         cursor: pointer;
-        color: $base-color;
+        color: #2BBC8A;
       }
       .article-title-text {
         position: relative;
@@ -167,7 +180,21 @@ export default {
       text-align: left;
       margin-top: 20px;
       margin-bottom: 20px;
-      // color: $font-other-color;
+      position: relative;
+      .article-info-tags-icon {
+        width: 18px; height: 18px;
+        position: absolute;
+        top: 3px;
+      }
+      .article-info-tags-container {
+        a {
+          color: #a1a1a1;
+          margin-right: 10px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 </style>
