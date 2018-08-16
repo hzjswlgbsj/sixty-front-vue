@@ -31,20 +31,25 @@ export default {
     async weiboLogin () {
       let params = urlTool.getRequest()
       if (params.code) {
+        console.log('获取到了code', params.code)
         await this.getWeiboToken(params.code)
         const weiboAccessToken = dataStore.getCookie('weibo_token')
         const weiboUid = dataStore.getCookie('weibo_uid')
         if (!weiboAccessToken || !weiboUid) {
+          console.log('从cookie中获取token和uid失败')
           this.$Message.error('微博用户状态异常')
           redirectBack()
         }
         let weiboUserInfo = await await this.getWeiboUser(weiboAccessToken, parseInt(weiboUid))
+        console.log('获取微博用户信息', weiboUserInfo)
         if (!weiboUserInfo || weiboUserInfo.id !== parseInt(weiboUid)) {
+          console.log('获取微博用户信息失败')
           this.$Message.error('拉取微博用户信息失败')
           redirectBack()
         }
         let checkRegisterRes = await checkRegister(weiboUserInfo.idstr)
         if (checkRegisterRes) {
+          console.log('该用户已经注册')
           /* 如果已经注册的直接登录 */
           let res = await login(weiboUid)
           if (res) {
@@ -54,8 +59,10 @@ export default {
         } else {
           /* 将获取到的微博用户信息注册到本应用的用户系统中去 */
           try {
+            console.log('该用户没有注册，现在执行注册')
             let registerResult = await register(weiboUserInfo.screen_name, weiboUserInfo.profile_image_url, 1, weiboUserInfo.idstr)
             if (registerResult) {
+              console.log('注册成功，进入登录流程')
               this.$Message.success('授权成功')
               let res = await login(weiboUserInfo.idstr)
               if (res) {
@@ -82,6 +89,7 @@ export default {
     async getWeiboToken (code) {
       try {
         let tokenInfo = await weiboTokenApi.getToken(code)
+        console.log('获取到了token', tokenInfo)
         if (tokenInfo && tokenInfo.access_token && tokenInfo.uid) {
           dataStore.setCookie('weibo_token', tokenInfo.access_token)
           dataStore.setCookie('weibo_uid', tokenInfo.uid)

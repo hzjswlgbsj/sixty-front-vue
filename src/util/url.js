@@ -5,7 +5,6 @@
  */
 function getRequest () {
   var url = location.search
-  console.log('进入获取url函数', url)
   var theRequest = {}
 
   if (url.indexOf('?') !== -1) {
@@ -16,7 +15,6 @@ function getRequest () {
       theRequest[strs[i].split('=')[0]] = unescape(strs[i].split('=')[1])
     }
   }
-  console.log('url函数最终结果', theRequest)
   return theRequest
 }
 
