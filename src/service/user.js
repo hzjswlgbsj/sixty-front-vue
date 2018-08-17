@@ -128,11 +128,13 @@ export function logout () {
  * @return {boolean}
  */
 export function checkLogin () {
+  console.log('进入检查登录状态')
   let userInformation = dataStore.getCookie('userInformation')
   if (userInformation) {
     try {
       let userInfo = JSON.parse(userInformation)
       if (userInfo && userInfo.id) {
+        console.log('当前处于登录状态', userInfo)
         return true
       }
       return false
@@ -140,5 +142,6 @@ export function checkLogin () {
       console.log(e)
     }
   }
+  console.log('当前处于没有登录状态')
   return false
 }
