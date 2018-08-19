@@ -134,7 +134,7 @@ export function checkLogin () {
     try {
       let userInfo = JSON.parse(userInformation)
       if (userInfo && userInfo.id) {
-        console.log('当前处于登录状态', userInfo)
+        console.log('当前处于登录状态')
         return true
       }
       return false

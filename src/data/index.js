@@ -44,12 +44,12 @@ function _storage (key, val) {
   }
 }
 
-function _setCookie (cname, cvalue, exdays) {
+function _setCookie (cname, cvalue, exdays = 1) {
   let date = new Date()
   date.setTime(date.getTime() + (exdays * 24 * 60 * 60 * 1000))
   let expires = 'expires=' + date.toGMTString()
   document.cookie = cname + '=' + cvalue + ';' + expires
-  console.log('打印设置好了cookie的document', document)
+  console.log('打印设置好了cookie的cookieArray', document.cookie)
 }
 
 function _getCookie (cname) {
@@ -58,7 +58,7 @@ function _getCookie (cname) {
   for (let i = 0; i < cookieArray.length; i++) {
     let c = cookieArray[i].trim()
     if (c.indexOf(name) === 0) {
-      console.log('打印获取cookie的document', document)
+      console.log('打印获取cookie的cookieArray', cookieArray)
       return c.substring(name.length, c.length)
     }
   }
