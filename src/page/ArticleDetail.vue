@@ -62,7 +62,7 @@
 import dataStore from '../data/index'
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
-import { getArticleById, getComment } from '../service/article'
+import { getArticleById, remoteGetComment } from '../service/article'
 import ArticleInfo from '../components/ArticleInfo'
 
 export default {
@@ -121,7 +121,7 @@ export default {
     },
     async initCommentData (refresh = false) {
       try {
-        await getComment(refresh, this.currentArticleId)
+        await remoteGetComment(refresh, this.currentArticleId)
       } catch (e) {
         console.log(e)
       }

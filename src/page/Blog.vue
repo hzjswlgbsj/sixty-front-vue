@@ -26,7 +26,7 @@ import FootBar from './layout/FootBar'
 import ArticleItem from '../components/ArticleItem'
 import routerMixin from '../mixins/router'
 import dataStore from '../../src/data/index'
-import { getArticles } from '../service/article'
+import { remoteGetArticles } from '../service/article'
 
 export default {
   name: 'blog',
@@ -73,7 +73,7 @@ export default {
     },
     async initArticleData () {
       try {
-        await getArticles()
+        await remoteGetArticles()
       } catch (e) {
         console.log(e)
       }
@@ -81,7 +81,7 @@ export default {
     async articleLoadMore () {
       this.currentArticlePage++
       try {
-        await getArticles(true, null, this.currentArticlePage)
+        await remoteGetArticles(true, null, this.currentArticlePage)
       } catch (e) {
         console.log(e)
       }

@@ -14,7 +14,7 @@
 <script>
 import Comment from '../components/Comment'
 import dataStore from '../data/index'
-import { getComment } from '../service/article'
+import { remoteGetComment } from '../service/article'
 import { getLinks } from '../service/link'
 import ResourceCard from '../components/ResourceCard'
 import Const from '../const/index'
@@ -54,7 +54,7 @@ export default {
     },
     async initCommentData (refresh = false) {
       try {
-        await getComment(refresh, 0, 1, Const.ARTICLE_COMMENT_PAGINATION, 1, Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, this.commentType)
+        await remoteGetComment(refresh, 0, 1, Const.ARTICLE_COMMENT_PAGINATION, 1, Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, this.commentType)
       } catch (e) {
         console.log(e)
       }

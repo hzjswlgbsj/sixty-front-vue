@@ -119,7 +119,7 @@ import LogoutPublish from './LogoutPublish'
 import Pagination from './Pagination'
 import { redirectLogin } from '../router/index'
 import { checkLogin, getCurrentUser, getUsers } from '../service/user'
-import { addComment, like, getLike, getComment, getChildrenComment } from '../service/article'
+import { remoteAddComment, remoteLike, remoteGetLike, remoteGetComment, remoteGetChildrenComment } from '../service/article'
 import Const from '../const/index'
 
 export default {
@@ -233,14 +233,14 @@ export default {
     async changePagination (page) {
       this.currentCommentPage = page
       if (this.currentArticleId === '0') {
-        await getComment(true, this.currentArticleId, page, this.commentPageSize, 1, this.commentChildrenPageSize, this.commentType)
+        await remoteGetComment(true, this.currentArticleId, page, this.commentPageSize, 1, this.commentChildrenPageSize, this.commentType)
       } else {
-        await getComment(true, this.currentArticleId, page, this.commentPageSize)
+        await remoteGetComment(true, this.currentArticleId, page, this.commentPageSize)
       }
     },
     async changeChildrenPagination (params, parentId) {
       this.currentChildrenCommentPage = params[0]
-      await getChildrenComment(true, parentId, params[0], this.commentChildrenPageSize)
+      await remoteGetChildrenComment(true, parentId, params[0], this.commentChildrenPageSize)
     },
     async publishComment (params, level) {
       let content = ''
@@ -262,8 +262,8 @@ export default {
         return
       }
       try {
-        let ret = await addComment(parseInt(this.currentArticleId), parseInt(this.user.id), content, this.commentForm.parentId, this.commentForm.replyId, this.commentForm.parentUserId, this.commentType)
-        if (ret) {
+        let ret = await remoteAddComment(parseInt(this.currentArticleId), parseInt(this.user.id), content, this.commentForm.parentId, this.commentForm.replyId, this.commentForm.parentUserId, this.commentType)
+        if (ret && ret.data) {
           this.$Message.success('你说的俺都听到了哦')
           this.refreshCommentData()
           this.resetComment = true
@@ -281,9 +281,9 @@ export default {
         return
       }
       try {
-        const likeData = await getLike(this.user.id, commentId)
+        const likeData = await remoteGetLike(this.user.id, commentId)
         let likeCount = likeData && likeData.like ? parseInt(likeData.like) : 0
-        const ret = await like(this.user.id, commentId)
+        const ret = await remoteLike(this.user.id, commentId)
         if (ret) {
           if (likeCount === 0) {
             this.$set(comment, 'like', currentLikeCount + 1)

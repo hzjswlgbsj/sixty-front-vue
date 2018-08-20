@@ -7,9 +7,9 @@
 
 import dataStore from '../data/index'
 import arrayTool from '../util/array'
-import articleApi from '../api/article'
 import tagApi from '../api/tags'
 import Const from '../const/index'
+import { getArticle, getComment, getChildrenComment, addComment, like, getLike } from '../api/article'
 
 /**
  * 获取所有文章(必须分页，不分页默认返回1000条数据)
@@ -19,11 +19,11 @@ import Const from '../const/index'
  * @param limit
  * @return {Array}
  */
-export async function getArticles (refresh, id, page = 1, limit = Const.ARTICLE_PAGINATION) {
+export async function remoteGetArticles (refresh, id, page = 1, limit = Const.ARTICLE_PAGINATION) {
   if (refresh || dataStore.store('articles').length === 0) {
     let currentArticleData = dataStore.store('articles')
-    let ret = await articleApi.all(id, page, limit)
-    let articles = ret.items
+    let ret = await getArticle(id, page, limit)
+    let articles = ret.data.items
     for (let article of articles) {
       let tagIds = article['tag_ids'] && article['tag_ids'].split(',')
       article.tags = await getTagsByIds(tagIds)
@@ -80,10 +80,10 @@ export async function getTagsByIds (ids) {
  * @return {Object}
  */
 export async function getArticleById (id) {
-  const articles = await getArticles()
+  const articles = await remoteGetArticles()
   let article = arrayTool.filterItem('id', id, articles)
   if (!article || !article.id) {
-    article = await getArticles(true, id)
+    article = await remoteGetArticles(true, id)
   }
   return article
 }
@@ -99,9 +99,9 @@ export async function getArticleById (id) {
  * @param type
  * @return {Array}
  */
-export async function getComment (refresh, articleId, page = 1, limit = Const.ARTICLE_COMMENT_PAGINATION, childrenPage = 1, childrenLimit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, type) {
+export async function remoteGetComment (refresh, articleId, page = 1, limit = Const.ARTICLE_COMMENT_PAGINATION, childrenPage = 1, childrenLimit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, type) {
   if (refresh || dataStore.store('currentComment').length === 0) {
-    let articleComment = await articleApi.getComment(articleId, page, limit, childrenPage, childrenLimit, type)
+    let articleComment = await getComment(articleId, page, limit, childrenPage, childrenLimit, type)
     dataStore.store('currentComment', articleComment)
   }
   return dataStore.store('currentComment')
@@ -113,8 +113,8 @@ export async function getComment (refresh, articleId, page = 1, limit = Const.AR
  * @param refresh
  * @return {*}
  */
-export async function getCommentById (id, refresh = false) {
-  let cacheComment = await getComment(refresh)
+export async function remoteGetCommentById (id, refresh = false) {
+  let cacheComment = await remoteGetComment(refresh)
   return arrayTool.filterItem('id', id, cacheComment.data)
 }
 
@@ -127,9 +127,9 @@ export async function getCommentById (id, refresh = false) {
  * @param limit
  * @return {Array}
  */
-export async function getChildrenComment (refresh, parentId, page = 1, limit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
-  let childrenComment = await articleApi.getChildrenComment(parentId, page, limit)
-  let currentComment = await getCommentById(parentId)
+export async function remoteGetChildrenComment (refresh, parentId, page = 1, limit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION) {
+  let childrenComment = await getChildrenComment(parentId, page, limit)
+  let currentComment = await remoteGetCommentById(parentId)
   currentComment.children = childrenComment.data
   return childrenComment
 }
@@ -145,8 +145,8 @@ export async function getChildrenComment (refresh, parentId, page = 1, limit = C
  * @param type
  * @return {Boolean}
  */
-export async function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type) {
-  let result = await articleApi.addComment(articleId, userId, content, parentId, replyId, parentUserId, type)
+export async function remoteAddComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type) {
+  let result = await addComment(articleId, userId, content, parentId, replyId, parentUserId, type)
   return result
 }
 
@@ -157,8 +157,8 @@ export async function addComment (articleId, userId, content, parentId = 0, repl
  * @param like
  * @return {Boolean}
  */
-export async function like (userId, commentId, like) {
-  let result = await articleApi.like(userId, commentId, like)
+export async function remoteLike (userId, commentId, likeKey) {
+  let result = await like(userId, commentId, likeKey)
   return result
 }
 
@@ -168,7 +168,7 @@ export async function like (userId, commentId, like) {
  * @param commentId
  * @return {Object}
  */
-export async function getLike (userId, commentId) {
-  let result = await articleApi.getLike(userId, commentId)
+export async function remoteGetLike (userId, commentId) {
+  let result = await getLike(userId, commentId)
   return result
 }
