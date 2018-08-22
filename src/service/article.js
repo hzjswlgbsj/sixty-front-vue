@@ -145,8 +145,8 @@ export async function remoteGetChildrenComment (refresh, parentId, page = 1, lim
  * @param type
  * @return {Boolean}
  */
-export async function remoteAddComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type) {
-  let result = await addComment(articleId, userId, content, parentId, replyId, parentUserId, type)
+export async function remoteAddComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type, email, articleTitle) {
+  let result = await addComment(articleId, userId, content, parentId, replyId, parentUserId, type, email, articleTitle)
   return result
 }
 

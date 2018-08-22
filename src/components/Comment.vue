@@ -144,6 +144,10 @@ export default {
       type: String,
       default: ''
     },
+    articleTitle: {
+      type: String,
+      default: ''
+    },
     backgroundColor: {
       type: String,
       default: '#5292DD'
@@ -261,8 +265,19 @@ export default {
         this.$Message.error('你似乎啥都没说哦~')
         return
       }
+      let email = ''
       try {
-        let ret = await remoteAddComment(parseInt(this.currentArticleId), parseInt(this.user.id), content, this.commentForm.parentId, this.commentForm.replyId, this.commentForm.parentUserId, this.commentType)
+        let ret = await remoteAddComment(
+          parseInt(this.currentArticleId),
+          parseInt(this.user.id),
+          content,
+          this.commentForm.parentId,
+          this.commentForm.replyId,
+          this.commentForm.parentUserId,
+          this.commentType,
+          email,
+          this.articleTitle
+        )
         if (ret && ret.data) {
           this.$Message.success('你说的俺都听到了哦')
           this.refreshCommentData()

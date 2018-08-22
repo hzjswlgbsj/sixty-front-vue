@@ -27,7 +27,7 @@ export function getChildrenComment (parentId, page, limit) {
   })
 }
 
-export function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type) {
+export function addComment (articleId, userId, content, parentId = 0, replyId = 0, parentUserId = 0, type, email, articleTitle) {
   return Api.call('comment.add', {
     article_id: articleId,
     user_id: userId,
@@ -35,7 +35,9 @@ export function addComment (articleId, userId, content, parentId = 0, replyId = 
     parent_user_id: parentUserId,
     parent_id: parentId,
     reply_id: replyId,
-    type
+    type,
+    email,
+    article_title: articleTitle
   })
 }
 

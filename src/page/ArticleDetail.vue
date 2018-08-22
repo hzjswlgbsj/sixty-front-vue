@@ -52,7 +52,12 @@
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
       <div class="article-detail-comment">
-        <comment :comment-total="parseInt(commentData.total)" :commentData="commentData.data" :articleId="currentArticleId" @refresh-comment-data="initCommentData(true)"></comment>
+        <comment
+        :comment-total="parseInt(commentData.total)"
+        :commentData="commentData.data"
+        :article-id="currentArticleId"
+        :article-title="article.title"
+        @refresh-comment-data="initCommentData(true)" />
       </div>
     </div>
   </div>
