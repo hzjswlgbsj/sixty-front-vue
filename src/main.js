@@ -8,12 +8,21 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import Icon from 'vue-awesome/components/Icon'
 import Vuex from 'vuex'
+import VueTimeago from 'vue-timeago'
 import store from './data/store'
 
 Vue.component('icon', Icon)
 Vue.use(iView)
 Vue.use(mavonEditor)
 Vue.use(Vuex)
+Vue.use(VueTimeago, {
+  name: 'Timeago',
+  locale: 'zh-CN',
+  locales: {
+    'zh-CN': require('date-fns/locale/zh_cn'),
+    'ja': require('date-fns/locale/ja')
+  }
+})
 
 Vue.config.productionTip = false
 

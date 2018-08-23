@@ -37,7 +37,10 @@
                 <span class="comment-parent-author">{{comment.user_nickname}}</span>
                 <div class="comment-parent-content-text">{{comment.content}}</div>
                 <div class="comment-parent-content-info">
-                  <div class="comment-parent-content-date">{{comment.create_time}}</div>
+                  <div class="comment-parent-content-date">
+                    吐槽于
+                    <timeago :datetime="comment.create_time" :auto-update="60"/>
+                    </div>
                   <div class="comment-parent-content-agree">
                     <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle" @click.native="handleAgree(comment.id, comment.like, comment)"></icon>
                     <span class="comment-parent-content-agree-number">{{comment.like}}</span>
@@ -64,7 +67,7 @@
                         <span class="comment-children-reply-content">{{reply.content}}</span>
                       </div>
                       <div class="comment-children-content-info">
-                        <span class="comment-children-content-date">{{reply.create_time}}</span>
+                        <span class="comment-children-content-date">回复于 <timeago :datetime="reply.create_time" :auto-update="60"/></span>
                         <span class="comment-children-content-agree">
                       <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle" @click.native="handleAgree(reply.id, reply.like, reply)"></icon>
                       <span class="comment-children-content-agree-number">{{reply.like}}</span>

@@ -29,6 +29,7 @@
 import Avatar from '../../components/Avatar'
 import IconCollection from '../../components/IconCollection'
 import dataStore from '../../data/index'
+import { getScrollTop, getScrollHeight, getWindowHeight } from '../../util/scroll'
 import routerMixin from '../../mixins/router'
 import { SIXTY_LOGO } from '../../const'
 
@@ -69,7 +70,9 @@ export default {
         {key: 'resources', label: 'Recommend'},
         {key: 'about', label: 'Me'}
       ],
-      sixtyLogo: SIXTY_LOGO
+      sixtyLogo: SIXTY_LOGO,
+      isTop: true,
+      isBottom: false
     }
   },
   components: {
@@ -85,12 +88,18 @@ export default {
   },
   computed: {
     topBarStyle () {
-      return {
+      let styleObj = {
         height: this.height,
         color: this.color,
         'font-size': this.fontSize,
         'background-color': this.bgColor
       }
+      if (this.isTop) {
+        styleObj.opacity = 1
+      } else {
+        styleObj.opacity = 0
+      }
+      return styleObj
     },
     iconCollectionStyle () {
       return {
@@ -101,6 +110,18 @@ export default {
   mounted: function () {
     this.$nextTick(function () {
       window.addEventListener('scroll', (e) => {
+        console.log(333333333, getScrollTop())
+        if (getScrollTop() === 0) {
+          this.isTop = true
+        } else {
+          this.isTop = false
+        }
+
+        if (getScrollTop() + getWindowHeight() === getScrollHeight()) {
+          this.isBottom = true
+        } else {
+          this.isBottom = false
+        }
         this.setIconCoolOpacity()
       })
     })
