@@ -1,28 +1,30 @@
 <template>
-  <div class="topbar-container" :style="topBarStyle">
-    <div class="topbar-avatar-container">
-      <avatar :src="sixtyLogo" size="60px"></avatar>
+  <transition name="slide-fade">
+    <div v-if="isUp" class="topbar-container" :style="topBarStyle">
+      <div class="topbar-avatar-container">
+        <avatar :src="sixtyLogo" size="60px"></avatar>
+      </div>
+      <div class="topbar-category-container" v-if="menuList && menuList.length > 0">
+        <span v-for="(menu, index) in menuList"
+          :key="index"
+          :class="currentIdx === index ? 'selected-item' : '' "
+          class="topbar-category-text"
+          @click="changePage(menu.key, index)">
+          {{menu.label}}
+        </span>
+      </div>
+      <div v-if="showCollections" class="topbar-icon-collection-container" :style="iconCollectionStyle">
+        <icon-collection>
+          <div class="topbar-icon-collection" slot="sixty">
+            <avatar :src="sixtyLogo" type='square' size="17px" desc="Sixty"></avatar>
+          </div>
+          <div slot="music">
+            <avatar src="http://ovrjw2my5.bkt.clouddn.com/WYMusic.jpeg" type='square' size="17px" desc="music"></avatar>
+          </div>
+        </icon-collection>
+      </div>
     </div>
-    <div class="topbar-category-container" v-if="menuList && menuList.length > 0">
-      <span v-for="(menu, index) in menuList"
-        :key="index"
-        :class="currentIdx === index ? 'selected-item' : '' "
-        class="topbar-category-text"
-        @click="changePage(menu.key, index)">
-        {{menu.label}}
-      </span>
-    </div>
-    <div v-if="showCollections" class="topbar-icon-collection-container" :style="iconCollectionStyle">
-      <icon-collection>
-        <div class="topbar-icon-collection" slot="sixty">
-          <avatar :src="sixtyLogo" type='square' size="17px" desc="Sixty"></avatar>
-        </div>
-        <div slot="music">
-          <avatar src="http://ovrjw2my5.bkt.clouddn.com/WYMusic.jpeg" type='square' size="17px" desc="music"></avatar>
-        </div>
-      </icon-collection>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -71,6 +73,8 @@ export default {
         {key: 'about', label: 'Me'}
       ],
       sixtyLogo: SIXTY_LOGO,
+      curScrollTop: 0,
+      isUp: true,
       isTop: true,
       isBottom: false
     }
@@ -94,11 +98,11 @@ export default {
         'font-size': this.fontSize,
         'background-color': this.bgColor
       }
-      if (this.isTop) {
-        styleObj.opacity = 1
-      } else {
-        styleObj.opacity = 0
-      }
+      // if (this.isUp) {
+      //   styleObj.opacity = 1
+      // } else {
+      //   styleObj.opacity = 0
+      // }
       return styleObj
     },
     iconCollectionStyle () {
@@ -110,18 +114,10 @@ export default {
   mounted: function () {
     this.$nextTick(function () {
       window.addEventListener('scroll', (e) => {
-        console.log(333333333, getScrollTop())
-        if (getScrollTop() === 0) {
-          this.isTop = true
-        } else {
-          this.isTop = false
-        }
-
-        if (getScrollTop() + getWindowHeight() === getScrollHeight()) {
-          this.isBottom = true
-        } else {
-          this.isBottom = false
-        }
+        this.isUp = this.curScrollTop > getScrollTop()
+        this.isTop = getScrollTop() === 0
+        this.isBottom = getScrollTop() + getWindowHeight() === getScrollHeight()
+        this.curScrollTop = getScrollTop()
         this.setIconCoolOpacity()
       })
     })
@@ -192,6 +188,16 @@ export default {
 <style lang="scss" scoped>
   @import "../../style/mixin/baseMixin";
   @import "../../style/base/base";
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
   .topbar-container {
     width: 100%;
     margin-top: 20px;

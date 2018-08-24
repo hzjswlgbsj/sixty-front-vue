@@ -24,10 +24,16 @@ export async function remoteGetArticles (refresh, id, page = 1, limit = Const.AR
     let currentArticleData = dataStore.store('articles')
     let ret = await getArticle(id, page, limit)
     let articles = ret.data.items
+
+    if (articles.length < Const.ARTICLE_PAGINATION) {
+      dataStore.store('notAnyMareArticle', true)
+    }
+
     for (let article of articles) {
       let tagIds = article['tag_ids'] && article['tag_ids'].split(',')
       article.tags = await getTagsByIds(tagIds)
     }
+
     if (page > 1) {
       let newArticleDate = currentArticleData.concat(articles)
       dataStore.store('articles', newArticleDate)
@@ -35,6 +41,7 @@ export async function remoteGetArticles (refresh, id, page = 1, limit = Const.AR
       dataStore.store('articles', articles)
     }
   }
+
   return dataStore.store('articles')
 }
 

@@ -4,9 +4,9 @@
       <div class="blog-article-item" v-for="article in articleData" :key="article.id">
         <article-item :articleData="article" @go-detail="goDetail"></article-item>
       </div>
-      <div class="blog-article-item-more" @click="handleLoadMore" v-if="articleData && articleData.length > 0">
+      <div class="blog-article-item-more" v-if="notAnyMare">
         <span class="blog-article-item-more-title">
-          --加载更多--
+          --没有更多啦--
         </span>
       </div>
     </div>
@@ -27,6 +27,7 @@ import ArticleItem from '../components/ArticleItem'
 import routerMixin from '../mixins/router'
 import dataStore from '../../src/data/index'
 import { remoteGetArticles } from '../service/article'
+import { getScrollTop, getScrollHeight, getWindowHeight } from '../util/scroll'
 
 export default {
   name: 'blog',
@@ -34,7 +35,8 @@ export default {
     return {
       isDetail: false,
       tags: [],
-      currentArticlePage: 1
+      currentArticlePage: 1,
+      isBottom: false
     }
   },
   mixins: [routerMixin],
@@ -50,6 +52,9 @@ export default {
     articleData () {
       return dataStore.store('articles')
     },
+    notAnyMare () {
+      return dataStore.store('notAnyMareArticle')
+    },
     containerHeight () {
       let height = document.body.clientHeight
       return {
@@ -62,6 +67,11 @@ export default {
       dataStore.store('curRouter', to)
       let curRouterObj = dataStore.store('curRouter')
       this.isDetail = curRouterObj.name === 'ArticleDetail'
+    },
+    isBottom (val) {
+      if (val && !this.isDetail) {
+        this.handleLoadMore()
+      }
     }
   },
   methods: {
@@ -92,6 +102,13 @@ export default {
     async handleLoadMore () {
       await this.articleLoadMore()
     }
+  },
+  mounted: function () {
+    this.$nextTick(function () {
+      window.addEventListener('scroll', (e) => {
+        this.isBottom = getScrollTop() + getWindowHeight() === getScrollHeight()
+      })
+    })
   }
 }
 </script>
@@ -134,19 +151,9 @@ export default {
         }
       }
       .blog-article-item-more {
-        border: 1px dashed #666;
         padding: 10px 60px;
-        border-radius: 20px;
-        cursor: pointer;
         -webkit-transition:.8s ease-in-out;
         -moz-transition:.8s ease-in-out;
-        &:hover {
-          -webkit-transition:.8s ease-in-out;
-          -moz-transition:.8s ease-in-out;
-          background-color: $theme-color;
-          padding: 10px 80px;
-          color: #ffffff;
-        }
         .blog-article-item-more-title {
           font-size: $font-size;
         }
