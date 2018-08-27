@@ -5,8 +5,18 @@
         下面是我们木叶村的一些优秀忍者，想拜他们为师吗？来翻个牌子吧。
       </div>
       <div class="friends-card-container" v-if="linkData && linkData.length > 0">
-        <friend-card class="friends-card-item" v-for="item in linkData" :link-data="item" :key="item.id"></friend-card>
+        <friend-card
+          class="friends-card-item"
+          v-for="item in linkData"
+          :link-data="item"
+          :key="item.id">
+        </friend-card>
       </div>
+      <vue-loading
+        v-else
+        type="bubbles"
+        color="#00A2FC"
+        :size="{ width: '50px', height: '50px' }" />
       <div class="friends-comments">
         <comment
           :comment-total="parseInt(commentData.total)"

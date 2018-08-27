@@ -9,6 +9,7 @@ import 'mavon-editor/dist/css/index.css'
 import Icon from 'vue-awesome/components/Icon'
 import Vuex from 'vuex'
 import VueTimeago from 'vue-timeago'
+import VueLoading from 'vue-loading-template'
 import store from './data/store'
 
 Vue.component('icon', Icon)
@@ -23,6 +24,7 @@ Vue.use(VueTimeago, {
     'ja': require('date-fns/locale/ja')
   }
 })
+Vue.use(VueLoading)
 
 Vue.config.productionTip = false
 

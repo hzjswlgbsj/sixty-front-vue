@@ -5,7 +5,18 @@
         蛇叔掌握尖端科技，下面是药师兜收集的情报，请尽情享用。
       </div>
       <div class="resource-card-container" v-if="linkData && linkData.length > 0">
-        <resource-card class="resource-card-item" v-for="(item, index) in linkData" :link-data="item" :key="index"></resource-card>
+        <resource-card
+          class="resource-card-item"
+          v-for="item in linkData"
+          :link-data="item"
+          :key="item.id">
+        </resource-card>
+      </div>
+      <div v-else>
+        <vue-loading
+          type="bubbles"
+          color="#00A2FC"
+          :size="{ width: '50px', height: '50px' }" />
       </div>
     </div>
   </div>

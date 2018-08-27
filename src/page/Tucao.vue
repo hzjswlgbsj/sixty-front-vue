@@ -29,8 +29,8 @@
         </p>
         <p>常驻B站，Sixty'den的评论组件跟它的如出一撤，(゜-゜)つロ干杯~-bilibilin</p>
         <p>
-          火影迷，我是要当上
-          <span class="message-content-keywords">火影</span>
+          火影迷，我是要继承
+          <span class="message-content-keywords5">火（chǎn）之（pǐn）意（zǒng）志（jiān）</span>
           的人，怎么能在此处倒下！
         </p>
         <p>
@@ -151,6 +151,9 @@ export default {
         }
         .message-content-keywords4 {
           @include keywords(#FFA347)
+        }
+        .message-content-keywords5 {
+          @include keywords(#FED95F)
         }
       }
       .message-comment {

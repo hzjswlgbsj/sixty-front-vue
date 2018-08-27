@@ -62,6 +62,13 @@ const router = new Router({
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  dataStore.store('curRouter', to.name)
+  dataStore.store('currentComment', [])
+  dataStore.store('links', [])
+  next()
+})
+
 export function redirectLogin (loginBackRouter = '/') {
   dataStore.storage('loginBackRouter', loginBackRouter)
   router.push('/login/code')

@@ -6,7 +6,7 @@
         <span class="main-layout-desc">Sixty's Den</span>
         <p class="main-layout-motto">活到老，学到老</p>
         <common-line width="50%" class="main-layout-line"></common-line>
-        <p class="main-layout-self-intro">嗨，我是刘林 (@Sixty)，一名来自四川绵阳的web开发者。现居南京，就职于育儿网，正在前端的浑水里摸爬打滚。</p>
+        <p class="main-layout-self-intro">嗨，我是刘林 (@Sixty)，一名来自天府之国的web开发者，现居南京，就职于育儿网，正在前端的浑水里摸爬打滚。</p>
         <common-line width="15%" class="main-layout-line"></common-line>
         <p class="main-layout-self-desc">生活不止眼前的代码，还有弹不响的吉他弦。</p>
         <div class="main-layout-module">

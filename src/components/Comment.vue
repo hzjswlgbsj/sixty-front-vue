@@ -1,7 +1,8 @@
 <template>
   <div class="comment-container">
     <div class="article-comment">
-      <div class="article-comment-total">{{total}}&nbsp;&nbsp;评论</div>
+      <div class="article-comment-total" v-if="total">{{ total }}&nbsp;&nbsp;评论</div>
+      <div class="article-comment-total" v-else>暂无吐槽</div>
       <!--推送提醒-->
       <!--<div class="article-comment-notice">
         <Alert show-icon closable>
@@ -111,6 +112,12 @@
         <div class="article-comment-login">
           <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentLevel.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
         </div>-->
+      </div>
+      <div v-else>
+        <vue-loading
+          type="bubbles"
+          color="#00A2FC"
+          :size="{ width: '30px', height: '30px' }" />
       </div>
     </div>
   </div>

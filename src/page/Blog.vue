@@ -4,19 +4,26 @@
       <div class="blog-article-item" v-for="article in articleData" :key="article.id">
         <article-item :articleData="article" @go-detail="goDetail"></article-item>
       </div>
-      <div class="blog-article-item-more" v-if="notAnyMare">
-        <span class="blog-article-item-more-title">
-          --没有更多啦--
+      <div class="blog-article-item-more">
+        <vue-loading
+          v-if="!notAnyMare && articleData && articleData.length > 0"
+          type="bubbles"
+          color="#00A2FC"
+          :size="{ width: '50px', height: '50px' }" />
+        <span class="blog-article-item-more-title" v-if="notAnyMare">
+          -- 再拉，肠子都被你拉出来了(゜-゜) --
         </span>
       </div>
     </div>
     <div v-else class="blog-article-detail-container">
       <router-view></router-view>
     </div>
-    <Spin v-if="!articleData || articleData.length === 0">
-      <Icon type="load-c" size=18 class="blog-article-item-load"></Icon>
-      <div>Loading</div>
-    </Spin>
+
+    <vue-loading
+      v-if="!articleData || articleData.length === 0"
+      type="bubbles"
+      color="#00A2FC"
+      :size="{ width: '50px', height: '50px' }" />
   </div>
 </template>
 
@@ -69,7 +76,7 @@ export default {
       this.isDetail = curRouterObj.name === 'ArticleDetail'
     },
     isBottom (val) {
-      if (val && !this.isDetail) {
+      if (val && !this.isDetail && !this.notAnyMare) {
         this.handleLoadMore()
       }
     }
