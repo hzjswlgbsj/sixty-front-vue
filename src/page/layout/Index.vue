@@ -101,7 +101,7 @@ export default {
     .main-layout-structure-return-top {
       width: 45px;
       height: 45px;
-      background-color: #548FDD;
+      background-color: $theme-color;
       border-radius: 50%;
       position: fixed;
       bottom: 20px;
@@ -115,7 +115,7 @@ export default {
       }
       &:hover {
         cursor: pointer;
-        background-color: #29B5E5;
+        background-color: $hover-color;
       }
     }
     .slide-fade-enter-active {

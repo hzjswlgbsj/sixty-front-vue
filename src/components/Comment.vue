@@ -41,7 +41,7 @@
                   <div class="comment-parent-content-date">
                     吐槽于
                     <timeago :datetime="comment.create_time" :auto-update="60"/>
-                    </div>
+                  </div>
                   <div class="comment-parent-content-agree">
                     <icon name="thumbs-o-up" scale="0.8" style="vertical-align: middle" @click.native="handleAgree(comment.id, comment.like, comment)"></icon>
                     <span class="comment-parent-content-agree-number">{{comment.like}}</span>
@@ -116,7 +116,7 @@
       <div v-else>
         <vue-loading
           type="bubbles"
-          color="#00A2FC"
+          color="#2BBC8A"
           :size="{ width: '30px', height: '30px' }" />
       </div>
     </div>
@@ -379,7 +379,7 @@ export default {
       }
       .article-comment-head {
         border-bottom: 1px solid #E5E9EF;
-        font-size: 14px;
+        font-size: 12px;
         @include flex-define(row, space-between, center);
         .article-comment-all {
           position: relative;
@@ -421,15 +421,17 @@ export default {
             margin: 0 0 0 30px;
             .comment-parent-info {
               width: 100%;
-              font-size: 14px;
+              font-size: 12px;
               line-height: 1.8em;
               .comment-parent-author {
+                color: #2BBC8A;
                 @include cursor-hover-color;
               }
               .comment-parent-content-text {
-                font-size: 16px;
-                color: $font-color;
+                font-size: 14px;
+                color: #ffffff;
                 font-weight: 400;
+                line-height: 2em;
               }
               .comment-parent-content-info {
                 width: 100%;
@@ -440,6 +442,7 @@ export default {
                 .comment-parent-content-agree,
                 .comment-parent-content-disagree,
                 .comment-parent-content-replay {
+                  color: $font-other-color;
                   margin-right: 10px;
                   padding: 0 5px;
                   @include cursor-hover-color;
@@ -449,16 +452,19 @@ export default {
                 }
               }
               .comment-children-container {
-                margin: 10px 0;
+                margin: 20px 0;
                 @include flex-define(row, flex-start, flex-start);
                 .comment-children-info {
                   margin: -6px 0 0 10px;
                   .comment-children-author-content {
+                    .comment-children-author{
+                      color: #2BBC8A;
+                    }
                     .comment-children-reply-author {
                       color: $theme-color;
                     }
                     .comment-children-reply-content {
-                      font-size: 16px;
+                      font-size: 14px;
                       color: $font-color;
                       font-weight: 400;
                     }
@@ -468,6 +474,7 @@ export default {
                     .comment-children-content-date,
                     .comment-children-content-agree,
                     .comment-children-content-replay {
+                      color: $font-other-color;
                       margin-right: 10px;
                       padding: 2px 5px;
                       @include cursor-hover-color;

@@ -8,7 +8,7 @@
         <vue-loading
           v-if="!notAnyMare && articleData && articleData.length > 0"
           type="bubbles"
-          color="#00A2FC"
+          color="#2BBC8A"
           :size="{ width: '50px', height: '50px' }" />
         <span class="blog-article-item-more-title" v-if="notAnyMare">
           -- 再拉，肠子都被你拉出来了(゜-゜) --
@@ -22,7 +22,7 @@
     <vue-loading
       v-if="!articleData || articleData.length === 0"
       type="bubbles"
-      color="#00A2FC"
+      color="#2BBC8A"
       :size="{ width: '50px', height: '50px' }" />
   </div>
 </template>

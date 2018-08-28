@@ -15,7 +15,7 @@
       <div v-else>
         <vue-loading
           type="bubbles"
-          color="#00A2FC"
+          color="#2BBC8A"
           :size="{ width: '50px', height: '50px' }" />
       </div>
     </div>

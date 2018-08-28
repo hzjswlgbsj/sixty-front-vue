@@ -15,7 +15,7 @@
       <vue-loading
         v-else
         type="bubbles"
-        color="#00A2FC"
+        color="#2BBC8A"
         :size="{ width: '50px', height: '50px' }" />
       <div class="friends-comments">
         <comment

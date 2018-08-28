@@ -3,8 +3,10 @@
     <div class="footbar-right-content">
       <span>Copyright © 2016-2018 Sixty'Den  </span>
       <span>
-        <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=-SZfrYcQQRABkmqrjrAVFUmtlKPrDQMkUmrYo-WPX2W21tJf-w6H!893468602" target="_blank">
-           苏ICP备17001302号
+        <a
+          style="color: #2BBC8A;"
+          href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=-SZfrYcQQRABkmqrjrAVFUmtlKPrDQMkUmrYo-WPX2W21tJf-w6H!893468602" target="_blank">
+          苏ICP备17001302号
         </a>
       </span>
     </div>

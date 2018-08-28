@@ -115,12 +115,12 @@ export default {
         .logout-desc-logout-btn {
           padding: 2px 5px;
           border-radius: 4px;
-          color: #E6E9EF;
+          color: $logout-color;
           background-color: $theme-color;
           cursor: pointer;
           margin: 0 3px;
           &:hover {
-            background-color: #1BB5E5;
+            background-color: $hover-color;
             font-size: 14px;
           }
         }
@@ -128,7 +128,7 @@ export default {
     }
     .logout-comment-btn {
       background-color: $theme-color;
-      color: #E6E9EF;
+      color: $logout-color;
       width: 65px;
       height: 65px;
       flex-basis: 65px;
@@ -138,7 +138,7 @@ export default {
       font-size: 15px;
       cursor: pointer;
       &:hover {
-        background-color: #1BB5E5;
+        background-color: $hover-color;
       }
     }
     .logout-comment-btn-logout {

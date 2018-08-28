@@ -194,7 +194,7 @@ export default {
           .article-detail-reference-link a {
             color: #DAE1E8;
             &:hover {
-              color: $base-color;
+              color: $hover-color;
             }
           }
         }
