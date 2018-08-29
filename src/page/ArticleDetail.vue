@@ -1,10 +1,10 @@
 <template>
   <div class="article-detail-container">
     <div class="article-detail-title-info" v-if="article.id">
-      <div class="article-detail-title">{{article.title}}</div>
-
-      <article-info :article-data="article"/>
-
+      <div class="article-detail-tpo-cover" :style="detailCover">
+        <div class="article-detail-title">{{article.title}}</div>
+        <article-info :article-data="article"/>
+      </div>
       <div class="article-detail-content">
         <mavon-editor
           class="article-detail-content-markdown"
@@ -15,15 +15,15 @@
           :box-shadow="false"
           v-model="article.content"/>
       </div>
-      <div class="article-detail-reference">
-        <h3>参考信息</h3>
-        <div class="article-detail-reference-content" v-if="reference && reference.length > 0">
-          <div class="article-detail-reference-link" v-for="(item, index) in reference" :key="index">
-            <a :href="item.link">[{{index + 1}}] {{item.description}}</a>
-          </div>
-        </div>
-        <div class="article-detail-reference-content" v-else>哈哈，看来这是一篇纯原创^_^</div>
-      </div>
+      <!--<div class="article-detail-reference">-->
+        <!--<h3>参考信息</h3>-->
+        <!--<div class="article-detail-reference-content" v-if="reference && reference.length > 0">-->
+          <!--<div class="article-detail-reference-link" v-for="(item, index) in reference" :key="index">-->
+            <!--<a :href="item.link">[{{index + 1}}] {{item.description}}</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="article-detail-reference-content" v-else>哈哈，看来这是一篇纯原创^_^</div>-->
+      <!--</div>-->
       <!--<div class="article-detail-qrcode">这里是二维码</div>-->
       <div class="article-detail-rights">
         <block-text backgroundColor="#1B1D23" width="100%">
@@ -103,6 +103,25 @@ export default {
   computed: {
     commentData () {
       return dataStore.store('currentComment')
+    },
+    articleCoverImg () {
+      try {
+        if (this.article['cover_picture']) {
+          return JSON.parse(this.article['cover_picture'])
+        }
+        return []
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    detailCover () {
+      const width = document.body.clientWidth
+      if (this.articleCoverImg.length > 0) {
+        return {
+          backgroundImage: `url(${this.articleCoverImg[0].url})`,
+          width: `${width}px`
+        }
+      }
     }
   },
   mounted () {
@@ -140,15 +159,27 @@ export default {
   @import "../style/base/base";
   .article-detail-container {
     @include flex-define(column, center, center);
-    margin-top: 60px;
+    /*margin-top: 60px;*/
     .article-detail-title-info {
       @include flex-define(column, center, center);
       color: #DAE1E8;
       font-size: $font-size;
       width: 62%;
       max-width: 880px;
-      .article-detail-title {
-        font-size: $font-size-title;
+      .article-detail-tpo-cover {
+        height: 400px;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        display: block;
+        background-color: rgba(0,0,0,0.02);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        .article-detail-title {
+          margin-top: 150px;
+          text-align: center;
+          font-size: 40px;
+        }
       }
       .article-detail-info {
         @include flex-define(row, start, center);

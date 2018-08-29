@@ -15,7 +15,7 @@
         </span>
       </div>
     </div>
-    <div v-else class="blog-article-detail-container">
+    <div v-else>
       <router-view></router-view>
     </div>
 
@@ -165,9 +165,6 @@ export default {
           font-size: $font-size;
         }
       }
-    }
-    .blog-article-detail-container {
-      margin-top: 140px;
     }
   }
 </style>
