@@ -1,7 +1,8 @@
 <template>
   <div class="article-detail-container">
     <div class="article-detail-title-info" v-if="article.id">
-      <div class="article-detail-tpo-cover" :style="detailCover">
+      <div class="article-detail-top-cover" :style="detailCover"></div>
+      <div class="article-detail-title-container">
         <div class="article-detail-title">{{article.title}}</div>
         <article-info :article-data="article"/>
       </div>
@@ -162,21 +163,26 @@ export default {
     /*margin-top: 60px;*/
     .article-detail-title-info {
       @include flex-define(column, center, center);
-      color: #DAE1E8;
+      color: #ffffff;
       font-size: $font-size;
       width: 62%;
       max-width: 880px;
-      .article-detail-tpo-cover {
+      .article-detail-top-cover {
         height: 400px;
         border-radius: 5px;
         margin-bottom: 30px;
         display: block;
-        background-color: rgba(0,0,0,0.02);
+        background-color: rgba(0, 0, 0, .6);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
+        transition: opacity 1s;
+        opacity: .5;
+      }
+      .article-detail-title-container {
+        z-index: 2;
         .article-detail-title {
-          margin-top: 150px;
+          margin-top: -280px;
           text-align: center;
           font-size: 40px;
         }

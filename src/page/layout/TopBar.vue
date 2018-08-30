@@ -1,28 +1,37 @@
 <template>
   <transition name="slide-fade">
     <div v-if="isUp" class="topbar-container" :style="topBarStyle">
-      <div class="topbar-avatar-container">
-        <avatar :src="sixtyLogo" size="60px"></avatar>
-      </div>
-      <div class="topbar-category-container" v-if="menuList && menuList.length > 0">
-        <span v-for="(menu, index) in menuList"
+      <div class="topbar-inner-container">
+        <div class="topbar-avatar-container">
+          <avatar :src="sixtyLogo" size="22px"></avatar>
+        </div>
+        <div
+          class="topbar-category-text"
+          v-if="menuList && menuList.length > 0"
+          v-for="(menu, index) in menuList"
           :key="index"
           :class="currentIdx === index ? 'selected-item' : '' "
-          class="topbar-category-text"
           @click="changePage(menu.key, index)">
           {{menu.label}}
-        </span>
+        </div>
+        <div class="topbar-search-icon">
+          <Icon type="ios-search" size="18"/>
+        </div>
+        <div class="topbar-github-icon">
+          <Icon type="logo-github" size="18" />
+        </div>
       </div>
-      <div v-if="showCollections" class="topbar-icon-collection-container" :style="iconCollectionStyle">
-        <icon-collection>
-          <div class="topbar-icon-collection" slot="sixty">
-            <avatar :src="sixtyLogo" type='square' size="17px" desc="Sixty"></avatar>
-          </div>
-          <div slot="music">
-            <avatar src="http://ovrjw2my5.bkt.clouddn.com/WYMusic.jpeg" type='square' size="17px" desc="music"></avatar>
-          </div>
-        </icon-collection>
-      </div>
+
+      <!--<div v-if="showCollections" class="topbar-icon-collection-container" :style="iconCollectionStyle">-->
+        <!--<icon-collection>-->
+          <!--<div class="topbar-icon-collection" slot="sixty">-->
+            <!--<avatar :src="sixtyLogo" type='square' size="17px" desc="Sixty"></avatar>-->
+          <!--</div>-->
+          <!--<div slot="music">-->
+            <!--<avatar src="http://ovrjw2my5.bkt.clouddn.com/WYMusic.jpeg" type='square' size="17px" desc="music"></avatar>-->
+          <!--</div>-->
+        <!--</icon-collection>-->
+      <!--</div>-->
     </div>
   </transition>
 </template>
@@ -40,15 +49,15 @@ export default {
   props: {
     height: {
       type: String,
-      default: '80px'
+      default: '44px'
     },
     bgColor: {
       type: String,
-      default: '#22354A'
+      default: '#000000'
     },
     fontSize: {
       type: String,
-      default: '18px'
+      default: '14px'
     },
     color: {
       type: String,
@@ -66,11 +75,11 @@ export default {
       showCollections: true,
       currentIdx: -1,
       menuList: [
-        {key: 'blog', label: 'Home'},
+        {key: 'blog', label: 'Blog'},
         {key: 'tucao', label: 'Tucao'},
-        {key: 'friend', label: 'Developer'},
-        {key: 'resources', label: 'Recommend'},
-        {key: 'about', label: 'Me'}
+        {key: 'friend', label: 'Okami'},
+        {key: 'resources', label: 'Exploration'},
+        {key: 'about', label: 'About'}
       ],
       sixtyLogo: SIXTY_LOGO,
       curScrollTop: 0,
@@ -199,33 +208,43 @@ export default {
     opacity: 0;
   }
   .topbar-container {
+    padding: 0 180px;
     width: 100%;
     margin-top: 20px;
     z-index: $index-level-first;
     opacity: 0.95;
-    @include flex-define (row, space-between, center);
+    @include flex-define (row, center, center);
     position: fixed;
     top: -20px;
-    /*box-shadow: 0 1px 5px #495B64;*/
-    .topbar-avatar-container {
-      margin-left: 180px;
+    .topbar-inner-container {
+      @include flex-define (row, space-around, center);
+      width: 100%;
+      max-width: 1100px;
     }
-    .topbar-category-container {
-      margin-right: 60px;
-      .selected-item {
+    .topbar-avatar-container {
+      padding-top: 5px;
+    }
+    .selected-item {
+      color: $theme-color;
+    }
+    .topbar-category-text {
+      margin-right: 30px;
+      font-size: 14px;
+      &:hover {
         color: $theme-color;
+        cursor: pointer
       }
-      .topbar-category-text {
-        margin-right: 60px;
-        &:hover {
-          color: $theme-color;
-          cursor: pointer
-        }
+    }
+    .topbar-search-icon, .topbar-github-icon {
+      cursor: pointer;
+      &:hover {
+        color: $theme-color;
+        cursor: pointer
       }
     }
     .topbar-icon-collection-container {
       position: fixed;
-      top: 100px;
+      top: 60px;
       right: 160px;
     }
   }

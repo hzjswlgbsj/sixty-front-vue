@@ -30,7 +30,7 @@
         <p>常驻B站，Sixty'den的评论组件跟它的如出一撤，(゜-゜)つロ干杯~-bilibilin</p>
         <p>
           火影迷，我是要继承
-          <span class="message-content-keywords5">火（chǎn）之（pǐn）意（zǒng）志（jiān）</span>
+          <span class="message-content-keywords5">火（jì）之（shù）意（zǒng）志（jiān）</span>
           的人，怎么能在此处倒下！
         </p>
         <p>
@@ -109,7 +109,7 @@ export default {
   .message-root {
     display: flex;
     justify-content: center;
-    margin-top: 150px;
+    margin-top: 100px;
     width: 100%;
     height: 100%;
     .message-container {
@@ -129,7 +129,6 @@ export default {
         }
         .message-content-title-text {
           font-size: 1.1em;
-
         }
         p {
           text-indent: 2em;

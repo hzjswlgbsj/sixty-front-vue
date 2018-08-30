@@ -37,6 +37,10 @@ export default {
     font-size: 1.2em !important;
   }
 
+  h1, h2, h3 {
+    border: none !important;
+  }
+
   .hljs {
     padding: 1em !important;
     border-radius: 10px;
@@ -44,10 +48,10 @@ export default {
   .v-show-content, .scroll-style {
     padding: 0 !important;
     color: #DAE1E8 !important;
-    background-color: #1A2936 !important;
+    background-color: $theme-background-color !important;
   }
   .v-show-content pre {
-    background-color: #1A2936 !important;
+    background-color: $theme-background-color !important;
   }
   .v-note-wrapper .v-note-panel {
     box-shadow: none !important;
