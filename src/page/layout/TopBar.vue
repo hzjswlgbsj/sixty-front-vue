@@ -18,7 +18,9 @@
           <Icon type="ios-search" size="18"/>
         </div>
         <div class="topbar-github-icon">
-          <Icon type="logo-github" size="18" />
+          <a href="https://github.com/hzjswlgbsj" target="_blank">
+            <Icon type="logo-github" size="18" />
+          </a>
         </div>
       </div>
 
@@ -240,6 +242,12 @@ export default {
       &:hover {
         color: $theme-color;
         cursor: pointer
+      }
+      a {
+        color: $font-color;
+        &:hover {
+          color: $theme-color;
+        }
       }
     }
     .topbar-icon-collection-container {

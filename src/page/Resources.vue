@@ -2,7 +2,7 @@
   <div class="resource-root" :style="containerHeight">
     <div class="resource-container">
       <div class="resource-alert-operation">
-        蛇叔掌握尖端科技，下面是药师兜收集的情报，请尽情享用。
+        这里是大蛇丸的实验室，在下追随蛇叔多年，下面是我一路走来做的一些研究，请大佬过目
       </div>
       <div class="resource-card-container" v-if="linkData && linkData.length > 0">
         <resource-card
@@ -87,7 +87,7 @@ export default {
   .resource-root {
     display: flex;
     justify-content: center;
-    margin-top: 150px;
+    margin-top: 80px;
     width: 100%;
     height: 100%;
     .resource-container {

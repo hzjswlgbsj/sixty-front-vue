@@ -216,9 +216,9 @@ export default {
           color: $font-color;
         }
         .article-detail-rights-link {
-          /*color: lime;*/
+          color: $theme-color;
           &:hover {
-            color: #DD021C !important;
+            color: $hover-color !important;
           }
         }
       }
