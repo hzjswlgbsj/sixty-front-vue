@@ -99,8 +99,8 @@ export default {
       height: 100%;
     }
     .main-layout-structure-return-top {
-      width: 45px;
-      height: 45px;
+      width: 30px;
+      height: 30px;
       background-color: $theme-color;
       border-radius: 50%;
       position: fixed;

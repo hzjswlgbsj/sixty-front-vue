@@ -40,7 +40,7 @@
         </p>
         <p>
           什么？你想知道更多？
-          <a class="message-content-keywords3 keywords-link2" href="http://about.sixtyden.com" target="_blank">飞雷神</a>
+          <a class="message-content-keywords3 keywords-link2" @click="handleJumpAbout">飞雷神</a>
           带你飞
         </p>
         <p>既然来了，不妨留下你的足迹，对在下指点一二。</p>
@@ -98,6 +98,9 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    handleJumpAbout () {
+      this.$router.push('/about')
     }
   }
 }

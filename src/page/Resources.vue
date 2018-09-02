@@ -2,7 +2,8 @@
   <div class="resource-root" :style="containerHeight">
     <div class="resource-container">
       <div class="resource-alert-operation">
-        这里是大蛇丸的实验室，在下追随蛇叔多年，下面是我一路走来做的一些研究，请大佬过目
+        <p>这里是大蛇丸的实验室，在下追随蛇叔多年，下面是我一路走来收集的密卷（其实就是爬过的坑-_=）</p>
+        <p>请大佬过目</p>
       </div>
       <div class="resource-card-container" v-if="linkData && linkData.length > 0">
         <resource-card
@@ -96,6 +97,7 @@ export default {
       .resource-alert-operation {
         font-size: 16px;
         color: $font-color;
+        margin-bottom: 20px;
       }
       .resource-card-container {
         @include flex-define(row, start, center);

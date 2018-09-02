@@ -125,7 +125,7 @@ export default {
   .blog-container {
     height: 100%;
     .blog-article-container {
-      margin-top: 120px;
+      margin-top: 80px;
       @include flex-define (column, center, center);
       .blog-article-item {
         color: #f9f9f9;

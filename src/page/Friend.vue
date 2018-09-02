@@ -95,7 +95,7 @@ export default {
   .friends-root {
     display: flex;
     justify-content: center;
-    margin-top: 150px;
+    margin-top: 80px;
     width: 100%;
     height:100%;
     .friends-container {
@@ -104,6 +104,7 @@ export default {
       .friends-alert-operation {
         font-size: 16px;
         color: $font-color;
+        margin-bottom: 20px;
       }
       .friends-card-container {
         @include flex-define(row, start, center);

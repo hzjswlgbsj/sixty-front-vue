@@ -1,6 +1,9 @@
 <template>
   <div class="sixty-base-card-container" :style="initStyle" :class="rotateClass" @click="handleClick">
-    <slot v-if="!bgImage"></slot>
+    <div class="sixty-base-card-image-cover" v-if="!isFront" />
+    <div class="sixty-base-card-image" v-if="!isFront">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -27,7 +30,11 @@ export default {
     rotate: {
       type: Boolean,
       default: false
-    }
+    },
+    isFront: {
+      type: Boolean,
+      default: true
+    },
   },
   data () {
     return {
@@ -59,13 +66,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "../style/base/base";
   .sixty-base-card-container {
     cursor: pointer;
     border-radius: 5px;
-    padding: 10px;
+    /*padding: 10px;*/
     background-repeat:no-repeat;
     background-size:100% 100%;
     -moz-background-size:100% 100%;
+    position: relative;
+    .sixty-base-card-image {
+      position: absolute;
+      top: 14px;
+      left: 20px;
+      z-index: $index-level-first;
+    }
+    .sixty-base-card-image-cover {
+      opacity: 0.6;
+      background-color: #000000;
+      width: 100%;
+      height: 100%;
+    }
   }
   .sixty-card-rotate {
     -webkit-transition:1s ease-in-out;

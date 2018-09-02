@@ -1,6 +1,10 @@
 <template>
   <div class="friend-card" @click="handleJump">
-    <sixty-card rotate :background-image="backgroundImage" @on-click="clickCard">
+    <sixty-card
+      rotate
+      :is-front="isFront"
+      :background-image="backgroundImage"
+      @on-click="clickCard">
       <div class="friend-card-content">
         <div class="friend-card-content-avatar-name">
           <avatar size="40px" :src="itemData.logo_url" rotate></avatar>
@@ -29,7 +33,8 @@ export default {
   },
   data () {
     return {
-      backgroundImage: 'http://ovrjw2my5.bkt.clouddn.com/hy2.jpeg'
+      backgroundImage: 'http://lib.sixtyden.com/hy1.jpeg',
+      isFront: true
     }
   },
   computed: {
@@ -39,12 +44,13 @@ export default {
   },
   methods: {
     clickCard () {
+      this.backgroundImage = 'http://lib.sixtyden.com/hy2.jpeg'
       setTimeout(() => {
-        this.backgroundImage = ''
+        this.isFront = false
       }, 1000)
     },
     handleJump () {
-      if (!this.backgroundImage) {
+      if (!this.isFront) {
         window.open(this.itemData.link)
       }
     }
