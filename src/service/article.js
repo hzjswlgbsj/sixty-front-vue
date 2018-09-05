@@ -6,7 +6,7 @@
  */
 
 import dataStore from '../data/index'
-import arrayTool from '../util/array'
+import _ from 'lodash'
 import tagApi from '../api/tags'
 import Const from '../const/index'
 import { getArticle, getComment, getChildrenComment, addComment, like, getLike } from '../api/article'
@@ -64,7 +64,7 @@ export async function getTags (refresh) {
  * @return {Array}
  */
 export async function getTagsByIds (ids) {
-  if (!ids || !arrayTool.isArray(ids) || ids.length < 1) {
+  if (!ids || !_.isArray(ids) || ids.length < 1) {
     return null
   }
   const allTags = await getTags()
@@ -87,12 +87,10 @@ export async function getTagsByIds (ids) {
  * @return {Object}
  */
 export async function getArticleById (id) {
-  const articles = await remoteGetArticles()
-  let article = arrayTool.filterItem('id', id, articles)
-  if (!article || !article.id) {
-    article = await remoteGetArticles(true, id)
+  if (id) {
+    let ret = await getArticle(id)
+    return ret.data.items[0]
   }
-  return article
 }
 
 /**
@@ -122,7 +120,7 @@ export async function remoteGetComment (refresh, articleId, page = 1, limit = Co
  */
 export async function remoteGetCommentById (id, refresh = false) {
   let cacheComment = await remoteGetComment(refresh)
-  return arrayTool.filterItem('id', id, cacheComment.data)
+  return _.find(cacheComment.data, {id: id})
 }
 
 /**

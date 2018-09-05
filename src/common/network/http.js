@@ -14,7 +14,7 @@ function post (url, params) {
       headers: {
         'Content-type': 'application/x-www-form-urlencoded'
       },
-      timeout: 10000
+      timeout: 20000
     })
     .catch(e => {
       console.error(TAG, e)

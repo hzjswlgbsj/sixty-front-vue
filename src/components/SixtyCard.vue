@@ -34,7 +34,7 @@ export default {
     isFront: {
       type: Boolean,
       default: true
-    },
+    }
   },
   data () {
     return {

@@ -61,7 +61,7 @@ var module = {
       headers: {
         'Content-type': 'application/x-www-form-urlencoded'
       },
-      timeout: 10000
+      timeout: 20000
     }).then((response) => {
       let data = response.data
       if (data.ret === 1) {

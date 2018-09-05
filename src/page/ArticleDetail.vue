@@ -38,17 +38,17 @@
         </block-text>
       </div>
       <div class="article-detail-previous-next">
-        <div class="article-detail-previous">
-          <Icon style="margin-right: 10px" type="chevron-left"></Icon>
+        <div class="article-detail-previous" v-if="article.preArticle" @click="jumpById(article.preArticle.id)">
+          <Icon style="margin-right: 10px" size="20" type="ios-arrow-back"></Icon>
           <span class="article-detail-previous-text">
-            大学给了我们什么
+            {{article.preArticle.title}}
           </span>
         </div>
-        <div class="article-detail-next">
+        <div class="article-detail-next" v-if="article.nextArticle" @click="jumpById(article.nextArticle.id)">
           <span class="article-detail-next-text">
-            mac系统搭建php开发环境
+            {{article.nextArticle.title}}
           </span>
-          <Icon style="margin-left: 10px" type="chevron-right"></Icon>
+          <Icon style="margin-left: 10px" size="20" type="ios-arrow-forward"></Icon>
         </div>
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
@@ -60,6 +60,12 @@
         :article-title="article.title"
         @refresh-comment-data="initCommentData(true)" />
       </div>
+    </div>
+    <div v-else>
+      <vue-loading
+        type="bubbles"
+        color="#2BBC8A"
+        :size="{ width: '30px', height: '30px' }" />
     </div>
   </div>
 </template>
@@ -150,6 +156,10 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    jumpById (id) {
+      let url = `${window.location.origin}/blog/articleDetail/${id}`
+      window.location.href = url
     }
   }
 }
@@ -243,7 +253,7 @@ export default {
         .article-detail-previous, .article-detail-next {
           &:hover {
             cursor: pointer;
-            color: #5292DD;
+            color: $hover-color;
           }
         }
       }

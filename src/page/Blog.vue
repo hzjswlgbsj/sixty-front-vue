@@ -5,14 +5,14 @@
         <article-item :articleData="article" @go-detail="goDetail"></article-item>
       </div>
       <div class="blog-article-item-more">
+        <span class="blog-article-item-more-title" v-if="notAnyMare">
+          -- 再拉，肠子都被你拉出来了(゜-゜) --
+        </span>
         <vue-loading
           v-if="!notAnyMare && articleData && articleData.length > 0"
           type="bubbles"
           color="#2BBC8A"
           :size="{ width: '50px', height: '50px' }" />
-        <span class="blog-article-item-more-title" v-if="notAnyMare">
-          -- 再拉，肠子都被你拉出来了(゜-゜) --
-        </span>
       </div>
     </div>
     <div v-else>
