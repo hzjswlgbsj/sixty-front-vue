@@ -4,7 +4,9 @@
       <div class="message-content">
         <span class="message-content-hello-text">各位大佬好：</span>
         <p>
-          欢迎来到Sixty'den，它存在的意义就是记录我的成长历程。在下认为，要把某个知识融会贯通需要去梳理这中间的逻辑。而把这个过程用图文形式记录下来是一个很好的办法。
+          欢迎来到Sixty'den，它存在的意义就是记录我的成长历程。在下认为，要把某个知识融会贯通需要去梳理这中间的逻辑。
+          而把这个过程用图文形式记录下来是一个很好的办法。
+          so，本渣博是个纯技术类渣博-_=。
         </p>
         <span class="message-content-title-text">Sixty's Den的身世</span>
         <p>

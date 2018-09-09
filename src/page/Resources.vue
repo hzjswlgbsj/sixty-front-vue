@@ -2,7 +2,7 @@
   <div class="resource-root" :style="containerHeight">
     <div class="resource-container">
       <div class="resource-alert-operation">
-        <p>这里是大蛇丸的实验室，在下追随蛇叔多年，下面是我一路走来收集的密卷（其实就是爬过的坑-_=）</p>
+        <p>这里是大蛇丸的实验室，在下追随蛇叔多年，下面是我一路走来收集的情报（其实就是爬过的坑-_=）</p>
         <p>请大佬过目</p>
       </div>
       <div class="resource-card-container" v-if="linkData && linkData.length > 0">

@@ -82,7 +82,8 @@ export default {
       z-index: $index-level-first;
     }
     .sixty-base-card-image-cover {
-      opacity: 0.6;
+      opacity: 0.5;
+      border-radius: 5px;
       background-color: #000000;
       width: 100%;
       height: 100%;

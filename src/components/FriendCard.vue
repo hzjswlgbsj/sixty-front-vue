@@ -3,6 +3,7 @@
     <sixty-card
       rotate
       :is-front="isFront"
+      :class="isFront ? '' : 'friends-card-active'"
       :background-image="backgroundImage"
       @on-click="clickCard">
       <div class="friend-card-content">
@@ -44,8 +45,8 @@ export default {
   },
   methods: {
     clickCard () {
-      this.backgroundImage = 'http://lib.sixtyden.com/hy2.jpeg'
       setTimeout(() => {
+        this.backgroundImage = 'http://lib.sixtyden.com/hy2.jpeg'
         this.isFront = false
       }, 1000)
     },
@@ -82,4 +83,25 @@ export default {
       }
     }
   }
+
+  /*边框闪烁动画开始*/
+  .friends-card-active {
+    /*width: 150px;*/
+    /*height: 130px;*/
+    /*background-color: #0d1926;*/
+    animation: glow 800ms ease-out infinite alternate;
+  }
+  @keyframes glow {
+    0% {
+      border-color: #bc98ff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(19, 19, 255, 0.6), inset 0 0 8px rgba(53, 19, 255, 0.4), 0 0 0 #2f3c99;
+    }
+    100% {
+      border-color: #272899;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(78, 147, 255, 0.6), inset 0 0 15px rgba(47, 58, 255, 0.4), 0 0 0 #daa7ff;
+    }
+  }
+  /*边框闪烁动画结束*/
 </style>
