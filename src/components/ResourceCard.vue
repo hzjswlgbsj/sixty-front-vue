@@ -1,14 +1,12 @@
 <template>
   <div class="resource-card" @click="handleJump">
-    <sixty-card card-width="175px" card-height="100px" background-color="#336773">
-      <div class="resource-card-content" v-if="itemData">
-        <div class="resource-card-content-avatar-name">
-          <avatar size="40px" :src="itemData.logo_url" rotate></avatar>
-          <div class="resource-card-content-name">{{itemData.nickname}}</div>
-        </div>
-        <div class="resource-card-content-description">{{itemData.description}}</div>
+    <div class="resource-card-content" v-if="itemData">
+      <div class="resource-card-content-avatar-name">
+        <avatar size="40px" :src="itemData.logo_url" rotate></avatar>
+        <div class="resource-card-content-name">{{itemData.nickname}}</div>
       </div>
-    </sixty-card>
+      <div class="resource-card-content-description">{{itemData.description}}</div>
+    </div>
   </div>
 </template>
 
