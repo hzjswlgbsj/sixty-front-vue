@@ -80,7 +80,7 @@ export default {
         {key: 'blog', label: 'Blog'},
         {key: 'tucao', label: 'Tucao'},
         {key: 'friend', label: 'Okami'},
-        // {key: 'resources', label: 'Trap'},
+        {key: 'resources', label: 'Trap'},
         {key: 'about', label: 'About'}
       ],
       sixtyLogo: SIXTY_LOGO,

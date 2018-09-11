@@ -22,7 +22,7 @@ const RESOURCE_COMMENT_TYPE = 'resource'
 const LINK_LINK_TYPE = 'link'
 const LINK_RESOURCE_TYPE = 'resource'
 
-export const SIXTY_LOGO = 'http://ovrjw2my5.bkt.clouddn.com/80.jpg'
+export const SIXTY_LOGO = 'http://lib.sixtyden.com/80.jpg'
 
 let CONSTS = {
   ARTICLE_PAGINATION,
