@@ -16,7 +16,7 @@
         看到上面那些牌子没有？那都是写响当当的人物啊，你想把你的名字挂上去吗？那你得达到以下标准才行哦：
         <div class="friends-conditions-content">
           <p>-- 只有像蛇叔一样追求科学（<span class="keywords-red">技术</span>）才有资格称为精英</p>
-          <p>-- 你得有你自己的研究成果（原创技术类文章20篇以上）</p>
+          <p>-- 你得有你自己的研究成果（原创技术类文章<span class="keywords-red">20</span>篇以上）</p>
           <p>-- 精英也分等级的哦，依次为
             <span class="keywords-white">白</span>、
             <span class="keywords-blue">蓝</span>、
@@ -61,7 +61,7 @@ import FriendCard from '../components/FriendCard'
 import Const from '../const/index'
 
 export default {
-  name: 'friend',
+  name: 'okami',
   created () {
     this.initData()
   },

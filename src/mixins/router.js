@@ -1,16 +1,18 @@
 export default {
   data () {
     return {
-      curRouter: ''
+      currentIdx: -1,
+      menuList: [
+        {key: 'blog', label: 'Blog'},
+        {key: 'tucao', label: 'Tucao'},
+        {key: 'okami', label: 'Okami'},
+        {key: 'trap', label: 'Trap'},
+        {key: 'about', label: 'About'}
+      ]
     }
   },
-  watch: {
-    '$store.state.curRouter': {
-      handler: function (newValue, oldValue) {
-        this.curRouter = newValue.name
-      },
-      deep: true // 开启深度监听
-    }
+  created () {
+    this.handleRouterIdex()
   },
   methods: {
     jump (router) {
@@ -20,6 +22,12 @@ export default {
         routerString += `/${routerArray[key]}`
       }
       this.$router.push({ path: routerString })
+    },
+    handleRouterIdex () {
+      this.menuList.map((item, index) => {
+        console.log(222222, item.label === this.$route.name)
+        this.currentIdx = item.label === this.$route.name ? index : -1
+      })
     }
   }
 }

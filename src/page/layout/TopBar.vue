@@ -75,14 +75,6 @@ export default {
     return {
       iconCoolOpacity: 1,
       showCollections: true,
-      currentIdx: -1,
-      menuList: [
-        {key: 'blog', label: 'Blog'},
-        {key: 'tucao', label: 'Tucao'},
-        {key: 'friend', label: 'Okami'},
-        {key: 'resources', label: 'Trap'},
-        {key: 'about', label: 'About'}
-      ],
       sixtyLogo: SIXTY_LOGO,
       curScrollTop: 0,
       isUp: true,
@@ -134,14 +126,10 @@ export default {
     })
   },
   methods: {
-    goDetail (id) {
-      this.jump(`blog/articleDetail/${id}`)
-    },
     changePage (router, index) {
-      dataStore.store('curRouter', this.$route)
-      dataStore.storage('curRouterIdx', index)
-      this.$emit('jump-page', router)
+      this.jump(router)
       this.currentIdx = index
+      dataStore.storage('curRouterIndx')
     },
     setExpression (min, max) {
       return window.scrollY > min && window.scrollY <= max

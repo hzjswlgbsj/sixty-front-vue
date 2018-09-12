@@ -1,7 +1,7 @@
 <template>
   <div class="main-layout-structure-container" :style="mainLayout">
     <div v-if="!isIndex" class="main-layout-structure-topbar">
-      <top-bar @jump-page="changePage"></top-bar>
+      <top-bar/>
     </div>
     <div class="main-layout-structure-introduction">
       <introduction v-if="isIndex"></introduction>
@@ -22,8 +22,6 @@
 import TopBar from './TopBar'
 import FootBar from './FootBar'
 import Introduction from './Introduction'
-import dataStore from '../../data/index'
-import routerMixin from '../../mixins/router'
 
 export default {
   name: 'index',
@@ -32,7 +30,6 @@ export default {
     'foot-bar': FootBar,
     'introduction': Introduction
   },
-  mixins: [routerMixin],
   data () {
     return {
       isIndex: true,
@@ -41,13 +38,11 @@ export default {
     }
   },
   created () {
-    this.handleStoreData()
+    this.isIndex = this.$route.name === 'Index'
   },
   watch: {
     '$route' (to, from) {
-      dataStore.store('curRouter', to)
-      let curRouterObj = dataStore.store('curRouter')
-      this.isIndex = curRouterObj.name === 'Index'
+      this.isIndex = to.name === 'Index'
     }
   },
   computed: {
@@ -68,14 +63,6 @@ export default {
     })
   },
   methods: {
-    changePage (router) {
-      this.jump(router)
-    },
-    handleStoreData () {
-      dataStore.store('curRouter', this.$route)
-      let curRouterObj = dataStore.store('curRouter')
-      this.isIndex = curRouterObj.name === 'Index'
-    },
     returnTop (acceleration, time) {
       let xScroll = document.documentElement.scrollLeft || document.body.scrollLeft || window.scrollLeft || 0 // 获取水平滚动坐标
       let yScroll = document.documentElement.scrollTop || document.body.scrollTop || window.scrollTop || 0 // 获取垂直滚动坐标

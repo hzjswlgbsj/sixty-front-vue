@@ -4,8 +4,8 @@ import dataStore from '../data/index'
 import Index from '../../src/page/layout/Index'
 import Blog from '../../src/page/Blog'
 import Tucao from '../../src/page/Tucao'
-import Friend from '../../src/page/Friend'
-import Resources from '../../src/page/Resources'
+import Okami from '../../src/page/Okami'
+import Trap from '../../src/page/Trap'
 import About from '../../src/page/About'
 import ArticleDetail from '../../src/page/ArticleDetail'
 import Login from '../../src/page/Login'
@@ -38,14 +38,14 @@ const router = new Router({
           component: Tucao
         },
         {
-          path: '/friend',
-          name: 'Friend',
-          component: Friend
+          path: '/okami',
+          name: 'Okami',
+          component: Okami
         },
         {
-          path: '/resources',
-          name: 'Resources',
-          component: Resources
+          path: '/trap',
+          name: 'Trap',
+          component: Trap
         },
         {
           path: '/about',

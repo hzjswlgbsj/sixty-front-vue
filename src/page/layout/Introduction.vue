@@ -9,11 +9,14 @@
         <p class="main-layout-self-intro">嗨，我是刘林 (@Sixty)，一名来自天府之国的web开发者，现居南京，就职于育儿网，正在前端的浑水里摸爬打滚。</p>
         <common-line width="15%" class="main-layout-line"></common-line>
         <p class="main-layout-self-desc">生活不止眼前的代码，还有弹不响的吉他弦。</p>
-        <div class="main-layout-module">
-          <span class="main-layout-module-name" @click="changePage('blog')">博客</span>
-          <span class="main-layout-module-name" @click="changePage('tucao')">吐槽</span>
-          <span class="main-layout-module-name" @click="changePage('resources')">资源</span>
-          <span class="main-layout-module-name" @click="changePage('about')">关于</span>
+        <div class="main-layout-module" v-if="menuList && menuList.length > 0">
+          <span
+            v-for="(item, index) in menuList"
+            :key="index"
+            class="main-layout-module-name"
+            @click="changePage(item.router)">
+            {{ item.name }}
+          </span>
         </div>
         <!--这里其实应该用数据源去循环出来，做可配置的组件，这边我就不做了-->
         <div class="main-layout-contact">
@@ -49,26 +52,29 @@
 <script>
 import Avatar from '../../../src/components/Avatar'
 import CommonLine from '../../components/CommonLine'
-import routerMixin from '../../mixins/router'
 import { SIXTY_LOGO } from '../../const/index'
 export default {
   name: 'introduction',
   data () {
     return {
-      sixtyLogo: SIXTY_LOGO
+      sixtyLogo: SIXTY_LOGO,
+      menuList: [
+        {name: '博客', router: '/blog'},
+        {name: '吐槽', router: '/tucao'},
+        {name: '坑点', router: '/trap'},
+        {name: '关于', router: '/about'}
+      ]
     }
   },
-  mixins: [routerMixin],
   components: {
     'avatar': Avatar,
     'common-line': CommonLine
   },
   methods: {
     changePage (router) {
-      this.jump(router)
+      this.$router.push(router)
     },
     goBlank (url) {
-      alert(url)
       window.location(url)
     }
   }
