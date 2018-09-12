@@ -47,7 +47,7 @@ export function like (userId, commentId, like) {
     comment_id: commentId,
     like
   })
-  return ret.data
+  return ret
 }
 
 export function getLike (userId, commentId) {
@@ -55,5 +55,5 @@ export function getLike (userId, commentId) {
     user_id: userId,
     comment_id: commentId
   })
-  return ret.data
+  return ret
 }

@@ -164,7 +164,7 @@ export async function remoteAddComment (articleId, userId, content, parentId = 0
  */
 export async function remoteLike (userId, commentId, likeKey) {
   let result = await like(userId, commentId, likeKey)
-  return result
+  return result.data
 }
 
 /**
@@ -175,5 +175,5 @@ export async function remoteLike (userId, commentId, likeKey) {
  */
 export async function remoteGetLike (userId, commentId) {
   let result = await getLike(userId, commentId)
-  return result
+  return result.data
 }

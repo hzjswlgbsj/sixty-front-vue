@@ -230,7 +230,7 @@ export default {
       color: $theme-color;
     }
     .topbar-category-text {
-      margin-right: 30px;
+      /*margin-right: 20px;*/
       font-size: 14px;
       &:hover {
         color: $theme-color;
