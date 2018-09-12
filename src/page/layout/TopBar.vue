@@ -48,6 +48,12 @@ import { SIXTY_LOGO } from '../../const'
 
 export default {
   name: 'top-bar',
+
+  components: {
+    'avatar': Avatar,
+    'icon-collection': IconCollection
+  },
+
   props: {
     height: {
       type: String,
@@ -70,7 +76,9 @@ export default {
       default: 0.96
     }
   },
+
   mixins: [routerMixin],
+
   data () {
     return {
       iconCoolOpacity: 1,
@@ -82,17 +90,11 @@ export default {
       isBottom: false
     }
   },
-  components: {
-    'avatar': Avatar,
-    'icon-collection': IconCollection
-  },
+
   created () {
-    let lastRouterIdx = dataStore.storage('curRouterIdx')
-    let currentRouter = this.$route.path.split('/')
-    if (lastRouterIdx !== undefined && currentRouter.length <= 2) {
-      this.changePage(currentRouter[1], lastRouterIdx)
-    }
+    this.currentIdx = dataStore.storage('curRouterIndex')
   },
+
   computed: {
     topBarStyle () {
       let styleObj = {
@@ -101,11 +103,11 @@ export default {
         'font-size': this.fontSize,
         'background-color': this.bgColor
       }
-      // if (this.isUp) {
-      //   styleObj.opacity = 1
-      // } else {
-      //   styleObj.opacity = 0
-      // }
+      /* if (this.isUp) {
+        styleObj.opacity = 1
+      } else {
+        styleObj.opacity = 0
+      } */
       return styleObj
     },
     iconCollectionStyle () {
@@ -114,22 +116,12 @@ export default {
       }
     }
   },
-  mounted: function () {
-    this.$nextTick(function () {
-      window.addEventListener('scroll', (e) => {
-        this.isUp = this.curScrollTop > getScrollTop()
-        this.isTop = getScrollTop() === 0
-        this.isBottom = getScrollTop() + getWindowHeight() === getScrollHeight()
-        this.curScrollTop = getScrollTop()
-        this.setIconCoolOpacity()
-      })
-    })
-  },
+
   methods: {
     changePage (router, index) {
       this.jump(router)
       this.currentIdx = index
-      dataStore.storage('curRouterIndx')
+      dataStore.storage('curRouterIndex', index)
     },
     setExpression (min, max) {
       return window.scrollY > min && window.scrollY <= max
@@ -180,6 +172,18 @@ export default {
           this.iconCoolOpacity = 1
       }
     }
+  },
+
+  mounted: function () {
+    this.$nextTick(function () {
+      window.addEventListener('scroll', (e) => {
+        this.isUp = this.curScrollTop > getScrollTop()
+        this.isTop = getScrollTop() === 0
+        this.isBottom = getScrollTop() + getWindowHeight() === getScrollHeight()
+        this.curScrollTop = getScrollTop()
+        this.setIconCoolOpacity()
+      })
+    })
   }
 }
 </script>

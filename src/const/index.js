@@ -23,6 +23,13 @@ const LINK_LINK_TYPE = 'link'
 const LINK_RESOURCE_TYPE = 'resource'
 
 export const SIXTY_LOGO = 'http://lib.sixtyden.com/80.jpg'
+export const MENU_LIST = [
+  {key: 'blog', label: 'Blog'},
+  {key: 'tucao', label: 'Tucao'},
+  {key: 'okami', label: 'Okami'},
+  {key: 'trap', label: 'Trap'},
+  {key: 'about', label: 'About'}
+]
 
 let CONSTS = {
   ARTICLE_PAGINATION,

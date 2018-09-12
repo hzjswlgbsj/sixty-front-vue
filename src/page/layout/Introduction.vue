@@ -14,8 +14,8 @@
             v-for="(item, index) in menuList"
             :key="index"
             class="main-layout-module-name"
-            @click="changePage(item.router)">
-            {{ item.name }}
+            @click="changePage(item)">
+            {{ item.text }}
           </span>
         </div>
         <!--这里其实应该用数据源去循环出来，做可配置的组件，这边我就不做了-->
@@ -52,17 +52,18 @@
 <script>
 import Avatar from '../../../src/components/Avatar'
 import CommonLine from '../../components/CommonLine'
-import { SIXTY_LOGO } from '../../const/index'
+import { SIXTY_LOGO, MENU_LIST } from '../../const'
+import dataStore from '../../data/index'
 export default {
   name: 'introduction',
   data () {
     return {
       sixtyLogo: SIXTY_LOGO,
       menuList: [
-        {name: '博客', router: '/blog'},
-        {name: '吐槽', router: '/tucao'},
-        {name: '坑点', router: '/trap'},
-        {name: '关于', router: '/about'}
+        {text: '博客', name: 'Blog', path: '/blog'},
+        {text: '吐槽', name: 'Tucao', path: '/tucao'},
+        {text: '坑点', name: 'Trap', path: '/trap'},
+        {text: '关于', name: 'About', path: '/about'}
       ]
     }
   },
@@ -72,10 +73,12 @@ export default {
   },
   methods: {
     changePage (router) {
-      this.$router.push(router)
-    },
-    goBlank (url) {
-      window.location(url)
+      MENU_LIST.map((item, index) => {
+        if (item.label === router.name) {
+          dataStore.storage('curRouterIndex', index)
+        }
+      })
+      this.$router.push(router.path)
     }
   }
 }
