@@ -13,7 +13,7 @@
         </friend-card>
       </div>
       <div class="friends-desc-container">
-        看到上面那些牌子没有？那都是写响当当的人物啊，你想把你的名字挂上去吗？那你得达到以下标准才行哦：
+        看到上面那些牌子没有？那都是木叶精英啊，你想把你的名字挂上去吗？那你得达到以下标准才行哦：
         <div class="friends-conditions-content">
           <p>-- 只有像蛇叔一样追求科学（<span class="keywords-red">技术</span>）才有资格称为精英</p>
           <p>-- 你得有你自己的研究成果（原创技术类文章<span class="keywords-red">20</span>篇以上）</p>
@@ -26,7 +26,7 @@
             ，你是啥颜色呢
           </p>
         </div>
-        当然也要献上本站信息啦，不然你怎么加我呢，哈哈
+        当然也要献上本站信息啦，不然你怎么加我呢，要加友链的大佬也按这个格式给我吧，哈哈
         <div class="friends-desc-info">
           <p>-- 博客名称：Sixty'Den</p>
           <p>-- 博客地址：http://www.sixtyden.com</p>
