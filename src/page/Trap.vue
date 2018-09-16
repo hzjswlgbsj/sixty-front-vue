@@ -32,7 +32,7 @@ import ResourceCard from '../components/ResourceCard'
 import Const from '../const/index'
 
 export default {
-  name: 'resource',
+  name: 'trap',
   created () {
     this.initData()
   },

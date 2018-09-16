@@ -1,53 +1,52 @@
 <template>
-  <div class="message-root" :style="containerHeight">
-    <div class="message-container">
-      <div class="message-content">
-        <span class="message-content-hello-text">各位大佬好：</span>
+  <div class="tucao-root" :style="containerHeight">
+    <div class="tucao-container">
+      <div class="tucao-content">
+        <span class="tucao-content-hello-text">各位大佬好：</span>
         <p>
           欢迎来到Sixty'den，它存在的意义就是记录我的成长历程。在下认为，要把某个知识融会贯通需要去梳理这中间的逻辑。
           而把这个过程用图文形式记录下来是一个很好的办法。
-          so，本渣博是个纯技术类渣博-_=。
         </p>
-        <span class="message-content-title-text">Sixty's Den的身世</span>
+        <span class="tucao-content-title-text">Sixty's Den的身世</span>
         <p>
           Sixty'den是以Vue和vuex为骨架；以PHP和Mysql两位大佬为血肉而构成的生命体。 由在下汇（
-          <span class="message-content-keywords4">jiè</span>
+          <span class="tucao-content-keywords4">jiè</span>
           ）集（
-          <span class="message-content-keywords4">jiàn</span>
+          <span class="tucao-content-keywords4">jiàn</span>
           ）各家设计之长为他赋予灵魂让它不至于太丑。至于它的内涵，
           如果大佬感兴趣，在下这就用空间忍术带你
-          <a class="message-content-keywords keywords-link1" href="https://github.com/hzjswlgbsj/sixty-front" target="_blank">一探究竟</a>
+          <a class="tucao-content-keywords keywords-link1" href="https://github.com/hzjswlgbsj/sixty-front" target="_blank">一探究竟</a>
         </p>
-        <span class="message-content-title-text">简单的自我介绍：</span>
+        <span class="tucao-content-title-text">简单的自我介绍：</span>
         <p>据说吾乃汉高帝后裔分支，命里缺木，遂名曰：林</p>
         <p>
           爱
-          <span class="message-content-keywords">炊事</span>，厨界新生；
+          <span class="tucao-content-keywords">炊事</span>，厨界新生；
           爱
-          <span class="message-content-keywords3">吉他</span>，无奈手残音缺；
+          <span class="tucao-content-keywords3">吉他</span>，无奈手残音缺；
           爱
-          <span class="message-content-keywords2">代码</span>，
+          <span class="tucao-content-keywords2">代码</span>，
           初入江湖
         </p>
         <p>常驻B站，Sixty'den的评论组件跟它的如出一撤，(゜-゜)つロ干杯~-bilibilin</p>
         <p>
           火影迷，我是要继承
-          <span class="message-content-keywords5">火（jì）之（shù）意（zǒng）志（jiān）</span>
+          <span class="tucao-content-keywords5">火（jì）之（shù）意（zǒng）志（jiān）</span>
           的人，怎么能在此处倒下！
         </p>
         <p>
           伪杰迷，
-          <span class="message-content-keywords">七里香</span>
+          <span class="tucao-content-keywords">七里香</span>
           入坑，然后无法自拔
         </p>
         <p>
           什么？你想知道更多？
-          <a class="message-content-keywords3 keywords-link2" @click="handleJumpAbout">飞雷神</a>
+          <a class="tucao-content-keywords3 keywords-link2" @click="handleJumpAbout">飞雷神</a>
           带你飞
         </p>
         <p>既然来了，不妨留下你的足迹，对在下指点一二。</p>
       </div>
-      <div class="message-comment">
+      <div class="tucao-comment">
         <comment
           :comment-total="parseInt(commentData.total)"
           :discussType=commentType
@@ -111,28 +110,28 @@ export default {
 <style lang="scss" scoped>
   @import "../style/mixin/baseMixin.scss";
   @import "../style/base/base";
-  .message-root {
+  .tucao-root {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 80px;
     width: 100%;
     height: 100%;
-    .message-container {
+    .tucao-container {
       width: 62%;
       max-width: 880px;
-      .message-content {
+      .tucao-content {
         font-size: $font-size;
         color: $font-color;
         line-height: 2em;
-        .message-content-hello-text, .message-content-title-text {
+        .tucao-content-hello-text, .tucao-content-title-text {
           font-weight: 600;
           color: $logout-color;
           line-height: 3em;
         }
-        .message-content-hello-text {
+        .tucao-content-hello-text {
           font-size: 1.3em;
         }
-        .message-content-title-text {
+        .tucao-content-title-text {
           font-size: 1.1em;
         }
         p {
@@ -144,23 +143,23 @@ export default {
         .keywords-link2 {
           border-bottom: 1px solid #FFC66D;
         }
-        .message-content-keywords {
+        .tucao-content-keywords {
           @include keywords(red)
         }
-        .message-content-keywords2 {
+        .tucao-content-keywords2 {
           @include keywords(#9876AA)
         }
-        .message-content-keywords3 {
+        .tucao-content-keywords3 {
           @include keywords(#FFC66D)
         }
-        .message-content-keywords4 {
+        .tucao-content-keywords4 {
           @include keywords(#FFA347)
         }
-        .message-content-keywords5 {
+        .tucao-content-keywords5 {
           @include keywords(#FED95F)
         }
       }
-      .message-comment {
+      .tucao-comment {
         color: $font-color;
       }
     }

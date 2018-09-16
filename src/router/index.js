@@ -6,6 +6,7 @@ import Blog from '../../src/page/Blog'
 import Tucao from '../../src/page/Tucao'
 import Okami from '../../src/page/Okami'
 import Trap from '../../src/page/Trap'
+import Error from '../../src/page/Error'
 import About from '../../src/page/About'
 import ArticleDetail from '../../src/page/ArticleDetail'
 import Login from '../../src/page/Login'
@@ -46,6 +47,11 @@ const router = new Router({
           path: '/trap',
           name: 'Trap',
           component: Trap
+        },
+        {
+          path: '/error',
+          name: 'Error',
+          component: Error
         },
         {
           path: '/about',

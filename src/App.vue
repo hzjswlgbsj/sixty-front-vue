@@ -25,6 +25,10 @@ export default {
     width: 100%;
     height: 100%;
   }
+  input,button,select,textarea {
+    outline:none;
+    border: none
+  }
   a {
     text-decoration: none;
     // color: #ffffff !important;
