@@ -12,7 +12,7 @@
           :key="item.id">
         </friend-card>
       </div>
-      <div class="friends-desc-container">
+      <div class="friends-desc-container" v-if="linkData && linkData.length > 0">
         看到上面那些牌子没有？那都是木叶精英啊，你想把你的名字挂上去吗？那你得达到以下标准才行哦：
         <div class="friends-conditions-content">
           <p>-- 只有像蛇叔一样追求科学（<span class="keywords-red">技术</span>）才有资格称为精英</p>

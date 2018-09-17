@@ -6,13 +6,13 @@
 
       <div class="error-search-container">
         <Icon class= "error-search-icon" color="#666666" size="24" type="ios-search" />
-        <input class="error-search-input" type="text" placeholder="搜索报错" />
+        <input class="error-search-input" type="text" placeholder="搜索报错" @keyup.enter="handleSearch($event)"/>
       </div>
 
       <div class="error-search-desc">
         <p>
           这里是大蛇丸的实验室，在下追随蛇叔多年，这里是我一路走来收集的情报。
-          嗯，在下认为我们在常年累月的修（kai）行（fa）过程中会遇到很多的error， 每次都要去百度或者google。
+          嗯，在下认为我们在常年累月的修（kāi）行（fā）过程中会遇到很多的error， 每次都要去百度或者google。
           假如我找个地方专门收集各种报错， 你只需要在这个板块来搜索就能得到解决问题的详细过程。
           听起来是不是很不错?
           本版块旨在记录解决各种问题的详细过程，既能帮助大家快速解决问题，又能学到东西！
@@ -25,7 +25,6 @@
 
 <script>
 
-
 export default {
   name: 'error',
 
@@ -35,7 +34,7 @@ export default {
   },
 
   created () {
-    this.initData()
+    // this.initData()
   },
 
   computed: {
@@ -47,9 +46,9 @@ export default {
     }
   },
   methods: {
-    async initData () {
-
-    },
+    async handleSearch (event) {
+      console.log('你搜索啥？', event)
+    }
   }
 }
 </script>
