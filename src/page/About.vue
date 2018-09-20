@@ -1,6 +1,7 @@
 <template>
   <div class="sixty-about-container">
     <div class="sixty-about-desc-container">
+      <div class="sixty-about-top-cover" :style="containerHeight" />
       <section class="sixty-about-background1">
         <div class="sixty-about-me">
           <h1>基本情况</h1>
@@ -20,21 +21,6 @@
           </p>
         </div>
       </section>
-      <section class="sixty-about-background2">
-        <div class="sixty-about-me">
-          <h1>技能</h1>
-        </div>
-      </section>
-      <section class="sixty-about-background3">
-        <div class="sixty-about-me">
-          <h1>关于Sixty'Den</h1>
-        </div>
-      </section>
-      <section class="sixty-about-background4">
-        <div class="sixty-about-me">
-          <h1>联系方式</h1>
-        </div>
-      </section>
     </div>
   </div>
 </template>
@@ -47,6 +33,14 @@ export default {
     }
   },
   components: {
+  },
+  computed: {
+    containerHeight () {
+      let height = document.body.clientHeight
+      return {
+        'min-height': `${height}px`
+      }
+    }
   }
 }
 </script>
@@ -59,44 +53,18 @@ export default {
     .sixty-about-desc-container {
       width: 100%;
       height: 100%;
-      /*background-image: url("http://lib.sixtyden.com/201808050400220.jpg");*/
-      /*background-color: rgba(0, 0, 0, .6);*/
-      /*background-size: cover;*/
-      /*background-repeat: no-repeat;*/
-      /*background-position: center center;*/
-      /*transition: opacity 1s;*/
-      /*opacity: .5;*/
-
-      section {
-        height: 100vh;
-        background: rgba(0, 0, 0, .7);
-        color: #fff;
-        line-height: 3em;
-        font-size: $font-size;
-        padding: 50px;
-      }
-
-      .sixty-about-background1,
-      .sixty-about-background2,
-      .sixty-about-background3,
-      .sixty-about-background4 {
-        background-attachment: fixed;
+      .sixty-about-top-cover {
+        height: 100%;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        display: block;
+        background-image: url($aboutCover);
+        background-color: rgba(0, 0, 0, .6);
         background-size: cover;
-        background-position: center center;
-      }
-      .sixty-about-background1 {
-        background-image: url($imgAbout1);
-      }
-
-      .sixty-about-background2 {
-        background-image: url($imgAbout2);
-      }
-
-      .sixty-about-background3 {
-         background-image: url($imgAbout3);
-       }
-      .sixty-about-background4 {
-        background-image: url($imgAbout4);
+        background-repeat: no-repeat;
+        /*background-position: center center;*/
+        transition: opacity 1s;
+        opacity: .3;
       }
     }
   }

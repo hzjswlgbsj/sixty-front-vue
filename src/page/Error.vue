@@ -39,7 +39,7 @@ export default {
 
   computed: {
     containerHeight () {
-      let height = document.body.clientHeight
+      let height = document.body.clientHeight - 80
       return {
         'min-height': `${height}px`
       }

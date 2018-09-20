@@ -81,7 +81,6 @@ export default {
 <style lang="scss"  scoped>
   @import "../../style/base/base";
   .main-layout-structure-container {
-    height: 90%;
     .main-layout-structure-introduction {
       width: 100%;
       height: 100%;
