@@ -61,12 +61,22 @@ export default {
     width: 100%;
     height: 100%;
     text-align: center;
+
+    background-image: url($aboutCover);
+    background-color: rgba(0, 0, 0, .6);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-position: center center;*/
+    transition: opacity 1s;
+    opacity: .4;
+
     .error-container {
       width: 62%;
       max-width: 880px;
       font-size: 1.3em;
-      color: $font-color;
+      color: #000000;
       line-height: 2em;
+      margin-top: 50px;
       .error-title {
         font-size: 44px;
         font-weight: 400;

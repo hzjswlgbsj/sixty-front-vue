@@ -12,13 +12,14 @@ export default {
 
 <style lang="scss">
   @import '../src/style/base/base.scss';
-  html,body,#app {
+  html, body, #app {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     background-color: $theme-background-color;
     font-family: $font-family;
+    color: $font-color;
   }
   body {
     // margin-top: -21px;
