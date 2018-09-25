@@ -94,7 +94,7 @@ export default {
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("http://ovrjw2my5.bkt.clouddn.com/Sky.jpg");
+    background-image: url($indexBackground);
     text-align: center;
     color: #FEFEFE;
     font-size: $font-size;

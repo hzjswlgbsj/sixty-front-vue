@@ -39,7 +39,7 @@ export default {
 
   computed: {
     containerHeight () {
-      let height = document.body.clientHeight - 80
+      let height = document.body.clientHeight
       return {
         'min-height': `${height}px`
       }
@@ -62,19 +62,19 @@ export default {
     height: 100%;
     text-align: center;
 
-    background-image: url($aboutCover);
+    background-image: url($errorCover);
     background-color: rgba(0, 0, 0, .6);
     background-size: cover;
     background-repeat: no-repeat;
-    /*background-position: center center;*/
+    background-position: center 70%;
     transition: opacity 1s;
-    opacity: .4;
+    opacity: .8;
 
     .error-container {
       width: 62%;
       max-width: 880px;
       font-size: 1.3em;
-      color: #000000;
+      color: #000;
       line-height: 2em;
       margin-top: 50px;
       .error-title {
