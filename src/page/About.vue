@@ -39,9 +39,9 @@
             那时候我的包里总是揣着
             <a class="about-content-keywords3 keywords-link2" href="https://baike.baidu.com/item/%E9%98%BF%E8%A1%B0" target="_blank">阿衰</a>
             ，有时上课还要偷偷看几眼，
-            爸爸买的学英语的复（M）读（P）机（3）从来都只有买时候送的英语单词磁带，其他的全是
+            老汉儿买的学英语的复（M）读（P）机（3）从来都只有买时候送的英语单词磁带，其他的全是
             <span class="about-content-keywords">周杰伦</span>
-            的专辑磁带；爸爸买的
+            的专辑磁带；老汉儿买的
             <span class="about-content-keywords5">好（yóu）记（xì）星（jī）</span>
             最大的用处就是躲在被窝里玩
             <a class="about-content-keywords2 keywords-link3" href="https://baike.baidu.com/item/%E9%AD%94%E5%A1%94" target="_blank">魔塔</a>
@@ -54,8 +54,15 @@
 
           <h3>## skill</h3>
 
+          <Progress :percent="25" status="active" :stroke-width="10" />
+          <Progress :percent="45" status="active" :stroke-width="10" />
+          <Progress :percent="65" status="active" :stroke-width="10" />
+          <Progress :percent="100" status="active" :stroke-width="10" />
+
           <br>
           <h2># 关于博客</h2><br>
+
+          <h2># 联系方式</h2><br>
 
         </div>
       </section>
