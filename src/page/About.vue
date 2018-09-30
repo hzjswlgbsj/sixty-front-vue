@@ -52,17 +52,69 @@
 
           <p>>_&nbsp;&nbsp;呃... 赶紧醒醒</p><br>
 
-          <h3>## skill</h3>
+          <p>>_&nbsp;&nbsp;恩，总结一下就是，我确实喜欢不断学习，周末不在图书馆就在麦当劳、咖啡厅...</p><br>
+          <h3>## skill</h3><br>
+          <h4>### 概览</h4>
 
-          <Progress :percent="25" status="active" :stroke-width="10" />
-          <Progress :percent="45" status="active" :stroke-width="10" />
-          <Progress :percent="65" status="active" :stroke-width="10" />
-          <Progress :percent="100" status="active" :stroke-width="10" />
+          <div style="margin: 10px 0;">
+            <div class="sixty-about-me-skill" style="">
+              <div style="width: 60px;">前端：</div>
+              <Progress style="width: 600px;" :percent="75" status="active" :stroke-width="15" />
+            </div>
 
+            <div class="sixty-about-me-skill" style="">
+              <span style="width: 60px;">后端：</span>
+              <Progress style="width: 600px;" :percent="50" status="active" :stroke-width="15" />
+            </div>
+
+            <div class="sixty-about-me-skill" style="">
+              <span style="width: 60px;">Linux：</span>
+              <Progress style="width: 600px;" :percent="40" status="active" :stroke-width="15" />
+            </div>
+          </div>
+
+          <h4>### 描述</h4>
+          <div class="sixty-about-me-skill-desc">
+
+          </div>
+          <p style="margin: 10px 0;">
+            目前，我主要做前端开发。主要技术栈是vue，当然原生js基础就不说了，这是基础。react也自己玩玩，
+            但是没有在公司的项目上使用过（我们公司目前技术栈前端是vue后端是php，所以我后端也是php）。另外，
+            现在前端主要要熟悉大前端的构建方式，优化方式，打包方式等，从构建项目到开发项目，到项目上线，这是
+            必须要掌握的，在下应该是达标了。
+          </p>
+          <p>
+            在下从大三开始实习，现在工作差不多两年多，其中php开发半年，其余都是前端开发。当前前端的能力是：
+            可以自己构建前端项目，简单的优化，然后写一些简单的shell脚本实现快速打包上线、切换版本等。
+            可以带一两个实习生一起开发项目小中型项目。后端：能写基本的接口和微服务中的模块，能搭建docker
+            容器，用镜像搭环境真的很方便。熟悉持续集成和集群、分布式的原理（但是自己还没完整的搭过，公司也不
+            让我这个前端来搭，哈哈）。目前正在恶补数据结构和算法...
+          </p><br>
+          <p>
+            * 如果有需要的话这里有一份稍微详细的
+            <a class="about-content-keywords3 keywords-link2" href="https://baike.baidu.com/item/%E9%98%BF%E8%A1%B0" target="_blank">简历</a>。
+          </p>
           <br>
+
           <h2># 关于博客</h2><br>
 
+          <h4>自己搭博客原因</h4>
+          <p style="margin: 10px 0;">
+            关于本渣博首先要说的是，它非常的简单，却也是在下纯手工写的。为什么要自己写个博客呢，其实是为了完成
+            大学里没能做完的博客（其实之前也有一版本，是thinkPHP5的），最重要的原因是可以让我保持写文章
+            的习惯，你懂了多少，写出来就算是一个总结，不写不知道，一写才吓一跳哦。
+          </p>
+          <h4>本渣博的配置</h4>
+          <div style="margin: 10px 0;">
+            <p>前端：vue全家桶 + iview（其实用得少）</p>
+            <p>后端：yii + mysql</p>
+            <p>服务器： 阿里云</p>
+            <p>搜索：Elasticsearch</p>
+          </div><br>
+
           <h2># 联系方式</h2><br>
+
+          <contact/>
 
         </div>
       </section>
@@ -72,6 +124,7 @@
 
 <script>
 import Avatar from '../../src/components/Avatar'
+import Contact from '../../src/components/Contact'
 import { SIXTY_LOGO } from '../const'
 
 export default {
@@ -82,7 +135,8 @@ export default {
     }
   },
   components: {
-    avatar: Avatar
+    Avatar,
+    Contact
   },
   computed: {
     containerHeight () {
@@ -160,6 +214,11 @@ export default {
           }
           .about-content-keywords5 {
             @include keywords(#FED95F)
+          }
+
+          .sixty-about-me-skill {
+            display: flex;
+            padding-left: 20px
           }
         }
       }

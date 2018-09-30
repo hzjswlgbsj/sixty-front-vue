@@ -74,7 +74,7 @@ export default {
       width: 62%;
       max-width: 880px;
       font-size: 1.3em;
-      color: #000;
+      color: #ffffff;
       line-height: 2em;
       margin-top: 50px;
       .error-title {
