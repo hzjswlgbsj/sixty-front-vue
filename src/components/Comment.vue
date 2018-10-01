@@ -115,7 +115,7 @@
       </div>
       <div v-else>
         <vue-loading
-          type="bubbles"
+          type="spiningDubbles"
           color="#2BBC8A"
           :size="{ width: '30px', height: '30px' }" />
       </div>

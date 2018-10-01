@@ -10,9 +10,9 @@
         </span>
         <vue-loading
           v-if="!notAnyMare && articleData && articleData.length > 0"
-          type="bubbles"
+          type="spiningDubbles"
           color="#2BBC8A"
-          :size="{ width: '50px', height: '50px' }" />
+          :size="{ width: '30px', height: '30px' }" />
       </div>
     </div>
     <div v-else>
@@ -21,9 +21,9 @@
 
     <vue-loading
       v-if="!articleData || articleData.length === 0"
-      type="bubbles"
+      type="spiningDubbles"
       color="#2BBC8A"
-      :size="{ width: '50px', height: '50px' }" />
+      :size="{ width: '30px', height: '30px' }" />
   </div>
 </template>
 
@@ -163,6 +163,7 @@ export default {
         -moz-transition:.8s ease-in-out;
         .blog-article-item-more-title {
           font-size: $font-size;
+          color: $font-other-color;
         }
       }
     }

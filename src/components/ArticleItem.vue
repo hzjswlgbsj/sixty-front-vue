@@ -125,12 +125,12 @@ export default {
     .article-title {
       color: $font-title-color;
       font-size: $font-size-title;
-      .article-title-text:hover {
-        cursor: pointer;
-        color: #2BBC8A;
-      }
       .article-title-text {
         position: relative;
+        &:hover {
+          cursor: pointer;
+          color: $theme-color;
+        }
         .article-title-tag {
           background-color: #5292DD;
           font-size: 0.5em;

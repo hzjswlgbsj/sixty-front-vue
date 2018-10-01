@@ -1,16 +1,16 @@
 <template>
   <div class="article-info-container">
-    <div>
+    <div class="article-info">
       <icon name="at" scale="0.8"></icon>
-      <span class="article-info-author">{{article.nickname}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="article-info-author icon">{{article.nickname}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
-    <div>
+    <div class="article-info">
       <icon name="terminal" scale="0.8"></icon>
-      <span class="article-info-date"> 发表于 <timeago :datetime="article.create_time" :auto-update="60"/>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="article-info-date icon"> 发表于 <timeago :datetime="article.create_time" :auto-update="60"/>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
-    <div>
+    <div class="article-info">
       <icon name="location-arrow" scale="0.8"></icon>
-      <span class="article-info-address">南京&nbsp;•&nbsp;谷阳世纪大厦</span>
+      <span class="article-info-address icon">南京&nbsp;•&nbsp;谷阳世纪大厦</span>
     </div>
   </div>
 </template>
@@ -41,15 +41,15 @@ export default {
     @include flex-define(row, center, center);
     margin: 25px 0;
     font-size: 0.9em;
-    div {
+    color: $font-other-color;
+    .article-info {
       @include flex-define(row, space-between, center);
       cursor: pointer;
-      .article-info-author, .article-info-date, .article-info-address {
-        color: $font-title-color;
+      &:hover {
+        color: $theme-color;
+      }
+      .icon {
         margin-left: 5px;
-        &:hover {
-            color: #2BBC8A;
-        }
       }
     }
   }

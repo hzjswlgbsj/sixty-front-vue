@@ -10,7 +10,7 @@
       </div>
       <section class="sixty-about-content">
         <div class="sixty-about-me">
-          <h2># 关于我</h2><br>
+          <h2># 了解我</h2><br>
           <p>欢迎大佬光临寒舍，在这里你能离我更近哦！</p><br>
           <h3>## hobby</h3><br>
           <p>
@@ -20,7 +20,7 @@
             <span class="about-content-keywords2">指弹</span>
             但是手残，喜欢
             <span class="about-content-keywords3">撸码</span>
-            但不是大佬，但立志成为大佬。
+            但不是大佬，立志成为大佬。
           </p><br>
 
           <p>>&nbsp;&nbsp;追求自由的生活，不喜欢待在家里，由于喜欢撸码，所以出门经常带电脑，混迹于麦当劳、图书馆、咖啡厅...</p>
@@ -50,14 +50,14 @@
             。。。
           </p><br>
 
-          <p>>_&nbsp;&nbsp;呃... 赶紧醒醒</p><br>
+          <p>>&nbsp;&nbsp;呃... 赶紧醒醒</p><br>
 
-          <p>>_&nbsp;&nbsp;恩，总结一下就是，我确实喜欢不断学习，周末不在图书馆就在麦当劳、咖啡厅...</p><br>
+          <p>>_&nbsp;&nbsp;嗯，总结一下就是，我确实喜欢不断学习，周末不在图书馆就在麦当劳、咖啡厅...</p><br>
           <h3>## skill</h3><br>
           <h4>### 概览</h4>
 
           <div style="margin: 10px 0;">
-            <div class="sixty-about-me-skill" style="">
+            <div class="sixty-about-me-skill">
               <div style="width: 60px;">前端：</div>
               <Progress style="width: 600px;" :percent="75" status="active" :stroke-width="15" />
             </div>
@@ -96,7 +96,7 @@
           </p>
           <br>
 
-          <h2># 关于博客</h2><br>
+          <h2># 了解本站</h2><br>
 
           <h4>自己搭博客原因</h4>
           <p style="margin: 10px 0;">
@@ -104,15 +104,23 @@
             大学里没能做完的博客（其实之前也有一版本，是thinkPHP5的），最重要的原因是可以让我保持写文章
             的习惯，你懂了多少，写出来就算是一个总结，不写不知道，一写才吓一跳哦。
           </p>
-          <h4>本渣博的配置</h4>
+          <h4>本渣博基本配置</h4>
           <div style="margin: 10px 0;">
             <p>前端：vue全家桶 + iview（其实用得少）</p>
             <p>后端：yii + mysql</p>
-            <p>服务器： 阿里云</p>
+            <p>服务器：nginx + 阿里云</p>
+            <p>云存储：七牛云</p>
             <p>搜索：Elasticsearch</p>
+            <p style="margin-top: 10px">
+              在下从来不懂什么是美感，所以本站的几乎所有UI都不是我自己设计的，所以在下就借鉴了百家之长。
+              首先本站的配色为Apple官网的topbar配色，topbar的设计也是Apple官网的topbar样式。然后整站的评论组件都是
+              借鉴B站的设计，你可以看到基本上是一样的。内容方面的设计我也是在浏览了上百个博客网站后（不夸张，是真的）
+              才成了现在这样（真的很纠结-_=）。本人由于是火影迷，所有你可以感知到整站都有点火影的影子。
+              好啦，大概就这样吧，一个很简单的用来记笔记的博客。
+            </p>
           </div><br>
 
-          <h2># 联系方式</h2><br>
+          <h2># 找到我</h2><br>
 
           <contact/>
 
@@ -189,7 +197,7 @@ export default {
           width: 62%;
           max-width: 880px;
           p {
-            color: $font-other-color;
+            color: $font-color;
           }
           .keywords-link1 {
             border-bottom: 1px solid red;
