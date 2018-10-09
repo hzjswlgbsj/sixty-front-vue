@@ -15,6 +15,12 @@ import * as cookie from './cookie'
 export { default as Message } from './message'
 
 /**
+ * 接口模块,主要封装了iview的loading
+ * @name Message
+ */
+export { default as Loading } from './loading'
+
+/**
  * 接口模块,主要封装了请求
  * @name Api
  */

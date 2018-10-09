@@ -2,7 +2,7 @@
  * @module packages/common/Api
  */
 
-import { Http } from '../index'
+import { Http, Loading } from '../index'
 
 function _api2url (api) {
   const domain = process.env.API_DOMAIN
@@ -36,11 +36,13 @@ function _api2url (api) {
  * @returns {Promise}
  */
 function _call (api, params) {
+  Loading.start()
   const url = _api2url(api)
   const p = _params(params)
 
   return Http.post(url, p).then(response => {
     if (!response || !response.data) {
+      Loading.error()
       return Promise.reject(new Error(
         {
           code: -1,
@@ -51,6 +53,7 @@ function _call (api, params) {
 
     const data = response.data
     if (!data || typeof data !== 'object' || !data.hasOwnProperty('ret')) {
+      Loading.error()
       return Promise.reject(new Error(
         {
           code: -1,
@@ -60,9 +63,11 @@ function _call (api, params) {
     }
 
     if (data.ret && data.ret === 1) {
+      Loading.finish()
       return Promise.resolve(data)
     }
 
+    Loading.error()
     return Promise.reject(data)
   })
 }
