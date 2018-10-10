@@ -5,6 +5,12 @@
 
 import { LoadingBar } from 'iview'
 
+LoadingBar.config({
+  color: '#5ab811',
+  failedColor: '#c8f0d0',
+  height: 3
+})
+
 export default {
   /**
    * 显示正在加载条

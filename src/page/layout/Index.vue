@@ -39,11 +39,6 @@ export default {
   },
   created () {
     this.isIndex = this.$route.name === 'Index'
-    this.$Loading.config({
-      color: '#5ab811',
-      failedColor: '#c8f0d0',
-      height: 2
-    })
   },
   watch: {
     '$route' (to, from) {
