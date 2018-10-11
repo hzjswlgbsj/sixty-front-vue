@@ -3,18 +3,15 @@
     <div class="article-comment-page-total">共{{pageTotal}}页</div>
     <div class="article-comment-page-prev" v-if="currentPage > 1" @click="prev()">上一页</div>
     <div class="article-comment-page-list">
-      <span class="article-comment-page-list-number" :class="currentPage === 1 ? currentPagerClasses : '' " @click="changePage(1)">1</span>
+      <span class="article-comment-page-list-number" :class="currentPage === 1 ? 'article-comment-page-list-current' : '' " @click="changePage(1)">1</span>
       <span v-if="currentPage > 4 && pageTotal !== 5" style="margin-right: 5px">...</span>
-      <span
-        class="article-comment-page-list-number"
-        :class="currentPage === page ? currentPagerClasses : '' "
-        v-for="(page, index) in paginationData"
-        :key="index"
-        @click="changePage(page)">
-        {{page}}
-      </span>
-      <span v-if="pageTotal - currentPage > 3" style="margin-right: 5px">...</span>
-      <span class="article-comment-page-list-number" v-if="pageTotal !== 1" :class="currentPage === pageTotal ? currentPagerClasses : '' " @click="changePage(pageTotal)">{{pageTotal}}</span>
+      <span class="article-comment-page-list-number" v-if="currentPage - 2 > 1" @click="changePage(currentPage - 2)">{{currentPage - 2}}</span>
+      <span class="article-comment-page-list-number" v-if="currentPage - 1 > 1" @click="changePage(currentPage - 1)">{{currentPage - 1}}</span>
+      <span class="article-comment-page-list-number article-comment-page-list-current" v-if="currentPage !== 1 && currentPage !== pageTotal">{{currentPage}}</span>
+      <span class="article-comment-page-list-number" v-if="currentPage + 1 < pageTotal" @click="changePage(currentPage + 1)">{{currentPage + 1}}</span>
+      <span class="article-comment-page-list-number" v-if="currentPage + 2 < pageTotal" @click="changePage(currentPage + 2)">{{currentPage + 2}}</span>
+      <span v-if="pageTotal - currentPage >= 4" style="margin-right: 5px">...</span>
+      <span class="article-comment-page-list-number" v-if="pageTotal !== 1" :class="currentPage === pageTotal ? 'article-comment-page-list-current' : '' " @click="changePage(pageTotal)">{{pageTotal}}</span>
     </div>
     <div class="article-comment-page-next" v-if="currentPage !== pageTotal" @click="next()">下一页</div>
   </div>
@@ -75,9 +72,6 @@ export default {
         pageMiddle.push(i)
       }
       return pageMiddle
-    },
-    currentPagerClasses () {
-      return 'article-comment-page-list-current'
     }
   },
   methods: {

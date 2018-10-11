@@ -350,7 +350,7 @@ export default {
       }
       this.commentForm.parentId = 0
       this.commentForm.replyId = 0
-      this.commentForm.replyUserId = 0
+      this.commentForm.parentUserId = 0
     },
     handleLogin () {
       let router = this.$route.path
