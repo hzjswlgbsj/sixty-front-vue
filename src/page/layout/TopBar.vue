@@ -5,22 +5,37 @@
         <div class="topbar-avatar-container">
           <avatar :src="sixtyLogo" size="22px"></avatar>
         </div>
+
         <div
           class="topbar-category-text"
+          :style="topbarTitleStyle"
           v-if="menuList && menuList.length > 0"
           v-for="(menu, index) in menuList"
           :key="index"
           :class="currentIdx === index ? 'selected-item' : '' "
           @click="changePage(menu.key, index)">
-          {{menu.label}}
+          <transition
+            enter-active-class='animated zoomIn'
+            leave-active-class='animated zoomOut'>
+            <div v-if="showTopbarTitle">{{menu.label}}</div>
+          </transition>
         </div>
-        <div class="topbar-search-icon">
-          <Icon type="ios-search" size="18"/>
+
+        <div v-if="showSearch" class="topbar-search-input-container">
+          <input v-focus class="topbar-search-input" type="text" placeholder="搜索 sixtyden.com">
         </div>
-        <div class="topbar-github-icon">
+
+        <div class="topbar-search-icon" v-if="showTopbarTitle">
+          <Icon type="ios-search" @click="handleSearch" size="18"/>
+        </div>
+        <div class="topbar-github-icon" v-if="showTopbarTitle">
           <a href="https://github.com/hzjswlgbsj" target="_blank">
             <Icon type="logo-github" size="18" />
           </a>
+        </div>
+
+        <div class="topbar-close-icon" v-if="!showTopbarTitle">
+          <Icon type="ios-close" @click="handleSearch" size="28"/>
         </div>
       </div>
 
@@ -44,7 +59,7 @@ import IconCollection from '../../components/IconCollection'
 import dataStore from '../../data/index'
 import { getScrollTop, getScrollHeight, getWindowHeight } from '../../util/scroll'
 import routerMixin from '../../mixins/router'
-import { SIXTY_LOGO } from '../../const'
+import { SIXTY_LOGO, MENU_LIST } from '../../const'
 
 export default {
   name: 'top-bar',
@@ -87,7 +102,9 @@ export default {
       curScrollTop: 0,
       isUp: true,
       isTop: true,
-      isBottom: false
+      isBottom: false,
+      showSearch: false,
+      showTopbarTitle: true
     }
   },
 
@@ -97,22 +114,22 @@ export default {
 
   computed: {
     topBarStyle () {
-      let styleObj = {
+      return {
         height: this.height,
         color: this.color,
         'font-size': this.fontSize,
         'background-color': this.bgColor
       }
-      /* if (this.isUp) {
-        styleObj.opacity = 1
-      } else {
-        styleObj.opacity = 0
-      } */
-      return styleObj
     },
-    iconCollectionStyle () {
-      return {
-        opacity: this.iconCoolOpacity
+    topbarTitleStyle () {
+      return this.showSearch ? {display: 'none'} : {}
+    }
+  },
+
+  directives: {
+    focus: {
+      inserted: function (el) {
+        el.focus()
       }
     }
   },
@@ -125,6 +142,16 @@ export default {
     },
     setExpression (min, max) {
       return window.scrollY > min && window.scrollY <= max
+    },
+    handleSearch () {
+      this.showTopbarTitle = !this.showTopbarTitle
+      if (this.showTopbarTitle) {
+        this.showSearch = !this.showSearch
+      } else {
+        setTimeout(() => {
+          this.showSearch = !this.showSearch
+        }, 500)
+      }
     },
     setIconCoolOpacity () {
       switch (true) {
@@ -223,17 +250,28 @@ export default {
     }
     .topbar-category-text {
       /*margin-right: 20px;*/
+      max-width: 584px;
+      /*width: 80%;*/
       font-size: 14px;
       &:hover {
         color: $theme-color;
         cursor: pointer
       }
     }
-    .topbar-search-icon, .topbar-github-icon {
+    .topbar-search-input-container{
+      width: 60%;
+      .topbar-search-input {
+        font-size: 16px;
+        color: #fff;
+        width: 100%;
+        height: 1.5em;
+        background-color: #000000;
+      }
+    }
+    .topbar-search-icon, .topbar-github-icon, .topbar-close-icon {
       cursor: pointer;
       &:hover {
         color: $theme-color;
-        cursor: pointer
       }
       a {
         color: $font-color;

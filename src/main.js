@@ -11,11 +11,13 @@ import Vuex from 'vuex'
 import VueTimeago from 'vue-timeago'
 import VueLoading from 'vue-loading-template'
 import store from './data/store'
+import animated from 'animate.css'
 
 Vue.component('icon', Icon)
 Vue.use(iView)
 Vue.use(mavonEditor)
 Vue.use(Vuex)
+Vue.use(animated)
 Vue.use(VueTimeago, {
   name: 'Timeago',
   locale: 'zh-CN',
