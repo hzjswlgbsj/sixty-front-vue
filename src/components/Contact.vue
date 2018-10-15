@@ -20,8 +20,16 @@
             <icon name="twitter" scale="1.5"></icon>
             </span>
     </a>
-    <span class="contact-icon main-layout-contact-wechat"><icon name="wechat" scale="1.5"></icon></span>
-    <span class="contact-icon main-layout-contact-qq"><icon name="qq" scale="1.3"></icon></span>
+    <span class="contact-icon main-layout-contact-wechat">
+       <Tooltip placement="top" content="hzjswlgbsj" :delay="200">
+        <icon name="wechat" scale="1.5"></icon>
+       </Tooltip>
+    </span>
+    <span class="contact-icon main-layout-contact-qq">
+      <Tooltip placement="top" content="1025132924" :delay="200">
+        <icon name="qq" scale="1.3"></icon>
+       </Tooltip>
+    </span>
   </div>
 </template>
 

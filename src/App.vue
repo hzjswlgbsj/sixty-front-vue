@@ -70,4 +70,11 @@ export default {
   .markdown-body li {
     list-style: decimal !important;
   }
+  .markdown-body table tr {
+    background-color: #282C34!important;
+    border-top: 1px solid #000!important;
+  }
+  .markdown-body table td, .markdown-body table th {
+    border: 1px solid #000!important;
+  }
 </style>
