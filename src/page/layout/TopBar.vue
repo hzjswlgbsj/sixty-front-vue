@@ -37,16 +37,16 @@
 
             <ul class="search-recommend-list">
               <transition name="first-fade">
-              <li v-if="showSearchRecommend">这里是推荐链接1</li>
+              <li v-if="showSearchRecommend">响应式布局方案</li>
               </transition>
               <transition name="second-fade">
-                <li v-if="showSearchRecommend">这里是推荐链接2</li>
+                <li v-if="showSearchRecommend">了解JavaScript的闭包</li>
               </transition>
               <transition name="third-fade">
-                <li v-if="showSearchRecommend">这里是推荐链接3</li>
+                <li v-if="showSearchRecommend">正则表达相关问题</li>
               </transition>
               <transition name="fourth-fade">
-                <li v-if="showSearchRecommend">这里是推荐链接4</li>
+                <li v-if="showSearchRecommend">css动画专题</li>
               </transition>
             </ul>
           </div>
@@ -245,13 +245,12 @@ export default {
       })
 
       /* 实现点击其他地方放选择标签的modal消失：
-				 判断点击事件发生在区域外的条件是：
-				 1.点击事件的对象不是目标区域本身
-				 2.事件对象同时也不是目标区域的子元素
-			*/
-      document.addEventListener('click',  (e) => {
-        let modal_event = this.$refs.recommendModal // 设置目标区域
-        if (modal_event && !modal_event.isEqualNode(e.target) && !modal_event.contains(e.target)) {
+      判断点击事件发生在区域外的条件是：
+      1.点击事件的对象不是目标区域本身
+      2.事件对象同时也不是目标区域的子元素 */
+      document.addEventListener('click', (e) => {
+        let modalEvent = this.$refs.recommendModal // 设置目标区域
+        if (modalEvent && !modalEvent.isEqualNode(e.target) && !modalEvent.contains(e.target)) {
           this.handleSearch()
         }
       })

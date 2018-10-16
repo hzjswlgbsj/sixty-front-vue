@@ -6,6 +6,9 @@
         <div class="article-detail-title">{{article.title}}</div>
         <article-info :article-data="article"/>
       </div>
+
+      <music-player v-if="article.music_id > 0" :id="Number(article.music_id)"/>
+
       <div class="article-detail-content">
         <mavon-editor
           class="article-detail-content-markdown"
@@ -74,6 +77,7 @@
 import dataStore from '../data/index'
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
+import MusicPlayer from '../components/MusicPlayer'
 import { getArticleById, remoteGetComment } from '../service/article'
 import ArticleInfo from '../components/ArticleInfo'
 
@@ -82,7 +86,8 @@ export default {
   components: {
     BlockText,
     Comment,
-    ArticleInfo
+    ArticleInfo,
+    MusicPlayer
   },
   data () {
     return {
@@ -215,6 +220,7 @@ export default {
       .article-detail-content {
         /*text-indent: 2em;*/
         width: 100%;
+        margin-top: 20px;
         .article-detail-content-markdown {
           width: 100%;
           z-index: auto;

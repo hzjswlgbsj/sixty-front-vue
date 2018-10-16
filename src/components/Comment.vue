@@ -106,12 +106,12 @@
           <div class="article-comment-common-line"></div>
         </div>
         <!--最下面也加上分页和评论框-->
-        <!--<div class="article-comment-pagination-bottom">
+        <div class="article-comment-pagination-bottom">
           <pagination :total="total" :current="currentCommentPage" :page-size="commentPageSize" @on-change="changePagination"></pagination>
         </div>
-        <div class="article-comment-login">
-          <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentLevel.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
-        </div>-->
+        <!--<div class="article-comment-login">-->
+          <!--<logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentLevel.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>-->
+        <!--</div>-->
       </div>
       <div v-else>
         <vue-loading
@@ -257,25 +257,20 @@ export default {
       await remoteGetChildrenComment(true, parentId, params[0], this.commentChildrenPageSize)
     },
     async publishComment (params, level) {
-      let content = ''
-      if (level === this.commentLevel.comment) {
-        this.resetForm(level)
-        content = params[0]
-      } else {
-        content = params
-      }
-      if (!this.login) {
+      const [content, email] = params
+
+      if (level === this.commentLevel.comment) this.resetForm(level)
+
+      if (!this.login || !this.user || !this.user.id) {
+        this.$Message.error('你还没登录哒~')
         return
       }
-      if (!this.user || !this.user.id) {
-        this.$Message.error('没有登录成功哦~')
-        return
-      }
+
       if (!content) {
         this.$Message.error('你似乎啥都没说哦~')
         return
       }
-      let email = ''
+
       try {
         let ret = await remoteAddComment(
           parseInt(this.currentArticleId),
@@ -378,7 +373,7 @@ export default {
         color: #81A1B4;
       }
       .article-comment-head {
-        border-bottom: 1px solid #E5E9EF;
+        border-bottom: 1px solid #333;
         font-size: 12px;
         @include flex-define(row, space-between, center);
         .article-comment-all {
@@ -404,7 +399,7 @@ export default {
         }
       }
       .article-comment-login{
-        margin: 25px 0;
+        margin: 25px 0 50px 0;
       }
       .article-comment-content-container {
         width: 100%;
@@ -509,11 +504,13 @@ export default {
         .article-comment-common-line {
           width: 90%;
           margin-left: 80px;
-          border-bottom: 1px solid #666;
+          border-bottom: 1px solid #333;
         }
       }
       .article-comment-pagination-bottom {
         display: flex;
+        margin-top: 20px;
+        font-size: 12px;
       }
     }
   }

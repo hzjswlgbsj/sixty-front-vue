@@ -7,12 +7,18 @@
       <div class="logout-desc-login" v-if="login">
         <textarea v-model="commentContent" class="logout-desc-login-text" cols="80" rows="4" :placeholder="placeholder"></textarea>
       </div>
+
       <div class="logout-desc-logout" v-else>
         <div>
           微博
           <span class="logout-desc-logout-btn" @click="handleLogin">登录</span>
           后发表评论 (・ω・)
         </div>
+      </div>
+
+      <div class="login-other-info" v-if="login">
+        <Checkbox v-model="saveEmailNotice">接受邮件提醒</Checkbox>
+        <Input v-if="saveEmailNotice" v-model="eMail" placeholder="请输入邮件地址" size="small" style="width: 150px; color: #333333" />
       </div>
     </div>
     <div class="logout-comment-btn" :class="login ? '' : 'logout-comment-btn-logout' " @click="publishComment">发表评论</div>
@@ -29,7 +35,9 @@ export default {
   },
   data () {
     return {
-      commentContent: ''
+      commentContent: '',
+      eMail: '',
+      saveEmailNotice: false
     }
   },
   props: {
@@ -65,7 +73,7 @@ export default {
   },
   methods: {
     publishComment () {
-      this.$emit('publish-comment', this.commentContent)
+      this.$emit('publish-comment', this.commentContent, this.eMail)
     },
     handleLogin () {
       this.$emit('handle-login')
@@ -125,6 +133,9 @@ export default {
           }
         }
       }
+      .login-other-info {
+        /*margin-top: 10px;*/
+      }
     }
     .logout-comment-btn {
       background-color: $theme-color;
@@ -149,4 +160,5 @@ export default {
       }
     }
   }
+
 </style>
