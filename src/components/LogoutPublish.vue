@@ -27,6 +27,7 @@
 
 <script>
 import Avatar from './Avatar'
+import { Message } from '../common'
 
 export default {
   name: 'logout-public',
@@ -73,10 +74,26 @@ export default {
   },
   methods: {
     publishComment () {
+      if (!this.handleEmail()) return
       this.$emit('publish-comment', this.commentContent, this.eMail)
     },
     handleLogin () {
       this.$emit('handle-login')
+    },
+    handleEmail () {
+      if (this.saveEmailNotice && !this.eMail) {
+        Message.error('请填写邮箱')
+        return false
+      }
+
+      let eMailReg = /^([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,8})$/
+
+      if (!eMailReg.test(this.eMail)) {
+        Message.error('你的邮箱不太对哦')
+        return false
+      }
+
+      return true
     }
   }
 }
