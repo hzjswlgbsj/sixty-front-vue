@@ -18,7 +18,11 @@
 
       <div class="login-other-info" v-if="login">
         <Checkbox v-model="saveEmailNotice">接受邮件提醒</Checkbox>
-        <Input v-if="saveEmailNotice" v-model="eMail" placeholder="请输入邮件地址" size="small" style="width: 150px; color: #333333" />
+        <transition
+          enter-active-class='animated zoomIn'
+          leave-active-class='animated zoomOut'>
+          <Input v-if="saveEmailNotice" v-model="eMail" placeholder="请输入邮件地址" size="small" style="width: 150px; color: #333333" />
+        </transition>
       </div>
     </div>
     <div class="logout-comment-btn" :class="login ? '' : 'logout-comment-btn-logout' " @click="publishComment">发表评论</div>
@@ -74,13 +78,19 @@ export default {
   },
   methods: {
     publishComment () {
-      if (!this.handleEmail()) return
+      if (!this.commentContent) {
+        Message.error('你似乎啥都没说哦~')
+        return
+      }
+
+      if (!this.checkEmail()) return
+
       this.$emit('publish-comment', this.commentContent, this.eMail)
     },
     handleLogin () {
       this.$emit('handle-login')
     },
-    handleEmail () {
+    checkEmail () {
       if (this.saveEmailNotice && !this.eMail) {
         Message.error('请填写邮箱')
         return false
@@ -88,7 +98,7 @@ export default {
 
       let eMailReg = /^([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,8})$/
 
-      if (!eMailReg.test(this.eMail)) {
+      if (this.saveEmailNotice && !eMailReg.test(this.eMail)) {
         Message.error('你的邮箱不太对哦')
         return false
       }

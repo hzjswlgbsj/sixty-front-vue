@@ -3,7 +3,10 @@
     <div class="article-detail-title-info" v-if="article.id">
       <div class="article-detail-top-cover" :style="detailCover"></div>
       <div class="article-detail-title-container">
-        <div class="article-detail-title">{{article.title}}</div>
+        <transition
+          enter-active-class='animated rubberBand'>
+          <div v-if="showTitle" class="article-detail-title">{{article.title}}</div>
+        </transition>
         <article-info :article-data="article"/>
       </div>
 
@@ -106,7 +109,8 @@ export default {
           link: 'https://doc.react-china.org/'
         }
       ],
-      currentArticleId: ''
+      currentArticleId: '',
+      showTitle: false
     }
   },
   created () {
@@ -151,6 +155,11 @@ export default {
     async initArticleData () {
       try {
         this.article = await getArticleById(this.currentArticleId)
+        if (this.article.id) {
+          setTimeout(() => {
+            this.showTitle = true
+          }, 0)
+        }
       } catch (e) {
         console.log(e)
       }

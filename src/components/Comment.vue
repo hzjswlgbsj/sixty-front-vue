@@ -266,11 +266,6 @@ export default {
         return
       }
 
-      if (!content) {
-        this.$Message.error('你似乎啥都没说哦~')
-        return
-      }
-
       try {
         let ret = await remoteAddComment(
           parseInt(this.currentArticleId),
