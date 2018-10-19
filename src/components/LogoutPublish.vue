@@ -5,7 +5,7 @@
     </div>
     <div class="logout-desc">
       <div class="logout-desc-login" v-if="login">
-        <textarea v-model="commentContent" class="logout-desc-login-text" cols="80" rows="4" :placeholder="placeholder"></textarea>
+        <textarea v-model="commentContent" class="logout-desc-login-text" cols="100" rows="4" :placeholder="placeholder"></textarea>
       </div>
 
       <div class="logout-desc-logout" v-else>
@@ -60,7 +60,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '吐槽写得要优美，代码才会更丝滑~'
+      default: '请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。'
     }
   },
   computed: {

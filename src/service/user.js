@@ -6,6 +6,7 @@
  */
 
 import dataStore from '../data/index'
+import { Store } from '../common'
 import arrayTool from '../util/array'
 import userApi from '../api/users'
 
@@ -18,15 +19,15 @@ import userApi from '../api/users'
  * @return {Array}
  */
 export async function getUsers (refresh, mixinId, page, limit) {
-  if (refresh || dataStore.store('users').length === 0) {
+  if (refresh || Store.store('users').length === 0) {
     let users = await userApi.all(mixinId, page, limit)
     if (!mixinId) {
-      dataStore.store('users', users)
+      Store.store('users', users)
     } else {
       return users[0]
     }
   }
-  return dataStore.store('users')
+  return Store.store('users')
 }
 
 /**

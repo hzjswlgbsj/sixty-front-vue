@@ -84,7 +84,7 @@
 <script>
 import Avatar from '../../components/Avatar'
 import IconCollection from '../../components/IconCollection'
-import dataStore from '../../data/index'
+import { Storage } from '../../common'
 import { getScrollTop, getScrollHeight, getWindowHeight } from '../../util/scroll'
 import routerMixin from '../../mixins/router'
 import { SIXTY_LOGO } from '../../const'
@@ -138,7 +138,7 @@ export default {
   },
 
   created () {
-    this.currentIdx = dataStore.storage('curRouterIndex')
+    this.currentIdx = Storage.storage('curRouterIndex')
   },
 
   computed: {
@@ -167,7 +167,7 @@ export default {
     changePage (router, index) {
       this.jump(router)
       this.currentIdx = index
-      dataStore.storage('curRouterIndex', index)
+      Storage.storage('curRouterIndex', index)
     },
     setExpression (min, max) {
       return window.scrollY > min && window.scrollY <= max
