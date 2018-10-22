@@ -31,7 +31,7 @@ import Avatar from '../../../src/components/Avatar'
 import Contact from '../../../src/components/Contact'
 import CommonLine from '../../components/CommonLine'
 import { SIXTY_LOGO, MENU_LIST } from '../../const'
-import dataStore from '../../data/index'
+import { Storage } from '../../common'
 
 export default {
   name: 'introduction',
@@ -55,7 +55,7 @@ export default {
     changePage (router) {
       MENU_LIST.map((item, index) => {
         if (item.label === router.name) {
-          dataStore.storage('curRouterIndex', index)
+          Storage.storage('curRouterIndex', index)
         }
       })
       this.$router.push(router.path)

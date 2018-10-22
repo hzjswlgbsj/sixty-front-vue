@@ -69,7 +69,7 @@ export default {
       default: function () {
         return {}
       }
-    }
+    }d
   },
   computed: {
     article () {

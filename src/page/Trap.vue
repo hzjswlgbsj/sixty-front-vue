@@ -25,7 +25,7 @@
 
 <script>
 import Comment from '../components/Comment'
-import dataStore from '../data/index'
+import { Store } from '../common'
 import { remoteGetComment } from '../service/article'
 import { getLinks } from '../service/link'
 import ResourceCard from '../components/ResourceCard'
@@ -47,10 +47,10 @@ export default {
   },
   computed: {
     commentData () {
-      return dataStore.store('currentComment')
+      return Store.store('currentComment')
     },
     linkData () {
-      return dataStore.store('links')
+      return Store.store('links')
     },
     containerHeight () {
       let height = document.body.clientHeight

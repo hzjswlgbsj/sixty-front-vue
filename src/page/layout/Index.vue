@@ -22,7 +22,6 @@
 import TopBar from './TopBar'
 import FootBar from './FootBar'
 import Introduction from './Introduction'
-import { Store } from '../../common'
 
 export default {
   name: 'index',
@@ -39,9 +38,7 @@ export default {
     }
   },
   created () {
-    Store.store('liulincool', '这是测试store')
     this.isIndex = this.$route.name === 'Index'
-    console.log(11111111111, Store.store('liulincool'))
   },
   watch: {
     '$route' (to, from) {

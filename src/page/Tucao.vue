@@ -61,7 +61,7 @@
 
 <script>
 import Comment from '../components/Comment'
-import dataStore from '../data/index'
+import { Store } from '../common'
 import { remoteGetComment } from '../service/article'
 import Const from '../const/index'
 
@@ -80,7 +80,7 @@ export default {
   },
   computed: {
     commentData () {
-      return dataStore.store('currentComment')
+      return Store.store('currentComment')
     },
     containerHeight () {
       let height = document.body.clientHeight

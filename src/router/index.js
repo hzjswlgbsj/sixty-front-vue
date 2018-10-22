@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import dataStore from '../data/index'
+import { Store, Storage } from '../common'
 import Index from '../../src/page/layout/Index'
 import Blog from '../../src/page/Blog'
 import Tucao from '../../src/page/Tucao'
@@ -69,19 +69,19 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  dataStore.store('curRouter', to.name)
-  dataStore.store('currentComment', [])
-  dataStore.store('links', [])
+  Store.store('curRouter', to.name)
+  Store.store('currentComment', [])
+  Store.store('links', [])
   next()
 })
 
 export function redirectLogin (loginBackRouter = '/') {
-  dataStore.storage('loginBackRouter', loginBackRouter)
+  Storage.storage('loginBackRouter', loginBackRouter)
   router.push('/login/code')
 }
 
 export function redirectBack () {
-  router.push(dataStore.storage('loginBackRouter'))
+  router.push(Storage.storage('loginBackRouter'))
 }
 
 export default router

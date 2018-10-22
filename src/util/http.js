@@ -4,7 +4,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import filter from './filter.js'
-import dataStore from '../data/index'
+import { Storage } from '../common'
 
 const env = process.env
 function getDomain (apiSource) {
@@ -46,7 +46,7 @@ function getParams (params) {
   let user
 
   try {
-    user = dataStore.storage('user')
+    user = Storage.storage('user')
   } catch (e) {}
 
   params.token = user ? user.token : ''

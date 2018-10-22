@@ -5,7 +5,7 @@
  * Time: 上午11:28
  */
 
-import dataStore from '../data/index'
+import { Store } from '../common'
 import _ from 'lodash'
 import tagApi from '../api/tags'
 import Const from '../const/index'
@@ -20,13 +20,13 @@ import { getArticle, getComment, getChildrenComment, addComment, like, getLike }
  * @return {Array}
  */
 export async function remoteGetArticles (refresh, id, page = 1, limit = Const.ARTICLE_PAGINATION) {
-  if (refresh || dataStore.store('articles').length === 0) {
-    let currentArticleData = dataStore.store('articles')
+  if (refresh || Store.store('articles').length === 0) {
+    let currentArticleData = Store.store('articles')
     let ret = await getArticle(id, page, limit)
     let articles = ret.data.items
 
     if (articles.length < Const.ARTICLE_PAGINATION) {
-      dataStore.store('notAnyMareArticle', true)
+      Store.store('notAnyMareArticle', true)
     }
 
     for (let article of articles) {
@@ -36,13 +36,13 @@ export async function remoteGetArticles (refresh, id, page = 1, limit = Const.AR
 
     if (page > 1) {
       let newArticleDate = currentArticleData.concat(articles)
-      dataStore.store('articles', newArticleDate)
+      Store.store('articles', newArticleDate)
     } else {
-      dataStore.store('articles', articles)
+      Store.store('articles', articles)
     }
   }
 
-  return dataStore.store('articles')
+  return Store.store('articles')
 }
 
 /**
@@ -51,11 +51,11 @@ export async function remoteGetArticles (refresh, id, page = 1, limit = Const.AR
  * @return {Array}
  */
 export async function getTags (refresh) {
-  if (refresh || dataStore.store('tags').length === 0) {
+  if (refresh || Store.store('tags').length === 0) {
     const tags = await tagApi.all()
-    dataStore.store('tags', tags.items)
+    Store.store('tags', tags.items)
   }
-  return dataStore.store('tags')
+  return Store.store('tags')
 }
 
 /**
@@ -105,11 +105,11 @@ export async function getArticleById (id) {
  * @return {Array}
  */
 export async function remoteGetComment (refresh, articleId, page = 1, limit = Const.ARTICLE_COMMENT_PAGINATION, childrenPage = 1, childrenLimit = Const.ARTICLE_CHILDREN_COMMENT_PAGINATION, type) {
-  if (refresh || dataStore.store('currentComment').length === 0) {
+  if (refresh || Store.store('currentComment').length === 0) {
     let articleComment = await getComment(articleId, page, limit, childrenPage, childrenLimit, type)
-    dataStore.store('currentComment', articleComment)
+    Store.store('currentComment', articleComment)
   }
-  return dataStore.store('currentComment')
+  return Store.store('currentComment')
 }
 
 /**

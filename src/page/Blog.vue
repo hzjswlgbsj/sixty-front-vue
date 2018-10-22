@@ -32,7 +32,7 @@ import TopBar from './layout/TopBar'
 import FootBar from './layout/FootBar'
 import ArticleItem from '../components/ArticleItem'
 import routerMixin from '../mixins/router'
-import dataStore from '../../src/data/index'
+import { Store } from '../common'
 import { remoteGetArticles } from '../service/article'
 import { getScrollTop, getScrollHeight, getWindowHeight } from '../util/scroll'
 
@@ -57,10 +57,10 @@ export default {
   },
   computed: {
     articleData () {
-      return dataStore.store('articles')
+      return Store.store('articles')
     },
     notAnyMare () {
-      return dataStore.store('notAnyMareArticle')
+      return Store.store('notAnyMareArticle')
     },
     containerHeight () {
       let height = document.body.clientHeight
@@ -71,8 +71,8 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      dataStore.store('curRouter', to)
-      let curRouterObj = dataStore.store('curRouter')
+      Store.store('curRouter', to)
+      let curRouterObj = Store.store('curRouter')
       this.isDetail = curRouterObj.name === 'ArticleDetail'
     },
     isBottom (val) {
@@ -83,8 +83,8 @@ export default {
   },
   methods: {
     async init () {
-      dataStore.store('curRouter', this.$route)
-      let curRouterObj = dataStore.store('curRouter')
+      Store.store('curRouter', this.$route)
+      let curRouterObj = Store.store('curRouter')
       this.isDetail = curRouterObj.name === 'ArticleDetail'
       this.initArticleData() // Initialize article data and set store
     },

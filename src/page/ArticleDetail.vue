@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import dataStore from '../data/index'
+import { Store } from '../common'
 import BlockText from '../components/BlockText'
 import Comment from '../components/Comment'
 import MusicPlayer from '../components/MusicPlayer'
@@ -118,7 +118,7 @@ export default {
   },
   computed: {
     commentData () {
-      return dataStore.store('currentComment')
+      return Store.store('currentComment')
     },
     articleCoverImg () {
       try {
