@@ -5,8 +5,7 @@
  * Time: 上午11:28
  */
 
-import dataStore from '../data/index'
-import { Store } from '../common'
+import { Store, Cookie } from '../common'
 import arrayTool from '../util/array'
 import userApi from '../api/users'
 
@@ -46,14 +45,7 @@ export async function getUserByFilterColumns (columns, columnsValue) {
  * @return {Object}
  */
 export function getCurrentUser () {
-  const userString = dataStore.getCookie('userInformation')
-  if (userString) {
-    try {
-      return JSON.parse(userString)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  return Cookie.get('userInformation')
 }
 
 /**
@@ -103,9 +95,9 @@ export async function login (weiboUid) {
     console.log('获取用户信息', user)
     if (user && user.id) {
       console.log('向cookie中写入信息', user)
-      dataStore.setCookie('userInformation', JSON.stringify(user))
+      Cookie.set('userInformation', JSON.stringify(user))
     }
-    let userCookieInformation = dataStore.getCookie('userInformation')
+    let userCookieInformation = Cookie.get('userInformation')
     if (userCookieInformation) {
       console.log('向cookie中写入信息成功', userCookieInformation)
       return true
@@ -121,7 +113,7 @@ export async function login (weiboUid) {
  * 注销账户
  */
 export function logout () {
-  dataStore.setCookie('userInformation', '')
+  Cookie.set('userInformation', '')
 }
 
 /**
@@ -130,18 +122,10 @@ export function logout () {
  */
 export function checkLogin () {
   console.log('进入检查登录状态')
-  let userInformation = dataStore.getCookie('userInformation')
-  if (userInformation) {
-    try {
-      let userInfo = JSON.parse(userInformation)
-      if (userInfo && userInfo.id) {
-        console.log('当前处于登录状态')
-        return true
-      }
-      return false
-    } catch (e) {
-      console.log(e)
-    }
+  let userInformation = Cookie.get('userInformation')
+  if (userInformation && userInformation.id) {
+    console.log('当前处于登录状态')
+    return true
   }
   console.log('当前处于没有登录状态')
   return false

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import dataStore from '../data/index'
+import { Cookie } from '../common'
 import urlTool from '../util/url'
 import weiboTokenApi from '../api/weibo/token'
 import { register, login, checkRegister } from '../service/user'
@@ -33,8 +33,8 @@ export default {
       if (params.code) {
         console.log('获取到了code', params.code)
         await this.getWeiboToken(params.code)
-        const weiboAccessToken = dataStore.getCookie('weibo_token')
-        const weiboUid = dataStore.getCookie('weibo_uid')
+        const weiboAccessToken = Cookie.get('weibo_token')
+        const weiboUid = Cookie.get('weibo_uid')
         if (!weiboAccessToken || !weiboUid) {
           console.log('从cookie中获取token和uid失败')
           this.$Message.error('微博用户状态异常')
@@ -91,8 +91,8 @@ export default {
         let tokenInfo = await weiboTokenApi.getToken(code)
         console.log('获取到了token', tokenInfo)
         if (tokenInfo && tokenInfo.access_token && tokenInfo.uid) {
-          dataStore.setCookie('weibo_token', tokenInfo.access_token)
-          dataStore.setCookie('weibo_uid', tokenInfo.uid)
+          Cookie.set('weibo_token', tokenInfo.access_token)
+          Cookie.set('weibo_uid', tokenInfo.uid)
         }
       } catch (e) {
         console.log(e)
@@ -104,7 +104,7 @@ export default {
       try {
         let weiboUserInfo = await weiboTokenApi.getUser(weiboAccessToken, weiboUid)
         if (weiboUserInfo && weiboUserInfo.id) {
-          dataStore.setCookie('weiboUserInfo', JSON.stringify(weiboUserInfo))
+          Cookie.set('weiboUserInfo', JSON.stringify(weiboUserInfo))
           return weiboUserInfo
         }
       } catch (e) {

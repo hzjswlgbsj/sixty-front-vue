@@ -69,8 +69,9 @@ export default {
       default: function () {
         return {}
       }
-    }d
+    }
   },
+
   computed: {
     article () {
       return this.articleData

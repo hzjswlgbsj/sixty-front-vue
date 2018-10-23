@@ -37,14 +37,17 @@ export default {
       showReturnTop: false
     }
   },
+
   created () {
     this.isIndex = this.$route.name === 'Index'
   },
+
   watch: {
     '$route' (to, from) {
       this.isIndex = to.name === 'Index'
     }
   },
+
   computed: {
     mainLayout () {
       if (this.isIndex) {
@@ -54,14 +57,7 @@ export default {
       }
     }
   },
-  mounted: function () {
-    this.$nextTick(() => {
-      this.clientHeight = document.body.clientHeight
-      window.addEventListener('scroll', (e) => {
-        this.showReturnTop = window.scrollY > 300
-      })
-    })
-  },
+
   methods: {
     returnTop (acceleration, time) {
       let xScroll = document.documentElement.scrollLeft || document.body.scrollLeft || window.scrollLeft || 0 // 获取水平滚动坐标
@@ -74,6 +70,15 @@ export default {
         }, time)
       }
     }
+  },
+
+  mounted: function () {
+    this.$nextTick(() => {
+      this.clientHeight = document.body.clientHeight
+      window.addEventListener('scroll', (e) => {
+        this.showReturnTop = window.scrollY > 300
+      })
+    })
   }
 }
 </script>
