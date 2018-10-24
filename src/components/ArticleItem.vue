@@ -19,9 +19,7 @@
            :key="index"
            :src="image.url" > -->
     </div>
-    <div class="article-info-content" @click="goDetail(article.id)">
-      {{article.introduction}}
-    </div>
+    <div v-html="article.introduction" class="article-info-content" @click="goDetail(article.id)"></div>
     <div class="article-info-tags" v-if="article.tags && article.tags.length > 0">
       <img class="article-info-tags-icon" src="../style/iconfont/tag.svg">
       <div class="article-info-tags-container" style="margin-left: 30px;">
@@ -137,7 +135,7 @@ export default {
           font-size: 0.5em;
           padding: 0 2px;
           border-radius: 2px;
-          position: absolute;
+          position: abasolute;
           top: 2px;
           right: -20px;
           transition: All 0.6s ease-in-out;

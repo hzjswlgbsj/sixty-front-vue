@@ -2,7 +2,7 @@
  * @module packages/common/Api
  */
 
-import { Http, Loading } from '../index'
+import {Http, Loading, Store} from '../index'
 
 function _api2url (api) {
   const domain = process.env.API_DOMAIN
@@ -52,6 +52,7 @@ function _call (api, params) {
     }
 
     const data = response.data
+    Store.store('request', 'success')
     if (!data || typeof data !== 'object' || !data.hasOwnProperty('ret')) {
       Loading.error()
       return Promise.reject(new Error(

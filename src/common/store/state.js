@@ -7,5 +7,6 @@ export default {
   users: [], // 所有用户
   loginBackRouter: '/', // 登陆成功后的会跳路由
   links: [], // 链接数据
-  notAnyMareArticle: false // 是否哦没有更多文章了
+  notAnyMareArticle: false, // 是否哦没有更多文章了
+  request: '' // 请求状态
 }

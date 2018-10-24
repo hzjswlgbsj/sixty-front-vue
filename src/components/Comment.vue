@@ -113,12 +113,17 @@
           <!--<logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentLevel.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>-->
         <!--</div>-->
       </div>
-      <div v-else>
+
+      <div v-if="requestStatus === '' && articleReady" style="margin-top: 20px">
         <vue-loading
-          type="bubbles"
+          type="spiningDubbles"
           color="#2BBC8A"
           :size="{ width: '30px', height: '30px' }" />
       </div>
+
+      <div v-if="requestStatus ==='success' && comments && comments.length === 0" style="text-align: center; color: #333333">暂无吐槽哦</div>
+
+      <div v-if="requestStatus ==='timeout' " style="text-align: center">你的网络不给力哦</div>
     </div>
   </div>
 </template>
@@ -131,6 +136,7 @@ import { redirectLogin } from '../router/index'
 import { checkLogin, getCurrentUser, getUsers } from '../service/user'
 import { remoteAddComment, remoteLike, remoteGetLike, remoteGetComment, remoteGetChildrenComment } from '../service/article'
 import Const from '../const/index'
+import { Store } from '../common'
 
 export default {
   name: 'comment',
@@ -189,6 +195,10 @@ export default {
     discussType: {
       type: String,
       default: ''
+    },
+    articleReady: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -226,6 +236,10 @@ export default {
         'font-color': this.color,
         'font-size': this.fontSize
       }
+    },
+    requestStatus () {
+      console.log(333333, Store.store('request'))
+      return Store.store('request')
     },
     comments () {
       return this.commentData

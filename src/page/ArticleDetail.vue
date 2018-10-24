@@ -58,21 +58,25 @@
         </div>
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
-      <div class="article-detail-comment">
+      <div class="article-detail-comment" v-if="showTitle">
         <comment
-        :comment-total="parseInt(commentData.total)"
-        :commentData="commentData.data"
-        :article-id="currentArticleId"
-        :article-title="article.title"
-        @refresh-comment-data="initCommentData(true)" />
+          :article-ready="showTitle"
+          :comment-total="parseInt(commentData.total)"
+          :commentData="commentData.data"
+          :article-id="currentArticleId"
+          :article-title="article.title"
+          @refresh-comment-data="initCommentData(true)" />
       </div>
     </div>
-    <div v-else>
+
+    <div v-if="showLoading" style="margin-top: 10px">
       <vue-loading
-        type="bubbles"
+        type="spiningDubbles"
         color="#2BBC8A"
         :size="{ width: '30px', height: '30px' }" />
     </div>
+
+    <div v-if="!showLoading && !showTitle" style="text-align: center;margin-top: 60px">你的网络不给力哦</div>
   </div>
 </template>
 
@@ -110,7 +114,8 @@ export default {
         }
       ],
       currentArticleId: '',
-      showTitle: false
+      showTitle: false,
+      showLoading: true
     }
   },
   created () {
@@ -156,11 +161,13 @@ export default {
       try {
         this.article = await getArticleById(this.currentArticleId)
         if (this.article.id) {
+          this.showLoading = false
           setTimeout(() => {
             this.showTitle = true
           }, 0)
         }
       } catch (e) {
+        this.showLoading = false
         console.log(e)
       }
     },

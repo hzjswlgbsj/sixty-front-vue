@@ -20,7 +20,7 @@
     </div>
 
     <vue-loading
-      v-if="!articleData || articleData.length === 0"
+      v-if="showLoading"
       type="spiningDubbles"
       color="#2BBC8A"
       :size="{ width: '30px', height: '30px' }" />
@@ -43,7 +43,8 @@ export default {
       isDetail: false,
       tags: [],
       currentArticlePage: 1,
-      isBottom: false
+      isBottom: false,
+      showLoading: true
     }
   },
   mixins: [routerMixin],
@@ -91,7 +92,9 @@ export default {
     async initArticleData () {
       try {
         await remoteGetArticles()
+        this.showLoading = false
       } catch (e) {
+        this.showLoading = false
         console.log(e)
       }
     },

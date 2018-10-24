@@ -1,7 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-
-const TAG = 'HTTP'
+import { Message, Store } from '../index'
 
 /**
  * post请求
@@ -17,7 +16,12 @@ function post (url, params) {
       timeout: 20000
     })
     .catch(e => {
-      console.error(TAG, e)
+      Message.error('network error')
+      Store.store('request', 'timeout')
+      return Promise.reject({
+        code: -1,
+        msg: 'network error'
+      })
     })
 }
 
