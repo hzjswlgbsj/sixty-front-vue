@@ -30,91 +30,6 @@ if (!Array.prototype.indexOf) {
 }
 
 export default {
-  toObject (key, arr) {
-    let obj = {}
-
-    for (let val of arr) {
-      obj[val[key]] = val
-    }
-
-    return obj
-  },
-  toObjectById (arr) {
-    let obj = {}
-
-    for (let val of arr) {
-      obj[val.id] = val
-    }
-
-    return obj
-  },
-  filter (key, val, items) {
-    let arr = []
-    if (!items) {
-      return arr
-    }
-    for (let item of items) {
-      if (item[key] == val) {
-        arr.push(item)
-      }
-    }
-    return arr
-  },
-  filterItem (key, val, items) {
-    if (!items || val === '' || !key) {
-      return null
-    }
-
-    for (let item of items) {
-      if (item[key] == val) {
-        return item
-      }
-    }
-    return null
-  },
-  filterItemsArray (key, val, items) {
-    if (!items || val === '' || !key) {
-      return null
-    }
-    let itemsArray = []
-    for (let item of items) {
-      if (item[key] == val) {
-        itemsArray.push(item)
-      }
-    }
-    return itemsArray
-  },
-  filterValById (id, valKey, items, err) {
-    if (!items) {
-      return err
-    }
-
-    for (let item of items) {
-      if (item['id'] == id && item[valKey]) {
-        return item[valKey]
-      }
-    }
-    return err
-  },
-  filterVal (key, val, valKey, items, err) {
-    if (!items) {
-      return err
-    }
-
-    for (let item of items) {
-      if (item[key] == val && item[valKey]) {
-        return item[valKey]
-      }
-    }
-    return err
-  },
-  deleteById (id, items) {
-    for (let [key, item] of items.entries()) {
-      if (item['id'] === id) {
-        items.splice(key, 1)
-      }
-    }
-  },
   sortBy (key, items) {
     if (!items) {
       return null
@@ -131,24 +46,7 @@ export default {
 
     return items
   },
-  unique (array) {
-    if (this.isArray (array)){
-      var n = [];
-      for(var i = 0;i < array.length; i++){
-        if(n.indexOf(array[i]) == -1 && array[i]) n.push(array[i]);
-      }
-      return n;
-    }
-  },
-  isArray (arr){
-    // 稍高版本的es原生提供了数组判断，这边这个兼容
-    if (!Array.isArray) {
-      Array.isArray = function(arg) {
-        return Object.prototype.toString.call(arg) === '[object Array]';
-      };
-    }
-    return Array.isArray(arr);
-  },
+
   move (arr, from_index, to_index) {
     if (!arr) {
       return
@@ -167,12 +65,5 @@ export default {
     }
     arr.splice(to_index, 0, arr.splice(from_index, 1)[0]);
     return arr;
-  },
-  isInArray (item, array){
-    if (array.indexOf(item) === -1) {
-      return false
-    } else {
-      return true
-    }
   }
 }

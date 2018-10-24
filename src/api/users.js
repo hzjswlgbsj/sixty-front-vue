@@ -4,13 +4,13 @@
  * Date: 2018/4/28
  * Time: 上午10:31
  */
-import http from '../util/http'
+import { Api } from '../common'
 
 const module = {
   async all (mixinId, limit, page) {
     let [id, weiboUid] = [0, '']
     typeof mixinId === 'string' ? weiboUid = mixinId : id = mixinId
-    let ret = await http.xpost('user.all', {
+    let ret = await Api.call('user.all', {
       id,
       weibo_uid: weiboUid,
       limit,
@@ -19,7 +19,7 @@ const module = {
     return ret.data
   },
   async register (nickname, avatar, status, weiboUid) {
-    let ret = await http.xpost('user.register', {
+    let ret = await Api.call('user.register', {
       nickname,
       avatar,
       status,

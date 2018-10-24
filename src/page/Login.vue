@@ -6,7 +6,7 @@
 
 <script>
 import { Cookie } from '../common'
-import urlTool from '../util/url'
+import { Url } from '../common'
 import weiboTokenApi from '../api/weibo/token'
 import { register, login, checkRegister } from '../service/user'
 import { redirectBack } from '../router/index'
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     async weiboLogin () {
-      let params = urlTool.getRequest()
+      let params = Url.urlParams()
       if (params.code) {
         console.log('获取到了code', params.code)
         await this.getWeiboToken(params.code)

@@ -1,4 +1,4 @@
-import http from '../util/http'
+import { Api } from '../common'
 
 /**
  * Created by WebStorm.
@@ -8,7 +8,7 @@ import http from '../util/http'
  */
 const module = {
   async all (type, id, page, limit) {
-    let res = await http.xpost('link.all', {
+    let res = await Api.call('link.all', {
       type,
       id,
       page,

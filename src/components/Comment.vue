@@ -238,7 +238,6 @@ export default {
       }
     },
     requestStatus () {
-      console.log(333333, Store.store('request'))
       return Store.store('request')
     },
     comments () {

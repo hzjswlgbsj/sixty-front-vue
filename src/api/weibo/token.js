@@ -6,7 +6,7 @@
  */
 
 /* 由于直接调用微博的接口会产生跨域，我又不想使用微博那个不好看的标签和按钮，所以不使用js sdk，选择在后端中转一次 */
-import http from '../../util/http'
+import { Api } from '../../common'
 
 const env = process.env
 const module = {
@@ -16,7 +16,7 @@ const module = {
    * @return {Object}
    */
   async getToken (code) {
-    let ret = await http.xpost('token.get', {
+    let ret = await Api.call('token.get', {
       url: env.WEIBO_GET_TOKEN_URL,
       client_id: env.WEIBO_APPKEY,
       client_secret: env.WEIBO_APPSECRET,
@@ -33,7 +33,7 @@ const module = {
    * @return {Object}
    */
   async getUser (accessToken, uid) {
-    let ret = await http.xpost('token.user', {
+    let ret = await Api.call('token.user', {
       url: env.WEIBO_GET_USER_URL,
       access_token: accessToken,
       uid: uid
