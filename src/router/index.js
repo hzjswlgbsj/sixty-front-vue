@@ -59,7 +59,7 @@ const router = new Router({
           component: About
         },
         {
-          path: '/login/:code',
+          path: '/login',
           name: 'Login',
           component: Login
         }
@@ -77,7 +77,7 @@ router.beforeEach((to, from, next) => {
 
 export function redirectLogin (loginBackRouter = '/') {
   Storage.storage('loginBackRouter', loginBackRouter)
-  router.push('/login/code')
+  router.push('/login')
 }
 
 export function redirectBack () {

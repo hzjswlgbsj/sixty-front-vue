@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import { Cookie } from '../common'
-import { Url } from '../common'
+import { Cookie, Url } from '../common'
 import weiboTokenApi from '../api/weibo/token'
 import { register, login, checkRegister } from '../service/user'
 import { redirectBack } from '../router/index'

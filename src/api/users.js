@@ -9,7 +9,12 @@ import { Api } from '../common'
 const module = {
   async all (mixinId, limit, page) {
     let [id, weiboUid] = [0, '']
-    typeof mixinId === 'string' ? weiboUid = mixinId : id = mixinId
+    if (parseInt(mixinId) > 99999) {
+      weiboUid = mixinId
+    } else {
+      id = mixinId
+    }
+
     let ret = await Api.call('user.all', {
       id,
       weibo_uid: weiboUid,
