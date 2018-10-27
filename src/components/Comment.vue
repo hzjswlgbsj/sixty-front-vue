@@ -36,7 +36,7 @@
             <div class="comment-parent-container">
               <div class="comment-parent-info">
                 <span class="comment-parent-author">{{comment.user_nickname}}</span>
-                <div class="comment-parent-content-text">{{comment.content}}</div>
+                <div class="comment-parent-content-text" v-html="markdownIt(comment.content)"></div>
                 <div class="comment-parent-content-info">
                   <div class="comment-parent-content-date">
                     吐槽于
@@ -105,6 +105,7 @@
           </logout-publish>
           <div class="article-comment-common-line"></div>
         </div>
+
         <!--最下面也加上分页和评论框-->
         <div class="article-comment-pagination-bottom">
           <pagination :total="total" :current="currentCommentPage" :page-size="commentPageSize" @on-change="changePagination"></pagination>
@@ -137,6 +138,13 @@ import { checkLogin, getCurrentUser, getUsers } from '../service/user'
 import { remoteAddComment, remoteLike, remoteGetLike, remoteGetComment, remoteGetChildrenComment } from '../service/article'
 import Const from '../const/index'
 import { Store } from '../common'
+import marked from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/atom-one-dark.css'
+
+marked.setOptions({
+  highlight: text => hljs.highlightAuto(text).value
+})
 
 export default {
   name: 'comment',
@@ -361,6 +369,9 @@ export default {
     },
     showMoreChildrenComment () {
       this.showMore = true
+    },
+    markdownIt (text) {
+      return marked(text)
     }
   }
 }

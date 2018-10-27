@@ -5,7 +5,7 @@
     </div>
     <div class="logout-desc">
       <div class="logout-desc-login" v-if="login">
-        <textarea v-model="commentContent" class="logout-desc-login-text" cols="100" rows="4" :placeholder="placeholder"></textarea>
+        <textarea v-model="commentContent" class="logout-desc-login-text" cols="100" :placeholder="placeholder"></textarea>
       </div>
 
       <div class="logout-desc-logout" v-else>
@@ -16,14 +16,18 @@
         </div>
       </div>
 
-      <div class="login-other-info" v-if="login">
-        <Checkbox v-model="saveEmailNotice">接受邮件提醒</Checkbox>
-        <transition
-          enter-active-class='animated zoomIn'
-          leave-active-class='animated zoomOut'>
-          <Input v-if="saveEmailNotice" v-model="eMail" placeholder="请输入邮件地址" size="small" style="width: 150px; color: #333333" />
-        </transition>
+      <div class="comment-textarea-other-info">
+        <div class="login-other-info" v-if="login">
+          <Checkbox v-model="saveEmailNotice">接受邮件提醒</Checkbox>
+          <transition
+            enter-active-class='animated zoomIn'
+            leave-active-class='animated zoomOut'>
+            <Input v-if="saveEmailNotice" v-model="eMail" placeholder="请输入邮件地址" size="small" style="width: 150px; color: #333333" />
+          </transition>
+        </div>
+        <div class="textarea-other-info-markdown">支持markdown语法哦😝 ~</div>
       </div>
+
     </div>
     <div class="logout-comment-btn" :class="login ? '' : 'logout-comment-btn-logout' " @click="publishComment">发表评论</div>
   </div>
@@ -128,7 +132,7 @@ export default {
       .logout-desc-login {
         .logout-desc-login-text {
           margin: 8px;
-          height: 55px;
+          min-height: 55px;
           z-index: auto;
           position: relative;
           line-height: normal;
@@ -160,7 +164,12 @@ export default {
           }
         }
       }
-      .login-other-info {
+      .comment-textarea-other-info {
+        font-size: $font-size;
+        @include flex-define (row, space-between, center);
+        .textarea-other-info-markdown {
+          color: $theme-color;
+        }
         /*margin-top: 10px;*/
       }
     }

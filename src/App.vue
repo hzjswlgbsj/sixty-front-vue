@@ -48,12 +48,17 @@ export default {
 
   .hljs {
     padding: 1em !important;
-    border-radius: 10px;
+    border-radius: 5px;
   }
   .v-show-content, .scroll-style {
     padding: 0 !important;
     color: #DAE1E8 !important;
     background-color: $theme-background-color !important;
+  }
+  .comment-parent-content-text pre {
+    background-color: #282C34 !important;
+    padding: 5px 16px;
+    border-radius: 5px;
   }
   .v-show-content pre {
     background-color: $theme-background-color !important;
