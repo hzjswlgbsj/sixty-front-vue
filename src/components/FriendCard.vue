@@ -85,22 +85,78 @@ export default {
   }
 
   /*边框闪烁动画开始*/
-  .friends-card-active {
-    /*width: 150px;*/
-    /*height: 130px;*/
-    /*background-color: #0d1926;*/
-    animation: glow 800ms ease-out infinite alternate;
+  .friends-card-active1 {
+    animation: purple 800ms ease-out infinite alternate;
   }
-  @keyframes glow {
+  @keyframes purple {
     0% {
-      border-color: #bc98ff;
       border-radius: 5px;
-      box-shadow: 0 0 10px rgba(19, 19, 255, 0.6), inset 0 0 8px rgba(53, 19, 255, 0.4), 0 0 0 #2f3c99;
+      box-shadow: 0 0 10px purple;
     }
     100% {
-      border-color: #272899;
+      border-color: #dc25ff;
       border-radius: 5px;
-      box-shadow: 0 0 20px rgba(78, 147, 255, 0.6), inset 0 0 15px rgba(47, 58, 255, 0.4), 0 0 0 #daa7ff;
+      box-shadow: 0 0 10px rgba(147, 122, 219, 0.8), inset 0 0 8px rgba(102, 51, 153, 0.6), 0 0 0 rebeccapurple;
+    }
+  }
+
+  .friends-card-active2 {
+    animation: blue 800ms ease-out infinite alternate;
+  }
+  @keyframes blue {
+    0% {
+      border-radius: 5px;
+      box-shadow: 0 0 10px blue;
+    }
+    100% {
+      border-color: dodgerblue;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(30, 144, 255, 0.8), inset 0 0 8px rgba(18, 182, 255, 0.4), 0 0 0 #09bbff;
+    }
+  }
+
+  .friends-card-active3 {
+    animation: white 800ms ease-out infinite alternate;
+  }
+  @keyframes white {
+    0% {
+      border-radius: 5px;
+      box-shadow: 0 0 10px white;
+    }
+    100% {
+      border-color: whitesmoke;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgb(142, 255, 250), inset 0 0 8px rgb(142, 255, 250), 0 0 0 whitesmoke;
+    }
+  }
+
+  .friends-card-active4 {
+    animation: yellow 800ms ease-out infinite alternate;
+  }
+  @keyframes yellow {
+    0% {
+      border-radius: 5px;
+      box-shadow: 0 0 10px yellow;
+    }
+    100% {
+      border-color: #ecff8d;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgb(252, 255, 200), inset 0 0 8px rgb(242, 255, 102), 0 0 0 #fff211;
+    }
+  }
+
+  .friends-card-active {
+    animation: green 800ms ease-out infinite alternate;
+  }
+  @keyframes green {
+    0% {
+      border-radius: 5px;
+      box-shadow: 0 0 10px green;
+    }
+    100% {
+      border-color: darkgreen;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgb(14, 184, 49), inset 0 0 8px rgb(37, 128, 60), 0 0 0 green;
     }
   }
   /*边框闪烁动画结束*/

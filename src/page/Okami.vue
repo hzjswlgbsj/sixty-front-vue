@@ -2,7 +2,7 @@
   <div class="friends-root" :style="containerHeight">
     <div class="friends-container">
       <div class="friends-alert-operation">
-        下面是我们木叶村的一些优秀忍者，想拜他们为师吗？来翻个牌子吧。
+        下面是我们木叶村的一些优秀忍者，想拜师或者结交吗？来翻个牌子吧。
       </div>
       <div class="friends-card-container" v-if="linkData && linkData.length > 0">
         <friend-card
@@ -30,7 +30,7 @@
         <div class="friends-desc-info">
           <p>-- 博客名称：Sixty'Den</p>
           <p>-- 博客地址：http://www.sixtyden.com</p>
-          <p>-- 博客头像：http://lib.sixtyden.com/80.jpg</p>
+          <p>-- 博客头像：http://lib.sixtyden.com/sixtyAvatar.jpg</p>
           <p>-- 博客描述：生活不止眼前的代码，还有弹不响的吉他弦</p>
         </div>
       </div>
