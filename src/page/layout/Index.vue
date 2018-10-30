@@ -12,7 +12,8 @@
     </div>
     <transition name="slide-fade">
       <div v-if="showReturnTop" @click="returnTop(1,80)" class="main-layout-structure-return-top">
-        <icon name="chevron-up" scale="1.5" class="main-layout-structure-return-top-icon"></icon>
+        <!--<icon name="chevron-up" scale="1.5" class="main-layout-structure-return-top-icon"></icon>-->
+        <span class="main-layout-structure-return-top-text">返回顶部</span>
       </div>
     </transition>
   </div>
@@ -91,16 +92,26 @@ export default {
       height: 100%;
     }
     .main-layout-structure-return-top {
-      width: 30px;
-      height: 30px;
-      background-color: $theme-color;
-      border-radius: 50%;
+      background: url("../../assets/returnTop.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: #141414;
+      width: 60px;
+      height: 100px;
+      transition: opacity 1s;
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 40px;
+      right: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
+      .main-layout-structure-return-top-text {
+        font-size: 1.2em;
+        padding: 10px 15px;
+        margin-top: 30px;
+        color: $theme-color;
+      }
       .main-layout-structure-return-top-icon {
         padding-bottom: 5px;
         color: #ffffff;

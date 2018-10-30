@@ -3,13 +3,13 @@
     <sixty-card
       rotate
       :is-front="isFront"
-      :class="isFront ? '' : 'friends-card-active'"
+      :class="isFront ? '' : `friends-card-active-${itemData.color}`"
       :background-image="backgroundImage"
       @on-click="clickCard">
       <div class="friend-card-content">
         <div class="friend-card-content-avatar-name">
           <avatar size="40px" :src="itemData.logo_url" rotate></avatar>
-          <div class="friend-card-content-name">{{itemData.nickname}}</div>
+          <div class="friend-card-content-name">{{green}}</div>
         </div>
         <div class="friend-card-content-description">{{itemData.description}}</div>
       </div>
@@ -85,7 +85,7 @@ export default {
   }
 
   /*边框闪烁动画开始*/
-  .friends-card-active1 {
+  .friends-card-active-purple {
     animation: purple 800ms ease-out infinite alternate;
   }
   @keyframes purple {
@@ -100,7 +100,7 @@ export default {
     }
   }
 
-  .friends-card-active2 {
+  .friends-card-active-blue {
     animation: blue 800ms ease-out infinite alternate;
   }
   @keyframes blue {
@@ -115,7 +115,7 @@ export default {
     }
   }
 
-  .friends-card-active3 {
+  .friends-card-active-white {
     animation: white 800ms ease-out infinite alternate;
   }
   @keyframes white {
@@ -130,7 +130,7 @@ export default {
     }
   }
 
-  .friends-card-active4 {
+  .friends-card-active-yellow {
     animation: yellow 800ms ease-out infinite alternate;
   }
   @keyframes yellow {
@@ -145,7 +145,7 @@ export default {
     }
   }
 
-  .friends-card-active {
+  .friends-card-active-green {
     animation: green 800ms ease-out infinite alternate;
   }
   @keyframes green {
