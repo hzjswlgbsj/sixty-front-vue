@@ -10,9 +10,11 @@ import Icon from 'vue-awesome/components/Icon'
 import VueTimeago from 'vue-timeago'
 import VueLoading from 'vue-loading-template'
 import animated from 'animate.css'
+import sixtyModal from './my-plugin/sixty-modal/sixtyModal'
 
 Vue.component('icon', Icon)
 Vue.use(iView)
+Vue.use(sixtyModal)
 Vue.use(mavonEditor)
 Vue.use(animated)
 Vue.use(VueTimeago, {
