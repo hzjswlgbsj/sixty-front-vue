@@ -3,7 +3,7 @@
     <div class="main-layout-index-content-container">
       <div class="main-layout-index-content">
         <avatar class="main-layout-avatar" :src="sixtyLogo" size="80px" rotate></avatar>
-        <span class="main-layout-desc" @click="testAlert">Sixty's Den</span>
+        <span class="main-layout-desc">Sixty's Den</span>
         <p class="main-layout-motto">活到老，学到老</p>
         <common-line width="50%" class="main-layout-line"></common-line>
         <p class="main-layout-self-intro">嗨，我是刘林 (@Sixty)，一名来自天府之国的web开发者，现居南京，就职于育儿网，正在前端的浑水里摸爬打滚。</p>
@@ -61,10 +61,6 @@ export default {
         }
       })
       this.$router.push(router.path)
-    },
-
-    testAlert () {
-      this.$sixtyModal('哈哈哈')
     }
   }
 }

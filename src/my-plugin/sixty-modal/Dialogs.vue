@@ -1,10 +1,7 @@
 <template>
-  <transition name="fade">
-    <div class="toast" v-show="show">
-      {{message}}
-    </div>
-
-  </transition>
+  <div class="sixty-alert-container" v-if="show">
+    {{message}}
+  </div>
 </template>
 
 <script>
@@ -21,29 +18,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .toast {
+  @import "../../style/mixin/baseMixin";
+  .sixty-alert-container {
     position: fixed;
     top: 40%;
-    left: 50%;
-    padding: 5px 10px;
+    left: 40%;
+    padding: 8px 10px 8px 55px;
     font-size: 1.2em;
     color: #fff;
-    text-align: center;
+    text-align: left;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     z-index: 999;
-  }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: 0.3s ease-out;
-  }
-  .fade-enter {
-    opacity: 0;
-    transform: scale(1.2);
-  }
-  .fade-leave-to {
-    opacity: 0;
-    transform: scale(0.8);
+    background-image: url("../../assets/you.png");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 </style>

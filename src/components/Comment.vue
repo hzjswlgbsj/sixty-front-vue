@@ -283,7 +283,7 @@ export default {
       if (level === this.commentLevel.comment) this.resetForm(level)
 
       if (!this.login || !this.user || !this.user.id) {
-        this.$Message.error('你还没登录哒~')
+        this.$sixtyModal('你还没登录哒~')
         return
       }
 
@@ -300,7 +300,7 @@ export default {
           this.articleTitle
         )
         if (ret && ret.data) {
-          this.$Message.success('你说的俺都听到了哦')
+          this.$sixtyModal('你说的俺都听到了哦~')
           this.refreshCommentData()
           this.resetComment = true
           this.resetForm()
@@ -313,7 +313,7 @@ export default {
       commentId = parseInt(commentId)
       currentLikeCount = parseInt(currentLikeCount)
       if (!this.login) {
-        this.$Message.error('要先登录才能点赞哦，^_^')
+        this.$sixtyModal('要先登录才能点赞哦，^_^')
         return
       }
       try {
@@ -327,18 +327,18 @@ export default {
             this.$set(comment, 'like', currentLikeCount - 1)
           }
         } else {
-          this.$Message.error('诶?手抖没成功')
+          this.$sixtyModal('诶?手抖没成功')
         }
       } catch (e) {
         console.log(e)
       }
     },
     handleDisagree () {
-      alert('哈哈，就不让你点反赞^_^')
+      this.$sixtyModal('哈哈，就不让你点反赞^_^')
     },
     async handleReply (parentId, replyId, replyUserId) {
       if (!this.login) {
-        this.$Message.error('要先登录才能吐槽哦，^_^')
+        this.$sixtyModal('要先登录才能吐槽哦，^_^')
         return
       }
       this.commentForm.parentId = parseInt(parentId)
