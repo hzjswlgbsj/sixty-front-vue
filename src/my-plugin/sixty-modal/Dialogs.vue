@@ -25,8 +25,8 @@ export default {
     left: 40%;
     padding: 8px 10px 8px 55px;
     font-size: 1.2em;
-    color: #fff;
     text-align: left;
+    color: $theme-color;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     z-index: 999;
