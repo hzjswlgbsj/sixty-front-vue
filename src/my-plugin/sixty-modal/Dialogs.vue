@@ -1,7 +1,8 @@
 <template>
-  <div class="sixty-alert-container" v-if="show">
-    {{message}}
-  </div>
+  <transition
+    enter-active-class='animated bounceInDown'>
+    <div class="sixty-alert-container" v-if="show">{{message}}</div>
+  </transition>
 </template>
 
 <script>

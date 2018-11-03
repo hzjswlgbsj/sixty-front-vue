@@ -111,6 +111,9 @@ export default {
         padding: 10px 15px;
         margin-top: 30px;
         color: $theme-color;
+        &:hover {
+          color: #ECFF8D;
+        }
       }
       .main-layout-structure-return-top-icon {
         padding-bottom: 5px;

@@ -9,7 +9,7 @@
       <div class="friend-card-content">
         <div class="friend-card-content-avatar-name">
           <avatar size="40px" :src="itemData.logo_url" rotate></avatar>
-          <div class="friend-card-content-name">{{green}}</div>
+          <div class="friend-card-content-name">{{itemData.nickname}}</div>
         </div>
         <div class="friend-card-content-description">{{itemData.description}}</div>
       </div>
@@ -20,6 +20,7 @@
 <script>
 import SixtyCard from './SixtyCard'
 import Avatar from './Avatar'
+import _ from 'lodash'
 export default {
   name: 'friend-card',
   components: {
@@ -35,7 +36,13 @@ export default {
   data () {
     return {
       backgroundImage: 'http://lib.sixtyden.com/hy1.jpeg',
-      isFront: true
+      isFront: true,
+      cardBackImage: [
+        'http://lib.sixtyden.com/201810231224480.jpg',
+        'http://lib.sixtyden.com/hy_mz.jpg',
+        'http://lib.sixtyden.com/family.jpeg',
+        'http://lib.sixtyden.com/hy_xiaoying.jpg'
+      ]
     }
   },
   computed: {
@@ -46,7 +53,7 @@ export default {
   methods: {
     clickCard () {
       setTimeout(() => {
-        this.backgroundImage = 'http://lib.sixtyden.com/hy2.jpeg'
+        this.backgroundImage = _.sample(this.cardBackImage)
         this.isFront = false
       }, 1000)
     },

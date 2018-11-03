@@ -36,14 +36,14 @@ export default {
         const weiboUid = Cookie.get('weibo_uid')
         if (!weiboAccessToken || !weiboUid) {
           console.log('从cookie中获取token和uid失败')
-          this.$Message.error('微博用户状态异常')
+          this.$sixtyModal('你的微博账号状态异常哦')
           redirectBack()
         }
         let weiboUserInfo = await await this.getWeiboUser(weiboAccessToken, parseInt(weiboUid))
         console.log('获取微博用户信息', weiboUserInfo)
         if (!weiboUserInfo || weiboUserInfo.id !== parseInt(weiboUid)) {
           console.log('获取微博用户信息失败')
-          this.$Message.error('拉取微博用户信息失败')
+          this.$sixtyModal('拉取微博用户信息失败')
           redirectBack()
         }
         let checkRegisterRes = await checkRegister(weiboUserInfo.idstr)
@@ -52,7 +52,7 @@ export default {
           /* 如果已经注册的直接登录 */
           let res = await login(weiboUid)
           if (res) {
-            this.$Message.success('登陆成功')
+            this.$sixtyModal('登陆成功')
             redirectBack()
           }
         } else {
@@ -62,18 +62,18 @@ export default {
             let registerResult = await register(weiboUserInfo.screen_name, weiboUserInfo.profile_image_url, 1, weiboUserInfo.idstr)
             if (registerResult) {
               console.log('注册成功，进入登录流程')
-              this.$Message.success('授权成功')
+              this.$sixtyModal('授权成功')
               let res = await login(weiboUserInfo.idstr)
               if (res) {
-                this.$Message.success('登陆成功')
+                this.$sixtyModal('登陆成功')
                 redirectBack()
               }
             } else {
-              this.$Message.success('授权失败')
+              this.$sixtyModal('授权失败')
               redirectBack()
             }
           } catch (e) {
-            this.$Message.success('未知错误')
+            this.$sixtyModal('未知错误')
             redirectBack()
             console.log(e)
           }

@@ -146,23 +146,23 @@ export default {
           background-color: #282C34;
           border-radius: 10px;
           .keywords-white {
-            @include keywords(white)
+            @include keywords(#FFFFFF)
           }
           .keywords-blue {
-            @include keywords(blue)
+            @include keywords(#0000FF)
           }
           .keywords-yellow {
-            @include keywords(yellow)
+            @include keywords(#FFFF00)
           }
           .keywords-green {
-            @include keywords(green)
+            @include keywords(#008000)
           }
           .keywords-purple {
-            @include keywords(purple)
+            @include keywords(#800080)
           }
         }
         .keywords-red {
-          @include keywords(red)
+          @include keywords(#FF0000)
         }
       }
       .friends-comments {
