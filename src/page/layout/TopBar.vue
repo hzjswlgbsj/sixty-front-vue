@@ -1,7 +1,7 @@
 <template>
   <transition name="top-fade">
     <div v-if="isUp" class="topbar-container" :style="topBarStyle">
-      <div class="topbar-inner-container">
+      <div class="topbar-inner-container-pc">
         <div class="topbar-avatar-container">
           <avatar :src="sixtyLogo" size="22px"></avatar>
         </div>
@@ -24,7 +24,7 @@
         <div v-if="showSearch" class="topbar-search-input-container">
           <!--<transition name="slide-fade">-->
           <Icon v-if="showSearchRecommend" class="topbar-search-input-icon" color="#fff" size="22" type="ios-search" />
-          <input v-if="showSearchRecommend" v-focus class="topbar-search-input" type="text" placeholder="搜索 sixtyden.com">
+          <input v-if="showSearchRecommend" v-model="searchContent" v-focus class="topbar-search-input" type="text" placeholder="搜索 sixtyden.com">
           <!--</transition>-->
           <div class="topbar-search-input" v-if="!showSearchRecommend"> </div>
 
@@ -77,12 +77,74 @@
           <!--</div>-->
         <!--</icon-collection>-->
       <!--</div>-->
+
+      <!--移动端开始-->
+      <div class="topbar-inner-container-phone">
+        <div class="topbar-inner-phone-icons">
+          <div class="topbar-phone-fold-icon" @click="handleFold">
+            <Icon v-if="isFold"type="ios-menu-outline" size="20"/>
+            <Icon v-else type="ios-close" size="28"/>
+          </div>
+          <div class="topbar-phone-logo">
+            <avatar :src="sixtyLogo" size="24px"></avatar>
+          </div>
+          <div class="topbar-phone-github-icon">
+            <a href="https://github.com/hzjswlgbsj" target="_blank">
+              <Icon type="logo-github" size="20" />
+            </a>
+          </div>
+        </div>
+
+        <transition
+          enter-active-class='animated fadeInDown'
+          leave-active-class='animated fadeOutUp'>
+          <div class="topbar-menu-phone" v-if="!isFold">
+            <div class="topbar-menu-phone-search-container">
+              <div class="topbar-menu-phone-search">
+                <Icon v-if="showPhoneSearch" class="topbar-search-phone-input-icon" color="#999999" size="22" type="ios-search" />
+                <input v-if="showPhoneSearch" v-model="searchContent" @focus="handleSearchFocus" @blur="handleSearchBlur"type="text" placeholder="搜索 sixtyden.com">
+              </div>
+
+              <div v-if="startSearch" class="topbar-menu-phone-search-cancel" @click="handleRemoteSearch">{{searchBtnText}}</div>
+            </div>
+
+
+            <common-line width="100%" color="#242424"/>
+
+            <ul class="topbar-menu-phone-list" v-if="!startSearch && menuList && menuList.length > 0">
+              <li
+                v-for="(menu, index) in menuList"
+                :key="index"
+                :class="currentIdx === index ? 'selected-item' : '' "
+                @click="changePage(menu.key, index)">
+                {{menu.label}}
+              </li>
+            </ul>
+
+
+            <div style="height: 15px;">
+                <div v-if="startSearch" class="search-recommend-title">快速链接</div>
+            </div>
+            <ul v-if="startSearch" class="search-recommend-list">
+                <li>响应式布局方案</li>
+                <li>了解JavaScript的闭包</li>
+                <li>正则表达相关问题</li>
+                <li>css动画专题</li>
+            </ul>
+
+            <div style="margin: 10px 30px; font-size: 14px">飞雷神</div>
+          </div>
+        </transition>
+
+      </div>
+
     </div>
   </transition>
 </template>
 
 <script>
 import Avatar from '../../components/Avatar'
+import CommonLine from '../../components/CommonLine'
 import IconCollection from '../../components/IconCollection'
 import { Storage } from '../../common'
 import { getScrollTop, getScrollHeight, getWindowHeight } from '../../util/scroll'
@@ -93,8 +155,9 @@ export default {
   name: 'top-bar',
 
   components: {
-    'avatar': Avatar,
-    'icon-collection': IconCollection
+    Avatar,
+    IconCollection,
+    CommonLine
   },
 
   props: {
@@ -133,7 +196,11 @@ export default {
       isBottom: false,
       showSearch: false,
       showSearchRecommend: false,
-      showTopbarTitle: true
+      showPhoneSearch: false,
+      showTopbarTitle: true,
+      isFold: true,
+      startSearch: false,
+      searchContent: ''
     }
   },
 
@@ -150,8 +217,13 @@ export default {
         'background-color': this.bgColor
       }
     },
+
     topbarTitleStyle () {
       return this.showSearch ? {display: 'none'} : {}
+    },
+
+    searchBtnText () {
+      return this.searchContent ? '开始' : '取消'
     }
   },
 
@@ -165,6 +237,7 @@ export default {
 
   methods: {
     changePage (router, index) {
+      this.isFold = true
       this.jump(router)
       this.currentIdx = index
       Storage.storage('curRouterIndex', index)
@@ -186,6 +259,26 @@ export default {
         }, 400)
       }
     },
+
+    handleSearchFocus () {
+      this.startSearch = true
+    },
+
+    handleSearchBlur () {
+      this.startSearch = false
+    },
+
+    handleRemoteSearch () {
+      if (this.searchBtnText === '开始') {
+        console.log('在这里执行搜索')
+      }
+    },
+
+    handleFold () {
+      this.isFold = !this.isFold
+      this.showPhoneSearch = !this.showPhoneSearch
+    },
+
     setIconCoolOpacity () {
       switch (true) {
         case this.setExpression(0, 75):
@@ -273,7 +366,6 @@ export default {
     opacity: 0;
   }
   .topbar-container {
-    padding: 0 180px;
     width: 100%;
     margin-top: 20px;
     z-index: $index-level-first;
@@ -281,7 +373,7 @@ export default {
     @include flex-define (row, center, center);
     position: fixed;
     top: -20px;
-    .topbar-inner-container {
+    .topbar-inner-container-pc {
       @include flex-define (row, space-around, center);
       width: 100%;
       max-width: 1100px;
@@ -406,4 +498,104 @@ export default {
       }
     }
   }
+
+  /*响应式布局开始*/
+  @media screen and (max-width: 767px) {
+    .topbar-inner-container-pc {
+      display: none !important;
+    }
+    .topbar-inner-container-phone {
+      width: 100%;
+      .topbar-inner-phone-icons {
+        width: 100%;
+        @include flex-define (row, space-between, center);
+        padding: 0 20px;
+        .topbar-phone-logo {
+          padding-top: 8px;
+        }
+        .topbar-phone-github-icon {
+          a {
+            color: #ffffff;
+          }
+        }
+        .topbar-phone-fold-icon {
+          margin-top: 5px;
+        }
+      }
+      .topbar-menu-phone {
+        position: absolute;
+        top: 40px;
+        width: 100%;
+        padding: 10px;
+        background-color: #000000;
+        height: 1000px;
+        .topbar-menu-phone-search-container {
+          @include flex-define (row, start, center);
+          .topbar-menu-phone-search {
+            background-color: #282828;
+            height: 34px;
+            border-radius: 4px;
+            padding-top: 6px;
+            margin-bottom: 20px;
+            width: 100%;
+            .topbar-search-phone-input-icon {
+              margin-left: 10px;
+            }
+            input {
+              background-color: #282828;
+              color: $font-color;
+            }
+          }
+          .topbar-menu-phone-search-cancel {
+            margin: -10px 5px 10px 15px;
+            width: 40px;
+            cursor: pointer;
+            color: $hover-color2;
+          }
+        }
+        .topbar-menu-phone-list {
+          margin: 0 30px;
+          font-size: 16px;
+          li {
+            padding: 10px 0;
+            border-bottom: 1px solid #282828;
+          }
+        }
+
+        .search-recommend-title {
+          color: $font-other-color;
+          font-size: 12px;
+          margin: 10px 0 -10px 20px;
+        }
+        .search-recommend-list {
+          padding: 10px 0;
+          li {
+            list-style-type: none;
+            cursor: pointer;
+            margin-top: 4px;
+            padding: 10px 30px;
+            border-bottom: 1px solid #282828;
+            &:hover {
+              background-color: #F2F2F2;
+              color: $hover-color2;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .topbar-inner-container-phone {
+      display: none !important;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .topbar-container {
+      padding: 0 180px;
+    }
+  }
+
 </style>

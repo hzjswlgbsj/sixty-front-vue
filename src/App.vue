@@ -30,6 +30,9 @@ export default {
     outline:none;
     border: none
   }
+  li {
+    list-style:none;
+  }
   a {
     text-decoration: none;
     // color: #ffffff !important;
