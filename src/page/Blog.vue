@@ -171,4 +171,10 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .blog-article-item {
+      width: 96% !important;
+    }
+  }
 </style>

@@ -112,4 +112,10 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .error-container {
+      width: 96% !important;
+    }
+  }
 </style>

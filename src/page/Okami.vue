@@ -170,4 +170,10 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .friends-container {
+      width: 96% !important;
+    }
+  }
 </style>

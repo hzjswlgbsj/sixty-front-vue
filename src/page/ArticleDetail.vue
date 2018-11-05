@@ -286,4 +286,10 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .article-detail-title-info {
+      width: 96% !important;
+    }
+  }
 </style>

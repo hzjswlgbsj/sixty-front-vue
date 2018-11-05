@@ -164,4 +164,10 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .tucao-container {
+      width: 96% !important;
+    }
+  }
 </style>

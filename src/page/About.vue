@@ -234,4 +234,10 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .sixty-about-me {
+      width: 96% !important;
+    }
+  }
 </style>
