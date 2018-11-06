@@ -1,6 +1,6 @@
 <template>
   <div class="avatar-container">
-    <img :class="rotate ? 'img-rotate' : '' " :src="src" :style="avatarType" @click="clickImg">
+    <img class="avatar-image" :class="rotate ? 'img-rotate' : '' " :src="src" :style="avatarType" @click="clickImg">
   </div>
 </template>
 

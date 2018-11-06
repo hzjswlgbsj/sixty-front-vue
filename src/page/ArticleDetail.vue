@@ -291,5 +291,12 @@ export default {
     .article-detail-title-info {
       width: 96% !important;
     }
+    .article-detail-top-cover {
+      height: 200px !important;
+    }
+    .article-detail-title {
+      font-size: 24px !important;
+      margin-top: -160px !important;
+    }
   }
 </style>

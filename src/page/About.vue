@@ -58,17 +58,17 @@
 
           <div style="margin: 10px 0;">
             <div class="sixty-about-me-skill">
-              <div style="width: 60px;">前端：</div>
+              <div class="sixty-about-me-skill-type" style="width: 60px;">前端：</div>
               <Progress style="width: 600px;" :percent="75" status="active" :stroke-width="15" />
             </div>
 
             <div class="sixty-about-me-skill" style="">
-              <span style="width: 60px;">后端：</span>
+              <span class="sixty-about-me-skill-type" style="width: 60px;">后端：</span>
               <Progress style="width: 600px;" :percent="50" status="active" :stroke-width="15" />
             </div>
 
             <div class="sixty-about-me-skill" style="">
-              <span style="width: 60px;">Linux：</span>
+              <span class="sixty-about-me-skill-type" style="width: 60px;">Linux：</span>
               <Progress style="width: 600px;" :percent="40" status="active" :stroke-width="15" />
             </div>
           </div>
@@ -238,6 +238,9 @@ export default {
   @media screen and (max-width: 767px) {
     .sixty-about-me {
       width: 96% !important;
+    }
+    .sixty-about-me-skill-type {
+      width: 100px !important;
     }
   }
 </style>

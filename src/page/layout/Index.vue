@@ -10,10 +10,16 @@
     <div v-if="!isIndex" class="main-layout-structure-footbar">
       <foot-bar></foot-bar>
     </div>
+
     <transition name="slide-fade">
-      <div v-if="showReturnTop" @click="returnTop(1,80)" class="main-layout-structure-return-top">
-        <!--<icon name="chevron-up" scale="1.5" class="main-layout-structure-return-top-icon"></icon>-->
+      <div v-if="showReturnTop" @click="returnTop(1,80)" class="main-layout-structure-return-top return-top-pc">
         <span class="main-layout-structure-return-top-text">返回顶部</span>
+      </div>
+    </transition>
+
+    <transition name="slide-fade">
+      <div v-if="showReturnTop" @click="returnTop(1,80)" class="main-layout-structure-return-top return-top-phone">
+        <icon name="chevron-up" scale="1.5" class="main-layout-structure-return-top-icon"></icon>
       </div>
     </transition>
   </div>
@@ -92,33 +98,17 @@ export default {
       height: 100%;
     }
     .main-layout-structure-return-top {
-      background: url("../../assets/returnTop.png");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
-      background-color: #141414;
-      width: 60px;
-      height: 100px;
+      background-color: $theme-color;
       transition: opacity 1s;
       position: fixed;
-      bottom: 40px;
-      right: 40px;
+      bottom: 20px;
+      right: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      .main-layout-structure-return-top-text {
-        font-size: 1.2em;
-        padding: 10px 15px;
-        margin-top: 30px;
-        color: $theme-color;
-        &:hover {
-          color: #ECFF8D;
-        }
-      }
-      .main-layout-structure-return-top-icon {
-        padding-bottom: 5px;
-        color: #ffffff;
-      }
       &:hover {
         cursor: pointer;
         background-color: $hover-color;
@@ -132,6 +122,46 @@ export default {
     }
     .slide-fade-enter, .slide-fade-leave-to {
       opacity: 0;
+    }
+  }
+
+  /*响应式布局开始*/
+  @media screen and (max-width: 767px) {
+    .return-top-pc {
+      display: none !important;
+    }
+    .return-top-phone {
+      display: block !important;
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      .main-layout-structure-return-top-icon {
+        padding-bottom: 5px;
+        color: #ffffff;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .return-top-phone {
+      display: none !important;
+    }
+    .return-top-pc {
+      display: block !important;
+      background: url("../../assets/returnTop.png");
+      background-color: #141414;
+      padding: 45px 15px 0 15px;
+      width: 60px;
+      height: 100px;
+      .main-layout-structure-return-top-text {
+        font-size: 1.2em;
+        color: $theme-color;
+        &:hover {
+          color: #ECFF8D;
+        }
+      }
     }
   }
 </style>

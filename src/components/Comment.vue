@@ -31,7 +31,7 @@
         <div class="article-comment-content-container" v-for="comment in comments" :key="comment.id">
           <div class="article-comment-content">
             <div class="comment-parent-avatar">
-              <avatar :src="comment.user_avatar" size="50px"></avatar>
+              <avatar :src="comment.user_avatar" size="45px"></avatar>
             </div>
             <div class="comment-parent-container">
               <div class="comment-parent-info">
@@ -58,7 +58,7 @@
                   <div class="comment-children-container" v-if="index < 3 || showMore" v-for="(reply, index) in comment.children" :key="reply.id">
                     <!--这里是子评论，这里的三段式和主评论可以抽个组件出来，但是我认为评论组件都是一块一起用我就不抽出来了-->
                     <div class="comment-children-avatar">
-                      <avatar :src="reply.user_avatar" size="25px"></avatar>
+                      <avatar :src="reply.user_avatar" size="24px"></avatar>
                     </div>
                     <div class="comment-children-info">
                       <div class="comment-children-author-content">
@@ -533,4 +533,14 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .comment-parent-avatar {
+      .avatar-image {
+        width: 30px !important;
+        height: 30px !important;
+      }
+    }
+  }
+
 </style>

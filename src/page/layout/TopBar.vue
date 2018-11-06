@@ -82,7 +82,7 @@
       <div class="topbar-inner-container-phone">
         <div class="topbar-inner-phone-icons">
           <div class="topbar-phone-fold-icon" @click="handleFold">
-            <Icon v-if="isFold"type="ios-menu-outline" size="20"/>
+            <Icon v-if="isFold" type="ios-menu-outline" size="20"/>
             <Icon v-else type="ios-close" size="28"/>
           </div>
           <div class="topbar-phone-logo">
@@ -102,12 +102,11 @@
             <div class="topbar-menu-phone-search-container">
               <div class="topbar-menu-phone-search">
                 <Icon v-if="showPhoneSearch" class="topbar-search-phone-input-icon" color="#999999" size="22" type="ios-search" />
-                <input v-if="showPhoneSearch" v-model="searchContent" @focus="handleSearchFocus" @blur="handleSearchBlur"type="text" placeholder="搜索 sixtyden.com">
+                <input v-if="showPhoneSearch" v-model="searchContent" @focus="handleSearchFocus" @blur="handleSearchBlur" type="text" placeholder="搜索 sixtyden.com">
               </div>
 
               <div v-if="startSearch" class="topbar-menu-phone-search-cancel" @click="handleRemoteSearch">{{searchBtnText}}</div>
             </div>
-
 
             <common-line width="100%" color="#242424"/>
 
@@ -120,7 +119,6 @@
                 {{menu.label}}
               </li>
             </ul>
-
 
             <div style="height: 15px;">
                 <div v-if="startSearch" class="search-recommend-title">快速链接</div>

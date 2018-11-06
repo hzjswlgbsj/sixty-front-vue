@@ -196,4 +196,14 @@ export default {
       }
     }
   }
+
+  /*响应式布局开始*/
+  @media screen and (max-width: 767px) {
+    .article-info-cover-img {
+      height: 200px !important;
+    }
+    .article-title {
+      font-size: 20px !important;
+    }
+  }
 </style>

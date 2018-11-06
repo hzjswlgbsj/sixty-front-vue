@@ -116,6 +116,29 @@ export default {
   @media screen and (max-width: 767px) {
     .error-container {
       width: 96% !important;
+      .error-title {
+        font-size: 30px !important;
+      }
+      .error-title-desc {
+        font-size: 16px !important;
+      }
+      .error-search-container {
+        height: 40px !important;
+        width: 90% !important;
+        margin-left: 7%;
+        .error-search-input {
+          font-size: 20px !important;
+          margin-left: 10px !important;
+          padding-left: 40px !important;
+
+        }
+        .error-search-icon {
+          margin-right: -45px !important;
+        }
+      }
+      .error-search-desc {
+        padding: 0 20px !important;
+      }
     }
   }
 </style>
