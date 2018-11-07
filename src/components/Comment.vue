@@ -432,7 +432,7 @@ export default {
             width: 100%;
             color: #cccccc;
             font-weight: 600;
-            margin: 0 0 0 30px;
+            margin-left: 30px;
             .comment-parent-info {
               width: 100%;
               font-size: 12px;
@@ -529,17 +529,18 @@ export default {
       .article-comment-pagination-bottom {
         display: flex;
         margin-top: 20px;
+        margin-left: 20px;
         font-size: 12px;
       }
     }
   }
 
   @media screen and (max-width: 767px) {
-    .comment-parent-avatar {
-      .avatar-image {
-        width: 30px !important;
-        height: 30px !important;
-      }
+    .comment-parent-container {
+      margin-left: 12px !important;
+    }
+    .article-comment-common-line {
+      margin-left: 40px !important;
     }
   }
 

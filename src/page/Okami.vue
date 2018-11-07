@@ -173,7 +173,11 @@ export default {
 
   @media screen and (max-width: 767px) {
     .friends-container {
-      width: 96% !important;
+      width: 94% !important;
+    }
+    .friends-conditions-content, .friends-desc-info {
+      font-size: 12px !important;
+      padding: 5px !important;
     }
   }
 </style>

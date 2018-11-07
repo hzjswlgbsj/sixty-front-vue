@@ -83,4 +83,12 @@ export default {
       }
     }
   }
+
+  /*响应式布局开始*/
+  @media screen and (max-width: 767px) {
+    .avatar-image {
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
 </style>

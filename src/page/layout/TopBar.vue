@@ -86,7 +86,7 @@
             <Icon v-else type="ios-close" size="28"/>
           </div>
           <div class="topbar-phone-logo">
-            <avatar :src="sixtyLogo" size="24px"></avatar>
+            <img class="topbar-avatar-image" :src="sixtyLogo" @click="avatarJump">
           </div>
           <div class="topbar-phone-github-icon">
             <a href="https://github.com/hzjswlgbsj" target="_blank">
@@ -275,6 +275,10 @@ export default {
     handleFold () {
       this.isFold = !this.isFold
       this.showPhoneSearch = !this.showPhoneSearch
+    },
+
+    avatarJump () {
+      this.jump('')
     },
 
     setIconCoolOpacity () {
@@ -510,6 +514,11 @@ export default {
         padding: 0 20px;
         .topbar-phone-logo {
           padding-top: 8px;
+          .topbar-avatar-image {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+          }
         }
         .topbar-phone-github-icon {
           a {

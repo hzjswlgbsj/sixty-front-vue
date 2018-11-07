@@ -5,7 +5,7 @@
     </div>
     <div class="logout-desc">
       <div class="logout-desc-login" v-if="login">
-        <textarea v-model="commentContent" class="logout-desc-login-text" cols="100" :placeholder="placeholder"></textarea>
+        <textarea v-model="commentContent" class="logout-desc-login-text" :placeholder="placeholder"></textarea>
       </div>
 
       <div class="logout-desc-logout" v-else>
@@ -63,7 +63,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。'
+      default: '评论写得要优美，代码才会更丝滑。'
     }
   },
   computed: {
@@ -131,6 +131,7 @@ export default {
       .logout-desc-login {
         .logout-desc-login-text {
           margin: 8px;
+          width: 100%;
           min-height: 55px;
           z-index: auto;
           position: relative;
@@ -177,7 +178,7 @@ export default {
       color: $logout-color;
       width: 65px;
       height: 65px;
-      flex-basis: 65px;
+      /*flex-basis: 65px;*/
       border-radius: 5px;
       text-align: center;
       padding: 10px 12px;
@@ -196,4 +197,26 @@ export default {
     }
   }
 
+  /*响应式布局开始*/
+  @media screen and (max-width: 767px) {
+    .logout-desc {
+      height: 45px !important;
+      margin: 0 10px 0 0 !important;
+      .logout-desc-logout {
+        height: 45px !important;
+      }
+      .logout-desc-login-text {
+        min-height: 30px !important;
+      }
+      .textarea-other-info-markdown {
+        display: none !important;
+      }
+    }
+    .logout-comment-btn {
+      width: 50px !important;
+      height: 45px !important;
+      font-size: 12px !important;
+      padding: 5px 5px 0 5px !important;
+    }
+  }
 </style>

@@ -289,7 +289,7 @@ export default {
 
   @media screen and (max-width: 767px) {
     .article-detail-title-info {
-      width: 96% !important;
+      width: 94% !important;
     }
     .article-detail-top-cover {
       height: 200px !important;

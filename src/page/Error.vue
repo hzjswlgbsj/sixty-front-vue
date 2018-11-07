@@ -115,7 +115,7 @@ export default {
 
   @media screen and (max-width: 767px) {
     .error-container {
-      width: 96% !important;
+      width: 94% !important;
       .error-title {
         font-size: 30px !important;
       }

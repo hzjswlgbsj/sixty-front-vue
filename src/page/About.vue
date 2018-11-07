@@ -4,7 +4,7 @@
       <div class="sixty-about-top-cover" :style="containerHeight" />
 
       <div class="sixty-about-avatar">
-        <avatar :src="sixtyLogo" size="120px" rotate></avatar>
+        <img class="about-avatar-image" :src="sixtyLogo" @click="avatarJump">
         <h1 class="name">Sixty</h1>
         <h3>生活不止眼前的代码，还有弹不响的吉他弦</h3>
       </div>
@@ -144,16 +144,24 @@ export default {
       sixtyLogo: SIXTY_LOGO
     }
   },
+
   components: {
     Avatar,
     Contact
   },
+
   computed: {
     containerHeight () {
       let height = document.body.clientHeight
       return {
         'min-height': `${height}px`
       }
+    }
+  },
+
+  methods: {
+    avatarJump () {
+      this.$router.push('/')
     }
   }
 }
@@ -174,6 +182,11 @@ export default {
         color: #ffffff;
         position: absolute;
         top: 200px;
+        .about-avatar-image {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+        }
         .name {
           margin: 10px 0;
         }
@@ -237,7 +250,7 @@ export default {
 
   @media screen and (max-width: 767px) {
     .sixty-about-me {
-      width: 96% !important;
+      width: 94% !important;
     }
     .sixty-about-me-skill-type {
       width: 100px !important;

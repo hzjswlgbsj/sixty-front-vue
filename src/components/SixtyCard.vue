@@ -96,4 +96,12 @@ export default {
     -webkit-transform: rotateY(360deg);
     -moz-transform: rotateY(360deg);
   }
+
+  /*响应式布局开始*/
+  @media screen and (max-width: 767px) {
+    .sixty-base-card-container {
+      width: 160px !important;
+      height: 105px !important;
+    }
+  }
 </style>
