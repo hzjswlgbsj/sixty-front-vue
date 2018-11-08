@@ -29,4 +29,10 @@ export default {
       margin: 20px 0;
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .footbar-container {
+      padding-bottom: 20px !important;
+    }
+  }
 </style>

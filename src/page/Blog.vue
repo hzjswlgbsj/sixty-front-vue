@@ -176,5 +176,8 @@ export default {
     .blog-article-item {
       width: 94% !important;
     }
+    .blog-article-item-more {
+      padding: 0 !important;
+    }
   }
 </style>
