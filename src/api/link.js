@@ -7,9 +7,8 @@ import { Api } from '../common'
  * Time: 上午11:11
  */
 const module = {
-  async all (type, id, page, limit) {
+  async all (id, page, limit) {
     let res = await Api.call('link.all', {
-      type,
       id,
       page,
       limit

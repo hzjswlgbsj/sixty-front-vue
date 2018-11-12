@@ -102,7 +102,7 @@ export default {
     },
     async initLinkData (refresh = false) {
       try {
-        await getLinks(refresh, Const.LINK_LINK_TYPE, null, 1, Const.LINK_PAGINATION)
+        await getLinks(refresh, null, 1, Const.LINK_PAGINATION)
       } catch (e) {
         console.log(e)
       }
