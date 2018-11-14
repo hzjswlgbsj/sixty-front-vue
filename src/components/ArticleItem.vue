@@ -21,7 +21,7 @@
     </div>
     <div v-html="article.introduction" class="article-info-content" @click="goDetail(article.id)"></div>
     <div class="article-info-tags" v-if="article.tags && article.tags.length > 0">
-      <img class="article-info-tags-icon" src="../style/iconfont/tag.svg">
+      <!--<img class="article-info-tags-icon" src="../style/iconfont/tag.svg">
       <div class="article-info-tags-container" style="margin-left: 30px;">
         <a
         :style="currentId === tag.id ? tagHover : '' "
@@ -32,16 +32,16 @@
         @tag-click="tagClick(tag.id)">
           #{{tag.name}}
         </a>
-      </div>
+      </div>-->
 
-      <!-- <tag class="article-info-tag"
+       <tag class="article-info-tag"
            v-for="tags in article.tags"
            :key="tags.id"
            :backgroundColor="tags.color"
-           icon="pricetag"
+           icon="ios-pricetag"
            @tag-click="tagClick(tags.id)">
         {{tags.name}}
-      </tag> -->
+      </tag>
     </div>
   </div>
 </template>
@@ -96,8 +96,8 @@ export default {
     }
   },
   components: {
-    'tag': Tag,
-    'avatar': Avatar,
+    Tag,
+    Avatar,
     ArticleInfo
   },
   methods: {
@@ -106,6 +106,7 @@ export default {
     },
     tagClick (id) {
       alert('你点击了tag' + id)
+      this.$router.push('/search')
     }
   }
 }

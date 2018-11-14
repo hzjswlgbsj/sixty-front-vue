@@ -10,9 +10,11 @@ import Error from '../../src/page/Error'
 import About from '../../src/page/About'
 import ArticleDetail from '../../src/page/ArticleDetail'
 import Login from '../../src/page/Login'
+import Search from '../../src/page/Search'
 
 Vue.use(Router)
 
+/* 由于路由比较少，所以就没有拆出去哦 */
 const router = new Router({
   mode: 'history',
   routes: [
@@ -57,6 +59,11 @@ const router = new Router({
           path: '/about',
           name: 'About',
           component: About
+        },
+        {
+          path: '/search',
+          name: 'Search',
+          component: Search
         },
         {
           path: '/login',

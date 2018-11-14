@@ -1,6 +1,6 @@
 <template>
   <span class="tag-text-container" :style="initStyle" @click="tagClick">
-    <Icon :type="this.icon"></Icon>
+    <Icon :type="icon" />
     <slot></slot>
   </span>
 </template>
