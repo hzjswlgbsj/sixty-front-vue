@@ -8,6 +8,14 @@ export function getArticle (id, page, limit) {
   })
 }
 
+export function getArticleByFilter (filter, page, limit) {
+  return Api.call('article.filter', {
+    filter,
+    page,
+    limit
+  })
+}
+
 export function getComment (articleId, page, limit, childrenPage, childrenLimit, type = 'article') {
   return Api.call('comment.all', {
     article_id: articleId,

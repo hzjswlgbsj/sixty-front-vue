@@ -105,8 +105,10 @@ export default {
       this.$emit('go-detail', id)
     },
     tagClick (id) {
-      alert('你点击了tag' + id)
-      this.$router.push('/search')
+      this.$router.push(`/search?q=${JSON.stringify({
+        data: id,
+        type: 'tag'
+      })}`)
     }
   }
 }

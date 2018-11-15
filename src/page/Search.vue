@@ -1,34 +1,50 @@
 <template>
-	<div class="search-root">
+  <div class="search-root">
     <div class="search-container">
       这里是搜索结果
+      <div class="search-tag-result"></div>
     </div>
   </div>
 </template>
 
 <script>
-	export default {
-		name: 'Search',
-		data() {
-			return {}
-		},
+import { remoteFilterArticles } from '../service/article'
+export default {
+  name: 'Search',
+  data () {
+    return {
+      searchData: []
+    }
+  },
 
-		props: {},
+  props: {
+    query: {
+      type: String,
+      default: ''
+    }
+  },
 
-		components: {},
+  created () {
+    this.initSearchData()
+  },
 
-		mounted() {
-			this.$nextTick(() => {
-			})
-		},
+  computed: {
+    searchParams () {
+      return JSON.parse(this.query)
+    }
+  },
 
-		watch: {},
+  methods: {
+    async initSearchData () {
+      let filter = {
+        tagId: this.searchParams.data
+      }
+      this.searchData = await remoteFilterArticles(filter)
+      console.log(11111, this.searchData)
+    }
+  }
 
-		computed: {},
-
-		methods: {}
-
-	}
+}
 </script>
 
 <style lang="scss" scoped>

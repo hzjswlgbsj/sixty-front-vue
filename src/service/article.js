@@ -9,7 +9,15 @@ import { Store } from '../common'
 import _ from 'lodash'
 import tagApi from '../api/tags'
 import Const from '../const/index'
-import { getArticle, getComment, getChildrenComment, addComment, like, getLike } from '../api/article'
+import {
+  getArticle,
+  getArticleByFilter,
+  getComment,
+  getChildrenComment,
+  addComment,
+  like,
+  getLike
+} from '../api/article'
 
 /**
  * 获取所有文章(必须分页，不分页默认返回1000条数据)
@@ -43,6 +51,11 @@ export async function remoteGetArticles (refresh, id, page = 1, limit = Const.AR
   }
 
   return Store.store('articles')
+}
+
+export async function remoteFilterArticles (fliter, page = 1, limit = Const.ARTICLE_PAGINATION) {
+  let ret = await getArticleByFilter(fliter, page, limit)
+  return ret.data.items
 }
 
 /**

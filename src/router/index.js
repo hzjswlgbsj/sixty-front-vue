@@ -63,7 +63,8 @@ const router = new Router({
         {
           path: '/search',
           name: 'Search',
-          component: Search
+          component: Search,
+          props: (route) => ({ query: route.query.q })
         },
         {
           path: '/login',
