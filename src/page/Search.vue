@@ -48,7 +48,6 @@ export default {
 
   computed: {
     searchParams () {
-      console.log(11111, this.query)
       return JSON.parse(this.query)
     }
   },
@@ -64,7 +63,6 @@ export default {
     async initTag () {
       let tags = await getTagsByIds([this.searchParams.tagId])
       this.searchTag = tags[0]
-      console.log(22222, this.searchTag)
     }
   }
 

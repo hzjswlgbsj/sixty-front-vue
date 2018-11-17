@@ -255,5 +255,8 @@ export default {
     .sixty-about-me-skill-type {
       width: 100px !important;
     }
+    .sixty-about-top-cover {
+      background-image: url($aboutCover2)!important;
+    }
   }
 </style>
