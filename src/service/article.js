@@ -55,7 +55,7 @@ export async function remoteGetArticles (refresh, id, page = 1, limit = Const.AR
 
 export async function remoteFilterArticles (fliter, page = 1, limit = Const.ARTICLE_PAGINATION) {
   let ret = await getArticleByFilter(fliter, page, limit)
-  return ret.data.items
+  return ret.data
 }
 
 /**

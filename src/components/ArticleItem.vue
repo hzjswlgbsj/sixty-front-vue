@@ -104,9 +104,9 @@ export default {
     goDetail (id) {
       this.$emit('go-detail', id)
     },
-    tagClick (id) {
+    tagClick (tagId) {
       this.$router.push(`/search?q=${JSON.stringify({
-        data: id,
+        tagId: tagId,
         type: 'tag'
       })}`)
     }
