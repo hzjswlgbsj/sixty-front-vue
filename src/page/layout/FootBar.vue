@@ -32,7 +32,7 @@ export default {
 
   @media screen and (max-width: 767px) {
     .footbar-container {
-      padding-bottom: 20px !important;
+      padding-bottom: 10px !important;
     }
   }
 </style>

@@ -2,6 +2,7 @@
   <div class="sixty-about-container">
     <div class="sixty-about-desc-container">
       <div class="sixty-about-top-cover" :style="containerHeight" />
+      <Icon class="sixty-about-top-cover-down" type="ios-arrow-down" size="40"/>
 
       <div class="sixty-about-avatar">
         <img class="about-avatar-image" :src="sixtyLogo" @click="avatarJump">
@@ -58,17 +59,17 @@
 
           <div style="margin: 10px 0;">
             <div class="sixty-about-me-skill">
-              <div class="sixty-about-me-skill-type" style="width: 60px;">前端：</div>
+              <div class="sixty-about-me-skill-type" style="width: 70px;">前端：</div>
               <Progress style="width: 600px;" :percent="75" status="active" :stroke-width="15" />
             </div>
 
             <div class="sixty-about-me-skill" style="">
-              <span class="sixty-about-me-skill-type" style="width: 60px;">后端：</span>
+              <span class="sixty-about-me-skill-type" style="width: 70px;">后端：</span>
               <Progress style="width: 600px;" :percent="50" status="active" :stroke-width="15" />
             </div>
 
             <div class="sixty-about-me-skill" style="">
-              <span class="sixty-about-me-skill-type" style="width: 60px;">Linux：</span>
+              <span class="sixty-about-me-skill-type" style="width: 70px;">Linux：</span>
               <Progress style="width: 600px;" :percent="40" status="active" :stroke-width="15" />
             </div>
           </div>
@@ -176,6 +177,12 @@ export default {
     .sixty-about-desc-container {
       width: 100%;
       height: 100%;
+      .sixty-about-top-cover-down {
+        position: absolute;
+        left: 48%;
+        top: 90%;
+        z-index: 2000;
+      }
       .sixty-about-avatar {
         width: 100%;
         text-align: center;
