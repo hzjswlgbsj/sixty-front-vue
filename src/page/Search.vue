@@ -1,13 +1,15 @@
 <template>
   <div class="search-root">
     <div class="search-container">
-      <!--search for tag start-->
-      <div class="search-tag-title" v-if="searchParams.type === 'tag' ">
+      <div class="search-tag-title">
         <div class="search-tag-title-header">
-          <h1>标签目录：#{{ this.searchTag.name }}</h1>
-          <div class="search-tag-title-desc">以下是与标签"{{ this.searchTag.name }}"相关联的文章，共{{searchData.total}}条结果</div>
-        </div>
+          <h1 v-if="searchParams.type === 'tag' ">标签目录：#{{ this.searchKeyWords }}</h1>
+          <div v-else class="search-tag-title-header-normal">
+            <Input v-model="searchKeyWords" icon="ios-search" placeholder="Enter something..." clearable style="width: 200px" />
+          </div>
 
+          <div class="search-tag-title-desc">以下是与"{{ this.searchKeyWords }}"相关联的文章，共{{searchData.total}}条结果</div>
+        </div>
         <div class="search-tag-list-container">
           <div class="search-tag-list-none" v-if="searchData.items && searchData.items.length === 0">暂无数据哦</div>
           <div class="search-tag-list" v-else>
@@ -19,19 +21,19 @@
           </div>
         </div>
       </div>
-      <!--search for tag end-->
     </div>
   </div>
 </template>
 
 <script>
 import { remoteFilterArticles, getTagsByIds } from '../service/article'
+
 export default {
   name: 'Search',
   data () {
     return {
       searchData: {},
-      searchTag: {}
+      searchKeyWords: ''
     }
   },
 
@@ -54,15 +56,23 @@ export default {
 
   methods: {
     async initSearchData () {
-      let filter = {
-        tagId: this.searchParams.tagId
+      let filter = {}
+
+      if (this.searchParams.type === 'tag') {
+        filter.tagId = this.searchParams.tagId
+        await this.initTag()
       }
+
+      if (this.searchParams.type === 'normal') {
+        this.searchKeyWords = this.searchParams.keywords
+        filter.keywords = this.searchKeyWords
+      }
+
       this.searchData = await remoteFilterArticles(filter)
-      if (this.searchParams.type === 'tag') await this.initTag()
     },
     async initTag () {
       let tags = await getTagsByIds([this.searchParams.tagId])
-      this.searchTag = tags[0]
+      this.searchKeyWords = tags[0].name
     }
   }
 

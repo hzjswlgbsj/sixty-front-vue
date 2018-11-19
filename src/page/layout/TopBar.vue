@@ -24,7 +24,14 @@
         <div v-if="showSearch" class="topbar-search-input-container">
           <!--<transition name="slide-fade">-->
           <Icon v-if="showSearchRecommend" class="topbar-search-input-icon" color="#fff" size="22" type="ios-search" />
-          <input v-if="showSearchRecommend" v-model="searchContent" v-focus class="topbar-search-input" type="text" placeholder="搜索 sixtyden.com">
+          <input
+            v-if="showSearchRecommend"
+            v-model="searchContent"
+            @keyup.enter="submitSearch"
+            v-focus
+            class="topbar-search-input"
+            type="text"
+            placeholder="搜索 sixtyden.com">
           <!--</transition>-->
           <div class="topbar-search-input" v-if="!showSearchRecommend"> </div>
 
@@ -102,7 +109,14 @@
             <div class="topbar-menu-phone-search-container">
               <div class="topbar-menu-phone-search">
                 <Icon v-if="showPhoneSearch" class="topbar-search-phone-input-icon" color="#999999" size="22" type="ios-search" />
-                <input v-if="showPhoneSearch" v-model="searchContent" @focus="handleSearchFocus" @blur="handleSearchBlur" type="text" placeholder="搜索 sixtyden.com">
+                <input
+                  v-if="showPhoneSearch"
+                  v-model="searchContent"
+                  @keyup.enter="submitSearch"
+                  @focus="handleSearchFocus"
+                  @blur="handleSearchBlur"
+                  type="text"
+                  placeholder="搜索 sixtyden.com">
               </div>
 
               <div v-if="startSearch" class="topbar-menu-phone-search-cancel" @click="handleRemoteSearch">{{searchBtnText}}</div>
@@ -256,6 +270,15 @@ export default {
           this.showSearchRecommend = !this.showSearchRecommend
         }, 400)
       }
+    },
+
+    submitSearch () {
+      this.handleSearch()
+      if (this.searchContent === '') return
+      this.$router.push(`/search?q=${JSON.stringify({
+        keywords: this.searchContent,
+        type: 'normal'
+      })}`)
     },
 
     handleSearchFocus () {
