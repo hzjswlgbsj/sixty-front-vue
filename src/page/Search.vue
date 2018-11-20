@@ -5,13 +5,17 @@
         <div class="search-tag-title-header">
           <h1 v-if="searchParams.type === 'tag' ">标签目录：#{{ this.searchKeyWords }}</h1>
           <div v-else class="search-tag-title-header-normal">
-            <Input v-model="searchKeyWords" icon="ios-search" placeholder="Enter something..." clearable style="width: 200px" />
+            <Input v-model="searchKeyWords"
+                   icon="ios-search"
+                   placeholder="Enter something..."
+                   @on-enter="handleSearch"
+                   clearable style="width: 200px" />
           </div>
 
           <div class="search-tag-title-desc">以下是与"{{ this.searchKeyWords }}"相关联的文章，共{{searchData.total}}条结果</div>
         </div>
         <div class="search-tag-list-container">
-          <div class="search-tag-list-none" v-if="searchData.items && searchData.items.length === 0">暂无数据哦</div>
+          <div class="search-tag-list-none" v-if="searchData.items && searchData.items.length === 0">没有搜到任何结果哦，要不尝试其他搜索词吧。</div>
           <div class="search-tag-list" v-else>
             <div class="search-tag-item" v-for="article in searchData.items" :key="article.id">
               <a class="search-tag-item-title" :href=" `http://www.sixtyden.com/blog/articleDetail/${article.id}` ">{{ article.title }}</a>
@@ -54,8 +58,16 @@ export default {
     }
   },
 
+  watch: {
+    '$route' (to, from) {
+      let searchParams =JSON.parse(to.query.q)
+      this.searchKeyWords = searchParams.keywords
+      this.initSearchData(this.searchKeyWords)
+    }
+  },
+
   methods: {
-    async initSearchData () {
+    async initSearchData (keywords) {
       let filter = {}
 
       if (this.searchParams.type === 'tag') {
@@ -64,7 +76,7 @@ export default {
       }
 
       if (this.searchParams.type === 'normal') {
-        this.searchKeyWords = this.searchParams.keywords
+        this.searchKeyWords = keywords ? keywords : this.searchParams.keywords
         filter.keywords = this.searchKeyWords
       }
 
@@ -73,6 +85,13 @@ export default {
     async initTag () {
       let tags = await getTagsByIds([this.searchParams.tagId])
       this.searchKeyWords = tags[0].name
+    },
+    handleSearch () {
+      if (this.searchKeyWords === '') return
+      this.$router.push(`/search?q=${JSON.stringify({
+        keywords: this.searchKeyWords,
+        type: 'normal'
+      })}`)
     }
   }
 
@@ -102,6 +121,10 @@ export default {
           }
         }
         .search-tag-list-container {
+          .search-tag-list-none {
+            margin-top: 20px;
+            font-weight: 500;
+          }
           .search-tag-list {
             .search-tag-item {
               margin-top: 40px;

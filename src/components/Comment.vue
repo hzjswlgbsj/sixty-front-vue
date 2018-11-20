@@ -3,15 +3,7 @@
     <div class="article-comment">
       <div class="article-comment-total" v-if="total">{{ total }}&nbsp;&nbsp;评论</div>
       <div class="article-comment-total" v-else>暂无吐槽</div>
-      <!--推送提醒-->
-      <!--<div class="article-comment-notice">
-        <Alert show-icon closable>
-          <Icon type="ios-lightbulb-outline" slot="icon"></Icon>
-          <template slot="desc">
-            Content of prompt. Content of prompt. Content of prompt.
-          </template>
-        </Alert>
-      </div>-->
+
       <div class="article-comment-head">
         <div class="article-comment-all">
           全部评论

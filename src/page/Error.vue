@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     async handleSearch (event) {
-      console.log('你搜索啥？', event)
+      this.$sixtyModal('敬请期待哦~')
     }
   }
 }
