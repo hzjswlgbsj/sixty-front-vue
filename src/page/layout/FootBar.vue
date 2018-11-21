@@ -22,17 +22,19 @@ export default {
 <style lang="scss" scoped>
   @import "../../style/base/base";
   .footbar-container {
+    background-color: #010101;
+    margin-top: 10px;
     .footbar-right-content {
       color: $font-color;
       font-size: $font-size;
       text-align: center;
-      margin: 20px 0;
+      padding: 10px 0;
     }
   }
 
   @media screen and (max-width: 767px) {
     .footbar-container {
-      padding-bottom: 10px !important;
+      padding: 5px 0 !important;
     }
   }
 </style>
