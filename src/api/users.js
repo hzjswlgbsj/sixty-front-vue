@@ -21,7 +21,7 @@ const module = {
       limit,
       page
     })
-    return ret.data
+    return ret.data.items
   },
   async register (nickname, avatar, status, weiboUid) {
     let ret = await Api.call('user.register', {

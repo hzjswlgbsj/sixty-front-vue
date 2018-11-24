@@ -60,7 +60,7 @@ export default {
 
   watch: {
     '$route' (to, from) {
-      let searchParams =JSON.parse(to.query.q)
+      let searchParams = JSON.parse(to.query.q)
       this.searchKeyWords = searchParams.keywords
       this.initSearchData(this.searchKeyWords)
     }
@@ -76,7 +76,7 @@ export default {
       }
 
       if (this.searchParams.type === 'normal') {
-        this.searchKeyWords = keywords ? keywords : this.searchParams.keywords
+        if (keywords) this.searchKeyWords = keywords
         filter.keywords = this.searchKeyWords
       }
 
