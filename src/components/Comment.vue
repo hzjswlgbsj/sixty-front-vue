@@ -531,6 +531,9 @@ export default {
     .comment-parent-container {
       margin-left: 12px !important;
     }
+    .article-comment-publish {
+      margin: 0 0 20px 40px !important;
+    }
     .article-comment-common-line {
       margin-left: 40px !important;
     }

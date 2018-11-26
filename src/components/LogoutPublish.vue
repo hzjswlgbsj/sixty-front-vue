@@ -22,7 +22,7 @@
           <transition
             enter-active-class='animated zoomIn'
             leave-active-class='animated zoomOut'>
-            <Input v-if="saveEmailNotice" v-model="eMail" placeholder="请输入邮件地址" size="small" style="width: 150px; color: #333333" />
+            <Input class="login-other-info-email" v-if="saveEmailNotice" v-model="eMail" placeholder="请输入邮件地址" size="small" />
           </transition>
         </div>
         <div class="textarea-other-info-markdown">支持markdown语法哦😝 ~</div>
@@ -171,6 +171,10 @@ export default {
           color: $theme-color;
         }
         /*margin-top: 10px;*/
+        .login-other-info-email {
+          width: 150px;
+          color: #333333
+        }
       }
     }
     .logout-comment-btn {
@@ -217,6 +221,9 @@ export default {
       height: 45px !important;
       font-size: 12px !important;
       padding: 5px 5px 0 5px !important;
+    }
+    .login-other-info-email {
+      width: 150px !important;
     }
   }
 </style>
