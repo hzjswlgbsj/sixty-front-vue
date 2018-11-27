@@ -1,7 +1,7 @@
 <template>
   <div class="logout">
     <div class="logout-avatar">
-      <avatar :src="login ? user.avatar : 'http://ovrjw2my5.bkt.clouddn.com/default_avatar.jpg' " size="50px"></avatar>
+      <avatar :src="login ? user.avatar : 'https://lib.sixtyden.com/default_avatar.jpg' " size="50px"></avatar>
     </div>
     <div class="logout-desc">
       <div class="logout-desc-login" v-if="login">

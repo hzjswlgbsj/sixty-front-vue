@@ -22,7 +22,7 @@ const RESOURCE_COMMENT_TYPE = 'resource'
 const LINK_LINK_TYPE = 'link'
 const LINK_RESOURCE_TYPE = 'resource'
 
-export const SIXTY_LOGO = 'http://lib.sixtyden.com/sixtyAvatar.jpg'
+export const SIXTY_LOGO = 'https://lib.sixtyden.com/sixtyAvatar.jpg'
 export const MENU_LIST = [
   {key: 'blog', label: 'Blog'},
   {key: 'tucao', label: 'Tucao'},

@@ -29,8 +29,8 @@
         当然也要献上本站信息啦，不然你怎么加我呢，要加友链的大佬也按这个格式给我吧，哈哈
         <div class="friends-desc-info">
           <p>-- 博客名称：Sixty'Den</p>
-          <p>-- 博客地址：http://www.sixtyden.com</p>
-          <p>-- 博客头像：http://lib.sixtyden.com/sixtyAvatar.jpg</p>
+          <p>-- 博客地址：https://www.sixtyden.com</p>
+          <p>-- 博客头像：https://lib.sixtyden.com/sixtyAvatar.jpg</p>
           <p>-- 博客描述：生活不止眼前的代码，还有弹不响的吉他弦</p>
         </div>
       </div>

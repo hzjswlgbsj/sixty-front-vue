@@ -35,20 +35,20 @@ export default {
   },
   data () {
     return {
-      backgroundImage: 'http://lib.sixtyden.com/hy1.jpeg',
+      backgroundImage: 'https://lib.sixtyden.com/hy1.jpeg',
       isFront: true,
       cardBackImage: [
-        'http://lib.sixtyden.com/hy_mz.jpg',
-        'http://lib.sixtyden.com/family.jpeg',
-        'http://lib.sixtyden.com/hy_xiaoying.jpg',
-        'http://lib.sixtyden.com/hy_shuimen.jpg',
-        'http://lib.sixtyden.com/hy_shuimen2.jpg',
-        'http://lib.sixtyden.com/hy_zuozhu.png',
-        'http://lib.sixtyden.com/hy_zm.jpg',
-        'http://lib.sixtyden.com/hy_mingren.png',
-        'http://lib.sixtyden.com/hy_mc.jpg',
-        'http://lib.sixtyden.com/hy_qiban.png',
-        'http://lib.sixtyden.com/hy_naruto.png'
+        'https://lib.sixtyden.com/hy_mz.jpg',
+        'https://lib.sixtyden.com/family.jpeg',
+        'https://lib.sixtyden.com/hy_xiaoying.jpg',
+        'https://lib.sixtyden.com/hy_shuimen.jpg',
+        'https://lib.sixtyden.com/hy_shuimen2.jpg',
+        'https://lib.sixtyden.com/hy_zuozhu.png',
+        'https://lib.sixtyden.com/hy_zm.jpg',
+        'https://lib.sixtyden.com/hy_mingren.png',
+        'https://lib.sixtyden.com/hy_mc.jpg',
+        'https://lib.sixtyden.com/hy_qiban.png',
+        'https://lib.sixtyden.com/hy_naruto.png'
       ]
     }
   },
