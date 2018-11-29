@@ -18,14 +18,14 @@
 
       <div class="comment-textarea-other-info">
         <div class="login-other-info" v-if="login">
-          <Checkbox v-model="saveEmailNotice">接受邮件提醒</Checkbox>
+          <Checkbox v-model="saveEmailNotice">接收邮件提醒</Checkbox>
           <transition
             enter-active-class='animated zoomIn'
             leave-active-class='animated zoomOut'>
             <Input class="login-other-info-email" v-if="saveEmailNotice" v-model="eMail" placeholder="请输入邮件地址" size="small" />
           </transition>
         </div>
-        <div class="textarea-other-info-markdown">支持markdown语法哦😝 ~</div>
+        <div class="textarea-other-info-markdown">支持markdown语法哦 ~</div>
       </div>
 
     </div>

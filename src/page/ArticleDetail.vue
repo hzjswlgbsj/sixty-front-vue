@@ -43,7 +43,8 @@
           <span class="article-detail-rights-text"> 进行许可，转载请注明来源。</span>
         </block-text>
       </div>
-      <div class="article-detail-previous-next">
+
+      <div class="article-detail-previous-next-pc">
         <div class="article-detail-previous" v-if="article.preArticle" @click="jumpById(article.preArticle.id)">
           <Icon style="margin-right: 10px" size="20" type="ios-arrow-back"></Icon>
           <span class="article-detail-previous-text">
@@ -55,6 +56,15 @@
             {{article.nextArticle.title}}
           </span>
           <Icon style="margin-left: 10px" size="20" type="ios-arrow-forward"></Icon>
+        </div>
+      </div>
+
+      <div class="article-detail-previous-next-phone">
+        <div class="article-detail-previous" @click="jumpById(article.preArticle.id)">
+          上一篇：{{article.preArticle.title}}
+        </div>
+        <div class="article-detail-next" v-if="article.nextArticle" @click="jumpById(article.nextArticle.id)">
+          下一篇：{{article.nextArticle.title}}
         </div>
       </div>
       <!--<div class="article-detail-share">分享区域</div>-->
@@ -268,7 +278,7 @@ export default {
           }
         }
       }
-      .article-detail-previous-next {
+      .article-detail-previous-next-pc {
         @include flex-define(row, space-between, center);
         width: 100%;
         margin: 20px 0;
@@ -297,6 +307,23 @@ export default {
     .article-detail-title {
       font-size: 24px !important;
       margin-top: -160px !important;
+    }
+    .article-detail-previous-next-pc {
+      display: none !important;
+    }
+    .article-detail-previous-next-phone {
+      width: 100%;
+      margin-top: 20px;
+      color: $theme-color;
+      .article-detail-previous {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .article-detail-previous-next-phone {
+      display: none !important;
     }
   }
 </style>

@@ -90,7 +90,7 @@
             v-if="childrenCommentComponent && currentCommentId === comment.id"
             :reset-comment="resetComment"
             :placeholder="placeholder"
-            @publish-comment="publishComment"
+            @publish-comment="publishComment(arguments)"
             @handle-login="handleLogin"
             :login="login"
             :user="user">

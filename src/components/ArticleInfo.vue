@@ -6,7 +6,7 @@
     </div>
     <div class="article-info">
       <icon name="terminal" scale="0.8"></icon>
-      <span class="article-info-date icon"> 发表于 <timeago :datetime="article.create_time" :auto-update="60"/>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="article-info-date icon"><timeago :datetime="article.create_time" :auto-update="60"/>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
     <div class="article-info article-info-address">
       <icon name="location-arrow" scale="0.8"></icon>
