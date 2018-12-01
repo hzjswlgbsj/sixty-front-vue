@@ -13,7 +13,7 @@
         <div class="sixty-about-me">
           <h2># 了解我</h2><br>
           <p>欢迎大佬光临我的世界，在这里你能离我更近哦！</p><br>
-          <h3>## hobby</h3><br>
+          <h2>## hobby</h2><br>
           <p>
             >&nbsp;&nbsp;喜欢
             <span class="about-content-keywords">做菜</span>
@@ -54,27 +54,27 @@
           <p>>&nbsp;&nbsp;呃... 赶紧醒醒</p><br>
 
           <p>>_&nbsp;&nbsp;嗯，总结一下就是，我确实喜欢不断学习，周末不在图书馆就在麦当劳、咖啡厅...</p><br>
-          <h3>## skill</h3><br>
-          <h4>### 概览</h4>
+          <h2>## skill</h2><br>
+          <h3>### 概览</h3>
 
           <div style="margin: 10px 0;">
             <div class="sixty-about-me-skill">
-              <div class="sixty-about-me-skill-type" style="width: 70px;">前端：</div>
+              <div class="sixty-about-me-skill-type">前端：</div>
               <Progress style="width: 600px;" :percent="75" status="active" :stroke-width="15" />
             </div>
 
             <div class="sixty-about-me-skill" style="">
-              <span class="sixty-about-me-skill-type" style="width: 70px;">后端：</span>
+              <span class="sixty-about-me-skill-type">后端：</span>
               <Progress style="width: 600px;" :percent="50" status="active" :stroke-width="15" />
             </div>
 
             <div class="sixty-about-me-skill" style="">
-              <span class="sixty-about-me-skill-type" style="width: 70px;">Linux：</span>
+              <span class="sixty-about-me-skill-type">Linux：</span>
               <Progress style="width: 600px;" :percent="40" status="active" :stroke-width="15" />
             </div>
           </div>
 
-          <h4>### 描述</h4>
+          <h3>### 描述</h3>
           <div class="sixty-about-me-skill-desc">
 
           </div>
@@ -98,20 +98,20 @@
 
           <h2># 了解本站</h2><br>
 
-          <h4>自己搭博客原因</h4>
+          <h3>自己搭博客原因</h3>
           <p style="margin: 10px 0;">
             关于本渣博首先要说的是，它非常的简单，却也是在下纯手工写的。由于在这段时间一直是996的状态，
             所以这个博客都是空隙时间写的，时间跨度稍大了些。为什么要自己写个博客呢，其实是为了完成
             大学里没能做完的博客（其实之前也有一版本，是thinkPHP5的），最重要的原因是可以让我保持写文章的习惯，
             你懂了多少，写出来就算是一个总结，不写不知道，一写才吓一跳哦。
           </p>
-          <h4>本渣博基本配置</h4>
+          <h3>本渣博基本配置</h3>
           <div style="margin: 10px 0;">
-            <p>前端：vue全家桶 + iview（其实用得少）</p>
-            <p>后端：yii + mysql</p>
-            <p>服务器：nginx + 阿里云</p>
-            <p>云存储：七牛云</p>
-            <p>搜索：Elasticsearch</p>
+            <p><span class="config-title">前端：</span>vue全家桶 + iview（其实用得少）</p>
+            <p><span class="config-title">后端：</span>yii + mysql</p>
+            <p><span class="config-title">服务器：</span>nginx + 阿里云</p>
+            <p><span class="config-title">云存储：</span>七牛云</p>
+            <p><span class="config-title">搜索：</span>Elasticsearch</p>
             <p style="margin-top: 10px">
               在下从来不懂什么是美感，所以本站的几乎所有UI都不是我自己设计的，所以在下就借鉴了百家之长。
               首先本站的配色为Apple官网的topbar配色，topbar的设计也是Apple官网的topbar样式。然后整站的评论组件都是
@@ -247,7 +247,14 @@ export default {
 
           .sixty-about-me-skill {
             display: flex;
-            padding-left: 20px
+            padding-left: 20px;
+            .sixty-about-me-skill-type {
+              width: 70px;
+              font-weight: 500;
+            }
+          }
+          .config-title {
+            font-weight: 500;
           }
         }
       }
