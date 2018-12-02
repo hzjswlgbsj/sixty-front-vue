@@ -11,12 +11,15 @@ import VueTimeago from 'vue-timeago'
 import VueLoading from 'vue-loading-template'
 import animated from 'animate.css'
 import sixtyModal from './my-plugin/sixty-modal/sixtyModal'
+import 'fullpage.js/vendors/scrolloverflow' // Optional. When using scrollOverflow:true
+import VueFullPage from 'vue-fullpage.js'
 
 Vue.component('icon', Icon)
 Vue.use(iView)
 Vue.use(sixtyModal)
 Vue.use(mavonEditor)
 Vue.use(animated)
+Vue.use(VueFullPage)
 Vue.use(VueTimeago, {
   name: 'Timeago',
   locale: 'zh-CN',

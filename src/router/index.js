@@ -11,6 +11,7 @@ import About from '../../src/page/About'
 import ArticleDetail from '../../src/page/ArticleDetail'
 import Login from '../../src/page/Login'
 import Search from '../../src/page/Search'
+import Test from '../../src/page/Test'
 
 Vue.use(Router)
 
@@ -72,6 +73,11 @@ const router = new Router({
           component: Login
         }
       ]
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test
     }
   ]
 })
