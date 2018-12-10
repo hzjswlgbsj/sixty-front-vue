@@ -1,9 +1,31 @@
 <template>
   <div class="full-page-root">
     <full-page :options="options" id="fullPage" ref="fullPage">
-      <div class="section" :key="item.id" v-for="item in testData">
-        <h3>{{item.text}}</h3>
+      <div class="section">
+        <div class="about-cover"></div>
+        <div class="about-cover-container">
+          <Icon @click="jumpNext" class="sixty-about-top-cover-down" type="ios-arrow-down" size="40"/>
+
+          <div class="sixty-about-avatar">
+            <img class="about-avatar-image" :src="sixtyLogo" @click="avatarJump">
+            <h1 class="name">Sixty</h1>
+            <h3>生活不止眼前的代码，还有弹不响的吉他弦</h3>
+          </div>
+        </div>
       </div>
+      <div class="section">
+        <h3>page2</h3>
+      </div>
+      <div class="section">
+        <h3>page3</h3>
+      </div>
+      <div class="section">
+        <h3>page4</h3>
+      </div>
+      <div class="section">
+        <h3>page5</h3>
+      </div>
+
     </full-page>
 
     <div class="full-page-pagination">
@@ -24,6 +46,7 @@
 </template>
 
 <script>
+import { SIXTY_LOGO } from '../const'
 export default {
   name: 'test',
   data () {
@@ -32,8 +55,8 @@ export default {
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
         navigation: true,
         navigationPosition: 'right',
-        anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
-        sectionsColor: ['#41b883', '#ff5f45', '#0798ec', '#fec401', '#1bcee6', '#ee1a59', '#2c3e4f', '#ba5be9', '#b4b8ab'],
+        anchors: ['cover', 'page2', 'page3', 'page4', 'page5'],
+        sectionsColor: ['#000000', '#41b883', '#ff5f45', '#0798ec', '#fec401', '#1bcee6', '#ee1a59', '#2c3e4f', '#ba5be9', '#b4b8ab'],
         afterLoad: this.afterLoad
       },
       testData: [
@@ -44,21 +67,21 @@ export default {
         {id: 5, text: 'page5'}
       ],
       curSelectIndex: 0,
-      curActiveIndex: -1
+      curActiveIndex: -1,
+      sixtyLogo: SIXTY_LOGO
     }
   },
   methods: {
     afterLoad (origin, destination, direction) {
-      // console.log('---------------------------------')
-      // console.log('origin', origin)
-      // console.log('destination', destination)
-      // console.log('direction', direction)
-      // console.log('---------------------------------')
       this.curSelectIndex = destination.index
+    },
+    jumpNext () {
+      this.$refs.fullPage.api.moveSectionDown()
     },
     paginationClick (index) {
       this.curSelectIndex = index
       this.$refs.fullPage.api.moveTo(index + 1)
+      this.$refs.fullPage.api.moveSectionDown()
     },
     paginationOut () {
       this.curActiveIndex = -1
@@ -81,15 +104,57 @@ export default {
           marginLeft: '1.6px'
         }
       }
+    },
+    avatarJump () {
+      this.$router.push('/')
     }
   }
 }
 </script>
 
 <style lang="scss">
+  @import "../style/base/base";
   .full-page-root {
     position: relative;
     height: 100%;
+    .about-cover{
+      height: 100%;
+      width: 100%;
+      background-image: url("https://lib.sixtyden.com/family.jpeg");
+      background-color: rgba(0, 0, 0, .6);
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: opacity 1s;
+      opacity: .3;
+    }
+    .about-cover-container{
+      .sixty-about-top-cover-down {
+        position: absolute;
+        left: 48%;
+        top: 90%;
+        z-index: 2000;
+        cursor: pointer;
+        &:hover {
+          color: $hover-color;
+        }
+      }
+      .sixty-about-avatar {
+        width: 100%;
+        text-align: center;
+        color: #ffffff;
+        position: absolute;
+        top: 200px;
+        .about-avatar-image {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+        .name {
+          margin: 10px 0;
+        }
+      }
+    }
     .full-page-pagination {
       position: fixed;
       top: 50%;
