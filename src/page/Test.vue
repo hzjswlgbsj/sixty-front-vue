@@ -1,6 +1,7 @@
 <template>
   <div class="full-page-root">
     <full-page :options="options" id="fullPage" ref="fullPage">
+
       <div class="section">
         <div class="about-cover"></div>
         <div class="about-cover-container">
@@ -13,19 +14,33 @@
           </div>
         </div>
       </div>
-      <div class="section">
-        <h3>page2</h3>
-      </div>
-      <div class="section">
-        <h3>page3</h3>
-      </div>
-      <div class="section">
-        <h3>page4</h3>
-      </div>
-      <div class="section">
-        <h3>page5</h3>
+
+      <div class="section about-me-container">
+        <div class="about-me-start">
+          <h2 style="margin-bottom: 20px">假设正经的开场白</h2>
+          <p>Hello，陌生人，欢迎来到我的窝</p>
+          <p>大千世界，你我在此相遇就是缘分</p>
+          <p>从你踏入sixty's Den我们就是朋友了</p>
+          <p>接下来，我带您了解一下在下</p>
+          <p>继续向下翻吧</p>
+        </div>
       </div>
 
+      <div class="section about-me-container">
+        <h1>My hobby</h1>
+      </div>
+
+      <div class="section about-me-container">
+        <h1>My skills</h1>
+      </div>
+
+      <div class="section about-me-container">
+        <h1>About SixtyDen</h1>
+      </div>
+
+      <div class="section about-me-container">
+        <h1>Find me</h1>
+      </div>
     </full-page>
 
     <div class="full-page-pagination">
@@ -55,17 +70,11 @@ export default {
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
         navigation: true,
         navigationPosition: 'right',
-        anchors: ['cover', 'page2', 'page3', 'page4', 'page5'],
+        anchors: ['cover', 'start', 'hobby', 'skills', 'sixtyden', 'contact'],
         sectionsColor: ['#000000', '#41b883', '#ff5f45', '#0798ec', '#fec401', '#1bcee6', '#ee1a59', '#2c3e4f', '#ba5be9', '#b4b8ab'],
         afterLoad: this.afterLoad
       },
-      testData: [
-        {id: 1, text: 'page1'},
-        {id: 2, text: 'page2'},
-        {id: 3, text: 'page3'},
-        {id: 4, text: 'page4'},
-        {id: 5, text: 'page5'}
-      ],
+      testData: [1, 2, 3, 4, 5, 6],
       curSelectIndex: 0,
       curActiveIndex: -1,
       sixtyLogo: SIXTY_LOGO
@@ -81,7 +90,6 @@ export default {
     paginationClick (index) {
       this.curSelectIndex = index
       this.$refs.fullPage.api.moveTo(index + 1)
-      this.$refs.fullPage.api.moveSectionDown()
     },
     paginationOut () {
       this.curActiveIndex = -1
@@ -117,6 +125,10 @@ export default {
   .full-page-root {
     position: relative;
     height: 100%;
+    width: 100%;
+    .fp-tableCell {
+      width: 100%;
+    }
     .about-cover{
       height: 100%;
       width: 100%;
@@ -155,9 +167,29 @@ export default {
         }
       }
     }
+
+    .about-me-container {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      .about-me-start, .about-me-skills, .about-me-sixty {
+        height: 100%;
+        vertical-align: middle;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        line-height: 2.5em;
+        font-size: 1.4em;
+      }
+    }
+
+    /*右侧的小圆点*/
     .full-page-pagination {
       position: fixed;
-      top: 50%;
+      top: 42%;
       right: 0;
       .full-page-pagination-circle {
         display: flex;
