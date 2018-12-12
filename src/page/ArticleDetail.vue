@@ -147,12 +147,14 @@ export default {
     },
     detailCover () {
       const width = document.body.clientWidth
-      if (this.articleCoverImg.length > 0) {
-        return {
-          backgroundImage: `url(${this.articleCoverImg[0].url})`,
-          width: `${width}px`
-        }
+      let style = {
+        width: `${width}px`
       }
+      if (this.articleCoverImg.length > 0) {
+        style.backgroundImage = `url(${this.articleCoverImg[0].url})`
+      }
+
+      return style
     }
   },
   mounted () {
@@ -213,7 +215,7 @@ export default {
         border-radius: 5px;
         margin-bottom: 30px;
         display: block;
-        background-color: rgba(0, 0, 0, .6);
+        background-color: rgba(121, 184, 152, 1);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
