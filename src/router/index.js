@@ -57,9 +57,9 @@ const router = new Router({
           component: Error
         },
         {
-          path: '/about',
-          name: 'About',
-          component: About
+          path: '/test',
+          name: 'Test',
+          component: Test
         },
         {
           path: '/search',
@@ -75,9 +75,9 @@ const router = new Router({
       ]
     },
     {
-      path: '/test',
-      name: 'Test',
-      component: Test
+      path: '/about',
+      name: 'About',
+      component: About
     }
   ]
 })
