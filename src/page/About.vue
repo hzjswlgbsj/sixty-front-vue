@@ -480,4 +480,10 @@ export default {
       display: none;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    .about-me-common {
+      margin: 0 32% !important;
+    }
+  }
 </style>
