@@ -17,7 +17,12 @@
 
       <div class="section about-me-container">
         <div class="about-me-start about-me-common">
-          <h2>假设正经的开场白</h2>
+          <transition
+            enter-active-class='animated zoomIn'
+            leave-active-class='animated zoomOut'>
+            <h2 v-if="firstStart">假设正经的开场白</h2>
+          </transition>
+
           <p>Hello，陌生人，欢迎来到我的窝</p>
           <p>大千世界，你我在此相遇就是缘分</p>
           <p>从你踏入sixty's Den我们就是朋友了</p>
@@ -209,8 +214,15 @@ export default {
       testData: [1, 2, 3, 4, 5, 6],
       curSelectIndex: 0,
       curActiveIndex: -1,
-      sixtyLogo: SIXTY_LOGO
+      sixtyLogo: SIXTY_LOGO,
+      firstStart: false
     }
+  },
+
+  created () {
+    setTimeout(() => {
+      this.firstStart = true
+    }, 500)
   },
 
   methods: {
@@ -481,7 +493,7 @@ export default {
     }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1500px) {
     .about-me-common {
       margin: 0 32% !important;
     }
