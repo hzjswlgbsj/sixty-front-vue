@@ -27,6 +27,12 @@ export function getComment (articleId, page, limit, childrenPage, childrenLimit,
   })
 }
 
+export function getCommentCount (articleId) {
+  return Api.call('comment.count', {
+    article_id: articleId
+  })
+}
+
 export function getChildrenComment (parentId, page, limit) {
   return Api.call('comment.children', {
     parent_id: parentId,

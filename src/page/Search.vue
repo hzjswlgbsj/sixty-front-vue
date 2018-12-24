@@ -18,9 +18,9 @@
           <div class="search-tag-list-none" v-if="searchData.items && searchData.items.length === 0">没有搜到任何结果哦，要不尝试其他搜索词吧。</div>
           <div class="search-tag-list" v-else>
             <div class="search-tag-item" v-for="article in searchData.items" :key="article.id">
-              <a class="search-tag-item-title" :href=" `http://www.sixtyden.com/blog/articleDetail/${article.id}` ">{{ article.title }}</a>
+              <a class="search-tag-item-title" :href=" `/blog/articleDetail/${article.id}` ">{{ article.title }}</a>
               <div class="article-info">{{ article.introduction }}</div>
-              <a class="search-tag-item-link" :href=" `http://www.sixtyden.com/blog/articleDetail/${article.id}` ">http://www.sixtyden.com/blog/articleDetail/{{ article.id }}</a>
+              <a class="search-tag-item-link" :href=" `/blog/articleDetail/${article.id}` ">http://www.sixtyden.com/blog/articleDetail/{{ article.id }}</a>
             </div>
           </div>
         </div>

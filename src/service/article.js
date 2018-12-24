@@ -13,6 +13,7 @@ import {
   getArticle,
   getArticleByFilter,
   getComment,
+  getCommentCount,
   getChildrenComment,
   addComment,
   like,
@@ -40,6 +41,8 @@ export async function remoteGetArticles (refresh, id, page = 1, limit = Const.AR
     for (let article of articles) {
       let tagIds = article['tag_ids'] && article['tag_ids'].split(',')
       article.tags = await getTagsByIds(tagIds)
+      let comment = await getCommentCount(article.id)
+      article.comment = comment.data
     }
 
     if (page > 1) {
