@@ -119,7 +119,7 @@
           </p><br>
           <p>
             * 如果有需要的话这里有一份稍微详细的
-            <a class="about-content-keywords3 keywords-link2" href="https://baike.baidu.com/item/%E9%98%BF%E8%A1%B0" target="_blank">简历</a>。
+            <a class="about-content-keywords3 keywords-link2" target="_blank" @click="alert('请联系我！')">简历</a>。
           </p>
         </div>
       </div>
