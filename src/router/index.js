@@ -5,7 +5,7 @@ import Index from '../../src/page/layout/Index'
 import Blog from '../../src/page/Blog'
 import Tucao from '../../src/page/Tucao'
 import Okami from '../../src/page/Okami'
-import Trap from '../../src/page/Trap'
+import Archive from '../../src/page/Archive'
 import Error from '../../src/page/Error'
 import About from '../../src/page/About'
 import ArticleDetail from '../../src/page/ArticleDetail'
@@ -47,9 +47,9 @@ const router = new Router({
           component: Okami
         },
         {
-          path: '/trap',
-          name: 'Trap',
-          component: Trap
+          path: '/archive',
+          name: 'Archive',
+          component: Archive
         },
         {
           path: '/error',
