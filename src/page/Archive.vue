@@ -4,8 +4,11 @@
       <div class="archive-alert-operation">
         <p>为了方便查看和阅读我在此归个档，但是此处只会列举出一些<b>系列类</b>或者<b>专题类</b>的文章哦。</p>
       </div>
-      <div class="archive-card-container" v-if="archive && archiveData.length > 0">
-
+      <div class="archive-item-container" v-for="(archive, index) in archiveData" :key="index">
+        <h2 class="archive-title-name">{{ archive.title }}</h2>
+        <div v-for="(item, subindex) in archive.data" :key="subindex">
+          <a href="">{{ item.title }}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -27,7 +30,7 @@ export default {
         {
           title: '深入JavaScript知识点系列',
           data: [
-            {title: '深入JavaScript系列(1) -- 变量以及作用域问题'},
+            {title: '深入JavaScript系列(1) -- 变量以及作用域问题', articleId: 1},
             {title: '深入JavaScript系列(2) -- 执行上下文'},
             {title: '深入JavaScript系列(3) -- 闭包'},
             {title: '深入JavaScript系列(4) -- 原型链'},
@@ -85,7 +88,7 @@ export default {
             {title: 'ES6系列(8) -- Async'},
             {title: 'ES6系列(9) -- 异步处理实战'},
             {title: 'ES6系列(9) -- defineProperty 与 proxy'},
-            {title: 'ES6系列(9) -- 装饰器'},
+            {title: 'ES6系列(9) -- 装饰器'}
           ]
         }
       ]
@@ -115,19 +118,18 @@ export default {
     margin-top: 80px;
     width: 100%;
     height: 100%;
+    font-size: 1.5em;
+    line-height: 1.4em;
     .archive-container {
       width: 62%;
       max-width: 880px;
       .archive-alert-operation {
-        font-size: 16px;
-        color: $font-color;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
       }
-      .archive-card-container {
-        @include flex-define(row, start, center);
-        flex-wrap: wrap;
-        .archive-card-item {
-          padding: 8px;
+      .archive-item-container {
+        margin: 20px 0;
+        .archive-title-name {
+          margin-bottom: 20px;
         }
       }
     }
