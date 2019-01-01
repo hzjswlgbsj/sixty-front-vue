@@ -252,6 +252,7 @@ export default {
         .article-detail-content-markdown {
           width: 100%;
           z-index: auto;
+          color: $font-other-color;
         }
       }
       .article-detail-rights {

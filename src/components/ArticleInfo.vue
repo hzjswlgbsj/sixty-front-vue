@@ -18,7 +18,7 @@
     <div class="article-info article-info-address">
       <icon name="location-arrow" scale="0.8"></icon>
       <span class="article-info-address icon" v-if="article.location">{{ article.location }}</span>
-      <span class="article-info-address icon" v-else>南京&nbsp;•&nbsp;谷阳世纪大厦</span>
+      <span class="article-info-address icon" v-else>作者屏蔽了位置</span>
     </div>
   </div>
 </template>

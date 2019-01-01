@@ -55,7 +55,7 @@ export default {
   }
   .v-show-content, .scroll-style {
     padding: 0 !important;
-    color: #DAE1E8 !important;
+    color: #ced6de !important;
     background-color: $theme-background-color !important;
   }
   .comment-parent-content-text pre {
