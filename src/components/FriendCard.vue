@@ -61,6 +61,7 @@ export default {
     clickCard () {
       setTimeout(() => {
         this.backgroundImage = _.sample(this.cardBackImage)
+        this.cardBackImage = _.remove(this.cardBackImage, image => image === this.backgroundImage)
         this.isFront = false
       }, 1000)
     },
