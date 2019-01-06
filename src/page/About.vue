@@ -119,7 +119,7 @@
           </p><br>
           <p>
             * 如果有需要的话这里有一份稍微详细的
-            <a class="about-content-keywords3 keywords-link2" target="_blank" @click="alert('请联系我！')">简历</a>。
+            <a class="about-content-keywords3 keywords-link2" href="https://lib.sixtyden.com/resume.pdf" download>简历</a>。
           </p>
         </div>
       </div>
