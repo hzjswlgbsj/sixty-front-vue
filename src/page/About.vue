@@ -97,7 +97,7 @@
 
             <div class="sixty-about-me-skill" style="">
               <span class="sixty-about-me-skill-type">Linux：</span>
-              <Progress style="width: 600px;" :percent="40" status="active" :stroke-width="15" />
+              <Progress style="width: 600px;" :percent="30" status="active" :stroke-width="15" />
             </div>
           </div>
 
@@ -114,7 +114,6 @@
             * 在下从大三开始实习，现在工作差不多两年多，其中php开发半年，其余都是前端开发。当前前端的能力是：
             可以自己构建前端项目，简单的优化，然后写一些简单的shell脚本实现快速打包上线、切换版本等。
             可以带一两个实习生一起开发项目小型项目。后端：能写基本的接口和微服务模块，能使用docker搭基本环境。
-            了解持续集成、集群、分布式等的原理（但是我都是自己私下玩玩，公司也不会让我这个前端来搭，哈哈）。
             目前正在恶补数据结构和算法...
           </p><br>
           <p>
@@ -171,6 +170,7 @@
       </div>
     </full-page>
 
+    <!--full-page分页-->
     <div class="full-page-pagination">
       <div
         class="full-page-pagination-circle"
@@ -184,6 +184,11 @@
           @mouseover.self="paginationHover(index)">
         </div>
       </div>
+    </div>
+
+    <!--回到主页-->
+    <div class="go-back-avatar-container">
+      <img class="go-back-avatar-image" :src="sixtyLogo" @click="avatarJump">
     </div>
   </div>
 </template>
@@ -259,7 +264,7 @@ export default {
       }
     },
     avatarJump () {
-      this.$router.push('/')
+      this.$router.push('/blog')
     }
   }
 }
@@ -470,6 +475,29 @@ export default {
       width: 12px !important;
       height: 12px !important;
       margin-left: 2px;
+    }
+    .go-back-avatar-container {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      .go-back-avatar-image {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        -webkit-animation:rotate 3s linear infinite;
+        @-webkit-keyframes rotate {
+          0%{-webkit-transform:rotate(0deg);}
+
+          25%{-webkit-transform:rotate(90deg);}
+
+          50%{-webkit-transform:rotate(180deg);}
+
+          75%{-webkit-transform:rotate(270deg);}
+
+          100%{-webkit-transform:rotate(360deg);}
+        }
+      }
     }
   }
 
