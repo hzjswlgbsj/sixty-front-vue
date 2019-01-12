@@ -9,7 +9,7 @@
 const ARTICLE_PAGINATION = 5
 const ARTICLE_COMMENT_PAGINATION = 5
 const ARTICLE_CHILDREN_COMMENT_PAGINATION = 5
-const LINK_PAGINATION = 6
+const LINK_PAGINATION = 8
 const ARTICLE_COMMENT_LEVEL = {
   comment: 'comment',
   childComment: 'childComment',
