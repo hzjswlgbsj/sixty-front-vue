@@ -32,7 +32,7 @@ export default {
             {title: '深入JavaScript系列(1) -- 变量以及作用域问题', articleId: 1},
             {title: '深入JavaScript系列(2) -- 执行上下文', articleId: 1},
             {title: '深入JavaScript系列(3) -- 闭包', articleId: 30},
-            {title: '深入JavaScript系列(4) -- 原型与原型链', articleId: 1},
+            {title: '深入JavaScript系列(4) -- 原型与原型链', articleId: 31},
             {title: '深入JavaScript系列(5) -- call和apply', articleId: 1},
             {title: '深入JavaScript系列(6) -- 创建对象的方式', articleId: 1},
             {title: '深入JavaScript系列(7) -- 继承的多种方式及其优缺点', articleId: 1},
