@@ -37,8 +37,9 @@ export default {
     text-decoration: none;
     // color: #ffffff !important;
   }
-  .article-detail-comment .comment-parent-content-text {
-    color: $font-color2 !important;
+  code {
+    color: #EB7E25;
+    background-color: #282B33 !important;
   }
   /* 对markdown插件的border样式覆盖 */
   .highlight pre,
@@ -52,18 +53,14 @@ export default {
     border: none !important;
   }
 
-  code {
-    color: #EB7E25;
-  }
-
   .hljs {
     padding: 1em !important;
     border-radius: 5px;
   }
   .v-show-content, .scroll-style {
     padding: 0 !important;
-    color: #3E5166 !important;
-    background-color: #ffffff !important;
+    color: #ced6de !important;
+    background-color: $theme-background-color !important;
   }
   .comment-parent-content-text pre {
     background-color: #282C34 !important;

@@ -33,7 +33,7 @@
       <!--</div>-->
       <!--<div class="article-detail-qrcode">这里是二维码</div>-->
       <div class="article-detail-rights">
-        <block-text backgroundColor="#ccc" lineColor="#333" width="100%">
+        <block-text backgroundColor="#1B1D23" width="100%">
           <span class="article-detail-rights-text">本作品采用 </span>
           <span>
             <a class="article-detail-rights-link" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
@@ -203,7 +203,6 @@ export default {
   @import "../style/base/base";
   .article-detail-container {
     @include flex-define(column, center, center);
-    background-color: #ffffff;
     /*margin-top: 60px;*/
     .article-detail-title-info {
       @include flex-define(column, center, center);
@@ -216,11 +215,12 @@ export default {
         border-radius: 5px;
         margin-bottom: 30px;
         display: block;
+        background-color: rgba(121, 184, 152, 1);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
         transition: opacity 1s;
-        opacity: .9;
+        opacity: .5;
       }
       .article-detail-title-container {
         z-index: 2;
@@ -228,10 +228,6 @@ export default {
           margin-top: -280px;
           text-align: center;
           font-size: 40px;
-          color: #fff;
-        }
-        .article-info-container {
-          color: #fff;
         }
       }
       .article-detail-info {
@@ -261,10 +257,10 @@ export default {
       .article-detail-rights {
         width: 100%;
         .article-detail-rights-text {
-          color: #333;
+          color: $font-color;
         }
         .article-detail-rights-link {
-          color: #000;
+          color: $theme-color;
           &:hover {
             color: $hover-color !important;
           }
@@ -299,9 +295,6 @@ export default {
         width: 100%;
         text-align: left;
         margin-top: 10px;
-        .comment-parent-content-text {
-          color: $font-color2 !important;
-        }
       }
     }
   }
