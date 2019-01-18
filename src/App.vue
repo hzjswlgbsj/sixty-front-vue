@@ -49,6 +49,12 @@ export default {
     font-size: 1.2em !important;
   }
 
+  .markdown-body hr {
+    background-color: #333!important;
+    height: 0.05em !important;
+    margin: -10px 0 25px 0 !important;
+  }
+
   h1, h2, h3 {
     border: none !important;
   }
