@@ -35,7 +35,7 @@ export default {
             {title: '深入JavaScript系列(4) -- 原型与原型链', articleId: 31},
             {title: '深入JavaScript系列(5) -- call和apply', articleId: 1},
             {title: '深入JavaScript系列(6) -- 创建对象的方式', articleId: 1},
-            {title: '深入JavaScript系列(7) -- 继承的多种方式及其优缺点', articleId: 1},
+            {title: '深入JavaScript系列(7) -- 继承的多种方式及其优缺点', articleId: 32},
             {title: '深入JavaScript系列(8) -- 作用域链', articleId: 1},
             {title: '深入JavaScript系列(9) -- 搞懂this', articleId: 1},
             {title: '深入JavaScript系列(9) -- 类数组对象与arguments', articleId: 1}
