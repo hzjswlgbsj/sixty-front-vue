@@ -141,4 +141,10 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 767px) {
+    .archive-container {
+      width: 94% !important;
+    }
+  }
 </style>
