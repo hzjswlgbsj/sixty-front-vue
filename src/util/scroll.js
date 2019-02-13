@@ -1,5 +1,5 @@
 /**
- * url参数
+ * 获取滚动条距离顶部的高度
  * @returns {Object}
  * @constructor
  */
@@ -15,6 +15,10 @@ export function getScrollTop () {
   return scrollTop
 }
 
+/**
+ * 获取滚动条现在的高度
+ * @return {number}
+ */
 export function getScrollHeight () {
   let [scrollHeight, bodyScrollHeight, documentScrollHeight] = [0, 0, 0]
   if (document.body) {
@@ -27,8 +31,12 @@ export function getScrollHeight () {
   return scrollHeight
 }
 
+/**
+ * 获取文档的高度
+ * @return {number}
+ */
 export function getWindowHeight () {
-  var windowHeight = 0
+  let windowHeight = 0
   if (document.compatMode === 'CSS1Compat') {
     windowHeight = document.documentElement.clientHeight
   } else {
