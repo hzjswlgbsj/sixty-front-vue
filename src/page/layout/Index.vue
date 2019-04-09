@@ -58,6 +58,7 @@ export default {
   watch: {
     '$route' (to, from) {
       this.isIndex = to.name === 'Index'
+      this.isDetail = to.name === 'ArticleDetail'
     }
   },
 
