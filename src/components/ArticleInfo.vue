@@ -49,7 +49,7 @@ export default {
     @include flex-define(row, center, center);
     margin: 25px 0;
     font-size: 0.9em;
-    color: $font-other-color;
+    color: $font-color2;
     .article-info {
       @include flex-define(row, space-between, center);
       cursor: pointer;

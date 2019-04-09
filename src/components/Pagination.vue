@@ -15,7 +15,7 @@
     </div>
     <div class="article-comment-page-next" v-if="currentPage !== pageTotal" @click="next()">下一页</div>
   </div>
-  <div v-else>暂无吐槽</div>
+  <div v-else style="color: #333333">暂无吐槽</div>
 </template>
 
 <script>

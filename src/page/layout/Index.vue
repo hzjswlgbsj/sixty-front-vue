@@ -12,8 +12,12 @@
     </div>
 
     <transition name="slide-fade">
-      <div v-if="showReturnTop" @click="returnTop(1,80)" class="main-layout-structure-return-top return-top-pc">
+      <div v-if="showReturnTop && !isDetail" @click="returnTop(1,80)" class="main-layout-structure-return-top return-top-pc">
         <span class="main-layout-structure-return-top-text">返回顶部</span>
+      </div>
+
+      <div v-if="showReturnTop && isDetail" @click="returnTop(1,80)" class="main-layout-structure-return-top return-top-pc2">
+        <icon name="chevron-up" scale="1" class="main-layout-structure-return-top-icon"></icon>
       </div>
     </transition>
 
@@ -40,6 +44,7 @@ export default {
   data () {
     return {
       isIndex: true,
+      isDetail: false,
       clientHeight: '',
       showReturnTop: false
     }
@@ -47,6 +52,7 @@ export default {
 
   created () {
     this.isIndex = this.$route.name === 'Index'
+    this.isDetail = this.$route.name === 'ArticleDetail'
   },
 
   watch: {
@@ -148,13 +154,8 @@ export default {
     .return-top-phone {
       display: none !important;
     }
-    .return-top-pc {
+    .return-top-pc, .return-top-pc2 {
       display: block !important;
-      background: url("../../assets/returnTop.png");
-      background-color: #141414;
-      padding: 45px 15px 0 15px;
-      width: 60px;
-      height: 100px;
       .main-layout-structure-return-top-text {
         font-size: 1.2em;
         color: $theme-color;
@@ -162,6 +163,19 @@ export default {
           color: #ECFF8D;
         }
       }
+    }
+    .return-top-pc {
+      background: url("../../assets/returnTop.png");
+      background-color: #141414;
+      padding: 45px 15px 0 15px;
+      width: 60px;
+      height: 100px;
+    }
+    .return-top-pc2 {
+      padding: 8px 10px;
+      border-radius: 50%;
+      margin-right: 20px;
+      margin-bottom: 20px;
     }
   }
 </style>

@@ -13,12 +13,13 @@
       <music-player v-if="article.music_id > 0" :id="Number(article.music_id)"/>
 
       <div class="article-detail-content">
+        <!--qtcreator_light-->
         <mavon-editor
           class="article-detail-content-markdown"
           :toolbars-flag="false"
           :subfield="false"
           default-open="preview"
-          code-style="atom-one-dark"
+          code-style="atelier-heath-light"
           :box-shadow="false"
           v-model="article.content"/>
       </div>
@@ -33,7 +34,7 @@
       <!--</div>-->
       <!--<div class="article-detail-qrcode">这里是二维码</div>-->
       <div class="article-detail-rights">
-        <block-text backgroundColor="#1B1D23" width="100%">
+        <block-text backgroundColor="#F7F7F7" width="100%">
           <span class="article-detail-rights-text">本作品采用 </span>
           <span>
             <a class="article-detail-rights-link" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
@@ -203,10 +204,9 @@ export default {
   @import "../style/base/base";
   .article-detail-container {
     @include flex-define(column, center, center);
-    /*margin-top: 60px;*/
+    background-color: #ffffff;
     .article-detail-title-info {
       @include flex-define(column, center, center);
-      color: #ffffff;
       font-size: $font-size;
       width: 62%;
       max-width: 880px;
@@ -228,6 +228,7 @@ export default {
           margin-top: -280px;
           text-align: center;
           font-size: 40px;
+          color: #000000;
         }
       }
       .article-detail-info {
@@ -257,7 +258,7 @@ export default {
       .article-detail-rights {
         width: 100%;
         .article-detail-rights-text {
-          color: $font-color;
+          color: $font-color2;
         }
         .article-detail-rights-link {
           color: $theme-color;
@@ -273,7 +274,7 @@ export default {
           margin: 10px 0 0 20px;
           line-height: 1.6em;
           .article-detail-reference-link a {
-            color: #DAE1E8;
+            color: $font-color3;
             &:hover {
               color: $hover-color;
             }
@@ -285,6 +286,7 @@ export default {
         width: 100%;
         margin: 20px 0;
         .article-detail-previous, .article-detail-next {
+          color: $font-color3;
           &:hover {
             cursor: pointer;
             color: $hover-color;

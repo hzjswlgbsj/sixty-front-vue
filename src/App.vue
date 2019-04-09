@@ -33,13 +33,14 @@ export default {
   li {
     list-style:none;
   }
-  a {
+  .markdown-body a {
     text-decoration: none;
-    // color: #ffffff !important;
+    color: $font-color3!important;
+    font-weight: 600;
   }
   code {
-    color: #EB7E25;
-    background-color: #282B33 !important;
+    color: #e96900;
+    background-color: #F8F8F8 !important;
   }
   /* 对markdown插件的border样式覆盖 */
   .highlight pre,
@@ -56,17 +57,23 @@ export default {
   }
 
   h1, h2, h3 {
+    /*border-bottom: 1px solid #dddddd !important;*/
     border: none !important;
+    color: #2F3D4F;
+    padding-bottom: 20px !important;
   }
 
   .hljs {
     padding: 1em !important;
-    border-radius: 5px;
+    background-color: #F8F8F8 !important;
+    code {
+      color: #525252 !important;
+    }
   }
   .v-show-content, .scroll-style {
     padding: 0 !important;
-    color: #ced6de !important;
-    background-color: $theme-background-color !important;
+    color: #394A5D !important;
+    background-color: #ffffff !important;
   }
   .comment-parent-content-text pre {
     background-color: #282C34 !important;

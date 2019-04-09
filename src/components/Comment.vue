@@ -279,6 +279,11 @@ export default {
         return
       }
 
+      if (!content) {
+        this.$sixtyModal('你似乎啥都没说哦~')
+        return
+      }
+
       try {
         let ret = await remoteAddComment(
           parseInt(this.currentArticleId),
@@ -381,7 +386,7 @@ export default {
       .article-comment-total {
         margin-bottom: 10px;
         font-size: 18px;
-        color: #81A1B4;
+        color: #333333;
       }
       .article-comment-head {
         border-bottom: 1px solid #333;

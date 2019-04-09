@@ -81,10 +81,10 @@ export default {
   },
   methods: {
     publishComment () {
-      if (!this.commentContent) {
-        this.$sixtyModal('你似乎啥都没说哦~')
-        return
-      }
+      // if (!this.commentContent) {
+      //   this.$sixtyModal('你似乎啥都没说哦~')
+      //   return
+      // }
 
       if (!this.checkEmail()) return
 
@@ -149,7 +149,7 @@ export default {
         height: 65px;
         font-size: 14px;
         color: #333333;
-        background-color: #cccccc;
+        background-color: #E5E9EE;
         border-radius: 5px;
         .logout-desc-logout-btn {
           padding: 2px 5px;
