@@ -4,7 +4,7 @@
       <div class="article-comment-total" v-if="total">{{ total }}&nbsp;&nbsp;评论</div>
       <div class="article-comment-total" v-else>暂无吐槽</div>
 
-      <div class="article-comment-head">
+      <div class="article-comment-head" :style="borderStyle">
         <div class="article-comment-all">
           全部评论
           <icon class="article-comment-all-selected" name="caret-up" scale="1"></icon>
@@ -16,9 +16,11 @@
           @on-change="changePagination">
         </pagination>
       </div>
+
       <div class="article-comment-login">
         <logout-publish :reset-comment="resetComment" @publish-comment="publishComment(arguments, commentLevel.comment)" @handle-login="handleLogin" :login="login" :user="user"></logout-publish>
       </div>
+
       <div v-if="comments && comments.length > 0">
         <div class="article-comment-content-container" v-for="comment in comments" :key="comment.id">
           <div class="article-comment-content">
@@ -26,10 +28,11 @@
               <avatar :src="comment.user_avatar" size="45px"></avatar>
             </div>
             <div class="comment-parent-container">
-              <div class="comment-parent-info">
-                <span class="comment-parent-author">{{comment.user_nickname}}</span>
+              <div class="comment-parent-info" :style="commonFontColor">
+                <span class="comment-parent-author" :style="commonNameColor">{{comment.user_nickname}}</span>
                 <div class="comment-parent-content-text" v-html="markdownIt(comment.content)"></div>
-                <div class="comment-parent-content-info">
+
+                <div class="comment-parent-content-info" :style="commonInfoColorColor">
                   <div class="comment-parent-content-date">
                     吐槽于
                     <timeago :datetime="comment.create_time" :auto-update="60"/>
@@ -45,6 +48,7 @@
                   </div>
                   <div class="comment-parent-content-replay" @click="handleReply(comment.id, comment.id, 0)">参与回复</div>
                 </div>
+
                 <!--二级评论开始-->
                 <div class="comment-reply-container" v-if="comment.children && comment.children.length > 0">
                   <div class="comment-children-container" v-if="index < 3 || showMore" v-for="(reply, index) in comment.children" :key="reply.id">
@@ -54,10 +58,10 @@
                     </div>
                     <div class="comment-children-info">
                       <div class="comment-children-author-content">
-                        <span class="comment-children-author">{{reply.user_nickname}}&nbsp;</span>
+                        <span class="comment-children-author" :style="commonNameColor">{{reply.user_nickname}}&nbsp;</span>
                         <span class="comment-children-reply" v-if="reply.reply_id !== reply.parent_id">&nbsp;回复&nbsp;</span>
                         <span class="comment-children-reply-author" v-if="reply.reply_id !== reply.parent_id">@{{reply.parent_user_nickname}}:</span>
-                        <span class="comment-children-reply-content">{{reply.content}}</span>
+                        <span class="comment-children-reply-content" :style="commonFontColor">{{reply.content}}</span>
                       </div>
                       <div class="comment-children-content-info">
                         <span class="comment-children-content-date">回复于 <timeago :datetime="reply.create_time" :auto-update="60"/></span>
@@ -95,7 +99,7 @@
             :login="login"
             :user="user">
           </logout-publish>
-          <div class="article-comment-common-line"></div>
+          <div class="article-comment-common-line" :style="borderStyle"></div>
         </div>
 
         <!--最下面也加上分页和评论框-->
@@ -148,8 +152,17 @@ export default {
   props: {
     commentData: {
       type: Array,
-      default: function () {
-        return []
+      default: () => []
+    },
+    colors: {
+      type: Object,
+      default: () => {
+        return {
+          borderColor: '#333333',
+          fontColor: '#dee5ec',
+          infoColor: '#9DA5B0',
+          nameColor: '#2BBC8A'
+        }
       }
     },
     commentTotal: {
@@ -235,6 +248,29 @@ export default {
         'border-radius': this.radius,
         'font-color': this.color,
         'font-size': this.fontSize
+      }
+    },
+    borderStyle () {
+      return {
+        'border-bottom-width': '1px',
+        'border-bottom-style': 'solid',
+        'border-bottom-color': this.colors.borderColor,
+        color: this.colors.fontColor
+      }
+    },
+    commonFontColor () {
+      return {
+        color: this.colors.fontColor
+      }
+    },
+    commonNameColor () {
+      return {
+        color: this.colors.nameColor
+      }
+    },
+    commonInfoColorColor () {
+      return {
+        color: this.colors.infoColor
       }
     },
     requestStatus () {
@@ -389,7 +425,7 @@ export default {
         color: #333333;
       }
       .article-comment-head {
-        border-bottom: 1px solid #333;
+        /*border-bottom: 1px solid #333;*/
         font-size: 12px;
         @include flex-define(row, space-between, center);
         .article-comment-all {
@@ -435,12 +471,11 @@ export default {
               font-size: 12px;
               line-height: 1.8em;
               .comment-parent-author {
-                color: #2BBC8A;
+                /*color: #2BBC8A;*/
                 @include cursor-hover-color;
               }
               .comment-parent-content-text {
                 font-size: 14px;
-                color: #ffffff;
                 font-weight: 400;
                 line-height: 2em;
               }
@@ -469,14 +504,14 @@ export default {
                   margin: -6px 0 0 10px;
                   .comment-children-author-content {
                     .comment-children-author{
-                      color: #2BBC8A;
+                      /*color: #2BBC8A;*/
                     }
                     .comment-children-reply-author {
                       color: $theme-color;
                     }
                     .comment-children-reply-content {
                       font-size: 14px;
-                      color: $font-color;
+                      /*color: $font-color;*/
                       font-weight: 400;
                     }
                   }
@@ -520,7 +555,7 @@ export default {
         .article-comment-common-line {
           width: 90%;
           margin-left: 80px;
-          border-bottom: 1px solid #333;
+          /*border-bottom: 1px solid #333;*/
         }
       }
       .article-comment-pagination-bottom {

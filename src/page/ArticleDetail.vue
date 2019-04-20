@@ -71,6 +71,7 @@
       <!--<div class="article-detail-share">分享区域</div>-->
       <div class="article-detail-comment" v-if="showTitle">
         <comment
+          :colors="detailColors"
           :article-ready="showTitle"
           :comment-total="parseInt(commentData.total)"
           :commentData="commentData.data"
@@ -126,7 +127,13 @@ export default {
       ],
       currentArticleId: '',
       showTitle: false,
-      showLoading: true
+      showLoading: true,
+      detailColors: {
+        borderColor: '#E5E9EE',
+        fontColor: '#212121',
+        infoColor: '#9BA2A9',
+        nameColor: '#767C80'
+      }
     }
   },
   created () {
