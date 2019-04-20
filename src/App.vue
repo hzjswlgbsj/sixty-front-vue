@@ -59,7 +59,7 @@ export default {
   h1, h2, h3 {
     /*border-bottom: 1px solid #dddddd !important;*/
     border: none !important;
-    color: #2F3D4F;
+    /*color: #2F3D4F;*/
     padding-bottom: 20px !important;
   }
 

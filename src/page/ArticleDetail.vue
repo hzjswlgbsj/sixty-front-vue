@@ -231,6 +231,7 @@ export default {
       }
       .article-detail-title-container {
         z-index: 2;
+        color: $font-color2;
         .article-detail-title {
           margin-top: -280px;
           text-align: center;
