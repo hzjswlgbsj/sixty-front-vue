@@ -13,6 +13,7 @@ import animated from 'animate.css'
 import sixtyModal from './my-plugin/sixty-modal/sixtyModal'
 import 'fullpage.js/vendors/scrolloverflow' // Optional. When using scrollOverflow:true
 import VueFullPage from 'vue-fullpage.js'
+import i18n from './lang'
 
 Vue.component('icon', Icon)
 Vue.use(iView)
@@ -39,6 +40,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  i18n,
   components: { App },
   template: '<App/>'
 })
