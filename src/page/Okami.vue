@@ -30,7 +30,7 @@
         <div class="friends-desc-info">
           <p>-- 博客名称：Sixty'Den</p>
           <p>-- 博客地址：https://www.sixtyden.com</p>
-          <p>-- 博客头像：https://lib.sixtyden.com/sixtyAvatar.jpg</p>
+          <p>-- 博客头像：https://lib.sixtyden.com/naruto_avatar.jpg</p>
           <p>-- 博客描述：生活不止眼前的代码，还有弹不响的吉他弦</p>
         </div>
       </div>
