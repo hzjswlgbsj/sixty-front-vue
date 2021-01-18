@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../../style/mixin/baseMixin";
   .sixty-alert-container {
     position: fixed;
@@ -27,7 +27,7 @@ export default {
     padding: 8px 10px 8px 55px;
     font-size: 1.2em;
     text-align: left;
-    color: $theme-color;
+    color: @theme-color;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     z-index: 999;

@@ -123,16 +123,16 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../style/mixin/baseMixin";
   .blog-container {
     height: 100%;
     .blog-article-container {
       margin-top: 80px;
-      @include flex-define (column, center, center);
+      .flex-define (column, center, center);
       .blog-article-item {
         color: #f9f9f9;
-        border-bottom: 1px solid $common-line-color;
+        border-bottom: 1px solid @common-line-color;
         margin-bottom: 30px;
         width: 62%;
         max-width: 880px;
@@ -142,7 +142,7 @@ export default {
           padding: 10px 10px 20px 10px;
           border-radius: 5px;
         }
-        @include keyframes(articleSpin) {
+        @keyframes articleSpin {
           0% {
             transform: rotate(0deg);
           }
@@ -165,8 +165,8 @@ export default {
         -webkit-transition:.8s ease-in-out;
         -moz-transition:.8s ease-in-out;
         .blog-article-item-more-title {
-          font-size: $font-size;
-          color: $font-other-color;
+          font-size: @font-size;
+          color: @font-other-color;
         }
       }
     }

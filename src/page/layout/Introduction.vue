@@ -66,7 +66,7 @@ export default {
 }
 </script>
 
-<style lang="scss"  scoped>
+<style lang="less"  scoped>
   @import "../../style/mixin/baseMixin";
   @import "../../style/base/base";
   .main-layout-index-container {
@@ -76,11 +76,11 @@ export default {
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url($indexBackground);
+    background-image: url(@indexBackground);
     text-align: center;
     color: #FEFEFE;
-    font-size: $font-size;
-    font-family: $font-family;
+    font-size: @font-size;
+    font-family: @font-family;
     .main-layout-index-content-container {
       display: table-cell;
       vertical-align: middle;

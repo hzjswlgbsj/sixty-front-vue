@@ -112,13 +112,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../style/mixin/baseMixin";
   @import "../style/base/base";
   .logout {
     width: 100%;
     height: 65px;
-    @include flex-define (row, space-between, center);
+    .flex-define (row, space-between, center);
     .logout-avatar {
       flex-basis: 50px;
     }
@@ -145,7 +145,7 @@ export default {
         }
       }
       .logout-desc-logout {
-        @include flex-define (row, center, center);
+        .flex-define (row, center, center);
         height: 65px;
         font-size: 14px;
         color: #333333;
@@ -154,21 +154,21 @@ export default {
         .logout-desc-logout-btn {
           padding: 2px 5px;
           border-radius: 4px;
-          color: $logout-color;
-          background-color: $theme-color;
+          color: @logout-color;
+          background-color: @theme-color;
           cursor: pointer;
           margin: 0 3px;
           &:hover {
-            background-color: $hover-color;
+            background-color: @hover-color;
             font-size: 14px;
           }
         }
       }
       .comment-textarea-other-info {
-        font-size: $font-size;
-        @include flex-define (row, space-between, center);
+        font-size: @font-size;
+        .flex-define (row, space-between, center);
         .textarea-other-info-markdown {
-          color: $theme-color;
+          color: @theme-color;
         }
         /*margin-top: 10px;*/
         .login-other-info-email {
@@ -178,8 +178,8 @@ export default {
       }
     }
     .logout-comment-btn {
-      background-color: $theme-color;
-      color: $logout-color;
+      background-color: @theme-color;
+      color: @logout-color;
       width: 65px;
       height: 65px;
       /*flex-basis: 65px;*/
@@ -189,7 +189,7 @@ export default {
       font-size: 15px;
       cursor: pointer;
       &:hover {
-        background-color: $hover-color;
+        background-color: @hover-color;
       }
     }
     .logout-comment-btn-logout {

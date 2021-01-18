@@ -74,19 +74,19 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin.scss";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
   @import "../style/base/base";
   .friend-card {
-    font-size: $font-size;
-    color: $font-color;
+    font-size: @font-size;
+    color: @font-color;
     .friend-card-content {
-      @include flex-define(column, space-around, center);
+      .flex-define(column, space-around, center);
       height: 100%;
       .friend-card-content-avatar-name {
         height: 40px;
         width: 100%;
-        @include flex-define(row, start, center);
+        .flex-define(row, start, center);
         .friend-card-content-name {
           font-size: 18px;
           margin-left: 20px;

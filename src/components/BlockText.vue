@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .block-text-container {
     text-align: center;
     padding: 20px 10px;

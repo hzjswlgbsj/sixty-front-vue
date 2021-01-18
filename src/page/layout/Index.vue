@@ -97,7 +97,7 @@ export default {
 }
 </script>
 
-<style lang="scss"  scoped>
+<style lang="less"  scoped>
   @import "../../style/base/base";
   .main-layout-structure-container {
     .main-layout-structure-introduction {
@@ -108,7 +108,7 @@ export default {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
-      background-color: $theme-color;
+      background-color: @theme-color;
       transition: opacity 1s;
       position: fixed;
       bottom: 20px;
@@ -118,7 +118,7 @@ export default {
       align-items: center;
       &:hover {
         cursor: pointer;
-        background-color: $hover-color;
+        background-color: @hover-color;
       }
     }
     .slide-fade-enter-active {
@@ -159,7 +159,7 @@ export default {
       display: block !important;
       .main-layout-structure-return-top-text {
         font-size: 1.2em;
-        color: $theme-color;
+        color: @theme-color;
         &:hover {
           color: #ECFF8D;
         }

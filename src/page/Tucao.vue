@@ -107,8 +107,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin.scss";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
   @import "../style/base/base";
   .tucao-root {
     display: flex;
@@ -120,12 +120,12 @@ export default {
       width: 62%;
       max-width: 880px;
       .tucao-content {
-        font-size: $font-size;
-        color: $font-color;
+        font-size: @font-size;
+        color: @font-color;
         line-height: 2em;
         .tucao-content-hello-text, .tucao-content-title-text {
           font-weight: 600;
-          color: $logout-color;
+          color: @logout-color;
           line-height: 3em;
         }
         .tucao-content-hello-text {
@@ -144,23 +144,23 @@ export default {
           border-bottom: 1px solid #FFC66D;
         }
         .tucao-content-keywords {
-          @include keywords(red)
+          .keywords(red)
         }
         .tucao-content-keywords2 {
-          @include keywords(#9876AA)
+          .keywords(#9876AA)
         }
         .tucao-content-keywords3 {
-          @include keywords(#FFC66D)
+          .keywords(#FFC66D)
         }
         .tucao-content-keywords4 {
-          @include keywords(#FFA347)
+          .keywords(#FFA347)
         }
         .tucao-content-keywords5 {
-          @include keywords(#FED95F)
+          .keywords(#FED95F)
         }
       }
       .tucao-comment {
-        color: $font-color;
+        color: @font-color;
       }
     }
   }

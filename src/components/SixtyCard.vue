@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../style/base/base";
   .sixty-base-card-container {
     cursor: pointer;
@@ -79,7 +79,7 @@ export default {
       position: absolute;
       top: 14px;
       left: 20px;
-      z-index: $index-level-first;
+      z-index: @index-level-first;
     }
     .sixty-base-card-image-cover {
       opacity: 0.5;

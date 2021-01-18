@@ -410,9 +410,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin";
-  @import "../style/base/base";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
+  @import "../style/base/base.less";
   .comment-container {
     width: 100%;
     .article-comment {
@@ -427,22 +427,22 @@ export default {
       .article-comment-head {
         /*border-bottom: 1px solid #333;*/
         font-size: 12px;
-        @include flex-define(row, space-between, center);
+        .flex-define(row, space-between, center);
         .article-comment-all {
           position: relative;
-          color: $theme-color;
+          color: @theme-color;
           height: 40px;
           padding-top: 8px;
-          border-bottom: 1px solid $theme-color;
+          border-bottom: 1px solid @theme-color;
           margin-bottom: -1px;
           .article-comment-all-selected {
             bottom: -5px;
             position: absolute;
             left: 24px;
-            color: $theme-color;
+            color: @theme-color;
             /*height: 5px;
             width: 5px;
-            background-color: $theme-color;*/
+            background-color: @theme-color;*/
             /*-webkit-transform: rotate(45deg);        for Chrome || Safari */
             /*-moz-transform: rotate(45deg);           for Firefox */
             /*-ms-transform: rotate(45deg);            for IE */
@@ -457,7 +457,7 @@ export default {
         width: 100%;
         margin-bottom: 20px;
         .article-comment-content {
-          @include flex-define(row, flex-start, flex-start);
+          .flex-define(row, flex-start, flex-start);
           margin: 10px 0;
           .comment-parent-avatar {
           }
@@ -472,7 +472,7 @@ export default {
               line-height: 1.8em;
               .comment-parent-author {
                 /*color: #2BBC8A;*/
-                @include cursor-hover-color;
+                .cursor-hover-color;
               }
               .comment-parent-content-text {
                 font-size: 14px;
@@ -483,23 +483,23 @@ export default {
                 width: 100%;
                 margin-left: -5px;
                 font-weight: 400;
-                @include flex-define(row, flex-start, center);
+                .flex-define(row, flex-start, center);
                 .comment-parent-content-date,
                 .comment-parent-content-agree,
                 .comment-parent-content-disagree,
                 .comment-parent-content-replay {
-                  color: $font-other-color;
+                  color: @font-other-color;
                   margin-right: 10px;
                   padding: 0 5px;
-                  @include cursor-hover-color;
+                  .cursor-hover-color;
                 }
                 .comment-parent-content-replay:hover {
-                  @include cursor-hover-background;
+                  .cursor-hover-background;
                 }
               }
               .comment-children-container {
                 margin: 20px 0;
-                @include flex-define(row, flex-start, flex-start);
+                .flex-define(row, flex-start, flex-start);
                 .comment-children-info {
                   margin: -6px 0 0 10px;
                   .comment-children-author-content {
@@ -507,11 +507,11 @@ export default {
                       /*color: #2BBC8A;*/
                     }
                     .comment-children-reply-author {
-                      color: $theme-color;
+                      color: @theme-color;
                     }
                     .comment-children-reply-content {
                       font-size: 14px;
-                      /*color: $font-color;*/
+                      /*color: @font-color;*/
                       font-weight: 400;
                     }
                   }
@@ -520,13 +520,13 @@ export default {
                     .comment-children-content-date,
                     .comment-children-content-agree,
                     .comment-children-content-replay {
-                      color: $font-other-color;
+                      color: @font-other-color;
                       margin-right: 10px;
                       padding: 2px 5px;
-                      @include cursor-hover-color;
+                      .cursor-hover-color;
                     }
                     .comment-children-content-replay:hover {
-                      @include cursor-hover-background;
+                      .cursor-hover-background;
                     }
                   }
                 }
@@ -537,11 +537,11 @@ export default {
                   font-weight: 600;
                 }
                 .comment-children-hide-btn {
-                  color: $theme-color;
+                  color: @theme-color;
                   padding: 2px 5px;
                 }
                 .comment-children-hide-btn:hover {
-                  @include cursor-hover-background;
+                  .cursor-hover-background;
                 }
               }
             }

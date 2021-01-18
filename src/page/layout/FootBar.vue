@@ -19,14 +19,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../../style/base/base";
   .footbar-container {
     background-color: #010101;
     margin-top: 10px;
     .footbar-right-content {
-      color: $font-color;
-      font-size: $font-size;
+      color: @font-color;
+      font-size: @font-size;
       text-align: center;
       padding: 10px 0;
     }

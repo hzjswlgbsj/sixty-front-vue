@@ -1,0 +1,24 @@
+@import "../base/base";
+.flex-define(@direction, @justify, @alignItems) {
+  display: flex;
+  flex-direction: @direction;
+  justify-content: @justify;
+  align-items: @alignItems;
+}
+.cursor-hover-color() {
+  cursor: pointer;
+  &:hover {
+    color: @theme-color;
+    font-size: 12px;
+  }
+}
+.cursor-hover-background() {
+  border-radius: 3px;
+  background-color: #E5E9EF;
+  cursor: pointer;
+}
+.keywords(@color) {
+  color: @color;
+  font-size: 1em;
+  font-weight: 600;
+}

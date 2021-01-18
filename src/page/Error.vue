@@ -53,16 +53,16 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin.scss";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
   @import "../style/base/base";
   .error-root {
-    @include flex-define(column, center, center);
+    .flex-define(column, center, center);
     width: 100%;
     height: 100%;
     text-align: center;
 
-    background-image: url($errorCover);
+    background-image: url(@errorCover);
     background-color: rgba(0, 0, 0, .6);
     background-size: cover;
     background-repeat: no-repeat;
@@ -87,7 +87,7 @@ export default {
         margin: 20px 0;
       }
       .error-search-container {
-        @include flex-define(row, center, center);
+        .flex-define(row, center, center);
         width: 100%;
         height: 54px;
         margin-bottom: 60px;

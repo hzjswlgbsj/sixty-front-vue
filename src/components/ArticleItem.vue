@@ -114,24 +114,24 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../style/mixin/baseMixin";
   @import "../style/base/base";
   .article-container {
     text-align: center;
-    font-size: $font-size;
+    font-size: @font-size;
     .article-author-avatar {
       float: left;
       margin-right: 20px
     }
     .article-title {
-      color: $font-title-color;
-      font-size: $font-size-title;
+      color: @font-title-color;
+      font-size: @font-size-title;
       .article-title-text {
         position: relative;
         &:hover {
           cursor: pointer;
-          color: $theme-color;
+          color: @theme-color;
         }
         .article-title-tag {
           background-color: #5292DD;
@@ -146,7 +146,7 @@ export default {
           -moz-transition: All 0.8s ease-in-out;
           -o-transition: All 0.8s ease-in-out;
           &:hover {
-            color: $font-color;
+            color: @font-color;
             transform: rotate(360deg);
             -webkit-transform: rotate(360deg);
             -moz-transform: rotate(360deg);
@@ -174,7 +174,7 @@ export default {
     .article-info-content {
       text-indent: 2em;
       line-height: 2em;
-      color: $font-color;
+      color: @font-color;
       cursor: pointer;
       text-align: left;
     }

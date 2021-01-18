@@ -167,8 +167,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin.scss";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
   @import "../style/base/base";
   .sixty-about-container {
     width: 100%;
@@ -202,7 +202,7 @@ export default {
         border-radius: 5px;
         margin-bottom: 30px;
         display: block;
-        background-image: url($aboutCover);
+        background-image: url(@aboutCover);
         background-color: rgba(0, 0, 0, .6);
         background-size: cover;
         background-repeat: no-repeat;
@@ -211,14 +211,14 @@ export default {
         opacity: .3;
       }
       .sixty-about-content {
-        @include flex-define(row, center, center);
+        .flex-define(row, center, center);
         font-size: 1.3em;
         line-height: 1.8em;
         .sixty-about-me {
           width: 62%;
           max-width: 880px;
           p {
-            color: $font-color;
+            color: @font-color;
           }
           .keywords-link1 {
             border-bottom: 1px solid red;
@@ -230,19 +230,19 @@ export default {
             border-bottom: 1px solid #9876AA;
           }
           .about-content-keywords {
-            @include keywords(red)
+            .keywords(red)
           }
           .about-content-keywords2 {
-            @include keywords(#9876AA)
+            .keywords(#9876AA)
           }
           .about-content-keywords3 {
-            @include keywords(#FFC66D)
+            .keywords(#FFC66D)
           }
           .about-content-keywords4 {
-            @include keywords(#FFA347)
+            .keywords(#FFA347)
           }
           .about-content-keywords5 {
-            @include keywords(#FED95F)
+            .keywords(#FED95F)
           }
 
           .sixty-about-me-skill {
@@ -269,7 +269,7 @@ export default {
       width: 120px !important;
     }
     .sixty-about-top-cover {
-      background-image: url($aboutCover2)!important;
+      background-image: url(@aboutCover2)!important;
     }
   }
 </style>

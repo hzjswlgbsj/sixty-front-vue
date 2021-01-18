@@ -377,7 +377,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../../style/mixin/baseMixin";
   @import "../../style/base/base";
   .top-fade-enter-active {
@@ -393,20 +393,20 @@ export default {
   .topbar-container {
     width: 100%;
     margin-top: 20px;
-    z-index: $index-level-first;
+    z-index: @index-level-first;
     opacity: 0.95;
-    @include flex-define (row, center, center);
+    .flex-define (row, center, center);
     position: fixed;
     top: -20px;
     .topbar-inner-container-pc {
-      @include flex-define (row, space-around, center);
+      .flex-define (row, space-around, center);
       width: 100%;
       max-width: 1100px;
       .topbar-avatar-container {
         padding-top: 5px;
       }
       .selected-item {
-        color: $theme-color;
+        color: @theme-color;
       }
       .topbar-category-text {
         /*margin-right: 20px;*/
@@ -414,14 +414,14 @@ export default {
         /*width: 80%;*/
         font-size: 14px;
         &:hover {
-          color: $theme-color;
+          color: @theme-color;
           cursor: pointer
         }
       }
       .topbar-search-input-container{
         width: 62%;
         position: relative;
-        @include flex-define(row, center, center);
+        .flex-define(row, center, center);
         .topbar-search-input-icon {
           margin-right: 10px;
           z-index: 2;
@@ -443,7 +443,7 @@ export default {
           padding: 15px 10px;
           font-family: "SF Pro SC","HanHei SC","SF Pro Text","Myriad Set Pro","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
           .search-recommend-title {
-            color: $font-other-color;
+            color: @font-other-color;
             font-size: 11px;
             margin-left: 20px;
           }
@@ -456,7 +456,7 @@ export default {
               margin-top: 4px;
               &:hover {
                 background-color: #F2F2F2;
-                color: $hover-color2;
+                color: @hover-color2;
               }
             }
           }
@@ -507,12 +507,12 @@ export default {
       .topbar-search-icon, .topbar-github-icon, .topbar-close-icon {
         cursor: pointer;
         &:hover {
-          color: $theme-color;
+          color: @theme-color;
         }
         a {
-          color: $font-color;
+          color: @font-color;
           &:hover {
-            color: $theme-color;
+            color: @theme-color;
           }
         }
       }
@@ -533,7 +533,7 @@ export default {
       width: 100%;
       .topbar-inner-phone-icons {
         width: 100%;
-        @include flex-define (row, space-between, center);
+        .flex-define (row, space-between, center);
         padding: 0 20px;
         .topbar-phone-logo {
           padding-top: 8px;
@@ -560,7 +560,7 @@ export default {
         background-color: #000000;
         height: 1000px;
         .topbar-menu-phone-search-container {
-          @include flex-define (row, start, center);
+          .flex-define (row, start, center);
           .topbar-menu-phone-search {
             background-color: #282828;
             height: 34px;
@@ -573,14 +573,14 @@ export default {
             }
             input {
               background-color: #282828;
-              color: $font-color;
+              color: @font-color;
             }
           }
           .topbar-menu-phone-search-cancel {
             margin: -10px 5px 10px 15px;
             width: 40px;
             cursor: pointer;
-            color: $hover-color2;
+            color: @hover-color2;
           }
         }
         .topbar-menu-phone-list {
@@ -593,7 +593,7 @@ export default {
         }
 
         .search-recommend-title {
-          color: $font-other-color;
+          color: @font-other-color;
           font-size: 12px;
           margin: 10px 0 -10px 20px;
         }
@@ -607,7 +607,7 @@ export default {
             border-bottom: 1px solid #282828;
             &:hover {
               background-color: #F2F2F2;
-              color: $hover-color2;
+              color: @hover-color2;
             }
           }
         }

@@ -116,8 +116,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin.scss";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
   @import "../style/base/base";
   .archive-root {
     display: flex;

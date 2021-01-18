@@ -42,19 +42,19 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin";
-  @import "../style/base/base";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
+  @import "../style/base/base.less";
   .article-info-container {
-    @include flex-define(row, center, center);
+    .flex-define(row, center, center);
     margin: 25px 0;
     font-size: 0.9em;
-    /*color: $font-color2;*/
+    /*color: @font-color2;*/
     .article-info {
-      @include flex-define(row, space-between, center);
+      .flex-define(row, space-between, center);
       cursor: pointer;
       &:hover {
-        color: $theme-color;
+        color: @theme-color;
       }
       .icon {
         margin-left: 5px;

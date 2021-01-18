@@ -10,16 +10,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import '../src/style/base/base.scss';
+<style lang="less">
+  @import '../src/style/base/base.less';
   html, body, #app {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: $theme-background-color;
-    font-family: $font-family;
-    color: $font-color;
+    background-color: @theme-background-color;
+    font-family: @font-family;
+    color: @font-color;
   }
   body {
     // margin-top: -21px;
@@ -35,7 +35,7 @@ export default {
   }
   .markdown-body a {
     text-decoration: none;
-    color: $font-color3!important;
+    color: @font-color3!important;
     font-weight: 600;
   }
   code {
@@ -81,7 +81,7 @@ export default {
     border-radius: 5px;
   }
   .v-show-content pre {
-    background-color: $theme-background-color !important;
+    background-color: @theme-background-color !important;
   }
   .v-note-wrapper .v-note-panel {
     box-shadow: none !important;

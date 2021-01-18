@@ -111,8 +111,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin.scss";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
   @import "../style/base/base";
   .friends-root {
     display: flex;
@@ -125,19 +125,19 @@ export default {
       max-width: 880px;
       .friends-alert-operation {
         font-size: 16px;
-        color: $font-color;
+        color: @font-color;
         margin-bottom: 20px;
       }
       .friends-card-container {
-        @include flex-define(row, start, center);
+        .flex-define(row, start, center);
         flex-wrap: wrap;
         .friends-card-item {
           padding: 8px;
         }
       }
       .friends-desc-container {
-        font-size: $font-size;
-        color: $font-color;
+        font-size: @font-size;
+        color: @font-color;
         line-height: 2em;
         padding: 20px 0;
         .friends-conditions-content, .friends-desc-info {
@@ -146,27 +146,27 @@ export default {
           background-color: #282C34;
           border-radius: 10px;
           .keywords-white {
-            @include keywords(#FFFFFF)
+            .keywords(#FFFFFF)
           }
           .keywords-blue {
-            @include keywords(#0000FF)
+            .keywords(#0000FF)
           }
           .keywords-yellow {
-            @include keywords(#FFFF00)
+            .keywords(#FFFF00)
           }
           .keywords-green {
-            @include keywords(#008000)
+            .keywords(#008000)
           }
           .keywords-purple {
-            @include keywords(#800080)
+            .keywords(#800080)
           }
         }
         .keywords-red {
-          @include keywords(#FF0000)
+          .keywords(#FF0000)
         }
       }
       .friends-comments {
-        color: $font-color;
+        color: @font-color;
       }
     }
   }

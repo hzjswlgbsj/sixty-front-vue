@@ -98,8 +98,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @import "../style/mixin/baseMixin.scss";
+<style lang="less" scoped>
+  @import "../style/mixin/baseMixin.less";
   @import "../style/base/base";
   .search-root {
     display: flex;
@@ -111,7 +111,7 @@ export default {
     .search-container {
       width: 62%;
       max-width: 880px;
-      font-size: $font-size;
+      font-size: @font-size;
       .search-tag-title {
         .search-tag-title-header {
           border-bottom: 1px solid #666666;

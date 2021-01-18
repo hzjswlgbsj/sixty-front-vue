@@ -269,9 +269,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   @import "../style/base/base";
-  @import "../style/mixin/baseMixin.scss";
+  @import "../style/mixin/baseMixin.less";
 
   .full-page-root {
     position: relative;
@@ -298,7 +298,7 @@ export default {
         z-index: 2000;
         cursor: pointer;
         &:hover {
-          color: $hover-color;
+          color: @hover-color;
         }
       }
       .sixty-about-avatar {
@@ -325,7 +325,7 @@ export default {
       display: flex;
       justify-content: center;
       p {
-        color: $font-color;
+        color: @font-color;
       }
       .about-me-common {
         height: 100%;
@@ -357,19 +357,19 @@ export default {
           border-bottom: 1px solid #9876AA;
         }
         .about-content-keywords {
-          @include keywords(red)
+          .keywords(red)
         }
         .about-content-keywords2 {
-          @include keywords(#9876AA)
+          .keywords(#9876AA)
         }
         .about-content-keywords3 {
-          @include keywords(#FFC66D)
+          .keywords(#FFC66D)
         }
         .about-content-keywords4 {
-          @include keywords(#FFA347)
+          .keywords(#FFA347)
         }
         .about-content-keywords5 {
-          @include keywords(#FED95F)
+          .keywords(#FED95F)
         }
       }
 
@@ -508,7 +508,7 @@ export default {
       width: 120px !important;
     }
     .sixty-about-top-cover {
-      background-image: url($aboutCover2)!important;
+      background-image: url(@aboutCover2)!important;
     }
     .about-me-common {
       font-size: 12px !important;

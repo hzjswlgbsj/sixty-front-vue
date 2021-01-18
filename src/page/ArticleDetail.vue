@@ -206,15 +206,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../style/mixin/baseMixin";
   @import "../style/base/base";
   .article-detail-container {
-    @include flex-define(column, center, center);
+    .flex-define(column, center, center);
     background-color: #ffffff;
     .article-detail-title-info {
-      @include flex-define(column, center, center);
-      font-size: $font-size;
+      .flex-define(column, center, center);
+      font-size: @font-size;
       width: 62%;
       max-width: 880px;
       .article-detail-top-cover {
@@ -231,7 +231,7 @@ export default {
       }
       .article-detail-title-container {
         z-index: 2;
-        color: $font-color2;
+        color: @font-color2;
         .article-detail-title {
           margin-top: -280px;
           text-align: center;
@@ -240,10 +240,10 @@ export default {
         }
       }
       .article-detail-info {
-        @include flex-define(row, start, center);
+        .flex-define(row, start, center);
         margin: 10px 0 20px 0;
         div {
-          @include flex-define(row, space-between, center);
+          .flex-define(row, space-between, center);
           margin-right: 15px;
           &:hover {
             cursor: pointer;
@@ -266,12 +266,12 @@ export default {
       .article-detail-rights {
         width: 100%;
         .article-detail-rights-text {
-          color: $font-color2;
+          color: @font-color2;
         }
         .article-detail-rights-link {
-          color: $theme-color;
+          color: @theme-color;
           &:hover {
-            color: $hover-color !important;
+            color: @hover-color !important;
           }
         }
       }
@@ -282,22 +282,22 @@ export default {
           margin: 10px 0 0 20px;
           line-height: 1.6em;
           .article-detail-reference-link a {
-            color: $font-color3;
+            color: @font-color3;
             &:hover {
-              color: $hover-color;
+              color: @hover-color;
             }
           }
         }
       }
       .article-detail-previous-next-pc {
-        @include flex-define(row, space-between, center);
+        .flex-define(row, space-between, center);
         width: 100%;
         margin: 20px 0;
         .article-detail-previous, .article-detail-next {
-          color: $font-color3;
+          color: @font-color3;
           &:hover {
             cursor: pointer;
-            color: $hover-color;
+            color: @hover-color;
           }
         }
       }
@@ -326,7 +326,7 @@ export default {
     .article-detail-previous-next-phone {
       width: 100%;
       margin-top: 20px;
-      color: $theme-color;
+      color: @theme-color;
       .article-detail-previous {
         margin-bottom: 10px;
       }

@@ -32,10 +32,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "../style/mixin/baseMixin";
   .icon-collection-container {
-    @include flex-define (row, space-around, center);
+    .flex-define(row, space-around, center);
     .icon-collection-icon {
       margin-right: 20px;
       &:hover {
