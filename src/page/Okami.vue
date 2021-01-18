@@ -143,7 +143,7 @@ export default {
         .friends-conditions-content, .friends-desc-info {
           margin: 10px 0;
           padding: 10px 20px;
-          background-color: #282C34;
+          background-color: @logout-color;
           border-radius: 10px;
           .keywords-white {
             .keywords(#FFFFFF)

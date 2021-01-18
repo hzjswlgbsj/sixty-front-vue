@@ -158,8 +158,8 @@ export default {
       type: Object,
       default: () => {
         return {
-          borderColor: '#333333',
-          fontColor: '#dee5ec',
+          borderColor: '#d2d2d7',
+          fontColor: '#333',
           infoColor: '#9DA5B0',
           nameColor: '#2BBC8A'
         }
@@ -471,10 +471,11 @@ export default {
               font-size: 12px;
               line-height: 1.8em;
               .comment-parent-author {
-                /*color: #2BBC8A;*/
+                // color: #2BBC8A;
                 .cursor-hover-color;
               }
               .comment-parent-content-text {
+                color: @font-color;
                 font-size: 14px;
                 font-weight: 400;
                 line-height: 2em;
@@ -482,7 +483,7 @@ export default {
               .comment-parent-content-info {
                 width: 100%;
                 margin-left: -5px;
-                font-weight: 400;
+                font-weight: 500;
                 .flex-define(row, flex-start, center);
                 .comment-parent-content-date,
                 .comment-parent-content-agree,
@@ -511,12 +512,12 @@ export default {
                     }
                     .comment-children-reply-content {
                       font-size: 14px;
-                      /*color: @font-color;*/
+                      // color: @font-color;
                       font-weight: 400;
                     }
                   }
                   .comment-children-content-info {
-                    font-weight: 400;
+                    font-weight: 500;
                     .comment-children-content-date,
                     .comment-children-content-agree,
                     .comment-children-content-replay {

@@ -51,7 +51,7 @@ export default {
   }
 
   .markdown-body hr {
-    background-color: #333!important;
+    background-color:@common-line-color !important;
     height: 0.05em !important;
     margin: -10px 0 25px 0 !important;
   }
@@ -76,7 +76,7 @@ export default {
     background-color: #ffffff !important;
   }
   .comment-parent-content-text pre {
-    background-color: #282C34 !important;
+    background-color: @logout-color !important;
     padding: 5px 16px;
     border-radius: 5px;
   }
@@ -96,7 +96,7 @@ export default {
     list-style: decimal !important;
   }
   .markdown-body table tr {
-    background-color: #282C34!important;
+    background-color: @logout-color!important;
     border-top: 1px solid #000!important;
   }
   .markdown-body table td, .markdown-body table th {

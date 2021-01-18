@@ -279,6 +279,7 @@ export default {
     width: 100%;
     .fp-tableCell {
       width: 100%;
+      color: #ffffff;
     }
     .about-cover{
       height: 100%;
@@ -325,7 +326,7 @@ export default {
       display: flex;
       justify-content: center;
       p {
-        color: @font-color;
+        color: @theme-background-color;
       }
       .about-me-common {
         height: 100%;

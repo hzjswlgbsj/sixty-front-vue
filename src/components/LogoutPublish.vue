@@ -179,7 +179,7 @@ export default {
     }
     .logout-comment-btn {
       background-color: @theme-color;
-      color: @logout-color;
+      color: @theme-background-color;
       width: 65px;
       height: 65px;
       /*flex-basis: 65px;*/

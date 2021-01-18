@@ -510,7 +510,7 @@ export default {
           color: @theme-color;
         }
         a {
-          color: @font-color;
+          color: #fff;
           &:hover {
             color: @theme-color;
           }

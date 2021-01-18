@@ -125,7 +125,7 @@ export default {
         line-height: 2em;
         .tucao-content-hello-text, .tucao-content-title-text {
           font-weight: 600;
-          color: @logout-color;
+          color: @font-color;
           line-height: 3em;
         }
         .tucao-content-hello-text {

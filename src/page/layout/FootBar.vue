@@ -25,7 +25,8 @@ export default {
     background-color: #010101;
     margin-top: 10px;
     .footbar-right-content {
-      color: @font-color;
+      // color: @font-color;
+      color: #fff;
       font-size: @font-size;
       text-align: center;
       padding: 10px 0;

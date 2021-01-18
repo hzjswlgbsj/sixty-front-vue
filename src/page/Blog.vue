@@ -6,7 +6,8 @@
       </div>
       <div class="blog-article-item-more">
         <span class="blog-article-item-more-title" v-if="notAnyMare">
-          -- 再拉，肠子都被你拉出来了(゜-゜) --
+          <!-- -- 再拉，肠子都被你拉出来了(゜-゜) -- -->
+          -- 到底了哦(゜-゜) --
         </span>
         <vue-loading
           v-if="!notAnyMare && articleData && articleData.length > 0"

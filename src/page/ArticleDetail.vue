@@ -261,6 +261,7 @@ export default {
         .article-detail-content-markdown {
           width: 100%;
           z-index: auto;
+          border: none;
         }
       }
       .article-detail-rights {
