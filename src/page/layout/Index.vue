@@ -116,6 +116,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      color: @theme-background-color;
       &:hover {
         cursor: pointer;
         background-color: @hover-color;

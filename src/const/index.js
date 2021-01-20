@@ -26,7 +26,7 @@ export const SIXTY_LOGO = 'https://lib.sixtyden.com/naruto_avatar.jpg'
 export const MENU_LIST = [
   {key: 'blog', label: 'Blog'},
   {key: 'tucao', label: 'Tucao'},
-  {key: 'error', label: 'Error'},
+  // {key: 'error', label: 'Error'},
   {key: 'okami', label: 'Okami'},
   {key: 'archive', label: 'Archive'},
   {key: 'about', label: 'About'}
