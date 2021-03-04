@@ -7,6 +7,5 @@ rm -rf $version
 mkdir $version
 cp -rf dist $version
 echo 'scp'
-scp -r $version hiliulin:/www/
-#scp -r index.php hiliulin:/www/sixtyden
+scp -r $version txcore2:/www/
 rm -rf $version
