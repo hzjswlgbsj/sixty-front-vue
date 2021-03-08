@@ -20,6 +20,7 @@ export default {
     background-color: @theme-background-color;
     font-family: @font-family;
     color: @font-color;
+    overflow: hidden;
   }
   body {
     // margin-top: -21px;

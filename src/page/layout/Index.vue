@@ -3,12 +3,15 @@
     <div v-if="!isIndex" class="main-layout-structure-topbar">
       <top-bar/>
     </div>
-    <div class="main-layout-structure-introduction">
-      <introduction v-if="isIndex"></introduction>
-      <router-view></router-view>
-    </div>
-    <div v-if="!isIndex" class="main-layout-structure-footbar">
-      <foot-bar></foot-bar>
+
+    <div class="main-layout-structure-content" id='content-container'>
+      <div class="main-layout-structure-introduction">
+        <introduction v-if="isIndex"></introduction>
+        <router-view></router-view>
+      </div>
+      <div v-if="!isIndex" class="main-layout-structure-footbar">
+        <foot-bar></foot-bar>
+      </div>
     </div>
 
     <transition name="slide-fade">
@@ -89,8 +92,9 @@ export default {
   mounted: function () {
     this.$nextTick(() => {
       this.clientHeight = document.body.clientHeight
-      window.addEventListener('scroll', (e) => {
-        this.showReturnTop = window.scrollY > 300
+      const el = document.getElementById('content-container')
+      el.addEventListener('scroll', (e) => {
+        this.showReturnTop = el.scrollTop > 300
       })
     })
   }
@@ -100,9 +104,11 @@ export default {
 <style lang="less"  scoped>
   @import "../../style/base/base";
   .main-layout-structure-container {
-    .main-layout-structure-introduction {
+    height: 100%;
+    .main-layout-structure-content {
       width: 100%;
-      height: 100%;
+      height: calc(100% - 44px);
+      overflow-y: auto;
     }
     .main-layout-structure-return-top {
       background-size: cover;

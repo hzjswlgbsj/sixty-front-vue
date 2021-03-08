@@ -35,7 +35,7 @@ import ArticleItem from '../components/ArticleItem'
 import routerMixin from '../mixins/router'
 import { Store } from '../common'
 import { remoteGetArticles } from '../service/article'
-import { getScrollTop, getScrollHeight, getWindowHeight } from '../util/scroll'
+import { isBottom } from '../util/scroll'
 
 export default {
   name: 'blog',
@@ -79,7 +79,7 @@ export default {
     },
     isBottom (val) {
       if (val && !this.isDetail && !this.notAnyMare) {
-        this.handleLoadMore()
+        this.articleLoadMore()
       }
     }
   },
@@ -110,16 +110,19 @@ export default {
     goDetail (id) {
       this.jump(`blog/articleDetail/${id}`)
     },
-    async handleLoadMore () {
-      await this.articleLoadMore()
+    handleScrollChange () {
+      const el = document.getElementById('content-container')
+      this.isBottom = isBottom(el)
     }
   },
-  mounted: function () {
-    this.$nextTick(function () {
-      window.addEventListener('scroll', (e) => {
-        this.isBottom = getScrollTop() + getWindowHeight() === getScrollHeight()
-      })
+  mounted () {
+    this.$nextTick(() => {
+      const el = document.getElementById('content-container')
+      el.addEventListener('scroll', this.handleScrollChange)
     })
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.handleScrollChange)
   }
 }
 </script>
@@ -129,7 +132,7 @@ export default {
   .blog-container {
     height: 100%;
     .blog-article-container {
-      margin-top: 80px;
+      padding-top: 44px;
       .flex-define (column, center, center);
       .blog-article-item {
         color: #f9f9f9;

@@ -44,3 +44,20 @@ export function getWindowHeight () {
   }
   return windowHeight
 }
+
+/**
+ * 判断滚动条是否到达底部
+ * el 元素
+ * @return {Boolean}
+ */
+export function isBottom (el) {
+  if (!el) {
+    el = document.body
+  }
+  let nScrollHight = 0 // 滚动距离总长(注意不是滚动条的长度)
+  let nScrollTop = 0 // 滚动到的当前位置
+  let nDivHight = el.clientHeight// div高度
+  nScrollHight = el.scrollHeight// 内容可视区域的高度加上溢出（滚动）的距离
+  nScrollTop = el.scrollTop// 滚动条在Y轴上的滚动距离
+  return nScrollTop + nDivHight >= nScrollHight
+}

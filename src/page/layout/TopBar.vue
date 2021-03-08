@@ -1,6 +1,7 @@
 <template>
   <transition name="top-fade">
-    <div v-if="isUp" class="topbar-container" :style="topBarStyle">
+    <!-- <div v-if="isUp" class="topbar-container" :style="topBarStyle"> -->
+    <div class="topbar-container" :style="topBarStyle">
       <div class="topbar-inner-container-pc">
         <div class="topbar-avatar-container">
           <avatar :src="sixtyLogo" size="22px"></avatar>
@@ -354,7 +355,8 @@ export default {
 
   mounted: function () {
     this.$nextTick(function () {
-      window.addEventListener('scroll', (e) => {
+      const el = document.getElementById('content-container')
+      el.addEventListener('scroll', (e) => {
         this.isUp = this.curScrollTop > getScrollTop()
         this.isTop = getScrollTop() === 0
         this.isBottom = getScrollTop() + getWindowHeight() === getScrollHeight()
@@ -392,12 +394,12 @@ export default {
   }
   .topbar-container {
     width: 100%;
-    margin-top: 20px;
+    // margin-top: 20px;
     z-index: @index-level-first;
     opacity: 0.95;
     .flex-define (row, center, center);
-    position: fixed;
-    top: -20px;
+    // position: fixed;
+    // top: -20px;
     .topbar-inner-container-pc {
       .flex-define (row, space-around, center);
       width: 100%;
