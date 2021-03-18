@@ -1,11 +1,11 @@
 import { MENU_LIST } from '../const'
-import _ from 'lodash'
+import { cloneDeep } from 'lodash-es'
 
 export default {
   data () {
     return {
       currentIdx: -1,
-      menuList: _.cloneDeep(MENU_LIST)
+      menuList: cloneDeep(MENU_LIST)
     }
   },
   methods: {

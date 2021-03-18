@@ -183,6 +183,7 @@ export default {
       margin-top: 20px;
       margin-bottom: 20px;
       position: relative;
+      .flex-define(row, start, center);
       .article-info-tags-icon {
         width: 18px; height: 18px;
         position: absolute;

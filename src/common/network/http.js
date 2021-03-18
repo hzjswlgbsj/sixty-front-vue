@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import { Message, Store } from '../index'
+import { Store } from '../index'
 
 /**
  * post请求
@@ -16,7 +16,7 @@ function post (url, params) {
       timeout: 20000
     })
     .catch(e => {
-      Message.error('network error')
+      console.error('network error')
       Store.store('request', 'timeout')
       return Promise.reject({
         code: -1,

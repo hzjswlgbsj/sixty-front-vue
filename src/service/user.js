@@ -7,7 +7,7 @@
 
 import { Store, Cookie } from '../common'
 import userApi from '../api/users'
-import _ from 'lodash'
+import find from 'lodash-es'
 
 /**
  * 获取所用或者部分用户
@@ -37,7 +37,7 @@ export async function getUsers (refresh, mixinId, page, limit) {
  */
 export async function getUserByFilterColumns (columns, columnsValue) {
   const users = await getUsers()
-  return _.find(users, item => item[columns] === columnsValue)
+  return find(users, item => item[columns] === columnsValue)
 }
 
 /**

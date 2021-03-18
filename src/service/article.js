@@ -6,7 +6,7 @@
  */
 
 import { Store } from '../common'
-import _ from 'lodash'
+import { isArray, find } from 'lodash-es'
 import tagApi from '../api/tags'
 import Const from '../const/index'
 import {
@@ -80,7 +80,7 @@ export async function getTags (refresh) {
  * @return {Array}
  */
 export async function getTagsByIds (ids) {
-  if (!ids || !_.isArray(ids) || ids.length < 1) {
+  if (!ids || !isArray(ids) || ids.length < 1) {
     return null
   }
   const allTags = await getTags()
@@ -136,7 +136,7 @@ export async function remoteGetComment (refresh, articleId, page = 1, limit = Co
  */
 export async function remoteGetCommentById (id, refresh = false) {
   let cacheComment = await remoteGetComment(refresh)
-  return _.find(cacheComment.data, {id: id})
+  return find(cacheComment.data, {id: id})
 }
 
 /**

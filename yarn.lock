@@ -242,11 +242,6 @@ alphanum-sort@^1.0.0:
   resolved "https://npm.oneitfarm.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
-animate.css@^3.7.0:
-  version "3.7.2"
-  resolved "https://npm.oneitfarm.com/animate.css/-/animate.css-3.7.2.tgz"
-  integrity sha1-5z4NUOkssc/vFZfZs4qUgQIOCOo=
-
 ansi-escapes@^3.0.0:
   version "3.2.0"
   resolved "https://npm.oneitfarm.com/ansi-escapes/-/ansi-escapes-3.2.0.tgz"
@@ -452,11 +447,6 @@ async-limiter@~1.0.0:
   version "1.0.1"
   resolved "https://npm.oneitfarm.com/async-limiter/-/async-limiter-1.0.1.tgz"
   integrity sha1-3TeelPDbgxCwgpH51kwyCXZmF/0=
-
-async-validator@^1.12.2:
-  version "1.12.2"
-  resolved "https://npm.oneitfarm.com/async-validator/-/async-validator-1.12.2.tgz"
-  integrity sha1-vq5nHnF00pOLe0tp0vt+cit/1yw=
 
 async@^2.1.2, async@^2.1.4, async@^2.4.1, async@^2.6.2:
   version "2.6.3"
@@ -1293,11 +1283,6 @@ base@^0.11.1:
     isobject "^3.0.1"
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
-
-batch-processor@1.0.0:
-  version "1.0.0"
-  resolved "https://npm.oneitfarm.com/batch-processor/-/batch-processor-1.0.0.tgz"
-  integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
 
 batch@0.6.1:
   version "0.6.1"
@@ -2435,11 +2420,6 @@ date-fns@^1.29.0:
   resolved "https://npm.oneitfarm.com/date-fns/-/date-fns-1.30.1.tgz"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
-dayjs@^1.7.5:
-  version "1.10.3"
-  resolved "https://npm.oneitfarm.com/dayjs/-/dayjs-1.10.3.tgz"
-  integrity sha1-zzNXyOf1CEMoJjcWcuvzdst9YZs=
-
 de-indent@^1.0.2:
   version "1.0.2"
   resolved "https://npm.oneitfarm.com/de-indent/-/de-indent-1.0.2.tgz"
@@ -2499,11 +2479,6 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://npm.oneitfarm.com/deep-is/-/deep-is-0.1.3.tgz"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
-
-deepmerge@^2.2.1:
-  version "2.2.1"
-  resolved "https://npm.oneitfarm.com/deepmerge/-/deepmerge-2.2.1.tgz"
-  integrity sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==
 
 default-require-extensions@^1.0.0:
   version "1.0.0"
@@ -2755,13 +2730,6 @@ electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.47, electron-to-chromium
   version "1.3.641"
   resolved "https://npm.oneitfarm.com/electron-to-chromium/-/electron-to-chromium-1.3.641.tgz"
   integrity sha1-A/FO/XCnlx7/LvyUezwdD3F8grk=
-
-element-resize-detector@^1.2.0:
-  version "1.2.1"
-  resolved "https://npm.oneitfarm.com/element-resize-detector/-/element-resize-detector-1.2.1.tgz"
-  integrity sha1-sDBRlER6SGMVXljxMyOgrvMIUdE=
-  dependencies:
-    batch-processor "1.0.0"
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -4760,20 +4728,6 @@ istanbul-reports@^1.5.1:
   dependencies:
     handlebars "^4.0.3"
 
-iview@^3.0.0:
-  version "3.5.4"
-  resolved "https://npm.oneitfarm.com/iview/-/iview-3.5.4.tgz"
-  integrity sha1-1Ra5LnO2F/Lcf0WDH5kFnWmTL4I=
-  dependencies:
-    async-validator "^1.12.2"
-    deepmerge "^2.2.1"
-    element-resize-detector "^1.2.0"
-    js-calendar "^1.2.3"
-    lodash.throttle "^4.1.1"
-    popper.js "^1.14.6"
-    tinycolor2 "^1.4.1"
-    v-click-outside-x "^4.0.19"
-
 jest-changed-files@^22.2.0:
   version "22.4.3"
   resolved "https://npm.oneitfarm.com/jest-changed-files/-/jest-changed-files-22.4.3.tgz"
@@ -5076,11 +5030,6 @@ js-beautify@^1.6.12, js-beautify@^1.6.14:
     mkdirp "^1.0.4"
     nopt "^5.0.0"
 
-js-calendar@^1.2.3:
-  version "1.2.3"
-  resolved "https://npm.oneitfarm.com/js-calendar/-/js-calendar-1.2.3.tgz"
-  integrity sha512-dAA1/Zbp4+c5E+ARCVTIuKepXsNLzSYfzvOimiYD4S5eeP9QuplSHLcdhfqFSwyM1o1u6ku6RRRCyaZ0YAjiBw==
-
 js-cookie@^2.2.0:
   version "2.2.1"
   resolved "https://npm.oneitfarm.com/js-cookie/-/js-cookie-2.2.1.tgz"
@@ -5382,6 +5331,11 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://npm.oneitfarm.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha1-Q+YmxG5lkbd1C+srUBFzkMYJ4+4=
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://npm.oneitfarm.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
@@ -5391,11 +5345,6 @@ lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://npm.oneitfarm.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
-
-lodash.throttle@^4.1.1:
-  version "4.1.1"
-  resolved "https://npm.oneitfarm.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
-  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -6399,11 +6348,6 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://npm.oneitfarm.com/pn/-/pn-1.1.0.tgz"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
-
-popper.js@^1.14.6:
-  version "1.16.1"
-  resolved "https://npm.oneitfarm.com/popper.js/-/popper.js-1.16.1.tgz"
-  integrity sha1-KiI8s9x7YhPXQOQDcr5A3kPmWxs=
 
 portfinder@^1.0.13, portfinder@^1.0.9:
   version "1.0.28"
@@ -8146,11 +8090,6 @@ timsort@^0.3.0:
   resolved "https://npm.oneitfarm.com/timsort/-/timsort-0.3.0.tgz"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tinycolor2@^1.4.1:
-  version "1.4.2"
-  resolved "https://npm.oneitfarm.com/tinycolor2/-/tinycolor2-1.4.2.tgz"
-  integrity sha1-P2pNEHGtB2dtf6Ry4frECnGdiAM=
-
 tmp@^0.0.33:
   version "0.0.33"
   resolved "https://npm.oneitfarm.com/tmp/-/tmp-0.0.33.tgz"
@@ -8538,11 +8477,6 @@ uuid@^3.0.1, uuid@^3.3.2:
   version "3.4.0"
   resolved "https://npm.oneitfarm.com/uuid/-/uuid-3.4.0.tgz"
   integrity sha1-sj5DWK+oogL+ehAK8fX4g/AgB+4=
-
-v-click-outside-x@^4.0.19:
-  version "4.1.0"
-  resolved "https://npm.oneitfarm.com/v-click-outside-x/-/v-click-outside-x-4.1.0.tgz"
-  integrity sha1-voJmgOLSVmaooYUzKSnUYkSqJEc=
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"

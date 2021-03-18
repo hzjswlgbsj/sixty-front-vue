@@ -1,8 +1,8 @@
 <template>
-  <span class="tag-text-container" :style="initStyle" @click="tagClick">
-    <Icon :type="icon" />
+  <div class="tag-text-container" :style="initStyle" @click="tagClick">
+    <icon name="tag" style="margin-right: 5px" />
     <slot></slot>
-  </span>
+  </div>
 </template>
 
 <script>
@@ -24,7 +24,7 @@ export default {
     },
     radius: {
       type: String,
-      default: '15px'
+      default: '20px'
     },
     fontSize: {
       type: String,
@@ -64,8 +64,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  @import "../style/mixin/baseMixin";
   @import '../style/base/base';
   .tag-text-container {
+    .flex-define(row, start, center);
     text-align: center;
     padding: 8px 10px;
     margin-right: 10px;

@@ -5,7 +5,7 @@
       <div class="error-title-desc">皮这一下你会很开心。</div>
 
       <div class="error-search-container">
-        <Icon class= "error-search-icon" color="#666666" size="24" type="ios-search" />
+        <icon class="error-search-icon" name="search" scale="1.2" />
         <input class="error-search-input" type="text" placeholder="搜索报错" @keyup.enter="handleSearch($event)"/>
       </div>
 

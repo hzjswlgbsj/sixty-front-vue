@@ -5,8 +5,7 @@
       <div class="section">
         <div class="about-cover"></div>
         <div class="about-cover-container">
-          <Icon @click="jumpNext" class="sixty-about-top-cover-down" type="ios-arrow-down" size="40"/>
-
+          <icon @click.native="jumpNext" class="sixty-about-top-cover-down" name="angle-down" scale="3" />
           <div class="sixty-about-avatar">
             <img class="about-avatar-image" :src="sixtyLogo" @click="avatarJump">
             <h1 class="name">Sixty</h1>
@@ -134,11 +133,10 @@
           </p>
           <h4>## 本渣博基本配置</h4>
           <div>
-            <p><span class="config-title">前端：</span>vue全家桶 + iview（其实用得少）</p>
+            <p><span class="config-title">前端：</span>vue全家桶</p>
             <p><span class="config-title">后端：</span>yii + mysql</p>
-            <p><span class="config-title">服务器：</span>nginx + 阿里云</p>
+            <p><span class="config-title">服务器：</span>nginx + 腾讯云</p>
             <p><span class="config-title">云存储：</span>七牛云</p>
-            <p><span class="config-title">搜索：</span>Elasticsearch</p>
             <p style="margin-top: 10px">
               在下从来不懂什么是美感，所以本站的几乎所有UI都不是我自己设计的，所以在下就借鉴了百家之长。
               首先本站的配色为Apple官网的topbar配色，topbar的设计也是Apple官网的topbar样式。然后整站的评论组件都是
@@ -277,6 +275,7 @@ export default {
     position: relative;
     height: 100%;
     width: 100%;
+    font-size: @font-size;
     .fp-tableCell {
       width: 100%;
       color: #ffffff;

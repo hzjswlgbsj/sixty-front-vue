@@ -1,25 +1,20 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import iView from 'iview'
-import 'iview/dist/styles/iview.css'
 import 'vue-awesome/icons'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import Icon from 'vue-awesome/components/Icon'
 import VueTimeago from 'vue-timeago'
 import VueLoading from 'vue-loading-template'
-import animated from 'animate.css'
 import sixtyModal from './my-plugin/sixty-modal/sixtyModal'
 import 'fullpage.js/vendors/scrolloverflow' // Optional. When using scrollOverflow:true
 import VueFullPage from 'vue-fullpage.js'
 import i18n from './lang'
 
 Vue.component('icon', Icon)
-Vue.use(iView)
 Vue.use(sixtyModal)
 Vue.use(mavonEditor)
-Vue.use(animated)
 Vue.use(VueFullPage)
 Vue.use(VueTimeago, {
   name: 'Timeago',

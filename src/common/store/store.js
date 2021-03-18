@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import STATE from './state'
-import _ from 'lodash'
+import { cloneDeep } from 'lodash-es'
 
 Vue.use(Vuex)
 
-const INIT_STATE = _.cloneDeep(STATE)
+const INIT_STATE = cloneDeep(STATE)
 
 const store = new Vuex.Store({
   state: STATE,

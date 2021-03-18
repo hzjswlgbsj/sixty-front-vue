@@ -24,7 +24,7 @@
 
         <div v-if="showSearch" class="topbar-search-input-container">
           <!--<transition name="slide-fade">-->
-          <Icon v-if="showSearchRecommend" class="topbar-search-input-icon" color="#fff" size="22" type="ios-search" />
+          <icon v-if="showSearchRecommend" class="topbar-search-input-icon" name="search" />
           <input
             v-if="showSearchRecommend"
             v-model="searchContent"
@@ -61,16 +61,16 @@
         </div>
 
         <div class="topbar-search-icon" v-if="showTopbarTitle">
-          <Icon type="ios-search" @click="handleSearch" size="18"/>
+          <icon name="search" @click.native="handleSearch" />
         </div>
         <div class="topbar-github-icon" v-if="showTopbarTitle">
           <a href="https://github.com/hzjswlgbsj" target="_blank">
-            <Icon type="logo-github" size="18" />
+            <icon name="github" scale='1.1'/>
           </a>
         </div>
 
         <div class="topbar-close-icon" v-if="!showTopbarTitle">
-          <Icon type="ios-close" size="28"/>
+          <icon name="close" scale='1.2'/>
         </div>
 
       </div>
@@ -90,15 +90,15 @@
       <div class="topbar-inner-container-phone">
         <div class="topbar-inner-phone-icons">
           <div class="topbar-phone-fold-icon" @click="handleFold">
-            <Icon v-if="isFold" type="ios-menu-outline" size="20"/>
-            <Icon v-else type="ios-close" size="28"/>
+            <icon v-if="isFold" name="bars" scale='1.2'/>
+            <icon v-else name="close" scale='1.1'/>
           </div>
           <div class="topbar-phone-logo">
             <img class="topbar-avatar-image" :src="sixtyLogo" @click="avatarJump">
           </div>
           <div class="topbar-phone-github-icon">
             <a href="https://github.com/hzjswlgbsj" target="_blank">
-              <Icon type="logo-github" size="20" />
+              <icon name="github" scale='1.1'/>
             </a>
           </div>
         </div>
@@ -109,7 +109,7 @@
           <div class="topbar-menu-phone" v-if="!isFold">
             <div class="topbar-menu-phone-search-container">
               <div class="topbar-menu-phone-search">
-                <Icon v-if="showPhoneSearch" class="topbar-search-phone-input-icon" color="#999999" size="22" type="ios-search" />
+                <icon v-if="showPhoneSearch" class="topbar-search-phone-input-icon" name="search" scale='1.2'/>
                 <input
                   v-if="showPhoneSearch"
                   v-model="searchContent"
@@ -427,6 +427,7 @@ export default {
         .topbar-search-input-icon {
           margin-right: 10px;
           z-index: 2;
+          color: #fff;
         }
         .topbar-search-input {
           font-size: 15px;
@@ -440,6 +441,8 @@ export default {
           height: 200px;
           top: 33px;
           width: 100%;
+          border: 1px solid;
+          border-color: rgba(0,0,0,0.05);
           background-color: #ffffff;
           color: #333333;
           padding: 15px 10px;
@@ -572,6 +575,7 @@ export default {
             width: 100%;
             .topbar-search-phone-input-icon {
               margin-left: 10px;
+              color: #999999;
             }
             input {
               background-color: #282828;

@@ -20,7 +20,7 @@
 <script>
 import SixtyCard from './SixtyCard'
 import Avatar from './Avatar'
-import _ from 'lodash'
+import { sample, remove } from 'lodash-es'
 export default {
   name: 'friend-card',
   components: {
@@ -60,8 +60,8 @@ export default {
   methods: {
     clickCard () {
       setTimeout(() => {
-        this.backgroundImage = _.sample(this.cardBackImage)
-        this.cardBackImage = _.remove(this.cardBackImage, image => image === this.backgroundImage)
+        this.backgroundImage = sample(this.cardBackImage)
+        this.cardBackImage = remove(this.cardBackImage, image => image === this.backgroundImage)
         this.isFront = false
       }, 1000)
     },

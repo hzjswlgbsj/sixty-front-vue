@@ -3,8 +3,7 @@
     <div class="article-detail-title-info" v-if="article.id">
       <div class="article-detail-top-cover" :style="detailCover"></div>
       <div class="article-detail-title-container">
-        <transition
-          enter-active-class='animated rubberBand'>
+        <transition enter-active-class='animated rubberBand'>
           <div v-if="showTitle" class="article-detail-title">{{article.title}}</div>
         </transition>
         <article-info :article-data="article"/>
@@ -47,16 +46,12 @@
 
       <div class="article-detail-previous-next-pc">
         <div class="article-detail-previous" v-if="article.preArticle" @click="jumpById(article.preArticle.id)">
-          <Icon style="margin-right: 10px" size="20" type="ios-arrow-back"></Icon>
-          <span class="article-detail-previous-text">
-            {{article.preArticle.title}}
-          </span>
+          <icon class='article-detail-previous-icon' name="angle-left" />
+          <div class="article-detail-previous-text">{{article.preArticle.title}}</div>
         </div>
         <div class="article-detail-next" v-if="article.nextArticle" @click="jumpById(article.nextArticle.id)">
-          <span class="article-detail-next-text">
-            {{article.nextArticle.title}}
-          </span>
-          <Icon style="margin-left: 10px" size="20" type="ios-arrow-forward"></Icon>
+          <div class="article-detail-next-text">{{article.nextArticle.title}}</div>
+          <icon class='article-detail-previous-icon' name="angle-right" />
         </div>
       </div>
 
@@ -295,10 +290,21 @@ export default {
         width: 100%;
         margin: 20px 0;
         .article-detail-previous, .article-detail-next {
+          .flex-define(row, center, center);
           color: @font-color3;
           &:hover {
             cursor: pointer;
             color: @hover-color;
+          }
+        }
+        .article-detail-previous {
+          .article-detail-previous-icon {
+            margin-right: 10px;
+          }
+        }
+        .article-detail-next {
+          .article-detail-previous-icon {
+            margin-left: 10px;
           }
         }
       }
