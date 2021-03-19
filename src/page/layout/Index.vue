@@ -105,10 +105,16 @@ export default {
   @import "../../style/base/base";
   .main-layout-structure-container {
     height: 100%;
+    .main-layout-structure-topbar {
+      position: absolute;
+      width: 100%;
+      z-index: 9;
+    }
     .main-layout-structure-content {
       width: 100%;
-      height: calc(100% - 44px);
+      height: calc(100% - 1px);
       overflow-y: auto;
+      padding-top: 43px;
     }
     .main-layout-structure-return-top {
       background-size: cover;
