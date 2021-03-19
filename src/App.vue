@@ -26,6 +26,7 @@ export default {
     // margin-top: -21px;
     width: 100%;
     height: 100%;
+    font-size: 16px;
   }
   input,button,select,textarea {
     outline:none;
