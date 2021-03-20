@@ -13,8 +13,8 @@
           v-if="menuList && menuList.length > 0"
           v-for="(menu, index) in menuList"
           :key="index"
-          :class="currentIdx === index ? 'selected-item' : '' "
-          @click="changePage(menu.key, index)">
+          :class="curRouteName === menu.label ? 'selected-item' : '' "
+          @click="changePage(menu.key, menu.label)">
           <transition
             enter-active-class='animated zoomIn'
             leave-active-class='animated zoomOut'>
@@ -129,8 +129,8 @@
               <li
                 v-for="(menu, index) in menuList"
                 :key="index"
-                :class="currentIdx === index ? 'selected-item' : '' "
-                @click="changePage(menu.key, index)">
+                :class="curRouteName === menu.label ? 'selected-item' : '' "
+                @click="changePage(menu.key, menu.label)">
                 {{menu.label}}
               </li>
             </ul>
@@ -218,7 +218,7 @@ export default {
   },
 
   created () {
-    this.currentIdx = Storage.storage('curRouterIndex')
+    this.curRouteName = Storage.storage('curRouteName')
   },
 
   computed: {
@@ -249,11 +249,11 @@ export default {
   },
 
   methods: {
-    changePage (router, index) {
+    changePage (router, name) {
       this.isFold = true
       this.jump(router)
-      this.currentIdx = index
-      Storage.storage('curRouterIndex', index)
+      this.curRouteName = name
+      Storage.storage('curRouteName', name)
     },
     setExpression (min, max) {
       return window.scrollY > min && window.scrollY <= max
@@ -394,7 +394,6 @@ export default {
   }
   .topbar-container {
     width: 100%;
-    // margin-top: 20px;
     z-index: @index-level-first;
     opacity: 0.95;
     .flex-define (row, center, center);
@@ -628,7 +627,7 @@ export default {
     }
   }
 
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: 1500px) {
     .topbar-container {
       padding: 0 180px;
     }

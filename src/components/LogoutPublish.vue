@@ -29,7 +29,9 @@
       </div>
 
     </div>
-    <div class="logout-comment-btn" :class="login ? '' : 'logout-comment-btn-logout' " @click="publishComment">发表评论</div>
+    <div class="logout-comment-btn" :class="login ? '' : 'logout-comment-btn-logout' " @click="publishComment">
+      <div class="logout-comment-btn-text">发表评论</div>
+    </div>
   </div>
 </template>
 
@@ -185,11 +187,13 @@ export default {
       /*flex-basis: 65px;*/
       border-radius: 5px;
       text-align: center;
-      padding: 10px 12px;
       font-size: 15px;
       cursor: pointer;
       &:hover {
         background-color: @hover-color;
+      }
+      &-text {
+        padding: 10px 12px;
       }
     }
     .logout-comment-btn-logout {

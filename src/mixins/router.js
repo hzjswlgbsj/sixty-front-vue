@@ -4,8 +4,13 @@ import { cloneDeep } from 'lodash-es'
 export default {
   data () {
     return {
-      currentIdx: -1,
+      curRouteName: '',
       menuList: cloneDeep(MENU_LIST)
+    }
+  },
+  watch: {
+    '$route.name' (name) {
+      this.curRouteName = name
     }
   },
   methods: {
@@ -17,5 +22,8 @@ export default {
       }
       this.$router.push({ path: routerString })
     }
+  },
+  mounted () {
+    this.curRouteName = this.$route.name
   }
 }

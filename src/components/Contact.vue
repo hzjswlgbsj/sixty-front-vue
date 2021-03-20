@@ -1,41 +1,45 @@
 <template>
   <div class="main-layout-contact">
     <a href="https://github.com/hzjswlgbsj" target="_blank">
-            <span class="contact-icon main-layout-contact-github">
-              <icon name="github" scale="1.5"></icon>
-            </span>
+      <span class="contact-icon main-layout-contact-github">
+        <icon name="github" scale="1.5"></icon>
+      </span>
     </a>
     <a href="https://www.facebook.com/profile.php?id=100023910004726" target="_blank">
-            <span class="contact-icon main-layout-contact-facebook">
-              <icon name="facebook-square" scale="1.5"></icon>
-            </span>
+      <span class="contact-icon main-layout-contact-facebook">
+        <icon name="facebook-square" scale="1.5"></icon>
+      </span>
     </a>
     <a href="https://weibo.com/hiliulin" target="_blank">
-            <span class="contact-icon main-layout-contact-weibo">
-              <icon name="weibo" scale="1.5"></icon>
-            </span>
+      <span class="contact-icon main-layout-contact-weibo">
+        <icon name="weibo" scale="1.5"></icon>
+      </span>
     </a>
     <a href="https://twitter.com/hiliulin" target="_blank">
-            <span class="contact-icon main-layout-contact-twitter">
-            <icon name="twitter" scale="1.5"></icon>
-            </span>
+      <span class="contact-icon main-layout-contact-twitter">
+        <icon name="twitter" scale="1.5"></icon>
+      </span>
     </a>
-    <span class="contact-icon main-layout-contact-wechat">
+    <div class="contact-icon main-layout-contact-wechat">
        <Tooltip placement="top" content="hzjswlgbsj" :delay="200">
         <icon name="wechat" scale="1.5"></icon>
        </Tooltip>
-    </span>
-    <span class="contact-icon main-layout-contact-qq">
+    </div>
+    <div class="contact-icon main-layout-contact-qq">
       <Tooltip placement="top" content="1025132924" :delay="200">
         <icon name="qq" scale="1.3"></icon>
        </Tooltip>
-    </span>
+    </div>
   </div>
 </template>
 
 <script>
+import Tooltip from './Tooltip'
 export default {
   name: 'Contact',
+  components: {
+    Tooltip
+  },
   data () {
     return {}
   }
@@ -50,6 +54,7 @@ export default {
     }
     .contact-icon{
       margin-right: 20px;
+      display: inline-block;
       &:hover {
         cursor:pointer;
       }

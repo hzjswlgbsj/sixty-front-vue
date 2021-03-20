@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="section about-me-container">
+      <!-- <div class="section about-me-container">
         <div class="about-me-start about-me-common">
           <transition
             enter-active-class='animated zoomIn'
@@ -28,7 +28,7 @@
           <p>接下来，我带您了解一下在下</p>
           <p>走吧，继续</p>
         </div>
-      </div>
+      </div> -->
 
       <div class="section about-me-container">
         <div class="about-me-hobby about-me-common">
@@ -197,23 +197,21 @@ import Avatar from '../../src/components/Avatar'
 
 export default {
   name: 'about',
-
   components: {
     Avatar,
     Contact
   },
-
   data () {
     return {
       options: {
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
         navigation: true,
         navigationPosition: 'right',
-        anchors: ['cover', 'start', 'hobby', 'skills', 'sixtyden', 'contact'],
-        sectionsColor: ['#000000', '#41b883', '#333333', '#2c3e4f', '#ff5f45', '#ee1a59', '#ba5be9', '#0798ec', '#fec401', '#1bcee6'],
+        anchors: ['cover', 'hobby', 'skills', 'sixtyden', 'contact'],
+        sectionsColor: ['#000000', '#41b883', '#333333', '#2c3e4f', '#ee1a59', '#ff5f45', '#ba5be9', '#0798ec', '#fec401', '#1bcee6'],
         afterLoad: this.afterLoad
       },
-      testData: [1, 2, 3, 4, 5, 6],
+      testData: [1, 2, 3, 4, 5],
       curSelectIndex: 0,
       curActiveIndex: -1,
       sixtyLogo: SIXTY_LOGO,
@@ -261,7 +259,7 @@ export default {
       }
     },
     avatarJump () {
-      this.$router.push('/blog')
+      this.$router.push('/')
     }
   }
 }
@@ -275,7 +273,7 @@ export default {
     position: relative;
     height: 100%;
     width: 100%;
-    font-size: @font-size;
+    font-size: 16px;
     .fp-tableCell {
       width: 100%;
       color: #ffffff;
@@ -334,8 +332,8 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-content: center;
-        line-height: 2.5em;
-        font-size: 1.4em;
+        line-height: 1.8em;
+        // font-size: 1.4em;
         margin: 0 19%;
         h2 {
           margin-bottom: 20px;
@@ -347,6 +345,7 @@ export default {
       }
 
       .about-me-hobby {
+        padding-top: 20px;
         .keywords-link1 {
           border-bottom: 1px solid red;
         }

@@ -1,12 +1,12 @@
 <template>
   <div class="main-layout-structure-container" :style="mainLayout">
+    <introduction v-if="isIndex"></introduction>
     <div v-if="!isIndex" class="main-layout-structure-topbar">
       <top-bar/>
     </div>
 
     <div class="main-layout-structure-content" id='content-container'>
       <div class="main-layout-structure-introduction">
-        <introduction v-if="isIndex"></introduction>
         <router-view></router-view>
       </div>
       <div v-if="!isIndex" class="main-layout-structure-footbar">
@@ -16,7 +16,7 @@
 
     <transition name="slide-fade">
       <div v-if="showReturnTop && !isDetail" @click="returnTop(1,80)" class="main-layout-structure-return-top return-top-pc">
-        <span class="main-layout-structure-return-top-text">返回顶部</span>
+        <div class="main-layout-structure-return-top-text">返回顶部</div>
       </div>
 
       <div v-if="showReturnTop && isDetail" @click="returnTop(1,80)" class="main-layout-structure-return-top return-top-pc2">
@@ -123,7 +123,7 @@ export default {
       background-color: @theme-color;
       transition: opacity 1s;
       position: fixed;
-      bottom: 20px;
+      bottom: 30px;
       right: 20px;
       display: flex;
       justify-content: center;
@@ -171,7 +171,7 @@ export default {
     .return-top-pc, .return-top-pc2 {
       display: block !important;
       .main-layout-structure-return-top-text {
-        font-size: 1.2em;
+        font-size: 12px;
         color: @theme-color;
         &:hover {
           color: #ECFF8D;
@@ -181,9 +181,9 @@ export default {
     .return-top-pc {
       background: url("../../assets/returnTop.png");
       background-color: #141414;
-      padding: 45px 15px 0 15px;
-      width: 60px;
-      height: 100px;
+      padding: 40px 10px 0 15px;
+      width: 30px;
+      height: 44px;
     }
     .return-top-pc2 {
       padding: 8px 10px;

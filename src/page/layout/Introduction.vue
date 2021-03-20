@@ -57,7 +57,7 @@ export default {
     changePage (router) {
       MENU_LIST.map((item, index) => {
         if (item.label === router.name) {
-          Storage.storage('curRouterIndex', index)
+          Storage.storage('curRouteName', item.label)
         }
       })
       this.$router.push(router.path)

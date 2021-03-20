@@ -120,12 +120,12 @@ export default {
   @import "../style/mixin/baseMixin.less";
   @import "../style/base/base";
   .archive-root {
+    color: @font-color;
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 20px;
     width: 100%;
     height: 100%;
-    font-size: 1.2em;
     line-height: 1.4em;
     .archive-container {
       width: 62%;
@@ -134,9 +134,9 @@ export default {
         margin-bottom: 40px;
       }
       .archive-item-container {
-        margin: 20px 0;
+        margin: 30px 0;
         .archive-title-name {
-          margin-bottom: 20px;
+          padding-bottom: 0 !important;
         }
       }
     }

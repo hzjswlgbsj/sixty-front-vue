@@ -24,7 +24,7 @@ export default {
     position: fixed;
     top: 40%;
     left: 40%;
-    padding: 8px 10px 8px 55px;
+    padding: 8px 10px 8px 70px;
     font-size: 1.2em;
     text-align: left;
     color: @theme-color;
