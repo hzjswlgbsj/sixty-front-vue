@@ -34,7 +34,7 @@ export default {
             {title: '深入JavaScript系列(3) -- 闭包', articleId: 30},
             {title: '深入JavaScript系列(4) -- 原型与原型链', articleId: 31},
             {title: '深入JavaScript系列(5) -- call和apply', articleId: 1},
-            {title: '深入JavaScript系列(6) -- 创建对象的方式', articleId: 1},
+            {title: '深入JavaScript系列(6) -- 创建对象的方式', articleId: 36},
             {title: '深入JavaScript系列(7) -- 继承的多种方式及其优缺点', articleId: 32},
             {title: '深入JavaScript系列(8) -- 作用域链', articleId: 1},
             {title: '深入JavaScript系列(9) -- 搞懂this', articleId: 1},
@@ -126,7 +126,7 @@ export default {
     margin-top: 20px;
     width: 100%;
     height: 100%;
-    line-height: 1.4em;
+    line-height: 2em;
     .archive-container {
       width: 62%;
       max-width: 880px;

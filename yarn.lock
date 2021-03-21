@@ -3670,10 +3670,10 @@ fsevents@~2.3.1:
   resolved "https://npm.oneitfarm.com/fsevents/-/fsevents-2.3.1.tgz"
   integrity sha1-sgmrFMYQEmNsiGNQft9/tozFTp8=
 
-fullpage.js@^3.0.9:
-  version "3.0.9"
-  resolved "https://npm.oneitfarm.com/fullpage.js/-/fullpage.js-3.0.9.tgz"
-  integrity sha1-/H26QdUh8CClHpwA+w/uDS4R1VI=
+fullpage.js@^3.1.0:
+  version "3.1.0"
+  resolved "https://npm.oneitfarm.com/fullpage.js/-/fullpage.js-3.1.0.tgz#521e5673145501ab3a0a3d11284f822392e06941"
+  integrity sha1-Uh5WcxRVAas6Cj0RKE+CI5LgaUE=
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -8532,12 +8532,12 @@ vue-eslint-parser@^2.0.3:
     esquery "^1.0.0"
     lodash "^4.17.4"
 
-vue-fullpage.js@^0.1.1:
-  version "0.1.6"
-  resolved "https://npm.oneitfarm.com/vue-fullpage.js/-/vue-fullpage.js-0.1.6.tgz"
-  integrity sha1-/65lmk5QoFOY1lPAcjQNbV2JCXk=
+vue-fullpage.js@^0.1.7:
+  version "0.1.7"
+  resolved "https://npm.oneitfarm.com/vue-fullpage.js/-/vue-fullpage.js-0.1.7.tgz#62bc53948f2217fb14ea555021b13fb997b4e141"
+  integrity sha1-YrxTlI8iF/sU6lVQIbE/uZe04UE=
   dependencies:
-    fullpage.js "^3.0.9"
+    fullpage.js "^3.1.0"
 
 vue-hot-reload-api@^2.2.0:
   version "2.3.4"

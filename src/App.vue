@@ -28,6 +28,13 @@ export default {
     height: 100%;
     font-size: 16px;
   }
+  a {
+    color: @theme-color;
+    cursor: pointer;
+    &:hover {
+      color: @hover-color;
+    }
+  }
   input,button,select,textarea {
     outline:none;
     border: none

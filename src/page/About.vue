@@ -14,22 +14,6 @@
         </div>
       </div>
 
-      <!-- <div class="section about-me-container">
-        <div class="about-me-start about-me-common">
-          <transition
-            enter-active-class='animated zoomIn'
-            leave-active-class='animated zoomOut'>
-            <h2 v-if="firstStart">假设正经的开场白</h2>
-          </transition>
-
-          <p>Hello，陌生人，欢迎来到我的窝</p>
-          <p>大千世界，你我在此相遇就是缘分</p>
-          <p>从你踏入sixty's Den我们就是朋友了</p>
-          <p>接下来，我带您了解一下在下</p>
-          <p>走吧，继续</p>
-        </div>
-      </div> -->
-
       <div class="section about-me-container">
         <div class="about-me-hobby about-me-common">
           <h2># My hobby</h2>
@@ -79,46 +63,7 @@
       </div>
 
       <div class="section about-me-container">
-        <div class="about-me-skills about-me-common">
-          <h2># My skills</h2>
-          <h3>## 概览</h3>
-
-          <div style="margin: 10px 0;">
-            <div class="sixty-about-me-skill">
-              <div class="sixty-about-me-skill-type">前端：</div>
-              <Progress style="width: 600px;" :percent="75" status="active" :stroke-width="15" />
-            </div>
-
-            <div class="sixty-about-me-skill" style="">
-              <span class="sixty-about-me-skill-type">后端：</span>
-              <Progress style="width: 600px;" :percent="50" status="active" :stroke-width="15" />
-            </div>
-
-            <div class="sixty-about-me-skill" style="">
-              <span class="sixty-about-me-skill-type">Linux：</span>
-              <Progress style="width: 600px;" :percent="30" status="active" :stroke-width="15" />
-            </div>
-          </div>
-
-          <h3>## 描述</h3>
-          <div class="sixty-about-me-skill-desc">
-
-          </div>
-          <p style="margin: 10px 0;">
-            * 目前，我主要做前端开发。主要技术栈是vue，当然原生js基础就不说了，这是基础。react也自己玩玩，
-            但是没有在公司的项目上使用过（我们公司目前技术栈前端是vue后端是php，所以我后端也是php）。另外，
-            在下基本掌握大前端的构建方式；熟悉从构建项目到开发项目，到代码测试，到项目上线的基本流程。
-          </p>
-          <p>
-            * 在下从大三开始实习，现在工作差不多两年多，其中php开发半年，其余都是前端开发。当前前端的能力是：
-            可以自己构建前端项目，简单的优化，然后写一些简单的shell脚本实现快速打包上线、切换版本等。
-            可以带一两个实习生一起开发项目小型项目。后端：能写基本的接口和微服务模块。目前正在学习go语言相关...
-          </p><br>
-          <p>
-            * 如果有需要的话这里有一份稍微详细的
-            <a class="about-content-keywords3 keywords-link2" href="https://lib.sixtyden.com/resume.pdf" download>简历</a>。
-          </p>
-        </div>
+        <div class="about-me-common my-skills"><Skills /></div>
       </div>
 
       <div class="section about-me-container">
@@ -128,18 +73,18 @@
           <p class="self-make">
             关于本渣博首先要说的是，它非常的简单，却也是在下纯手工写的。由于在这段时间一直是996的状态，
             所以这个博客都是空隙时间写的，时间跨度稍大了些。为什么要自己写个博客呢，其实是为了完成
-            大学里没能做完的博客（其实之前也有一版本，是thinkPHP5的），最重要的原因是可以让我保持写文章的习惯，
+            大学里没能做完的博客，最重要的原因是可以让我保持写文章的习惯，
             你懂了多少，写出来就算是一个总结，不写不知道，一写才吓一跳哦。
           </p>
           <h4>## 本渣博基本配置</h4>
           <div>
-            <p><span class="config-title">前端：</span>vue全家桶</p>
-            <p><span class="config-title">后端：</span>yii + mysql</p>
-            <p><span class="config-title">服务器：</span>nginx + 腾讯云</p>
+            <p><span class="config-title">前端：</span>Vue 全家桶</p>
+            <p><span class="config-title">后端：</span>PHP + Yii + Mysql</p>
+            <p><span class="config-title">服务器：</span>Nginx + 腾讯云</p>
             <p><span class="config-title">云存储：</span>七牛云</p>
             <p style="margin-top: 10px">
-              在下从来不懂什么是美感，所以本站的几乎所有UI都不是我自己设计的，所以在下就借鉴了百家之长。
-              首先本站的配色为Apple官网的topbar配色，topbar的设计也是Apple官网的topbar样式。然后整站的评论组件都是
+              在下从来不懂什么是美感，所以本站的几乎所有 UI 都不是我自己设计的，所以在下就借鉴了百家之长。
+              首先本站的配色为 Apple 官网的 topbar 配色，topbar 的设计也是 Apple 官网的 topbar 样式。然后整站的评论组件都是
               借鉴B站的设计，你可以看到基本上是一样的。内容方面的设计我也是在浏览了上百个博客网站后（不夸张，是真的，
               但是他们都长得差不多，因为都用的hexo吧）才成了现在这样（真的很纠结-_=）。本人由于是火影迷，所以你可以感知到整站都有点火影的影子。
               好啦，大概就这样吧，一个很简单的用来记笔记的博客。
@@ -194,12 +139,14 @@
 import { SIXTY_LOGO } from '../const'
 import Contact from '../../src/components/Contact'
 import Avatar from '../../src/components/Avatar'
+import Skills from './about/Skills'
 
 export default {
   name: 'about',
   components: {
     Avatar,
-    Contact
+    Contact,
+    Skills
   },
   data () {
     return {
@@ -208,7 +155,7 @@ export default {
         navigation: true,
         navigationPosition: 'right',
         anchors: ['cover', 'hobby', 'skills', 'sixtyden', 'contact'],
-        sectionsColor: ['#000000', '#41b883', '#333333', '#2c3e4f', '#ee1a59', '#ff5f45', '#ba5be9', '#0798ec', '#fec401', '#1bcee6'],
+        sectionsColor: ['#000000', '#41b883', '#ffffff', '#2c3e4f', '#ee1a59', '#ff5f45', '#ba5be9', '#0798ec', '#fec401', '#1bcee6'],
         afterLoad: this.afterLoad
       },
       testData: [1, 2, 3, 4, 5],
@@ -265,7 +212,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style sscoped lang="less">
   @import "../style/base/base";
   @import "../style/mixin/baseMixin.less";
 
@@ -274,6 +221,12 @@ export default {
     height: 100%;
     width: 100%;
     font-size: 16px;
+    h2, h3 {
+      padding-bottom: 0 !important;
+    }
+    h4 {
+      margin: 0;
+    }
     .fp-tableCell {
       width: 100%;
       color: #ffffff;
@@ -317,6 +270,17 @@ export default {
       }
     }
 
+    .my-skills {
+      color: #333 !important;
+      code {
+        padding: 2px 5px;
+        border-radius: 4px;
+      }
+      p {
+        color: #333 !important;
+      }
+    }
+
     .about-me-container {
       width: 100%;
       height: 100%;
@@ -333,11 +297,8 @@ export default {
         justify-content: center;
         align-content: center;
         line-height: 1.8em;
-        // font-size: 1.4em;
         margin: 0 19%;
-        h2 {
-          margin-bottom: 20px;
-        }
+
       }
 
       .about-me-start {
@@ -372,19 +333,8 @@ export default {
         }
       }
 
-      .about-me-skills {
-        .sixty-about-me-skill {
-          display: flex;
-          padding-left: 20px;
-          .sixty-about-me-skill-type {
-            width: 70px;
-            font-weight: 500;
-          }
-        }
-      }
-
       .about-me-sixty {
-        line-height: 2em;
+        line-height: 1.9em;
         .config-title {
           font-weight: 500;
         }
@@ -502,9 +452,6 @@ export default {
   @media screen and (max-width: 767px) {
     .sixty-about-me {
       width: 94% !important;
-    }
-    .sixty-about-me-skill-type {
-      width: 120px !important;
     }
     .sixty-about-top-cover {
       background-image: url(@aboutCover2)!important;

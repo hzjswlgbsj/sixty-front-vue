@@ -79,8 +79,6 @@ export default {
       word-wrap: break-word;
       background-color: rgba(0,0,0,.75);
       border-radius: 4px;
-      -webkit-box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
-      box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
       white-space: nowrap;
       line-height: 1.5;
     }
@@ -94,8 +92,6 @@ export default {
       border-right: 8px solid transparent;
       left: 36px;
       bottom: 0;
-      -webkit-box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
-      box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
     }
   }
 </style>
