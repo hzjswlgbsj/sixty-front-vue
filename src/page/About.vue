@@ -67,31 +67,7 @@
       </div>
 
       <div class="section about-me-container">
-        <div class="about-me-sixty about-me-common">
-          <h2># About SixtyDen</h2>
-          <h4 class="self-make">## 自己搭博客原因</h4>
-          <p class="self-make">
-            关于本渣博首先要说的是，它非常的简单，却也是在下纯手工写的。由于在这段时间一直是996的状态，
-            所以这个博客都是空隙时间写的，时间跨度稍大了些。为什么要自己写个博客呢，其实是为了完成
-            大学里没能做完的博客，最重要的原因是可以让我保持写文章的习惯，
-            你懂了多少，写出来就算是一个总结，不写不知道，一写才吓一跳哦。
-          </p>
-          <h4>## 本渣博基本配置</h4>
-          <div>
-            <p><span class="config-title">前端：</span>Vue 全家桶</p>
-            <p><span class="config-title">后端：</span>PHP + Yii + Mysql</p>
-            <p><span class="config-title">服务器：</span>Nginx + 腾讯云</p>
-            <p><span class="config-title">云存储：</span>七牛云</p>
-            <p style="margin-top: 10px">
-              在下从来不懂什么是美感，所以本站的几乎所有 UI 都不是我自己设计的，所以在下就借鉴了百家之长。
-              首先本站的配色为 Apple 官网的 topbar 配色，topbar 的设计也是 Apple 官网的 topbar 样式。然后整站的评论组件都是
-              借鉴B站的设计，你可以看到基本上是一样的。内容方面的设计我也是在浏览了上百个博客网站后（不夸张，是真的，
-              但是他们都长得差不多，因为都用的hexo吧）才成了现在这样（真的很纠结-_=）。本人由于是火影迷，所以你可以感知到整站都有点火影的影子。
-              好啦，大概就这样吧，一个很简单的用来记笔记的博客。
-            </p>
-            <p style="margin-top: 10px">对了，有些文章的顶部有个网易云音乐的开关，你无聊的时候可以点击播放一下，那里只会播放纯音乐哟，都是我珍藏的哦。</p>
-          </div>
-        </div>
+        <div class="about-me-common"><SixtyDen /></div>
       </div>
 
       <div class="section about-me-container">
@@ -140,13 +116,15 @@ import { SIXTY_LOGO } from '../const'
 import Contact from '../../src/components/Contact'
 import Avatar from '../../src/components/Avatar'
 import Skills from './about/Skills'
+import SixtyDen from './about/SixtyDen'
 
 export default {
   name: 'about',
   components: {
     Avatar,
     Contact,
-    Skills
+    Skills,
+    SixtyDen
   },
   data () {
     return {

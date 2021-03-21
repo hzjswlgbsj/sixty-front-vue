@@ -65,7 +65,7 @@ export default {
   .tooltip-popper {
     position: absolute;
     will-change: top, left;
-    top: -42px;
+    top: -45px;
     left: -34px;
     padding-bottom: 8px;
     z-index: 9;

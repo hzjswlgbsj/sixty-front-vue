@@ -77,10 +77,13 @@ export default {
 
   methods: {
     returnTop (acceleration, time) {
-      let xScroll = document.documentElement.scrollLeft || document.body.scrollLeft || window.scrollLeft || 0 // 获取水平滚动坐标
-      let yScroll = document.documentElement.scrollTop || document.body.scrollTop || window.scrollTop || 0 // 获取垂直滚动坐标
+      const el = document.getElementById('content-container')
+      let xScroll = el.scrollLeft || document.body.scrollLeft || window.scrollLeft || 0 // 获取水平滚动坐标
+      let yScroll = el.scrollTop || document.body.scrollTop || window.scrollTop || 0 // 获取垂直滚动坐标
       let speed = 1 + acceleration // 滚动速度
-      window.scrollTo(Math.floor(xScroll / speed), Math.floor(yScroll / speed)) // 屏幕滚动到某个坐标，因为speed大于1，所以x、y轴的坐标越来越小
+      console.log('开始执行想顶部跳转', xScroll, yScroll)
+
+      el.scrollTo(Math.floor(xScroll / speed), Math.floor(yScroll / speed)) // 屏幕滚动到某个坐标，因为speed大于1，所以x、y轴的坐标越来越小
       if (xScroll > 0 || yScroll > 0) { // 如果没有滚动到顶部就设置延迟time后继续滚动
         setTimeout(() => {
           this.returnTop(acceleration, time)
