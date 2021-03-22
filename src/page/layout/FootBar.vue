@@ -1,7 +1,7 @@
 <template>
   <div class="footbar-container">
     <div class="footbar-right-content">
-      <span>Copyright © 2016-2019 Sixty'Den  </span>
+      <span>Copyright © 2017-2021 Sixty'Den  </span>
       <span>
         <a
           style="color: #2BBC8A;"

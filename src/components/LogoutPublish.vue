@@ -224,7 +224,9 @@ export default {
       width: 50px !important;
       height: 45px !important;
       font-size: 12px !important;
-      padding: 5px 5px 0 5px !important;
+      &-text {
+        padding: 6px 8px !important;
+      }
     }
     .login-other-info-email {
       width: 150px !important;

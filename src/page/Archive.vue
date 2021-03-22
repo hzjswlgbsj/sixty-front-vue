@@ -29,16 +29,18 @@ export default {
         {
           title: '深入JavaScript知识点系列',
           data: [
-            {title: '深入JavaScript系列(1) -- 变量以及作用域问题', articleId: 1},
-            {title: '深入JavaScript系列(2) -- 执行上下文', articleId: 1},
-            {title: '深入JavaScript系列(3) -- 闭包', articleId: 30},
-            {title: '深入JavaScript系列(4) -- 原型与原型链', articleId: 31},
-            {title: '深入JavaScript系列(5) -- call和apply', articleId: 1},
-            {title: '深入JavaScript系列(6) -- 创建对象的方式', articleId: 36},
-            {title: '深入JavaScript系列(7) -- 继承的多种方式及其优缺点', articleId: 32},
-            {title: '深入JavaScript系列(8) -- 作用域链', articleId: 1},
-            {title: '深入JavaScript系列(9) -- 搞懂this', articleId: 1},
-            {title: '深入JavaScript系列(9) -- 类数组对象与arguments', articleId: 1}
+            {title: '深入JavaScript系列(1) -- 变量对象', articleId: 42},
+            {title: '深入JavaScript系列(2) -- 作用域链', articleId: 43},
+            {title: '深入JavaScript系列(3) -- 执行上下文', articleId: 44},
+            {title: '深入JavaScript系列(4) -- 闭包', articleId: 30},
+            {title: '深入JavaScript系列(5) -- 原型与原型链', articleId: 31},
+            {title: '深入JavaScript系列(6) -- 理解 JavaScript 对象', articleId: 33},
+            {title: '深入JavaScript系列(7) -- 创建对象的方式', articleId: 36},
+            {title: '深入JavaScript系列(8) -- 继承的多种方式及其优缺点', articleId: 32},
+            {title: '深入JavaScript系列(9) -- 事件循环机制', articleId: 45},
+            {title: '深入JavaScript系列(10) -- 搞懂this', articleId: 46},
+            {title: '深入JavaScript系列(11) -- 类数组对象与arguments', articleId: 1},
+            {title: '深入JavaScript系列(12) -- call和apply', articleId: 1}
           ]
         },
         {
@@ -54,7 +56,7 @@ export default {
         {
           title: 'JavaScript专题知识点系列',
           data: [
-            {title: 'JavaScript专题知识点系列(1) -- 数组去重', articleId: 1},
+            {title: 'JavaScript专题知识点系列(1) -- 数组去重', articleId: 28},
             {title: 'JavaScript专题知识点系列(2) -- 类型判断', articleId: 1},
             {title: 'JavaScript专题知识点系列(3) -- 深拷贝与浅拷贝', articleId: 1},
             {title: 'JavaScript专题知识点系列(4) -- 数组的各种数据处理', articleId: 1},
@@ -88,12 +90,13 @@ export default {
             {title: 'ES6系列(3) -- 箭头函数', articleId: 1},
             {title: 'ES6系列(4) -- 模拟实现 Symbol 类型', articleId: 1},
             {title: 'ES6系列(5) -- 迭代器与 for of', articleId: 1},
-            {title: 'ES6系列(6) -- 深入Compiler理解render函数的生成过程', articleId: 1},
+            {title: 'ES6系列(6) -- 深入 Compiler 理解 render 函数的生成过程', articleId: 1},
             {title: 'ES6系列(7) -- Generator 的自动执行', articleId: 1},
-            {title: 'ES6系列(8) -- Async', articleId: 1},
-            {title: 'ES6系列(9) -- 异步处理实战', articleId: 1},
-            {title: 'ES6系列(9) -- defineProperty 与 proxy', articleId: 1},
-            {title: 'ES6系列(9) -- 装饰器', articleId: 1}
+            {title: 'ES6系列(8) -- Async/Await', articleId: 1},
+            {title: 'ES6系列(9) -- 异步与 Promise', articleId: 1},
+            {title: 'ES6系列(10) -- defineProperty 与 proxy', articleId: 1},
+            {title: 'ES6系列(11) -- 装饰器', articleId: 1},
+            {title: 'ES6系列(12) -- Map 和 Set 结构', articleId: 1}
           ]
         }
       ]

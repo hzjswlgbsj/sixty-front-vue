@@ -35,4 +35,10 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
   }
+  /*响应式布局开始*/
+  @media screen and (max-width: 767px) {
+    .sixty-alert-container {
+      left: 25%;
+    }
+  }
 </style>

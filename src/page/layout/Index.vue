@@ -81,7 +81,6 @@ export default {
       let xScroll = el.scrollLeft || document.body.scrollLeft || window.scrollLeft || 0 // 获取水平滚动坐标
       let yScroll = el.scrollTop || document.body.scrollTop || window.scrollTop || 0 // 获取垂直滚动坐标
       let speed = 1 + acceleration // 滚动速度
-      console.log('开始执行想顶部跳转', xScroll, yScroll)
 
       el.scrollTo(Math.floor(xScroll / speed), Math.floor(yScroll / speed)) // 屏幕滚动到某个坐标，因为speed大于1，所以x、y轴的坐标越来越小
       if (xScroll > 0 || yScroll > 0) { // 如果没有滚动到顶部就设置延迟time后继续滚动
@@ -115,9 +114,10 @@ export default {
     }
     .main-layout-structure-content {
       width: 100%;
-      height: calc(100% - 1px);
+      height: calc(100% - 42px);
       overflow-y: auto;
-      padding-top: 43px;
+      padding-top: 44px;
+      overflow-x: hidden;
     }
     .main-layout-structure-return-top {
       background-size: cover;

@@ -80,7 +80,7 @@ export default {
         filter.keywords = this.searchKeyWords
       }
 
-      this.searchData = await remoteFilterArticles(filter)
+      this.searchData = await remoteFilterArticles(filter, 1, 1000)
     },
     async initTag () {
       let tags = await getTagsByIds([this.searchParams.tagId])
@@ -104,7 +104,7 @@ export default {
   .search-root {
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    padding: 20px 0;
     width: 100%;
     height: 100%;
     min-height: 800px;
@@ -131,7 +131,6 @@ export default {
               .search-tag-item-title {
                 font-size: 1.4em;
                 font-weight: 500;
-                color: #ffffff;
                 &:hover {
                   text-decoration: none;
                   color: #5293D4;
