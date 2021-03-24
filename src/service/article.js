@@ -104,6 +104,19 @@ export async function getTagsByIds (ids) {
  */
 export async function getArticleById (id) {
   if (id) {
+    // 先去缓存的文章列表里面找
+    const articles = Store.store('articles')
+    if (articles && articles.length > 0) {
+      const index = articles.findIndex(item => item.id === id)
+      const preArticle = articles[index + 1]
+      const article = articles[index]
+      const nextArticle = articles[index - 1]
+      article.preArticle = preArticle
+      article.nextArticle = nextArticle
+      return article
+    }
+
+    // 在缓存的文章列表中没有找到的话，重新请求
     let ret = await getArticle(id)
     return ret.data.items[0]
   }

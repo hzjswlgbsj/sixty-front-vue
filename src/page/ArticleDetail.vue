@@ -194,8 +194,13 @@ export default {
       }
     },
     jumpById (id) {
-      let url = `${window.location.origin}/blog/articleDetail/${id}`
-      window.location.href = url
+      this.$router.push({
+        name: 'ArticleDetail',
+        params: {
+          id: id
+        }
+      })
+      this.initData()
     }
   }
 }

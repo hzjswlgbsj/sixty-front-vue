@@ -86,6 +86,15 @@ router.beforeEach((to, from, next) => {
   Store.store('curRouter', to.name)
   Store.store('currentComment', [])
   Store.store('links', [])
+
+  const el = document.getElementById('content-container')
+  if (el) {
+    // 路由跳转回到顶部
+    // chrome | firefox
+    el.scrollTop = 0
+    // safari
+    el.pageYOffset = 0
+  }
   next()
 })
 
