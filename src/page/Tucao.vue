@@ -60,7 +60,6 @@
 </template>
 
 <script>
-import Comment from '../components/Comment'
 import { Store } from '../common'
 import { remoteGetComment } from '../service/article'
 import Const from '../const/index'
@@ -76,7 +75,7 @@ export default {
     this.initData()
   },
   components: {
-    'comment': Comment
+    'comment': () => import('../components/Comment')
   },
   computed: {
     commentData () {

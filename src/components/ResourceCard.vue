@@ -11,13 +11,11 @@
 </template>
 
 <script>
-import SixtyCard from './SixtyCard'
-import Avatar from './Avatar'
 export default {
   name: 'resource-card',
   components: {
-    'sixty-card': SixtyCard,
-    'avatar': Avatar
+    'sixty-card': () => import('./SixtyCard'),
+    'avatar': () => import('./Avatar')
   },
   props: {
     linkData: {

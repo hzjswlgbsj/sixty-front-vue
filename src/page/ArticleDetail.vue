@@ -89,19 +89,15 @@
 
 <script>
 import { Store } from '../common'
-import BlockText from '../components/BlockText'
-import Comment from '../components/Comment'
-import MusicPlayer from '../components/MusicPlayer'
 import { getArticleById, remoteGetComment } from '../service/article'
-import ArticleInfo from '../components/ArticleInfo'
 
 export default {
   name: 'article-detail',
   components: {
-    BlockText,
-    Comment,
-    ArticleInfo,
-    MusicPlayer
+    'block-text': () => import('../components/BlockText'),
+    'comment': () => import('../components/Comment'),
+    'music-player': () => import('../components/MusicPlayer'),
+    'article-info': () => import('../components/ArticleInfo')
   },
   data () {
     return {

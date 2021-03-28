@@ -29,9 +29,6 @@
 </template>
 
 <script>
-import TopBar from './layout/TopBar'
-import FootBar from './layout/FootBar'
-import ArticleItem from '../components/ArticleItem'
 import routerMixin from '../mixins/router'
 import { Store } from '../common'
 import { remoteGetArticles } from '../service/article'
@@ -50,9 +47,9 @@ export default {
   },
   mixins: [routerMixin],
   components: {
-    'top-bar': TopBar,
-    'foot-bar': FootBar,
-    'article-item': ArticleItem
+    'top-bar': () => import('./layout/TopBar'),
+    'foot-bar': () => import('./layout/FootBar'),
+    'article-item': () => import('../components/ArticleItem')
   },
   created () {
     this.init()

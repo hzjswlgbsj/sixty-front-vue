@@ -19,10 +19,6 @@
 export default {
   name: 'archive',
 
-  components: {
-
-  },
-
   data () {
     return {
       archiveData: [

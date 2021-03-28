@@ -27,9 +27,6 @@
 </template>
 
 <script>
-import Avatar from '../../../src/components/Avatar'
-import Contact from '../../../src/components/Contact'
-import CommonLine from '../../components/CommonLine'
 import { SIXTY_LOGO, MENU_LIST } from '../../const'
 import { Storage } from '../../common'
 
@@ -48,9 +45,9 @@ export default {
   },
 
   components: {
-    Avatar,
-    CommonLine,
-    Contact
+    'avatar': () => import('../../components/Avatar'),
+    'common-line': () => import('../../components/CommonLine'),
+    'contact': () => import('../../components/Contact')
   },
 
   methods: {

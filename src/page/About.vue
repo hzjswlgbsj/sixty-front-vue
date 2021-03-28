@@ -63,11 +63,11 @@
       </div>
 
       <div class="section about-me-container">
-        <div class="about-me-common my-skills"><Skills /></div>
+        <div class="about-me-common my-skills"><skills /></div>
       </div>
 
       <div class="section about-me-container">
-        <div class="about-me-common"><SixtyDen /></div>
+        <div class="about-me-common"><sixty-den /></div>
       </div>
 
       <div class="section about-me-container">
@@ -113,18 +113,13 @@
 
 <script>
 import { SIXTY_LOGO } from '../const'
-import Contact from '../../src/components/Contact'
-import Avatar from '../../src/components/Avatar'
-import Skills from './about/Skills'
-import SixtyDen from './about/SixtyDen'
 
 export default {
   name: 'about',
   components: {
-    Avatar,
-    Contact,
-    Skills,
-    SixtyDen
+    'contact': () => import('../components/Contact'),
+    'skills': () => import('./about/Skills'),
+    'sixty-den': () => import('./about/SixtyDen')
   },
   data () {
     return {

@@ -36,12 +36,11 @@
 </template>
 
 <script>
-import Avatar from './Avatar'
 
 export default {
   name: 'logout-public',
   components: {
-    'avatar': Avatar
+    'avatar': () => import('./Avatar')
   },
   data () {
     return {

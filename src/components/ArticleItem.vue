@@ -47,13 +47,14 @@
 </template>
 
 <script>
-import Avatar from '../components/Avatar'
-import Tag from '../components/Tag'
 import { SIXTY_LOGO } from '../const'
-import ArticleInfo from './ArticleInfo'
 
 export default {
   name: 'article-item',
+  components: {
+    'tag': () => import('./Tag'),
+    'article-info': () => import('./ArticleInfo')
+  },
   data () {
     return {
       sixtyLogo: SIXTY_LOGO,
@@ -94,11 +95,6 @@ export default {
         color: this.curTagColor
       }
     }
-  },
-  components: {
-    Tag,
-    Avatar,
-    ArticleInfo
   },
   methods: {
     goDetail (id) {

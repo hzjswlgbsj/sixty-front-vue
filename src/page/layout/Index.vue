@@ -33,16 +33,13 @@
 </template>
 
 <script>
-import TopBar from './TopBar'
-import FootBar from './FootBar'
-import Introduction from './Introduction'
 
 export default {
   name: 'index',
   components: {
-    'top-bar': TopBar,
-    'foot-bar': FootBar,
-    'introduction': Introduction
+    'top-bar': () => import('./TopBar'),
+    'foot-bar': () => import('./FootBar'),
+    'introduction': () => import('./Introduction')
   },
   data () {
     return {

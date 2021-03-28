@@ -21,24 +21,23 @@
       </span>
     </a>
     <div class="contact-icon main-layout-contact-wechat">
-       <Tooltip placement="top" content="hzjswlgbsj" :delay="200">
+       <tooltip placement="top" content="hzjswlgbsj" :delay="200">
         <icon name="wechat" scale="1.5"></icon>
-       </Tooltip>
+       </tooltip>
     </div>
     <div class="contact-icon main-layout-contact-qq">
-      <Tooltip placement="top" content="1025132924" :delay="200">
+      <tooltip placement="top" content="1025132924" :delay="200">
         <icon name="qq" scale="1.3"></icon>
-       </Tooltip>
+       </tooltip>
     </div>
   </div>
 </template>
 
 <script>
-import Tooltip from './Tooltip'
 export default {
   name: 'Contact',
   components: {
-    Tooltip
+    'tooltip': () => import('./Tooltip')
   },
   data () {
     return {}

@@ -1,18 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { Store, Storage } from '../common'
-import Index from '../../src/page/layout/Index'
-import Blog from '../../src/page/Blog'
-import Tucao from '../../src/page/Tucao'
-import Okami from '../../src/page/Okami'
-import Archive from '../../src/page/Archive'
-import Error from '../../src/page/Error'
-import About from '../../src/page/About'
-import ArticleDetail from '../../src/page/ArticleDetail'
-import Login from '../../src/page/Login'
-import Search from '../../src/page/Search'
-import Test from '../../src/page/Test'
-
 Vue.use(Router)
 
 /* 由于路由比较少，所以就没有拆出去哦 */
@@ -22,62 +10,62 @@ const router = new Router({
     {
       path: '/',
       name: 'Index',
-      component: Index,
+      component: () => import('../../src/page/layout/Index'),
       children: [
         {
           path: '/blog',
           name: 'Blog',
-          component: Blog,
+          component: () => import('../../src/page/Blog'),
           children: [
             {
               path: 'articleDetail/:id',
               name: 'ArticleDetail',
-              component: ArticleDetail
+              component: () => import('../../src/page/ArticleDetail')
             }
           ]
         },
         {
           path: '/tucao',
           name: 'Tucao',
-          component: Tucao
+          component: () => import('../../src/page/Tucao')
         },
         {
           path: '/okami',
           name: 'Okami',
-          component: Okami
+          component: () => import('../../src/page/Okami')
         },
         {
           path: '/archive',
           name: 'Archive',
-          component: Archive
+          component: () => import('../../src/page/Archive')
         },
         {
           path: '/error',
           name: 'Error',
-          component: Error
+          component: () => import('../../src/page/Error')
         },
         {
           path: '/test',
           name: 'Test',
-          component: Test
+          component: () => import('../../src/page/Test')
         },
         {
           path: '/search',
           name: 'Search',
-          component: Search,
+          component: () => import('../../src/page/Search'),
           props: (route) => ({ query: route.query.q })
         },
         {
           path: '/login',
           name: 'Login',
-          component: Login
+          component: () => import('../../src/page/Login')
         }
       ]
     },
     {
       path: '/about',
       name: 'About',
-      component: About
+      component: () => import('../../src/page/About')
     }
   ]
 })

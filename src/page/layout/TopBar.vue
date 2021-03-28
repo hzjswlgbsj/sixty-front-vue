@@ -156,9 +156,6 @@
 </template>
 
 <script>
-import Avatar from '../../components/Avatar'
-import CommonLine from '../../components/CommonLine'
-import IconCollection from '../../components/IconCollection'
 import { Storage } from '../../common'
 import { getScrollTop, getScrollHeight, getWindowHeight } from '../../util/scroll'
 import routerMixin from '../../mixins/router'
@@ -168,9 +165,9 @@ export default {
   name: 'top-bar',
 
   components: {
-    Avatar,
-    IconCollection,
-    CommonLine
+    'avatar': () => import('../../components/Avatar'),
+    'common-line': () => import('../../components/CommonLine')
+    // 'icon-collection': () => import('../../components/IconCollection')
   },
 
   props: {

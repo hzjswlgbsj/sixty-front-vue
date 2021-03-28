@@ -126,9 +126,6 @@
 </template>
 
 <script>
-import Avatar from './Avatar'
-import LogoutPublish from './LogoutPublish'
-import Pagination from './Pagination'
 import { redirectLogin } from '../router/index'
 import { checkLogin, getCurrentUser, getUsers } from '../service/user'
 import { remoteAddComment, remoteLike, remoteGetLike, remoteGetComment, remoteGetChildrenComment } from '../service/article'
@@ -145,9 +142,9 @@ marked.setOptions({
 export default {
   name: 'comment',
   components: {
-    'avatar': Avatar,
-    'logout-publish': LogoutPublish,
-    'pagination': Pagination
+    'avatar': () => import('./Avatar'),
+    'logout-publish': () => import('./LogoutPublish'),
+    'pagination': () => import('./Pagination')
   },
   props: {
     commentData: {

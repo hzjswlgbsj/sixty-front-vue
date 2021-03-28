@@ -123,7 +123,7 @@
 
           <h2># 找到我</h2><br>
 
-          <contact/>
+          <contact />
 
         </div>
       </section>
@@ -132,8 +132,6 @@
 </template>
 
 <script>
-import Avatar from '../../src/components/Avatar'
-import Contact from '../../src/components/Contact'
 import { SIXTY_LOGO } from '../const'
 
 export default {
@@ -145,8 +143,7 @@ export default {
   },
 
   components: {
-    Avatar,
-    Contact
+    'contact': () => import('../components/Contact')
   },
 
   computed: {

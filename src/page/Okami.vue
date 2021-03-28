@@ -53,11 +53,9 @@
 </template>
 
 <script>
-import Comment from '../components/Comment'
 import { Store } from '../common'
 import { remoteGetComment } from '../service/article'
 import { getLinks } from '../service/link'
-import FriendCard from '../components/FriendCard'
 import Const from '../const/index'
 
 export default {
@@ -66,8 +64,8 @@ export default {
     this.initData()
   },
   components: {
-    'comment': Comment,
-    'friend-card': FriendCard
+    'comment': () => import('../components/Comment'),
+    'friend-card': () => import('../components/FriendCard')
   },
   data () {
     return {

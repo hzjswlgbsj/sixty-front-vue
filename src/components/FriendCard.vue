@@ -18,14 +18,12 @@
 </template>
 
 <script>
-import SixtyCard from './SixtyCard'
-import Avatar from './Avatar'
 import { sample, remove } from 'lodash-es'
 export default {
   name: 'friend-card',
   components: {
-    'sixty-card': SixtyCard,
-    'avatar': Avatar
+    'sixty-card': () => import('./SixtyCard'),
+    'avatar': () => import('./Avatar')
   },
   props: {
     linkData: {
