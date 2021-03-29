@@ -1,9 +1,6 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import STATE from './state'
-import { cloneDeep } from 'lodash-es'
-
-Vue.use(Vuex)
+import cloneDeep from 'lodash-es/cloneDeep'
 
 const INIT_STATE = cloneDeep(STATE)
 

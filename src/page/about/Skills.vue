@@ -3,12 +3,8 @@
 </template>
 
 <script>
-import marked from 'marked'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/atom-one-dark.css'
-
-marked.setOptions({
-  highlight: text => hljs.highlightAuto(text).value
+window.marked.setOptions({
+  highlight: text => window.hljs.highlightAuto(text).value
 })
 
 export default {
@@ -21,7 +17,7 @@ export default {
 
   methods: {
     markdownIt (text) {
-      return marked(text)
+      return window.marked(text)
     }
   }
 }

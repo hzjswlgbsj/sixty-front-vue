@@ -18,7 +18,8 @@
 </template>
 
 <script>
-import { sample, remove } from 'lodash-es'
+import remove from 'lodash-es/remove'
+import sample from 'lodash-es/sample'
 export default {
   name: 'friend-card',
   components: {

@@ -1,7 +1,5 @@
-import Vue from 'vue'
 import Router from 'vue-router'
 import { Store, Storage } from '../common'
-Vue.use(Router)
 
 /* 由于路由比较少，所以就没有拆出去哦 */
 const router = new Router({

@@ -131,12 +131,9 @@ import { checkLogin, getCurrentUser, getUsers } from '../service/user'
 import { remoteAddComment, remoteLike, remoteGetLike, remoteGetComment, remoteGetChildrenComment } from '../service/article'
 import Const from '../const/index'
 import { Store } from '../common'
-import marked from 'marked'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/atom-one-dark.css'
 
-marked.setOptions({
-  highlight: text => hljs.highlightAuto(text).value
+window.marked.setOptions({
+  highlight: text => window.hljs.highlightAuto(text).value
 })
 
 export default {
@@ -401,7 +398,7 @@ export default {
       this.showMore = true
     },
     markdownIt (text) {
-      return marked(text)
+      return window.marked(text)
     }
   }
 }

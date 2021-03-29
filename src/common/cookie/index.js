@@ -1,7 +1,7 @@
 /**
  * @module packages/common/Cookie
  */
-import Cookies from 'js-cookie'
+const Cookies = window.Cookies
 
 /**
  * 设置cookie

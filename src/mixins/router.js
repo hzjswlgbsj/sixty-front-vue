@@ -1,5 +1,5 @@
 import { MENU_LIST } from '../const'
-import { cloneDeep } from 'lodash-es'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 export default {
   data () {

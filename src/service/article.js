@@ -6,7 +6,8 @@
  */
 
 import { Store } from '../common'
-import { isArray, find } from 'lodash-es'
+import isArray from 'lodash-es/isArray'
+import find from 'lodash-es/find'
 import tagApi from '../api/tags'
 import Const from '../const/index'
 import {

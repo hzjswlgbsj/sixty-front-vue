@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -102,5 +103,30 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  externals: {
+    'vue': 'Vue',
+    'vue-router': 'VueRouter',
+    'vuex': 'Vuex',
+    'axios': 'axios',
+    'highlight.js': 'hlgs',
+    'marked': 'marked',
+    'js-cookie': 'Cookies',
+  },
+  // plugins: [
+  //   new BundleAnalyzerPlugin(
+  //     {
+  //       analyzerMode: 'server',
+  //       analyzerHost: '127.0.0.1',
+  //       analyzerPort: 8889,
+  //       reportFilename: 'report.html',
+  //       defaultSizes: 'parsed',
+  //       openAnalyzer: true,
+  //       generateStatsFile: false,
+  //       statsFilename: 'stats.json',
+  //       statsOptions: null,
+  //       logLevel: 'info'
+  //     }
+  //   ),
+  // ]
 }

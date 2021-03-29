@@ -90,6 +90,8 @@
 <script>
 import { Store } from '../common'
 import { getArticleById, remoteGetComment } from '../service/article'
+import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 export default {
   name: 'article-detail',
@@ -97,7 +99,8 @@ export default {
     'block-text': () => import('../components/BlockText'),
     'comment': () => import('../components/Comment'),
     'music-player': () => import('../components/MusicPlayer'),
-    'article-info': () => import('../components/ArticleInfo')
+    'article-info': () => import('../components/ArticleInfo'),
+    mavonEditor
   },
   data () {
     return {
