@@ -31,3 +31,20 @@
 @aboutCover2: 'https://lib.sixtyden.com/hy_phone_shuimen.jpg';
 @errorCover: 'https://lib.sixtyden.com/hy_mz.jpg';
 @indexBackground: 'https://lib.sixtyden.com/hy_xiaoying.jpg';
+
+.fade-enter{
+  visibility: hidden;
+  opacity: 0;
+}
+.fade-leave-to{
+  display: none;
+}
+.fade-enter-active,
+.fade-leave-active{
+  transition: opacity .2s ease;
+}
+.fade-enter-to,
+.fade-leave{
+  visibility: visible;
+  opacity: 1;
+}

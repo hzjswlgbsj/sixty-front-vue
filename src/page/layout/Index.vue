@@ -7,7 +7,7 @@
 
     <div class="main-layout-structure-content" id='content-container'>
       <div class="main-layout-structure-introduction">
-        <router-view></router-view>
+        <transition><router-view /></transition>
       </div>
       <div v-if="!isIndex" class="main-layout-structure-footbar">
         <foot-bar></foot-bar>

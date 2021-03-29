@@ -17,7 +17,7 @@
       </div>
     </div>
     <div v-else>
-      <router-view></router-view>
+      <transition><router-view /></transition>
     </div>
 
     <vue-loading

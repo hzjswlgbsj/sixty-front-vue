@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name='fade'>
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -115,5 +117,21 @@ export default {
   }
   .markdown-body table td, .markdown-body table th {
     border: 1px solid #000!important;
+  }
+  .fade-enter{
+    visibility: hidden;
+    opacity: 0;
+  }
+  .fade-leave-to{
+    display: none;
+  }
+  .fade-enter-active,
+  .fade-leave-active{
+    transition: opacity .2s ease;
+  }
+  .fade-enter-to,
+  .fade-leave{
+    visibility: visible;
+    opacity: 1;
   }
 </style>
