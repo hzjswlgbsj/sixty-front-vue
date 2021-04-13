@@ -7,7 +7,7 @@
       <div class="archive-item-container" v-for="(archive, index) in archiveData" :key="index">
         <h2 class="archive-title-name">{{ archive.title }}</h2>
         <div v-for="(item, subindex) in archive.data" :key="subindex">
-          <a href="" @click="jumpDeatil(item.articleId)">{{ item.title }}</a>
+          <a href="javascript: void(0)" @click="jumpDeatil(item.articleId)">{{ item.title }}</a>
         </div>
       </div>
     </div>
