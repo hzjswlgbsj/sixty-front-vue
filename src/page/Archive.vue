@@ -109,7 +109,8 @@ export default {
   },
   methods: {
     jumpDeatil (articleId) {
-      this.$router.push(`blog/articleDetail/${articleId}`)
+      const origin = window.location.origin
+      window.open(`${origin}/blog/articleDetail/${articleId}`)
     }
   }
 }
