@@ -30,7 +30,7 @@ export default {
     bottom: 0;
   }
   body {
-    // margin-top: -21px;
+    margin: 0;
     width: 100%;
     height: 100%;
     font-size: 16px;

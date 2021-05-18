@@ -5262,6 +5262,13 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+katelog@^0.0.6:
+  version "0.0.6"
+  resolved "https://npm.oneitfarm.com/katelog/-/katelog-0.0.6.tgz#687b9f4d4453ee11016f130b54f6450f7c36c890"
+  integrity sha1-aHufTURT7hEBbxMLVPZFD3w2yJA=
+  dependencies:
+    markdown "^0.5.0"
+
 killable@^1.0.0:
   version "1.0.1"
   resolved "https://npm.oneitfarm.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
@@ -5527,6 +5534,13 @@ map-visit@^1.0.0:
   integrity sha1-7Nyo8TFE5mDxtb1B8S80edmN+48=
   dependencies:
     object-visit "^1.0.0"
+
+markdown@^0.5.0:
+  version "0.5.0"
+  resolved "https://npm.oneitfarm.com/markdown/-/markdown-0.5.0.tgz#28205b565a8ae7592de207463d6637dc182722b2"
+  integrity sha1-KCBbVlqK51kt4gdGPWY33BgnIrI=
+  dependencies:
+    nopt "~2.1.1"
 
 math-random@^1.0.1:
   version "1.0.4"
@@ -5938,6 +5952,13 @@ nopt@^5.0.0:
   version "5.0.0"
   resolved "https://npm.oneitfarm.com/nopt/-/nopt-5.0.0.tgz"
   integrity sha1-UwlCu1ilEvzK/lP+IQ8TolNV3Ig=
+  dependencies:
+    abbrev "1"
+
+nopt@~2.1.1:
+  version "2.1.2"
+  resolved "https://npm.oneitfarm.com/nopt/-/nopt-2.1.2.tgz#6cccd977b80132a07731d6e8ce58c2c8303cf9af"
+  integrity sha1-bMzZd7gBMqB3MdbozljCyDA8+a8=
   dependencies:
     abbrev "1"
 
@@ -6918,6 +6939,11 @@ process@^0.11.10:
   version "0.11.10"
   resolved "https://npm.oneitfarm.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
+
+progress-catalog@^1.0.7:
+  version "1.0.7"
+  resolved "https://npm.oneitfarm.com/progress-catalog/-/progress-catalog-1.0.7.tgz#609250adcd50b90ace73ccd6872ceb5a1036277d"
+  integrity sha1-YJJQrc1QuQrOc8zWhyzrWhA2J30=
 
 progress@^2.0.0:
   version "2.0.3"

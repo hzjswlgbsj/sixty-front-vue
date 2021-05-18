@@ -38,7 +38,7 @@ export default {
       menuList: [
         {text: '博客', name: 'Blog', path: '/blog'},
         {text: '吐槽', name: 'Tucao', path: '/tucao'},
-        {text: '坑点', name: 'Error', path: '/error'},
+        {text: '归档', name: 'Archive', path: '/archive'},
         {text: '关于', name: 'About', path: '/about'}
       ]
     }

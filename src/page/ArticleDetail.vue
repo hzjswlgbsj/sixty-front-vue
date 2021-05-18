@@ -1,5 +1,6 @@
 <template>
   <div class="article-detail-container">
+    <div class='catalog-content-wrapper' id='catalog-content-wrapper'></div>
     <div class="article-detail-title-info" v-if="article.id">
       <div class="article-detail-top-cover" :style="detailCover"></div>
       <div class="article-detail-title-container">
@@ -11,7 +12,7 @@
 
       <music-player v-if="article.music_id > 0" :id="Number(article.music_id)"/>
 
-      <div class="article-detail-content">
+      <div class="article-detail-content" id='loading-animation'>
         <!--qtcreator_light-->
         <mavon-editor
           class="article-detail-content-markdown"
@@ -92,6 +93,8 @@ import { Store } from '../common'
 import { getArticleById, remoteGetComment } from '../service/article'
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import Catalog from 'progress-catalog'
+import 'progress-catalog/src/progress-catalog.css'
 
 export default {
   name: 'article-detail',
@@ -159,12 +162,6 @@ export default {
       return style
     }
   },
-  mounted () {
-    this.$nextTick(function () {
-      document.body.scrollTop = 1
-      document.documentElement.scrollTop = 1
-    })
-  },
   methods: {
     async initData () {
       this.currentArticleId = this.$route.params.id
@@ -179,6 +176,7 @@ export default {
           setTimeout(() => {
             this.showTitle = true
           }, 0)
+          this.initCatalog()
         }
       } catch (e) {
         this.showLoading = false
@@ -200,7 +198,31 @@ export default {
         }
       })
       this.initData()
+    },
+    initCatalog () {
+      setTimeout(() => {
+        const content = document.getElementById('loading-animation')
+        const catalog = document.getElementById('catalog-content-wrapper')
+        if (content && catalog) {
+          // eslint-disable-next-line no-new
+          new Catalog({
+            // contentEl: 'loading-animation',
+            contentEl: 'app',
+            scrollWrapper: '',
+            catalogEl: `catalog-content-wrapper`,
+            selector: ['h2', 'h3'],
+            cool: false,
+            topMargin: 60
+          })
+        }
+      }, 1000)
     }
+  },
+  mounted () {
+    this.$nextTick(function () {
+      document.body.scrollTop = 1
+      document.documentElement.scrollTop = 1
+    })
   }
 }
 </script>
@@ -211,6 +233,13 @@ export default {
   .article-detail-container {
     .flex-define(column, center, center);
     background-color: #ffffff;
+    position: relative;
+    .catalog-content-wrapper {
+      z-index: 999;
+      position: fixed;
+      top: 60px;
+      left: 0;
+    }
     .article-detail-title-info {
       .flex-define(column, center, center);
       font-size: @font-size;
