@@ -77,9 +77,9 @@ router.beforeEach((to, from, next) => {
   if (el) {
     // 路由跳转回到顶部
     // chrome | firefox
-    el.scrollTop = 0
+    // el.scrollTop = 0
     // safari
-    el.pageYOffset = 0
+    // el.pageYOffset = 0
   }
   next()
 })
